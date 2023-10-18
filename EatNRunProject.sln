@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EatNRunProject", "EatNRunProject\EatNRunProject.csproj", "{F2EFDEF0-478A-4B73-AEC3-19BF9183E23D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2EFDEF0-478A-4B73-AEC3-19BF9183E23D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2EFDEF0-478A-4B73-AEC3-19BF9183E23D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2EFDEF0-478A-4B73-AEC3-19BF9183E23D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2EFDEF0-478A-4B73-AEC3-19BF9183E23D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F86E40C-8F66-41E9-9B23-CA532C0A3DCB}
+	EndGlobalSection
+EndGlobal
