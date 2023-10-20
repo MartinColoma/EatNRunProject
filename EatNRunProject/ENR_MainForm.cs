@@ -224,6 +224,10 @@ namespace EatNRunProject
                 MFpanelManager.MFShow(LoginPanel);
                 LoginpanelManager.LoginShow(UserSelector);
             }
+            else
+            {
+
+            }
         }
 
         private void CashierSwtichBtn_Click(object sender, EventArgs e)
