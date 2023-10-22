@@ -324,6 +324,10 @@
   <ItemGroup>
     <None Include="Resources\AP Logo 128x128 YellowBG.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\EatNRun Logo Red Text.ico" />
+    <Content Include="Resources\EatNRun Logo Yellow Text.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.Windows.Forms.Interop;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,10 +27,14 @@ namespace EatNRunProject
             MFpanelManager = new MainFormCard(LoginPanel, AdminPanel, ManagerPanel, CashierPanel);
             LoginpanelManager = new LoginPanelCard(UserSelector, LoginFormPanel);
             AdminPanelManager = new AdminPanelCard(FoodItemPanel, SalesPanel, AccountsPanel);
-            AdminFoodPanelManager = new AdminFoodPanelCard(NewItemPanel, UpdateItemPanel);
+            AdminFoodPanelManager = new AdminFoodPanelCard(NewItemPanel, UpdateItemPanel, CreateNewFoodBtnPanel);
 
             MFpanelManager.MFShow(LoginPanel);
             LoginpanelManager.LoginShow(UserSelector);
+
+            EmplAccTabs.ItemSize = new Size(0, 1);
+            EmplAccTabs.SizeMode = TabSizeMode.Fixed;
+
             this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
 
         }
@@ -138,7 +143,7 @@ namespace EatNRunProject
                         MessageBox.Show("Login Successful");
                         MFpanelManager.MFShow(AdminPanel);
                         AdminPanelManager.AdminFormShow(FoodItemPanel);
-                        AdminFoodPanelManager.AdminFoodFormShow(NewItemPanel);
+                        AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
                         EmpIDBox.Text = "";
                         EmpPassBox.Text = "";
 
@@ -239,6 +244,61 @@ namespace EatNRunProject
                 MFpanelManager.MFShow(LoginPanel);
                 LoginpanelManager.LoginShow(UserSelector);
             }
+        }
+
+        private void CreateNewFoodBtn_Click(object sender, EventArgs e)
+        {
+
+            DialogResult result = MessageBox.Show("Do you want to add a new food item?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                AdminFoodPanelManager.AdminFoodFormShow(NewItemPanel);
+            }
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            if (NewItemPanel.Visible)
+            {
+                NewItemPanel.Visible = false;
+                CreateNewFoodBtnPanel.Visible = true;
+            }
+
+            else
+            {
+                NewItemPanel.Visible = true;
+                CreateNewFoodBtnPanel.Visible = false;
+            }
+        }
+
+        private void UpdateItemExitBtn_Click(object sender, EventArgs e)
+        {
+            if (UpdateItemPanel.Visible)
+            {
+                CreateNewFoodBtnPanel.Visible = true;
+                UpdateItemPanel.Visible = false;
+            }
+
+            else
+            {
+                CreateNewFoodBtnPanel.Visible = false;
+                UpdateItemPanel.Visible = true;
+            }
+        }
+
+        private void FoodItemEditBtn_Click(object sender, EventArgs e)
+        {
+            if (CreateNewFoodBtnPanel.Visible)
+            {
+                CreateNewFoodBtnPanel.Visible = false;
+                UpdateItemPanel.Visible = true;
+            }
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
