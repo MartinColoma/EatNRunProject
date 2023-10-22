@@ -19,6 +19,7 @@ namespace EatNRunProject
         private LoginPanelCard LoginpanelManager;
         private AdminPanelCard AdminPanelManager;
         private AdminFoodPanelCard AdminFoodPanelManager;
+        private AdminAccPanelCard AdminAccPanelManager;
 
         public ENR_MainForm()
         {
@@ -28,12 +29,11 @@ namespace EatNRunProject
             LoginpanelManager = new LoginPanelCard(UserSelector, LoginFormPanel);
             AdminPanelManager = new AdminPanelCard(FoodItemPanel, SalesPanel, AccountsPanel);
             AdminFoodPanelManager = new AdminFoodPanelCard(NewItemPanel, UpdateItemPanel, CreateNewFoodBtnPanel);
+            AdminAccPanelManager = new AdminAccPanelCard(NewAccPanel, UpdateAccPanel, CreateAccBtnPanel);
 
             MFpanelManager.MFShow(LoginPanel);
             LoginpanelManager.LoginShow(UserSelector);
 
-            EmplAccTabs.ItemSize = new Size(0, 1);
-            EmplAccTabs.SizeMode = TabSizeMode.Fixed;
 
             this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
 
@@ -194,12 +194,15 @@ namespace EatNRunProject
         private void ADFoodItemBtn_Click(object sender, EventArgs e)
         {
             AdminPanelManager.AdminFormShow(FoodItemPanel);
+            AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
+
 
         }
 
         private void ADAccountsBtn_Click(object sender, EventArgs e)
         {
             AdminPanelManager.AdminFormShow(AccountsPanel);
+            AdminAccPanelManager.AdminAccFormShow(CreateAccBtnPanel);
 
         }
 
@@ -288,10 +291,11 @@ namespace EatNRunProject
 
         private void FoodItemEditBtn_Click(object sender, EventArgs e)
         {
-            if (CreateNewFoodBtnPanel.Visible)
+            DialogResult result = MessageBox.Show("Do you want to edit this food item?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
-                CreateNewFoodBtnPanel.Visible = false;
-                UpdateItemPanel.Visible = true;
+                AdminFoodPanelManager.AdminFoodFormShow(UpdateItemPanel);
+
             }
 
         }
@@ -299,6 +303,52 @@ namespace EatNRunProject
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void CreateNewAccBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to add a new Employee Acount?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                AdminAccPanelManager.AdminAccFormShow(NewAccPanel);
+            }
+        }
+
+        private void UpdateAccBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to edit this account?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                AdminAccPanelManager.AdminAccFormShow(UpdateAccPanel);
+            }
+        }
+
+        private void UpdateAccExitBtn_Click(object sender, EventArgs e)
+        {
+            if (UpdateAccPanel.Visible)
+            {
+                CreateAccBtnPanel.Visible = true;
+                UpdateAccPanel.Visible = false;
+            }
+            else
+            {
+                CreateAccBtnPanel.Visible = false;
+                UpdateAccPanel.Visible = true;
+            }
+        }
+
+        private void NewAccExitBtn_Click(object sender, EventArgs e)
+        {
+            if (NewAccPanel.Visible)
+            {
+                CreateAccBtnPanel.Visible = true;
+                NewAccPanel.Visible = false;
+            }
+            else
+            {
+                CreateAccBtnPanel.Visible = false;
+                NewAccPanel.Visible = true;
+            }
         }
     }
 }

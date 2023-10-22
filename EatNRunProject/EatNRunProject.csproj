@@ -267,6 +267,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminAccPanelCard.cs" />
     <Compile Include="AdminFoodPanelCard.cs" />
     <Compile Include="AdminPanelCard.cs" />
     <Compile Include="LoginPanelCard.cs" />
