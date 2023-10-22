@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,7 +27,7 @@ namespace EatNRunProject
             InitializeComponent();
             
             MFpanelManager = new MainFormCard(LoginPanel, AdminPanel, ManagerPanel, CashierPanel);
-            LoginpanelManager = new LoginPanelCard(UserSelector, LoginFormPanel);
+            LoginpanelManager = new LoginPanelCard(UserSelector, AdminLoginFormPanel, MngrLoginFormPanel, CashierLoginFormPanel);
             AdminPanelManager = new AdminPanelCard(FoodItemPanel, SalesPanel, AccountsPanel);
             AdminFoodPanelManager = new AdminFoodPanelCard(NewItemPanel, UpdateItemPanel, CreateNewFoodBtnPanel);
             AdminAccPanelManager = new AdminAccPanelCard(NewAccPanel, UpdateAccPanel, CreateAccBtnPanel);
@@ -63,15 +64,15 @@ namespace EatNRunProject
             if (UserSelector.Visible)
             {
                 UserSelector.Visible = false;
-                LoginFormPanel.Visible = true;
-                UserLbl.Text = "Welcome back, Admin.";
+                AdminLoginFormPanel.Visible = true;
+                AdminUserLbl.Text = "Welcome back, Admin.";
             }
 
             else
             {
                 UserSelector.Visible = true;
-                LoginFormPanel.Visible = false;
-                UserLbl.Text = "Welcome back, Admin.";
+                AdminLoginFormPanel.Visible = false;
+                AdminUserLbl.Text = "Welcome back, Admin.";
 
             }
         }
@@ -81,15 +82,15 @@ namespace EatNRunProject
             if (UserSelector.Visible)
             {
                 UserSelector.Visible = false;
-                LoginFormPanel.Visible = true;
-                UserLbl.Text = "Welcome back, Manager.";
+                AdminLoginFormPanel.Visible = true;
+                AdminUserLbl.Text = "Welcome back, Manager.";
             }
 
             else
             {
                 UserSelector.Visible = true;
-                LoginFormPanel.Visible = false;
-                UserLbl.Text = "Welcome back, Manager.";
+                AdminLoginFormPanel.Visible = false;
+                AdminUserLbl.Text = "Welcome back, Manager.";
 
             }
         }
@@ -99,41 +100,41 @@ namespace EatNRunProject
             if (UserSelector.Visible)
             {
                 UserSelector.Visible = false;
-                LoginFormPanel.Visible = true;
-                UserLbl.Text = "Welcome back, Cashier.";
+                AdminLoginFormPanel.Visible = true;
+                AdminUserLbl.Text = "Welcome back, Cashier.";
             }
 
             else
             {
                 UserSelector.Visible = true;
-                LoginFormPanel.Visible = false;
-                UserLbl.Text = "Welcome back, Cashier.";
+                AdminLoginFormPanel.Visible = false;
+                AdminUserLbl.Text = "Welcome back, Cashier.";
 
             }
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
         {
-            if (LoginFormPanel.Visible)
+            if (AdminLoginFormPanel.Visible)
             {
-                LoginFormPanel.Visible = false;
+                AdminLoginFormPanel.Visible = false;
                 UserSelector.Visible = true;
-                UserLbl.Text = "";
+                AdminUserLbl.Text = "";
             }
 
             else
             {
-                LoginFormPanel.Visible = true;
+                AdminLoginFormPanel.Visible = true;
                 UserSelector.Visible = false;
-                UserLbl.Text = "";
+                AdminUserLbl.Text = "";
 
             }
         }
 
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-            string usernameInput = EmpIDBox.Text;
-            string passwordInput = EmpPassBox.Text;
+            string usernameInput = AdminEmpIDBox.Text;
+            string passwordInput = AdminEmpPassBox.Text;
 
             switch (usernameInput)
             {
@@ -144,8 +145,8 @@ namespace EatNRunProject
                         MFpanelManager.MFShow(AdminPanel);
                         AdminPanelManager.AdminFormShow(FoodItemPanel);
                         AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
-                        EmpIDBox.Text = "";
-                        EmpPassBox.Text = "";
+                        AdminEmpIDBox.Text = "";
+                        AdminEmpPassBox.Text = "";
 
                     }
                     else
@@ -159,8 +160,8 @@ namespace EatNRunProject
                     {
                         MessageBox.Show("Login Successful");
                         MFpanelManager.MFShow(ManagerPanel);
-                        EmpIDBox.Text = "";
-                        EmpPassBox.Text = "";
+                        AdminEmpIDBox.Text = "";
+                        AdminEmpPassBox.Text = "";
                     }
                     else
                     {
@@ -172,8 +173,8 @@ namespace EatNRunProject
                     {
                         MessageBox.Show("Login Successful");
                         MFpanelManager.MFShow(CashierPanel);
-                        EmpIDBox.Text = "";
-                        EmpPassBox.Text = "";
+                        AdminEmpIDBox.Text = "";
+                        AdminEmpPassBox.Text = "";
                     }
                     else
                     {
@@ -188,7 +189,7 @@ namespace EatNRunProject
 
         private void EmpShowPass_CheckedChanged(object sender, EventArgs e)
         {
-            EmpPassBox.UseSystemPasswordChar = !EmpShowPass.Checked;
+            AdminEmpPassBox.UseSystemPasswordChar = !AdminEmpShowPass.Checked;
         }
 
         private void ADFoodItemBtn_Click(object sender, EventArgs e)
@@ -349,6 +350,82 @@ namespace EatNRunProject
                 CreateAccBtnPanel.Visible = false;
                 NewAccPanel.Visible = true;
             }
+        }
+
+
+        public class HashHelper
+        {
+            public static string HashString(string input)
+            {
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                    byte[] hashBytes = sha256.ComputeHash(inputBytes);
+                    string hashedString = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+                    return hashedString;
+                }
+            }
+        }
+        public class HashHelper_Salt
+        {
+            public static string HashString_Salt(string input_Salt)
+            {
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] inputBytes_Salt = Encoding.UTF8.GetBytes(input_Salt);
+                    byte[] hashBytes_Salt = sha256.ComputeHash(inputBytes_Salt);
+                    string hashedString_Salt = BitConverter.ToString(hashBytes_Salt).Replace("-", "").ToLower();
+                    return hashedString_Salt;
+                }
+            }
+        }
+        public class HashHelper_SaltperUser
+        {
+            public static string HashString_SaltperUser(string input_SaltperUser)
+            {
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] inputBytes_SaltperUser = Encoding.UTF8.GetBytes(input_SaltperUser);
+                    byte[] hashBytes_SaltperUser = sha256.ComputeHash(inputBytes_SaltperUser);
+                    string hashedString_SaltperUser = BitConverter.ToString(hashBytes_SaltperUser).Replace("-", "").ToLower();
+                    return hashedString_SaltperUser;
+                }
+            }
+        }
+        public class RandomNumberGenerator
+        {
+            private static Random random = new Random();
+
+            public static string GenerateRandomNumber()
+            {
+                var digits = Enumerable.Range(0, 10).ToList();
+
+                for (int i = 0; i < digits.Count; i++)
+                {
+                    int j = random.Next(i, digits.Count);
+                    int temp = digits[i];
+                    digits[i] = digits[j];
+                    digits[j] = temp;
+                }
+                string randomNumber = string.Join("", digits.Take(4));
+
+                return randomNumber;
+            }
+        }
+
+        private void MngrEmplShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MngrLoginBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MngrExitButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
