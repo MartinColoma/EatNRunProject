@@ -21,7 +21,7 @@ namespace EatNRunProject
             UserSelect = UserSelector;
         }
 
-        public void LoginShow(Panel panelToShow)
+        public void LoginFormShow(Panel panelToShow)
         {
             AdminLoginForm.Hide();
             ManagerLoginForm.Hide();
