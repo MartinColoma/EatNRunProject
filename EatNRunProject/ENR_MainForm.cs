@@ -659,6 +659,7 @@ namespace EatNRunProject
                 CreateAccBtnPanel.Visible = true;
                 NewAccPanel.Visible = false;
                 EmplIDRefresher();
+                AddNewAccBoxClear();
             }
             else
             {
@@ -1369,6 +1370,7 @@ namespace EatNRunProject
             {
                 CreateAccBtnPanel.Visible = true;
                 UpdateEmplAccPanel.Visible = false;
+                UpdateAccBoxClear();
             }
             else
             {

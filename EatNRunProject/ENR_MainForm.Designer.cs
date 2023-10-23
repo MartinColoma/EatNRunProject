@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ENR_MainForm));
             this.MainFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.AdminPanel = new System.Windows.Forms.Panel();
@@ -111,6 +113,7 @@
             this.CreateAccBtnPanel = new System.Windows.Forms.Panel();
             this.CreateNewAccBtn = new FontAwesome.Sharp.IconButton();
             this.AccListPanel = new System.Windows.Forms.Panel();
+            this.AccountListTable = new System.Windows.Forms.DataGridView();
             this.AccountsListLbl = new System.Windows.Forms.Label();
             this.FoodItemPanel = new System.Windows.Forms.Panel();
             this.ItemFormPanel = new System.Windows.Forms.Panel();
@@ -188,7 +191,6 @@
             this.AccEditBtn = new midterm.RoundBtn();
             this.NewFoodBtn = new midterm.RoundBtn();
             this.FoodItemEditBtn = new midterm.RoundBtn();
-            this.AccountListTable = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.MainFormPicker)).BeginInit();
             this.AdminPanel.SuspendLayout();
             this.AdminFormPanel.SuspendLayout();
@@ -219,6 +221,7 @@
             this.AddEmplNamePanelBox.SuspendLayout();
             this.CreateAccBtnPanel.SuspendLayout();
             this.AccListPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountListTable)).BeginInit();
             this.FoodItemPanel.SuspendLayout();
             this.ItemFormPanel.SuspendLayout();
             this.CreateNewFoodBtnPanel.SuspendLayout();
@@ -252,7 +255,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.AdminFormPicker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FoodItemFormPicker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountsFormPicker)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AccountListTable)).BeginInit();
             this.SuspendLayout();
             // 
             // MainFormPicker
@@ -1253,11 +1255,42 @@
             this.AccListPanel.Size = new System.Drawing.Size(538, 386);
             this.AccListPanel.TabIndex = 9;
             // 
+            // AccountListTable
+            // 
+            this.AccountListTable.AllowUserToAddRows = false;
+            this.AccountListTable.AllowUserToDeleteRows = false;
+            this.AccountListTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AccountListTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.AccountListTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AccountListTable.DefaultCellStyle = dataGridViewCellStyle2;
+            this.AccountListTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.AccountListTable.Location = new System.Drawing.Point(16, 75);
+            this.AccountListTable.Name = "AccountListTable";
+            this.AccountListTable.ReadOnly = true;
+            this.AccountListTable.RowHeadersVisible = false;
+            this.AccountListTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.AccountListTable.Size = new System.Drawing.Size(509, 253);
+            this.AccountListTable.TabIndex = 11;
+            // 
             // AccountsListLbl
             // 
             this.AccountsListLbl.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AccountsListLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.AccountsListLbl.Location = new System.Drawing.Point(35, -2);
+            this.AccountsListLbl.Location = new System.Drawing.Point(23, 14);
             this.AccountsListLbl.Name = "AccountsListLbl";
             this.AccountsListLbl.Size = new System.Drawing.Size(490, 47);
             this.AccountsListLbl.TabIndex = 10;
@@ -2243,17 +2276,6 @@
             this.FoodItemEditBtn.UseVisualStyleBackColor = false;
             this.FoodItemEditBtn.Click += new System.EventHandler(this.FoodItemEditBtn_Click);
             // 
-            // AccountListTable
-            // 
-            this.AccountListTable.AllowUserToAddRows = false;
-            this.AccountListTable.AllowUserToDeleteRows = false;
-            this.AccountListTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AccountListTable.Location = new System.Drawing.Point(16, 75);
-            this.AccountListTable.Name = "AccountListTable";
-            this.AccountListTable.ReadOnly = true;
-            this.AccountListTable.Size = new System.Drawing.Size(509, 229);
-            this.AccountListTable.TabIndex = 11;
-            // 
             // ENR_MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2313,6 +2335,7 @@
             this.AddEmplNamePanelBox.PerformLayout();
             this.CreateAccBtnPanel.ResumeLayout(false);
             this.AccListPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.AccountListTable)).EndInit();
             this.FoodItemPanel.ResumeLayout(false);
             this.ItemFormPanel.ResumeLayout(false);
             this.CreateNewFoodBtnPanel.ResumeLayout(false);
@@ -2357,7 +2380,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.AdminFormPicker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FoodItemFormPicker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountsFormPicker)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AccountListTable)).EndInit();
             this.ResumeLayout(false);
 
         }
