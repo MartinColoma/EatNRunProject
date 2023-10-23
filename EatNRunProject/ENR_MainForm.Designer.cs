@@ -40,10 +40,45 @@
             this.DailySalesLbl = new System.Windows.Forms.Label();
             this.AccountsPanel = new System.Windows.Forms.Panel();
             this.AccountsFormPanel = new System.Windows.Forms.Panel();
-            this.UpdateAccPanel = new System.Windows.Forms.Panel();
-            this.UpdateAccExitBtn = new FontAwesome.Sharp.IconButton();
-            this.UpdateAccLbl = new System.Windows.Forms.Label();
+            this.UpdateEmplAccPanel = new System.Windows.Forms.Panel();
+            this.UpdateEmplPositionPanelBox = new System.Windows.Forms.Panel();
+            this.UpdateEmplPositionComboBox = new System.Windows.Forms.ComboBox();
+            this.UpdateEmplPositionLbl = new System.Windows.Forms.Label();
+            this.UpdateEmplIDNoteLbl = new System.Windows.Forms.Label();
+            this.UpdateEmplPicBox = new System.Windows.Forms.PictureBox();
+            this.UpdateEmplEmailPanelBox = new System.Windows.Forms.Panel();
+            this.UpdateEmplEmailBox = new System.Windows.Forms.TextBox();
+            this.UpdateEmplEmailLbl = new System.Windows.Forms.Label();
+            this.UpdateEmplIDPanelBox = new System.Windows.Forms.Panel();
+            this.UpdateEmplIDBox = new System.Windows.Forms.TextBox();
+            this.UpdateEmplIDLbl = new System.Windows.Forms.Label();
+            this.UpdateEmplAddPanelBox = new System.Windows.Forms.Panel();
+            this.UpdateEmplAddBox = new System.Windows.Forms.TextBox();
+            this.UpdateEmplAddLbl = new System.Windows.Forms.Label();
+            this.UpdateEmplPassPanelBox = new System.Windows.Forms.Panel();
+            this.UpdateEmplShowPass = new System.Windows.Forms.CheckBox();
+            this.UpdateEmplPassBox = new System.Windows.Forms.TextBox();
+            this.UpdateEmplPassLbl = new System.Windows.Forms.Label();
+            this.UpdateEmplAgePanelBox = new System.Windows.Forms.Panel();
+            this.UpdateEmplAgeBox = new System.Windows.Forms.TextBox();
+            this.UpdateEmplAgeLbl = new System.Windows.Forms.Label();
+            this.UpdateEmplBdayPanelBox = new System.Windows.Forms.Panel();
+            this.UpdateEmplBdayPicker = new System.Windows.Forms.DateTimePicker();
+            this.UpdateEmplBdayLbl = new System.Windows.Forms.Label();
+            this.UpdateEmplGenderPanelBox = new System.Windows.Forms.Panel();
+            this.UpdateEmplGenderComboBox = new System.Windows.Forms.ComboBox();
+            this.UpdateEmplGenderLbl = new System.Windows.Forms.Label();
+            this.UpdateEmplPicBtn = new FontAwesome.Sharp.IconButton();
+            this.UpdateEmplNamePanelBox = new System.Windows.Forms.Panel();
+            this.UpdateEmplNameBox = new System.Windows.Forms.TextBox();
+            this.UpdateEmplNameLbl = new System.Windows.Forms.Label();
+            this.UpdateEmplAccExitBtn = new FontAwesome.Sharp.IconButton();
+            this.UpdateEmplAccLbl = new System.Windows.Forms.Label();
             this.NewAccPanel = new System.Windows.Forms.Panel();
+            this.AddEmplPositionPanelBox = new System.Windows.Forms.Panel();
+            this.AddEmplPositionComboBox = new System.Windows.Forms.ComboBox();
+            this.AddEmplPositionLbl = new System.Windows.Forms.Label();
+            this.AddEmplIDNoteLbl = new System.Windows.Forms.Label();
             this.AddEmplPicBox = new System.Windows.Forms.PictureBox();
             this.AddEmplEmailPanelBox = new System.Windows.Forms.Panel();
             this.AddEmplEmailBox = new System.Windows.Forms.TextBox();
@@ -55,6 +90,7 @@
             this.AddEmplAddressBox = new System.Windows.Forms.TextBox();
             this.AddEmplAddressLbl = new System.Windows.Forms.Label();
             this.AddEmplPassPanelBox = new System.Windows.Forms.Panel();
+            this.AddEmplShowPass = new System.Windows.Forms.CheckBox();
             this.AddEmplPassBox = new System.Windows.Forms.TextBox();
             this.AddEmplPassLbl = new System.Windows.Forms.Label();
             this.AddEmplAgePanelBox = new System.Windows.Forms.Panel();
@@ -71,11 +107,10 @@
             this.AddEmplNameBox = new System.Windows.Forms.TextBox();
             this.AddEmplNameLbl = new System.Windows.Forms.Label();
             this.NewAccExitBtn = new FontAwesome.Sharp.IconButton();
-            this.NewAccLbl = new System.Windows.Forms.Label();
+            this.AddEmplAccLbl = new System.Windows.Forms.Label();
             this.CreateAccBtnPanel = new System.Windows.Forms.Panel();
             this.CreateNewAccBtn = new FontAwesome.Sharp.IconButton();
             this.AccListPanel = new System.Windows.Forms.Panel();
-            this.AccountListTable = new System.Windows.Forms.DataGridView();
             this.AccountsListLbl = new System.Windows.Forms.Label();
             this.FoodItemPanel = new System.Windows.Forms.Panel();
             this.ItemFormPanel = new System.Windows.Forms.Panel();
@@ -148,23 +183,31 @@
             this.AdminFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.FoodItemFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.AccountsFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
-            this.AddEmplIDNoteLbl = new System.Windows.Forms.Label();
-            this.AddEmplPositionPanelBox = new System.Windows.Forms.Panel();
-            this.AddEmplPositionComboBox = new System.Windows.Forms.ComboBox();
-            this.AddEmplPositionLbl = new System.Windows.Forms.Label();
-            this.AddEmplShowPass = new System.Windows.Forms.CheckBox();
+            this.UpdateEmplUpdateBtn = new midterm.RoundBtn();
             this.AdddAccBtn = new midterm.RoundBtn();
-            this.UpdateAccBtn = new midterm.RoundBtn();
+            this.AccEditBtn = new midterm.RoundBtn();
             this.NewFoodBtn = new midterm.RoundBtn();
             this.FoodItemEditBtn = new midterm.RoundBtn();
+            this.AccountListTable = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.MainFormPicker)).BeginInit();
             this.AdminPanel.SuspendLayout();
             this.AdminFormPanel.SuspendLayout();
             this.SalesPanel.SuspendLayout();
             this.AccountsPanel.SuspendLayout();
             this.AccountsFormPanel.SuspendLayout();
-            this.UpdateAccPanel.SuspendLayout();
+            this.UpdateEmplAccPanel.SuspendLayout();
+            this.UpdateEmplPositionPanelBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpdateEmplPicBox)).BeginInit();
+            this.UpdateEmplEmailPanelBox.SuspendLayout();
+            this.UpdateEmplIDPanelBox.SuspendLayout();
+            this.UpdateEmplAddPanelBox.SuspendLayout();
+            this.UpdateEmplPassPanelBox.SuspendLayout();
+            this.UpdateEmplAgePanelBox.SuspendLayout();
+            this.UpdateEmplBdayPanelBox.SuspendLayout();
+            this.UpdateEmplGenderPanelBox.SuspendLayout();
+            this.UpdateEmplNamePanelBox.SuspendLayout();
             this.NewAccPanel.SuspendLayout();
+            this.AddEmplPositionPanelBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddEmplPicBox)).BeginInit();
             this.AddEmplEmailPanelBox.SuspendLayout();
             this.AddEmplIDPanelBox.SuspendLayout();
@@ -176,7 +219,6 @@
             this.AddEmplNamePanelBox.SuspendLayout();
             this.CreateAccBtnPanel.SuspendLayout();
             this.AccListPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AccountListTable)).BeginInit();
             this.FoodItemPanel.SuspendLayout();
             this.ItemFormPanel.SuspendLayout();
             this.CreateNewFoodBtnPanel.SuspendLayout();
@@ -210,7 +252,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AdminFormPicker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FoodItemFormPicker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountsFormPicker)).BeginInit();
-            this.AddEmplPositionPanelBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountListTable)).BeginInit();
             this.SuspendLayout();
             // 
             // MainFormPicker
@@ -330,7 +372,7 @@
             // AccountsFormPanel
             // 
             this.AccountsFormPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AccountsFormPanel.Controls.Add(this.UpdateAccPanel);
+            this.AccountsFormPanel.Controls.Add(this.UpdateEmplAccPanel);
             this.AccountsFormPanel.Controls.Add(this.NewAccPanel);
             this.AccountsFormPanel.Controls.Add(this.CreateAccBtnPanel);
             this.AccountsFormPanel.Location = new System.Drawing.Point(568, 17);
@@ -338,49 +380,425 @@
             this.AccountsFormPanel.Size = new System.Drawing.Size(549, 387);
             this.AccountsFormPanel.TabIndex = 11;
             // 
-            // UpdateAccPanel
+            // UpdateEmplAccPanel
             // 
-            this.AccountsFormPicker.SetCardName(this.UpdateAccPanel, "Card3");
-            this.UpdateAccPanel.Controls.Add(this.UpdateAccExitBtn);
-            this.UpdateAccPanel.Controls.Add(this.UpdateAccLbl);
-            this.UpdateAccPanel.Location = new System.Drawing.Point(0, 0);
-            this.AccountsFormPicker.SetMinimumSize(this.UpdateAccPanel, new System.Drawing.Size(200, 100));
-            this.UpdateAccPanel.Name = "UpdateAccPanel";
-            this.AccountsFormPicker.SetPreferredSize(this.UpdateAccPanel, new System.Drawing.Size(200, 100));
-            this.UpdateAccPanel.Size = new System.Drawing.Size(547, 385);
-            this.UpdateAccPanel.TabIndex = 2;
+            this.AccountsFormPicker.SetCardName(this.UpdateEmplAccPanel, "Card5");
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplPositionPanelBox);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplPositionLbl);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplIDNoteLbl);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplPicBox);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplEmailPanelBox);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplEmailLbl);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplIDPanelBox);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplIDLbl);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplAddPanelBox);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplAddLbl);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplPassPanelBox);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplPassLbl);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplAgePanelBox);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplAgeLbl);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplBdayPanelBox);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplBdayLbl);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplGenderPanelBox);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplGenderLbl);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplPicBtn);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplNamePanelBox);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplNameLbl);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplAccExitBtn);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplAccLbl);
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplUpdateBtn);
+            this.UpdateEmplAccPanel.Location = new System.Drawing.Point(0, 0);
+            this.AccountsFormPicker.SetMinimumSize(this.UpdateEmplAccPanel, new System.Drawing.Size(200, 100));
+            this.UpdateEmplAccPanel.Name = "UpdateEmplAccPanel";
+            this.AccountsFormPicker.SetPreferredSize(this.UpdateEmplAccPanel, new System.Drawing.Size(200, 100));
+            this.UpdateEmplAccPanel.Size = new System.Drawing.Size(547, 385);
+            this.UpdateEmplAccPanel.TabIndex = 21;
             // 
-            // UpdateAccExitBtn
+            // UpdateEmplPositionPanelBox
             // 
-            this.UpdateAccExitBtn.BackColor = System.Drawing.Color.Transparent;
-            this.UpdateAccExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.UpdateAccExitBtn.FlatAppearance.BorderSize = 0;
-            this.UpdateAccExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateAccExitBtn.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.UpdateAccExitBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.UpdateAccExitBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.UpdateAccExitBtn.IconSize = 24;
-            this.UpdateAccExitBtn.Location = new System.Drawing.Point(512, 1);
-            this.UpdateAccExitBtn.Name = "UpdateAccExitBtn";
-            this.UpdateAccExitBtn.Size = new System.Drawing.Size(43, 34);
-            this.UpdateAccExitBtn.TabIndex = 10;
-            this.UpdateAccExitBtn.UseVisualStyleBackColor = false;
-            this.UpdateAccExitBtn.Click += new System.EventHandler(this.UpdateAccExitBtn_Click);
+            this.UpdateEmplPositionPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateEmplPositionPanelBox.Controls.Add(this.UpdateEmplPositionComboBox);
+            this.UpdateEmplPositionPanelBox.Location = new System.Drawing.Point(246, 239);
+            this.UpdateEmplPositionPanelBox.Name = "UpdateEmplPositionPanelBox";
+            this.UpdateEmplPositionPanelBox.Size = new System.Drawing.Size(284, 22);
+            this.UpdateEmplPositionPanelBox.TabIndex = 15;
             // 
-            // UpdateAccLbl
+            // UpdateEmplPositionComboBox
             // 
-            this.UpdateAccLbl.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateAccLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.UpdateAccLbl.Location = new System.Drawing.Point(42, 11);
-            this.UpdateAccLbl.Name = "UpdateAccLbl";
-            this.UpdateAccLbl.Size = new System.Drawing.Size(490, 47);
-            this.UpdateAccLbl.TabIndex = 9;
-            this.UpdateAccLbl.Text = "Update Food Item";
-            this.UpdateAccLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.UpdateEmplPositionComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateEmplPositionComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateEmplPositionComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateEmplPositionComboBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplPositionComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplPositionComboBox.FormattingEnabled = true;
+            this.UpdateEmplPositionComboBox.Location = new System.Drawing.Point(0, 0);
+            this.UpdateEmplPositionComboBox.Name = "UpdateEmplPositionComboBox";
+            this.UpdateEmplPositionComboBox.Size = new System.Drawing.Size(282, 23);
+            this.UpdateEmplPositionComboBox.TabIndex = 0;
+            this.UpdateEmplPositionComboBox.SelectedIndexChanged += new System.EventHandler(this.UpdateEmplPositionComboBox_SelectedIndexChanged);
+            // 
+            // UpdateEmplPositionLbl
+            // 
+            this.UpdateEmplPositionLbl.AutoSize = true;
+            this.UpdateEmplPositionLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplPositionLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplPositionLbl.Location = new System.Drawing.Point(243, 218);
+            this.UpdateEmplPositionLbl.Name = "UpdateEmplPositionLbl";
+            this.UpdateEmplPositionLbl.Size = new System.Drawing.Size(101, 18);
+            this.UpdateEmplPositionLbl.TabIndex = 14;
+            this.UpdateEmplPositionLbl.Text = "Job Position:";
+            // 
+            // UpdateEmplIDNoteLbl
+            // 
+            this.UpdateEmplIDNoteLbl.AutoSize = true;
+            this.UpdateEmplIDNoteLbl.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplIDNoteLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplIDNoteLbl.Location = new System.Drawing.Point(118, 265);
+            this.UpdateEmplIDNoteLbl.Name = "UpdateEmplIDNoteLbl";
+            this.UpdateEmplIDNoteLbl.Size = new System.Drawing.Size(143, 15);
+            this.UpdateEmplIDNoteLbl.TabIndex = 20;
+            this.UpdateEmplIDNoteLbl.Text = "(input another 5 digits)";
+            // 
+            // UpdateEmplPicBox
+            // 
+            this.UpdateEmplPicBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateEmplPicBox.Location = new System.Drawing.Point(402, 77);
+            this.UpdateEmplPicBox.Name = "UpdateEmplPicBox";
+            this.UpdateEmplPicBox.Size = new System.Drawing.Size(128, 128);
+            this.UpdateEmplPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.UpdateEmplPicBox.TabIndex = 8;
+            this.UpdateEmplPicBox.TabStop = false;
+            // 
+            // UpdateEmplEmailPanelBox
+            // 
+            this.UpdateEmplEmailPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateEmplEmailPanelBox.Controls.Add(this.UpdateEmplEmailBox);
+            this.UpdateEmplEmailPanelBox.Location = new System.Drawing.Point(24, 238);
+            this.UpdateEmplEmailPanelBox.Name = "UpdateEmplEmailPanelBox";
+            this.UpdateEmplEmailPanelBox.Size = new System.Drawing.Size(216, 22);
+            this.UpdateEmplEmailPanelBox.TabIndex = 19;
+            // 
+            // UpdateEmplEmailBox
+            // 
+            this.UpdateEmplEmailBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateEmplEmailBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UpdateEmplEmailBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateEmplEmailBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplEmailBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplEmailBox.Location = new System.Drawing.Point(0, 0);
+            this.UpdateEmplEmailBox.Name = "UpdateEmplEmailBox";
+            this.UpdateEmplEmailBox.Size = new System.Drawing.Size(214, 16);
+            this.UpdateEmplEmailBox.TabIndex = 11;
+            // 
+            // UpdateEmplEmailLbl
+            // 
+            this.UpdateEmplEmailLbl.AutoSize = true;
+            this.UpdateEmplEmailLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplEmailLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplEmailLbl.Location = new System.Drawing.Point(21, 217);
+            this.UpdateEmplEmailLbl.Name = "UpdateEmplEmailLbl";
+            this.UpdateEmplEmailLbl.Size = new System.Drawing.Size(114, 18);
+            this.UpdateEmplEmailLbl.TabIndex = 18;
+            this.UpdateEmplEmailLbl.Text = "Email Address:";
+            // 
+            // UpdateEmplIDPanelBox
+            // 
+            this.UpdateEmplIDPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateEmplIDPanelBox.Controls.Add(this.UpdateEmplIDBox);
+            this.UpdateEmplIDPanelBox.Location = new System.Drawing.Point(25, 284);
+            this.UpdateEmplIDPanelBox.Name = "UpdateEmplIDPanelBox";
+            this.UpdateEmplIDPanelBox.Size = new System.Drawing.Size(249, 22);
+            this.UpdateEmplIDPanelBox.TabIndex = 17;
+            // 
+            // UpdateEmplIDBox
+            // 
+            this.UpdateEmplIDBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateEmplIDBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UpdateEmplIDBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateEmplIDBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplIDBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplIDBox.Location = new System.Drawing.Point(0, 0);
+            this.UpdateEmplIDBox.MaxLength = 10;
+            this.UpdateEmplIDBox.Name = "UpdateEmplIDBox";
+            this.UpdateEmplIDBox.Size = new System.Drawing.Size(247, 16);
+            this.UpdateEmplIDBox.TabIndex = 11;
+            // 
+            // UpdateEmplIDLbl
+            // 
+            this.UpdateEmplIDLbl.AutoSize = true;
+            this.UpdateEmplIDLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplIDLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplIDLbl.Location = new System.Drawing.Point(22, 263);
+            this.UpdateEmplIDLbl.Name = "UpdateEmplIDLbl";
+            this.UpdateEmplIDLbl.Size = new System.Drawing.Size(101, 18);
+            this.UpdateEmplIDLbl.TabIndex = 16;
+            this.UpdateEmplIDLbl.Text = "Employee ID:";
+            // 
+            // UpdateEmplAddPanelBox
+            // 
+            this.UpdateEmplAddPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateEmplAddPanelBox.Controls.Add(this.UpdateEmplAddBox);
+            this.UpdateEmplAddPanelBox.Location = new System.Drawing.Point(24, 192);
+            this.UpdateEmplAddPanelBox.Name = "UpdateEmplAddPanelBox";
+            this.UpdateEmplAddPanelBox.Size = new System.Drawing.Size(349, 22);
+            this.UpdateEmplAddPanelBox.TabIndex = 15;
+            // 
+            // UpdateEmplAddBox
+            // 
+            this.UpdateEmplAddBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateEmplAddBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UpdateEmplAddBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateEmplAddBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplAddBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplAddBox.Location = new System.Drawing.Point(0, 0);
+            this.UpdateEmplAddBox.Name = "UpdateEmplAddBox";
+            this.UpdateEmplAddBox.Size = new System.Drawing.Size(347, 16);
+            this.UpdateEmplAddBox.TabIndex = 11;
+            // 
+            // UpdateEmplAddLbl
+            // 
+            this.UpdateEmplAddLbl.AutoSize = true;
+            this.UpdateEmplAddLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplAddLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplAddLbl.Location = new System.Drawing.Point(21, 171);
+            this.UpdateEmplAddLbl.Name = "UpdateEmplAddLbl";
+            this.UpdateEmplAddLbl.Size = new System.Drawing.Size(71, 18);
+            this.UpdateEmplAddLbl.TabIndex = 14;
+            this.UpdateEmplAddLbl.Text = "Address:";
+            // 
+            // UpdateEmplPassPanelBox
+            // 
+            this.UpdateEmplPassPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateEmplPassPanelBox.Controls.Add(this.UpdateEmplShowPass);
+            this.UpdateEmplPassPanelBox.Controls.Add(this.UpdateEmplPassBox);
+            this.UpdateEmplPassPanelBox.Location = new System.Drawing.Point(280, 284);
+            this.UpdateEmplPassPanelBox.Name = "UpdateEmplPassPanelBox";
+            this.UpdateEmplPassPanelBox.Size = new System.Drawing.Size(250, 22);
+            this.UpdateEmplPassPanelBox.TabIndex = 13;
+            // 
+            // UpdateEmplShowPass
+            // 
+            this.UpdateEmplShowPass.AutoSize = true;
+            this.UpdateEmplShowPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateEmplShowPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateEmplShowPass.Location = new System.Drawing.Point(233, 5);
+            this.UpdateEmplShowPass.Name = "UpdateEmplShowPass";
+            this.UpdateEmplShowPass.Size = new System.Drawing.Size(12, 11);
+            this.UpdateEmplShowPass.TabIndex = 21;
+            this.UpdateEmplShowPass.UseVisualStyleBackColor = false;
+            this.UpdateEmplShowPass.CheckedChanged += new System.EventHandler(this.UpdateEmplShowPass_CheckedChanged);
+            // 
+            // UpdateEmplPassBox
+            // 
+            this.UpdateEmplPassBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateEmplPassBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UpdateEmplPassBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.UpdateEmplPassBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplPassBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplPassBox.Location = new System.Drawing.Point(0, 0);
+            this.UpdateEmplPassBox.Name = "UpdateEmplPassBox";
+            this.UpdateEmplPassBox.Size = new System.Drawing.Size(221, 16);
+            this.UpdateEmplPassBox.TabIndex = 11;
+            this.UpdateEmplPassBox.UseSystemPasswordChar = true;
+            // 
+            // UpdateEmplPassLbl
+            // 
+            this.UpdateEmplPassLbl.AutoSize = true;
+            this.UpdateEmplPassLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplPassLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplPassLbl.Location = new System.Drawing.Point(277, 263);
+            this.UpdateEmplPassLbl.Name = "UpdateEmplPassLbl";
+            this.UpdateEmplPassLbl.Size = new System.Drawing.Size(156, 18);
+            this.UpdateEmplPassLbl.TabIndex = 12;
+            this.UpdateEmplPassLbl.Text = "Employee Password:";
+            // 
+            // UpdateEmplAgePanelBox
+            // 
+            this.UpdateEmplAgePanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateEmplAgePanelBox.Controls.Add(this.UpdateEmplAgeBox);
+            this.UpdateEmplAgePanelBox.Location = new System.Drawing.Point(302, 144);
+            this.UpdateEmplAgePanelBox.Name = "UpdateEmplAgePanelBox";
+            this.UpdateEmplAgePanelBox.Size = new System.Drawing.Size(71, 22);
+            this.UpdateEmplAgePanelBox.TabIndex = 13;
+            // 
+            // UpdateEmplAgeBox
+            // 
+            this.UpdateEmplAgeBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateEmplAgeBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UpdateEmplAgeBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateEmplAgeBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplAgeBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplAgeBox.Location = new System.Drawing.Point(0, 0);
+            this.UpdateEmplAgeBox.Name = "UpdateEmplAgeBox";
+            this.UpdateEmplAgeBox.Size = new System.Drawing.Size(69, 16);
+            this.UpdateEmplAgeBox.TabIndex = 11;
+            // 
+            // UpdateEmplAgeLbl
+            // 
+            this.UpdateEmplAgeLbl.AutoSize = true;
+            this.UpdateEmplAgeLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplAgeLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplAgeLbl.Location = new System.Drawing.Point(299, 123);
+            this.UpdateEmplAgeLbl.Name = "UpdateEmplAgeLbl";
+            this.UpdateEmplAgeLbl.Size = new System.Drawing.Size(40, 18);
+            this.UpdateEmplAgeLbl.TabIndex = 12;
+            this.UpdateEmplAgeLbl.Text = "Age:";
+            // 
+            // UpdateEmplBdayPanelBox
+            // 
+            this.UpdateEmplBdayPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateEmplBdayPanelBox.Controls.Add(this.UpdateEmplBdayPicker);
+            this.UpdateEmplBdayPanelBox.Location = new System.Drawing.Point(24, 144);
+            this.UpdateEmplBdayPanelBox.Name = "UpdateEmplBdayPanelBox";
+            this.UpdateEmplBdayPanelBox.Size = new System.Drawing.Size(272, 22);
+            this.UpdateEmplBdayPanelBox.TabIndex = 15;
+            // 
+            // UpdateEmplBdayPicker
+            // 
+            this.UpdateEmplBdayPicker.CalendarFont = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplBdayPicker.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplBdayPicker.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateEmplBdayPicker.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateEmplBdayPicker.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplBdayPicker.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(90)))), ((int)(((byte)(105)))));
+            this.UpdateEmplBdayPicker.CustomFormat = "MM-dd-yyyy dddd";
+            this.UpdateEmplBdayPicker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateEmplBdayPicker.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplBdayPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.UpdateEmplBdayPicker.Location = new System.Drawing.Point(0, 0);
+            this.UpdateEmplBdayPicker.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
+            this.UpdateEmplBdayPicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.UpdateEmplBdayPicker.Name = "UpdateEmplBdayPicker";
+            this.UpdateEmplBdayPicker.Size = new System.Drawing.Size(270, 23);
+            this.UpdateEmplBdayPicker.TabIndex = 16;
+            this.UpdateEmplBdayPicker.ValueChanged += new System.EventHandler(this.UpdateEmplBdayPicker_ValueChanged);
+            // 
+            // UpdateEmplBdayLbl
+            // 
+            this.UpdateEmplBdayLbl.AutoSize = true;
+            this.UpdateEmplBdayLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplBdayLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplBdayLbl.Location = new System.Drawing.Point(21, 123);
+            this.UpdateEmplBdayLbl.Name = "UpdateEmplBdayLbl";
+            this.UpdateEmplBdayLbl.Size = new System.Drawing.Size(74, 18);
+            this.UpdateEmplBdayLbl.TabIndex = 14;
+            this.UpdateEmplBdayLbl.Text = "Birthday:";
+            // 
+            // UpdateEmplGenderPanelBox
+            // 
+            this.UpdateEmplGenderPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateEmplGenderPanelBox.Controls.Add(this.UpdateEmplGenderComboBox);
+            this.UpdateEmplGenderPanelBox.Location = new System.Drawing.Point(246, 98);
+            this.UpdateEmplGenderPanelBox.Name = "UpdateEmplGenderPanelBox";
+            this.UpdateEmplGenderPanelBox.Size = new System.Drawing.Size(127, 22);
+            this.UpdateEmplGenderPanelBox.TabIndex = 13;
+            // 
+            // UpdateEmplGenderComboBox
+            // 
+            this.UpdateEmplGenderComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateEmplGenderComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateEmplGenderComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateEmplGenderComboBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplGenderComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplGenderComboBox.FormattingEnabled = true;
+            this.UpdateEmplGenderComboBox.Location = new System.Drawing.Point(0, 0);
+            this.UpdateEmplGenderComboBox.Name = "UpdateEmplGenderComboBox";
+            this.UpdateEmplGenderComboBox.Size = new System.Drawing.Size(125, 23);
+            this.UpdateEmplGenderComboBox.TabIndex = 0;
+            this.UpdateEmplGenderComboBox.SelectedIndexChanged += new System.EventHandler(this.UpdateEmplGenderComboBox_SelectedIndexChanged);
+            // 
+            // UpdateEmplGenderLbl
+            // 
+            this.UpdateEmplGenderLbl.AutoSize = true;
+            this.UpdateEmplGenderLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplGenderLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplGenderLbl.Location = new System.Drawing.Point(243, 77);
+            this.UpdateEmplGenderLbl.Name = "UpdateEmplGenderLbl";
+            this.UpdateEmplGenderLbl.Size = new System.Drawing.Size(66, 18);
+            this.UpdateEmplGenderLbl.TabIndex = 12;
+            this.UpdateEmplGenderLbl.Text = "Gender:";
+            // 
+            // UpdateEmplPicBtn
+            // 
+            this.UpdateEmplPicBtn.FlatAppearance.BorderSize = 0;
+            this.UpdateEmplPicBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateEmplPicBtn.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplPicBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplPicBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.UpdateEmplPicBtn.IconColor = System.Drawing.Color.Black;
+            this.UpdateEmplPicBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.UpdateEmplPicBtn.Location = new System.Drawing.Point(402, 211);
+            this.UpdateEmplPicBtn.Name = "UpdateEmplPicBtn";
+            this.UpdateEmplPicBtn.Size = new System.Drawing.Size(131, 23);
+            this.UpdateEmplPicBtn.TabIndex = 11;
+            this.UpdateEmplPicBtn.Text = "Add a new picture..";
+            this.UpdateEmplPicBtn.UseVisualStyleBackColor = true;
+            this.UpdateEmplPicBtn.Click += new System.EventHandler(this.UpdateEmplPicBtn_Click);
+            // 
+            // UpdateEmplNamePanelBox
+            // 
+            this.UpdateEmplNamePanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateEmplNamePanelBox.Controls.Add(this.UpdateEmplNameBox);
+            this.UpdateEmplNamePanelBox.Location = new System.Drawing.Point(24, 98);
+            this.UpdateEmplNamePanelBox.Name = "UpdateEmplNamePanelBox";
+            this.UpdateEmplNamePanelBox.Size = new System.Drawing.Size(217, 22);
+            this.UpdateEmplNamePanelBox.TabIndex = 10;
+            // 
+            // UpdateEmplNameBox
+            // 
+            this.UpdateEmplNameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateEmplNameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UpdateEmplNameBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateEmplNameBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplNameBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplNameBox.Location = new System.Drawing.Point(0, 0);
+            this.UpdateEmplNameBox.Name = "UpdateEmplNameBox";
+            this.UpdateEmplNameBox.Size = new System.Drawing.Size(215, 16);
+            this.UpdateEmplNameBox.TabIndex = 11;
+            // 
+            // UpdateEmplNameLbl
+            // 
+            this.UpdateEmplNameLbl.AutoSize = true;
+            this.UpdateEmplNameLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplNameLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplNameLbl.Location = new System.Drawing.Point(21, 77);
+            this.UpdateEmplNameLbl.Name = "UpdateEmplNameLbl";
+            this.UpdateEmplNameLbl.Size = new System.Drawing.Size(128, 18);
+            this.UpdateEmplNameLbl.TabIndex = 9;
+            this.UpdateEmplNameLbl.Text = "Employee Name:";
+            // 
+            // UpdateEmplAccExitBtn
+            // 
+            this.UpdateEmplAccExitBtn.BackColor = System.Drawing.Color.Transparent;
+            this.UpdateEmplAccExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplAccExitBtn.FlatAppearance.BorderSize = 0;
+            this.UpdateEmplAccExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateEmplAccExitBtn.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            this.UpdateEmplAccExitBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplAccExitBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.UpdateEmplAccExitBtn.IconSize = 24;
+            this.UpdateEmplAccExitBtn.Location = new System.Drawing.Point(510, 1);
+            this.UpdateEmplAccExitBtn.Name = "UpdateEmplAccExitBtn";
+            this.UpdateEmplAccExitBtn.Size = new System.Drawing.Size(43, 34);
+            this.UpdateEmplAccExitBtn.TabIndex = 7;
+            this.UpdateEmplAccExitBtn.UseVisualStyleBackColor = false;
+            this.UpdateEmplAccExitBtn.Click += new System.EventHandler(this.UpdateEmplAccExitBtn_Click);
+            // 
+            // UpdateEmplAccLbl
+            // 
+            this.UpdateEmplAccLbl.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplAccLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplAccLbl.Location = new System.Drawing.Point(40, 16);
+            this.UpdateEmplAccLbl.Name = "UpdateEmplAccLbl";
+            this.UpdateEmplAccLbl.Size = new System.Drawing.Size(490, 47);
+            this.UpdateEmplAccLbl.TabIndex = 7;
+            this.UpdateEmplAccLbl.Text = "Update Employee Account";
+            this.UpdateEmplAccLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // NewAccPanel
             // 
-            this.AccountsFormPicker.SetCardName(this.NewAccPanel, "Card2");
+            this.AccountsFormPicker.SetCardName(this.NewAccPanel, "Card6");
             this.NewAccPanel.Controls.Add(this.AddEmplPositionPanelBox);
             this.NewAccPanel.Controls.Add(this.AddEmplPositionLbl);
             this.NewAccPanel.Controls.Add(this.AddEmplIDNoteLbl);
@@ -403,7 +821,7 @@
             this.NewAccPanel.Controls.Add(this.AddEmplNamePanelBox);
             this.NewAccPanel.Controls.Add(this.AddEmplNameLbl);
             this.NewAccPanel.Controls.Add(this.NewAccExitBtn);
-            this.NewAccPanel.Controls.Add(this.NewAccLbl);
+            this.NewAccPanel.Controls.Add(this.AddEmplAccLbl);
             this.NewAccPanel.Controls.Add(this.AdddAccBtn);
             this.NewAccPanel.Location = new System.Drawing.Point(0, 0);
             this.AccountsFormPicker.SetMinimumSize(this.NewAccPanel, new System.Drawing.Size(200, 100));
@@ -411,6 +829,51 @@
             this.AccountsFormPicker.SetPreferredSize(this.NewAccPanel, new System.Drawing.Size(200, 100));
             this.NewAccPanel.Size = new System.Drawing.Size(547, 385);
             this.NewAccPanel.TabIndex = 1;
+            // 
+            // AddEmplPositionPanelBox
+            // 
+            this.AddEmplPositionPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AddEmplPositionPanelBox.Controls.Add(this.AddEmplPositionComboBox);
+            this.AddEmplPositionPanelBox.Location = new System.Drawing.Point(246, 239);
+            this.AddEmplPositionPanelBox.Name = "AddEmplPositionPanelBox";
+            this.AddEmplPositionPanelBox.Size = new System.Drawing.Size(284, 22);
+            this.AddEmplPositionPanelBox.TabIndex = 15;
+            // 
+            // AddEmplPositionComboBox
+            // 
+            this.AddEmplPositionComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.AddEmplPositionComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddEmplPositionComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddEmplPositionComboBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddEmplPositionComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.AddEmplPositionComboBox.FormattingEnabled = true;
+            this.AddEmplPositionComboBox.Location = new System.Drawing.Point(0, 0);
+            this.AddEmplPositionComboBox.Name = "AddEmplPositionComboBox";
+            this.AddEmplPositionComboBox.Size = new System.Drawing.Size(282, 23);
+            this.AddEmplPositionComboBox.TabIndex = 0;
+            this.AddEmplPositionComboBox.SelectedIndexChanged += new System.EventHandler(this.AddEmplPositionComboBox_SelectedIndexChanged);
+            // 
+            // AddEmplPositionLbl
+            // 
+            this.AddEmplPositionLbl.AutoSize = true;
+            this.AddEmplPositionLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddEmplPositionLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.AddEmplPositionLbl.Location = new System.Drawing.Point(243, 218);
+            this.AddEmplPositionLbl.Name = "AddEmplPositionLbl";
+            this.AddEmplPositionLbl.Size = new System.Drawing.Size(101, 18);
+            this.AddEmplPositionLbl.TabIndex = 14;
+            this.AddEmplPositionLbl.Text = "Job Position:";
+            // 
+            // AddEmplIDNoteLbl
+            // 
+            this.AddEmplIDNoteLbl.AutoSize = true;
+            this.AddEmplIDNoteLbl.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddEmplIDNoteLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.AddEmplIDNoteLbl.Location = new System.Drawing.Point(118, 265);
+            this.AddEmplIDNoteLbl.Name = "AddEmplIDNoteLbl";
+            this.AddEmplIDNoteLbl.Size = new System.Drawing.Size(143, 15);
+            this.AddEmplIDNoteLbl.TabIndex = 20;
+            this.AddEmplIDNoteLbl.Text = "(input another 5 digits)";
             // 
             // AddEmplPicBox
             // 
@@ -529,6 +992,19 @@
             this.AddEmplPassPanelBox.Name = "AddEmplPassPanelBox";
             this.AddEmplPassPanelBox.Size = new System.Drawing.Size(250, 22);
             this.AddEmplPassPanelBox.TabIndex = 13;
+            // 
+            // AddEmplShowPass
+            // 
+            this.AddEmplShowPass.AutoSize = true;
+            this.AddEmplShowPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.AddEmplShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddEmplShowPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.AddEmplShowPass.Location = new System.Drawing.Point(233, 5);
+            this.AddEmplShowPass.Name = "AddEmplShowPass";
+            this.AddEmplShowPass.Size = new System.Drawing.Size(12, 11);
+            this.AddEmplShowPass.TabIndex = 21;
+            this.AddEmplShowPass.UseVisualStyleBackColor = false;
+            this.AddEmplShowPass.CheckedChanged += new System.EventHandler(this.AddEmplShowPass_CheckedChanged);
             // 
             // AddEmplPassBox
             // 
@@ -726,20 +1202,20 @@
             this.NewAccExitBtn.UseVisualStyleBackColor = false;
             this.NewAccExitBtn.Click += new System.EventHandler(this.NewAccExitBtn_Click);
             // 
-            // NewAccLbl
+            // AddEmplAccLbl
             // 
-            this.NewAccLbl.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewAccLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.NewAccLbl.Location = new System.Drawing.Point(40, 16);
-            this.NewAccLbl.Name = "NewAccLbl";
-            this.NewAccLbl.Size = new System.Drawing.Size(490, 47);
-            this.NewAccLbl.TabIndex = 7;
-            this.NewAccLbl.Text = "Add New Employee Account";
-            this.NewAccLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AddEmplAccLbl.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddEmplAccLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.AddEmplAccLbl.Location = new System.Drawing.Point(40, 16);
+            this.AddEmplAccLbl.Name = "AddEmplAccLbl";
+            this.AddEmplAccLbl.Size = new System.Drawing.Size(490, 47);
+            this.AddEmplAccLbl.TabIndex = 7;
+            this.AddEmplAccLbl.Text = "Add New Employee Account";
+            this.AddEmplAccLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CreateAccBtnPanel
             // 
-            this.AccountsFormPicker.SetCardName(this.CreateAccBtnPanel, "Card1");
+            this.AccountsFormPicker.SetCardName(this.CreateAccBtnPanel, "Card7");
             this.CreateAccBtnPanel.Controls.Add(this.CreateNewAccBtn);
             this.CreateAccBtnPanel.Location = new System.Drawing.Point(0, 0);
             this.AccountsFormPicker.SetMinimumSize(this.CreateAccBtnPanel, new System.Drawing.Size(200, 100));
@@ -770,25 +1246,12 @@
             this.AccListPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AccListPanel.Controls.Add(this.AccountListTable);
             this.AccListPanel.Controls.Add(this.AccountsListLbl);
-            this.AccListPanel.Controls.Add(this.UpdateAccBtn);
+            this.AccListPanel.Controls.Add(this.AccEditBtn);
             this.AccListPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.AccListPanel.Location = new System.Drawing.Point(15, 19);
             this.AccListPanel.Name = "AccListPanel";
             this.AccListPanel.Size = new System.Drawing.Size(538, 386);
             this.AccListPanel.TabIndex = 9;
-            // 
-            // AccountListTable
-            // 
-            this.AccountListTable.AllowUserToAddRows = false;
-            this.AccountListTable.AllowUserToDeleteRows = false;
-            this.AccountListTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.AccountListTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.AccountListTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AccountListTable.Location = new System.Drawing.Point(14, 89);
-            this.AccountListTable.Name = "AccountListTable";
-            this.AccountListTable.ReadOnly = true;
-            this.AccountListTable.Size = new System.Drawing.Size(511, 239);
-            this.AccountListTable.TabIndex = 0;
             // 
             // AccountsListLbl
             // 
@@ -1704,65 +2167,22 @@
             // 
             this.AccountsFormPicker.ContainerControl = this.AccountsFormPanel;
             this.AccountsFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.AccountsFormPicker.SelectedCard = "Card2";
+            this.AccountsFormPicker.SelectedCard = "Card5";
             // 
-            // AddEmplIDNoteLbl
+            // UpdateEmplUpdateBtn
             // 
-            this.AddEmplIDNoteLbl.AutoSize = true;
-            this.AddEmplIDNoteLbl.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddEmplIDNoteLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.AddEmplIDNoteLbl.Location = new System.Drawing.Point(118, 265);
-            this.AddEmplIDNoteLbl.Name = "AddEmplIDNoteLbl";
-            this.AddEmplIDNoteLbl.Size = new System.Drawing.Size(143, 15);
-            this.AddEmplIDNoteLbl.TabIndex = 20;
-            this.AddEmplIDNoteLbl.Text = "(input another 5 digits)";
-            // 
-            // AddEmplPositionPanelBox
-            // 
-            this.AddEmplPositionPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AddEmplPositionPanelBox.Controls.Add(this.AddEmplPositionComboBox);
-            this.AddEmplPositionPanelBox.Location = new System.Drawing.Point(246, 239);
-            this.AddEmplPositionPanelBox.Name = "AddEmplPositionPanelBox";
-            this.AddEmplPositionPanelBox.Size = new System.Drawing.Size(284, 22);
-            this.AddEmplPositionPanelBox.TabIndex = 15;
-            // 
-            // AddEmplPositionComboBox
-            // 
-            this.AddEmplPositionComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.AddEmplPositionComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddEmplPositionComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddEmplPositionComboBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddEmplPositionComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.AddEmplPositionComboBox.FormattingEnabled = true;
-            this.AddEmplPositionComboBox.Location = new System.Drawing.Point(0, 0);
-            this.AddEmplPositionComboBox.Name = "AddEmplPositionComboBox";
-            this.AddEmplPositionComboBox.Size = new System.Drawing.Size(282, 23);
-            this.AddEmplPositionComboBox.TabIndex = 0;
-            this.AddEmplPositionComboBox.SelectedIndexChanged += new System.EventHandler(this.AddEmplPositionComboBox_SelectedIndexChanged);
-            // 
-            // AddEmplPositionLbl
-            // 
-            this.AddEmplPositionLbl.AutoSize = true;
-            this.AddEmplPositionLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddEmplPositionLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.AddEmplPositionLbl.Location = new System.Drawing.Point(243, 218);
-            this.AddEmplPositionLbl.Name = "AddEmplPositionLbl";
-            this.AddEmplPositionLbl.Size = new System.Drawing.Size(101, 18);
-            this.AddEmplPositionLbl.TabIndex = 14;
-            this.AddEmplPositionLbl.Text = "Job Position:";
-            // 
-            // AddEmplShowPass
-            // 
-            this.AddEmplShowPass.AutoSize = true;
-            this.AddEmplShowPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.AddEmplShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddEmplShowPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.AddEmplShowPass.Location = new System.Drawing.Point(233, 5);
-            this.AddEmplShowPass.Name = "AddEmplShowPass";
-            this.AddEmplShowPass.Size = new System.Drawing.Size(12, 11);
-            this.AddEmplShowPass.TabIndex = 21;
-            this.AddEmplShowPass.UseVisualStyleBackColor = false;
-            this.AddEmplShowPass.CheckedChanged += new System.EventHandler(this.AddEmplShowPass_CheckedChanged);
+            this.UpdateEmplUpdateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplUpdateBtn.FlatAppearance.BorderSize = 0;
+            this.UpdateEmplUpdateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateEmplUpdateBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplUpdateBtn.ForeColor = System.Drawing.Color.White;
+            this.UpdateEmplUpdateBtn.Location = new System.Drawing.Point(186, 321);
+            this.UpdateEmplUpdateBtn.Name = "UpdateEmplUpdateBtn";
+            this.UpdateEmplUpdateBtn.Size = new System.Drawing.Size(175, 40);
+            this.UpdateEmplUpdateBtn.TabIndex = 1;
+            this.UpdateEmplUpdateBtn.Text = "UPDATE ACCOUNT";
+            this.UpdateEmplUpdateBtn.UseVisualStyleBackColor = false;
+            this.UpdateEmplUpdateBtn.Click += new System.EventHandler(this.UpdateEmplUpdateBtn_Click);
             // 
             // AdddAccBtn
             // 
@@ -1779,20 +2199,20 @@
             this.AdddAccBtn.UseVisualStyleBackColor = false;
             this.AdddAccBtn.Click += new System.EventHandler(this.NewAddAccBtn_Click);
             // 
-            // UpdateAccBtn
+            // AccEditBtn
             // 
-            this.UpdateAccBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.UpdateAccBtn.FlatAppearance.BorderSize = 0;
-            this.UpdateAccBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateAccBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateAccBtn.ForeColor = System.Drawing.Color.White;
-            this.UpdateAccBtn.Location = new System.Drawing.Point(440, 334);
-            this.UpdateAccBtn.Name = "UpdateAccBtn";
-            this.UpdateAccBtn.Size = new System.Drawing.Size(85, 40);
-            this.UpdateAccBtn.TabIndex = 0;
-            this.UpdateAccBtn.Text = "EDIT";
-            this.UpdateAccBtn.UseVisualStyleBackColor = false;
-            this.UpdateAccBtn.Click += new System.EventHandler(this.UpdateAccBtn_Click);
+            this.AccEditBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.AccEditBtn.FlatAppearance.BorderSize = 0;
+            this.AccEditBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AccEditBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AccEditBtn.ForeColor = System.Drawing.Color.White;
+            this.AccEditBtn.Location = new System.Drawing.Point(440, 334);
+            this.AccEditBtn.Name = "AccEditBtn";
+            this.AccEditBtn.Size = new System.Drawing.Size(85, 40);
+            this.AccEditBtn.TabIndex = 0;
+            this.AccEditBtn.Text = "EDIT";
+            this.AccEditBtn.UseVisualStyleBackColor = false;
+            this.AccEditBtn.Click += new System.EventHandler(this.UpdateAccBtn_Click);
             // 
             // NewFoodBtn
             // 
@@ -1823,6 +2243,17 @@
             this.FoodItemEditBtn.UseVisualStyleBackColor = false;
             this.FoodItemEditBtn.Click += new System.EventHandler(this.FoodItemEditBtn_Click);
             // 
+            // AccountListTable
+            // 
+            this.AccountListTable.AllowUserToAddRows = false;
+            this.AccountListTable.AllowUserToDeleteRows = false;
+            this.AccountListTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AccountListTable.Location = new System.Drawing.Point(16, 75);
+            this.AccountListTable.Name = "AccountListTable";
+            this.AccountListTable.ReadOnly = true;
+            this.AccountListTable.Size = new System.Drawing.Size(509, 229);
+            this.AccountListTable.TabIndex = 11;
+            // 
             // ENR_MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1844,9 +2275,27 @@
             this.SalesPanel.ResumeLayout(false);
             this.AccountsPanel.ResumeLayout(false);
             this.AccountsFormPanel.ResumeLayout(false);
-            this.UpdateAccPanel.ResumeLayout(false);
+            this.UpdateEmplAccPanel.ResumeLayout(false);
+            this.UpdateEmplAccPanel.PerformLayout();
+            this.UpdateEmplPositionPanelBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UpdateEmplPicBox)).EndInit();
+            this.UpdateEmplEmailPanelBox.ResumeLayout(false);
+            this.UpdateEmplEmailPanelBox.PerformLayout();
+            this.UpdateEmplIDPanelBox.ResumeLayout(false);
+            this.UpdateEmplIDPanelBox.PerformLayout();
+            this.UpdateEmplAddPanelBox.ResumeLayout(false);
+            this.UpdateEmplAddPanelBox.PerformLayout();
+            this.UpdateEmplPassPanelBox.ResumeLayout(false);
+            this.UpdateEmplPassPanelBox.PerformLayout();
+            this.UpdateEmplAgePanelBox.ResumeLayout(false);
+            this.UpdateEmplAgePanelBox.PerformLayout();
+            this.UpdateEmplBdayPanelBox.ResumeLayout(false);
+            this.UpdateEmplGenderPanelBox.ResumeLayout(false);
+            this.UpdateEmplNamePanelBox.ResumeLayout(false);
+            this.UpdateEmplNamePanelBox.PerformLayout();
             this.NewAccPanel.ResumeLayout(false);
             this.NewAccPanel.PerformLayout();
+            this.AddEmplPositionPanelBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AddEmplPicBox)).EndInit();
             this.AddEmplEmailPanelBox.ResumeLayout(false);
             this.AddEmplEmailPanelBox.PerformLayout();
@@ -1864,7 +2313,6 @@
             this.AddEmplNamePanelBox.PerformLayout();
             this.CreateAccBtnPanel.ResumeLayout(false);
             this.AccListPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.AccountListTable)).EndInit();
             this.FoodItemPanel.ResumeLayout(false);
             this.ItemFormPanel.ResumeLayout(false);
             this.CreateNewFoodBtnPanel.ResumeLayout(false);
@@ -1909,7 +2357,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AdminFormPicker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FoodItemFormPicker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountsFormPicker)).EndInit();
-            this.AddEmplPositionPanelBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.AccountListTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1969,27 +2417,13 @@
         private midterm.RoundBtn NewFoodBtn;
         private System.Windows.Forms.Label AccountsListLbl;
         private System.Windows.Forms.Panel AccListPanel;
-        private System.Windows.Forms.DataGridView AccountListTable;
-        private midterm.RoundBtn UpdateAccBtn;
+        private midterm.RoundBtn AccEditBtn;
         private System.Windows.Forms.Label FoodItemListLbl;
         private System.Windows.Forms.Panel CreateNewFoodBtnPanel;
         private FontAwesome.Sharp.IconButton CreateNewFoodBtn;
         private FontAwesome.Sharp.IconButton NewItemExitBtn;
         private FontAwesome.Sharp.IconButton UpdateItemExitBtn;
-        private FontAwesome.Sharp.IconButton CreateNewAccBtn;
-        private FontAwesome.Sharp.IconButton NewAccExitBtn;
-        private System.Windows.Forms.Label NewAccLbl;
-        private midterm.RoundBtn AdddAccBtn;
-        private System.Windows.Forms.Panel AccountsFormPanel;
-        private System.Windows.Forms.Panel UpdateAccPanel;
         private Syncfusion.Windows.Forms.Tools.CardLayout AccountsFormPicker;
-        private System.Windows.Forms.Panel NewAccPanel;
-        private System.Windows.Forms.Panel CreateAccBtnPanel;
-        private FontAwesome.Sharp.IconButton UpdateAccExitBtn;
-        private System.Windows.Forms.Label UpdateAccLbl;
-        private System.Windows.Forms.PictureBox AddEmplPicBox;
-        private System.Windows.Forms.Panel AddEmplNamePanelBox;
-        private System.Windows.Forms.Label AddEmplNameLbl;
         private System.Windows.Forms.Panel MngrLoginFormPanel;
         private System.Windows.Forms.Label MngrEmplPassLbl;
         private System.Windows.Forms.Panel MngrEmplPassPanelBox;
@@ -2015,33 +2449,79 @@
         private FontAwesome.Sharp.IconButton CashierExitBtn;
         private System.Windows.Forms.PictureBox CashierENRLogoR2;
         private FontAwesome.Sharp.IconButton CashierLoginBtn;
-        private System.Windows.Forms.TextBox AddEmplNameBox;
-        private System.Windows.Forms.Panel AddEmplGenderPanelBox;
-        private System.Windows.Forms.Label AddEmplGenderLbl;
-        private FontAwesome.Sharp.IconButton AddEmplPicBtn;
-        private System.Windows.Forms.ComboBox AddEmplGenderComboBox;
-        private System.Windows.Forms.Panel AddEmplBdayPanelBox;
-        private System.Windows.Forms.Label AddEmplBdayLbl;
-        private System.Windows.Forms.Panel AddEmplAgePanelBox;
-        private System.Windows.Forms.TextBox AddEmplAgeBox;
-        private System.Windows.Forms.Label AddEmplAgeLbl;
-        private System.Windows.Forms.DateTimePicker AddEmplBdayPicker;
-        private System.Windows.Forms.Panel AddEmplPassPanelBox;
-        private System.Windows.Forms.TextBox AddEmplPassBox;
-        private System.Windows.Forms.Label AddEmplPassLbl;
-        private System.Windows.Forms.Panel AddEmplAddressPanelBox;
-        private System.Windows.Forms.TextBox AddEmplAddressBox;
-        private System.Windows.Forms.Label AddEmplAddressLbl;
-        private System.Windows.Forms.Panel AddEmplIDPanelBox;
-        private System.Windows.Forms.TextBox AddEmplIDBox;
-        private System.Windows.Forms.Label AddEmplIDLbl;
-        private System.Windows.Forms.Panel AddEmplEmailPanelBox;
-        private System.Windows.Forms.TextBox AddEmplEmailBox;
-        private System.Windows.Forms.Label AddEmplEmailLbl;
-        private System.Windows.Forms.Label AddEmplIDNoteLbl;
+        private System.Windows.Forms.Panel AccountsFormPanel;
+        private System.Windows.Forms.Panel UpdateEmplAccPanel;
+        private System.Windows.Forms.Panel UpdateEmplPositionPanelBox;
+        private System.Windows.Forms.ComboBox UpdateEmplPositionComboBox;
+        private System.Windows.Forms.Label UpdateEmplPositionLbl;
+        private System.Windows.Forms.Label UpdateEmplIDNoteLbl;
+        private System.Windows.Forms.PictureBox UpdateEmplPicBox;
+        private System.Windows.Forms.Panel UpdateEmplEmailPanelBox;
+        private System.Windows.Forms.TextBox UpdateEmplEmailBox;
+        private System.Windows.Forms.Label UpdateEmplEmailLbl;
+        private System.Windows.Forms.Panel UpdateEmplIDPanelBox;
+        private System.Windows.Forms.TextBox UpdateEmplIDBox;
+        private System.Windows.Forms.Label UpdateEmplIDLbl;
+        private System.Windows.Forms.Panel UpdateEmplAddPanelBox;
+        private System.Windows.Forms.TextBox UpdateEmplAddBox;
+        private System.Windows.Forms.Label UpdateEmplAddLbl;
+        private System.Windows.Forms.Panel UpdateEmplPassPanelBox;
+        private System.Windows.Forms.CheckBox UpdateEmplShowPass;
+        private System.Windows.Forms.TextBox UpdateEmplPassBox;
+        private System.Windows.Forms.Label UpdateEmplPassLbl;
+        private System.Windows.Forms.Panel UpdateEmplAgePanelBox;
+        private System.Windows.Forms.TextBox UpdateEmplAgeBox;
+        private System.Windows.Forms.Label UpdateEmplAgeLbl;
+        private System.Windows.Forms.Panel UpdateEmplBdayPanelBox;
+        private System.Windows.Forms.DateTimePicker UpdateEmplBdayPicker;
+        private System.Windows.Forms.Label UpdateEmplBdayLbl;
+        private System.Windows.Forms.Panel UpdateEmplGenderPanelBox;
+        private System.Windows.Forms.ComboBox UpdateEmplGenderComboBox;
+        private System.Windows.Forms.Label UpdateEmplGenderLbl;
+        private FontAwesome.Sharp.IconButton UpdateEmplPicBtn;
+        private System.Windows.Forms.Panel UpdateEmplNamePanelBox;
+        private System.Windows.Forms.TextBox UpdateEmplNameBox;
+        private System.Windows.Forms.Label UpdateEmplNameLbl;
+        private FontAwesome.Sharp.IconButton UpdateEmplAccExitBtn;
+        private System.Windows.Forms.Label UpdateEmplAccLbl;
+        private midterm.RoundBtn UpdateEmplUpdateBtn;
+        private System.Windows.Forms.Panel NewAccPanel;
         private System.Windows.Forms.Panel AddEmplPositionPanelBox;
         private System.Windows.Forms.ComboBox AddEmplPositionComboBox;
         private System.Windows.Forms.Label AddEmplPositionLbl;
+        private System.Windows.Forms.Label AddEmplIDNoteLbl;
+        private System.Windows.Forms.PictureBox AddEmplPicBox;
+        private System.Windows.Forms.Panel AddEmplEmailPanelBox;
+        private System.Windows.Forms.TextBox AddEmplEmailBox;
+        private System.Windows.Forms.Label AddEmplEmailLbl;
+        private System.Windows.Forms.Panel AddEmplIDPanelBox;
+        private System.Windows.Forms.TextBox AddEmplIDBox;
+        private System.Windows.Forms.Label AddEmplIDLbl;
+        private System.Windows.Forms.Panel AddEmplAddressPanelBox;
+        private System.Windows.Forms.TextBox AddEmplAddressBox;
+        private System.Windows.Forms.Label AddEmplAddressLbl;
+        private System.Windows.Forms.Panel AddEmplPassPanelBox;
         private System.Windows.Forms.CheckBox AddEmplShowPass;
+        private System.Windows.Forms.TextBox AddEmplPassBox;
+        private System.Windows.Forms.Label AddEmplPassLbl;
+        private System.Windows.Forms.Panel AddEmplAgePanelBox;
+        private System.Windows.Forms.TextBox AddEmplAgeBox;
+        private System.Windows.Forms.Label AddEmplAgeLbl;
+        private System.Windows.Forms.Panel AddEmplBdayPanelBox;
+        private System.Windows.Forms.DateTimePicker AddEmplBdayPicker;
+        private System.Windows.Forms.Label AddEmplBdayLbl;
+        private System.Windows.Forms.Panel AddEmplGenderPanelBox;
+        private System.Windows.Forms.ComboBox AddEmplGenderComboBox;
+        private System.Windows.Forms.Label AddEmplGenderLbl;
+        private FontAwesome.Sharp.IconButton AddEmplPicBtn;
+        private System.Windows.Forms.Panel AddEmplNamePanelBox;
+        private System.Windows.Forms.TextBox AddEmplNameBox;
+        private System.Windows.Forms.Label AddEmplNameLbl;
+        private FontAwesome.Sharp.IconButton NewAccExitBtn;
+        private System.Windows.Forms.Label AddEmplAccLbl;
+        private midterm.RoundBtn AdddAccBtn;
+        private System.Windows.Forms.Panel CreateAccBtnPanel;
+        private FontAwesome.Sharp.IconButton CreateNewAccBtn;
+        private System.Windows.Forms.DataGridView AccountListTable;
     }
 }

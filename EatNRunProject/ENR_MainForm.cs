@@ -7,6 +7,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -44,20 +45,28 @@ namespace EatNRunProject
         {
             InitializeComponent();
 
-            //add gender combo box
+            //add acc gender combo box
             AddEmplGenderComboBox.Items.AddRange(genders);
             AddEmplGenderComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            //add job position combo box
+            //add acc job position combo box
             AddEmplPositionComboBox.Items.AddRange(position);
             AddEmplPositionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            //update acc gender combo box
+            UpdateEmplGenderComboBox.Items.AddRange(genders);
+            UpdateEmplGenderComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            //add acc job position combo box
+            UpdateEmplPositionComboBox.Items.AddRange(position);
+            UpdateEmplPositionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
             //Panel Manager
             MFpanelManager = new MainFormCard(LoginPanel, AdminPanel, ManagerPanel, CashierPanel);
             LoginpanelManager = new LoginPanelCard(UserSelector, AdminLoginFormPanel, MngrLoginFormPanel, CashierLoginFormPanel);
             AdminPanelManager = new AdminPanelCard(FoodItemPanel, SalesPanel, AccountsPanel);
             AdminFoodPanelManager = new AdminFoodPanelCard(NewItemPanel, UpdateItemPanel, CreateNewFoodBtnPanel);
-            AdminAccPanelManager = new AdminAccPanelCard(NewAccPanel, UpdateAccPanel, CreateAccBtnPanel);
+            AdminAccPanelManager = new AdminAccPanelCard(NewAccPanel, UpdateEmplAccPanel, CreateAccBtnPanel);
 
             MFpanelManager.MFShow(LoginPanel);
             LoginpanelManager.LoginFormShow(UserSelector);
@@ -198,24 +207,12 @@ namespace EatNRunProject
                         // Add the image column to the DataGridView
                         AccountListTable.Columns.Add(imageColumn);
 
-                        // Hide the row header
-                        AccountListTable.RowHeadersVisible = false;
-
                         AccountListTable.DataSource = dataTable;
                         AccountListTable.Columns[0].Visible = false; // hashedpass
                         AccountListTable.Columns[11].Visible = false; // hashedpass
                         AccountListTable.Columns[12].Visible = false; // fixedsalt
                         AccountListTable.Columns[13].Visible = false; // perusersalt
                         AccountListTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-                        // Handle the CellClick event to select the whole row
-                        AccountListTable.CellClick += (sender, e) =>
-                        {
-                            if (e.RowIndex >= 0)
-                            {
-                                AccountListTable.Rows[e.RowIndex].Selected = true;
-                            }
-                        };
                     }
                 }
             }
@@ -234,6 +231,7 @@ namespace EatNRunProject
 
             // Rest of your code for configuring DataGridView to display images without distortion
         }
+
 
 
 
@@ -508,6 +506,7 @@ namespace EatNRunProject
 
         private void UpdateAccBtn_Click(object sender, EventArgs e)
         {
+
             if (AccountListTable.SelectedRows.Count > 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Do you want to edit the selected data?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -519,8 +518,10 @@ namespace EatNRunProject
                     {
                         try
                         {
-                            //// Insert data into the database
-                            //RetrieveDataApprovedDB(selectedRow);
+                            //// Re data into the database
+                            RetrieveEmployeeDataFromDB(selectedRow);
+                            RetrieveImageFromDB(selectedRow);
+                            AdminAccPanelManager.AdminAccFormShow(UpdateEmplAccPanel);
 
                         }
                         catch (Exception ex)
@@ -542,75 +543,114 @@ namespace EatNRunProject
                 MessageBox.Show("Select a table row first.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
 
-            AdminAccPanelManager.AdminAccFormShow(UpdateAccPanel);
-            
+
         }
 
-        //private void RetrieveDataApprovedDB(DataGridViewRow selectedRow)
-        //{
-        //    try
-        //    {
-        //        using (MySqlConnection connection = new MySqlConnection(mysqlconn))
-        //        {
-        //            connection.Open();
-
-        //            // Get the student number from the selected row
-        //            string studentNumber = selectedRow.Cells["StudNum"].Value.ToString();
-
-        //            // Check if the student number exists in the database
-        //            string selectQuery = "SELECT * FROM mapproveddb WHERE StudNum = @StudNum";
-        //            MySqlCommand selectCmd = new MySqlCommand(selectQuery, connection);
-        //            selectCmd.Parameters.AddWithValue("@StudNum", studentNumber);
-
-        //            using (MySqlDataReader reader = selectCmd.ExecuteReader())
-        //            {
-        //                if (reader.Read())
-        //                {
-        //                    // Retrieve data from the database
-        //                    string name = reader["Name"].ToString();
-        //                    string sn = reader["StudNum"].ToString();
-        //                    string rp = reader["RecoveryPin"].ToString();
-        //                    string course = reader["Course"].ToString();
-        //                    string age = reader["Age"].ToString();
-        //                    string gender = reader["Gender"].ToString();
-        //                    string email = reader["Email"].ToString();
-
-        //                    // Populate the text boxes with the retrieved data
-        //                    UpdateNameBox.Text = name;
-        //                    UpdateSNBox.Text = sn;
-        //                    UpdateRPBox.Text = rp;
-        //                    UpdateCourseBox.Text = course;
-        //                    UpdateAgeBox.Text = age;
-        //                    UpdateGenderComboBox.Text = gender;
-        //                    UpdateEmailBox.Text = email;
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Handle database exception (e.g., connection error or duplicate entry)
-        //        MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
-        //}
-
-        private void UpdateAccExitBtn_Click(object sender, EventArgs e)
+        private void RetrieveEmployeeDataFromDB(DataGridViewRow selectedRow)
         {
-            if (UpdateAccPanel.Visible)
+            try
             {
-                CreateAccBtnPanel.Visible = true;
-                UpdateAccPanel.Visible = false;
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    string employeeID = selectedRow.Cells[10].Value.ToString();
+
+                    string selectQuery = "SELECT * FROM accounts WHERE EmployeeID = @EmployeeID";
+                    MySqlCommand selectCmd = new MySqlCommand(selectQuery, connection);
+                    selectCmd.Parameters.AddWithValue("@EmployeeID", employeeID);
+
+                    using (MySqlDataReader reader = selectCmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string emplName = reader["EmployeeName"].ToString();
+                            string emplGender = reader["EmployeeGender"].ToString();
+                            string emplBday = reader["EmployeeBday"].ToString();
+                            string emplAge = reader["EmployeeAge"].ToString();
+                            string emplAdd = reader["EmployeeAddress"].ToString();
+                            string emplEmail = reader["EmployeeEmail"].ToString();
+                            string emplPosition = reader["EmployeePosition"].ToString();
+                            string emplID = reader["EmployeeID"].ToString();
+
+                            // Assuming emplBday is in the "MM-DD-YYYY DDDD" format
+                            string dateFormat = "MM-dd-yyyy dddd";
+
+                            if (DateTime.TryParseExact(emplBday, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateValue))
+                            {
+                                UpdateEmplBdayPicker.Value = dateValue;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Invalid date format in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+
+                            UpdateEmplNameBox.Text = emplName;
+                            UpdateEmplGenderComboBox.Text = emplGender;
+                            UpdateEmplAgeBox.Text = emplAge;
+                            UpdateEmplAddBox.Text = emplAdd;
+                            UpdateEmplEmailBox.Text = emplEmail;
+                            UpdateEmplPositionComboBox.Text = emplPosition;
+                            UpdateEmplIDBox.Text = emplID;
+                        }
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                CreateAccBtnPanel.Visible = false;
-                UpdateAccPanel.Visible = true;
+                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            finally
+            {
+                connection.Close();
             }
         }
+
+        private void RetrieveImageFromDB(DataGridViewRow selectedRow)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    string employeeID = selectedRow.Cells[10].Value.ToString();
+
+                    string selectQuery = "SELECT * FROM accounts WHERE EmployeeID = @EmployeeID";
+                    MySqlCommand selectCmd = new MySqlCommand(selectQuery, connection);
+                    selectCmd.Parameters.AddWithValue("@EmployeeID", employeeID);
+
+                    using (MySqlDataReader reader = selectCmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // Check if the "AccountPfp" column contains a blob
+                            if (!reader.IsDBNull(reader.GetOrdinal("AccountPfp")))
+                            {
+                                byte[] imgData = (byte[])reader["AccountPfp"];
+                                using (MemoryStream ms = new MemoryStream(imgData))
+                                {
+                                    // Display the image in the PictureBox control
+                                    UpdateEmplPicBox.Image = Image.FromStream(ms);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Close the database connection
+                connection.Close();
+            }
+        }
+
 
         private void NewAccExitBtn_Click(object sender, EventArgs e)
         {
@@ -991,6 +1031,8 @@ namespace EatNRunProject
             AddEmplPassBox.Text = "";
         }
 
+
+
         private void EmplIDRefresher()
         {
             AddEmplIDBox.Text = "";
@@ -1070,5 +1112,269 @@ namespace EatNRunProject
             }
         }
 
+        private void UpdateEmplPicBtn_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Load the selected image into the PictureBox
+                    Image selectedImage = Image.FromFile(openFileDialog.FileName);
+
+                    // Check if the image dimensions are 64x64 pixels
+                    if (selectedImage.Width == 64 && selectedImage.Height == 64)
+                    {
+                        UpdateEmplPicBox.Image = selectedImage;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select an image with dimensions of 64x64 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void UpdateEmplGenderComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (UpdateEmplGenderComboBox.SelectedItem != null)
+            {
+                UpdateEmplGenderComboBox.Text = UpdateEmplGenderComboBox.SelectedItem.ToString();
+            }
+        }
+
+        private void UpdateEmplBdayPicker_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime selectedDate = UpdateEmplBdayPicker.Value;
+            int age = DateTime.Now.Year - selectedDate.Year;
+
+            if (DateTime.Now < selectedDate.AddYears(age))
+            {
+                age--; // Subtract 1 if the birthday hasn't occurred yet this year
+            }
+
+            UpdateEmplAgeBox.Text = age.ToString();
+        }
+
+        private void UpdateEmplPositionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (UpdateEmplPositionComboBox.SelectedItem != null)
+            {
+                UpdateEmplPositionComboBox.Text = UpdateEmplPositionComboBox.SelectedItem.ToString();
+            }
+        }
+
+        private void UpdateEmplShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateEmplPassBox.UseSystemPasswordChar = !UpdateEmplShowPass.Checked;
+
+        }
+
+        private void UpdateEmplUpdateBtn_Click(object sender, EventArgs e)
+        {
+            //Update Acc Btn
+            DateTime selectedDate = UpdateEmplBdayPicker.Value;
+
+            string emplName = UpdateEmplNameBox.Text;
+            string emplGender = UpdateEmplGenderComboBox.Text;
+            string emplBday = selectedDate.ToString("MM-dd-yyyy dddd");
+            string emplAge = UpdateEmplAgeBox.Text;
+            string emplAdd = UpdateEmplAddBox.Text;
+            string emplEmail = UpdateEmplEmailBox.Text;
+            string emplPosition = UpdateEmplPositionComboBox.Text;
+            string emplID = UpdateEmplIDBox.Text;
+            string emplPass = UpdateEmplPassBox.Text;
+
+            Regex nameRegex = new Regex("^[A-Z][a-zA-Z]+(?: [a-zA-Z]+)*$");
+            Regex courseRegex = new Regex("^[A-Za-z]+(?: [A-Za-z]+)*$");
+            Regex passwordRegex = new Regex("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?])[A-Za-z\\d!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]{8,}$");
+            Regex gmailRegex = new Regex(@"^[A-Za-z0-9._%+-]*\d*@gmail\.com$");
+
+
+            string hashedPassword = HashHelper.HashString(emplPass);    // Password hashed
+            string fixedSalt = HashHelper_Salt.HashString_Salt("EatNRun" + emplPass + "2023");    //Fixed Salt
+            string perUserSalt = HashHelper_SaltperUser.HashString_SaltperUser(emplPass + ID);    //Per User salt
+
+
+
+            int age = DateTime.Now.Year - selectedDate.Year;
+            if (DateTime.Now < selectedDate.AddYears(age))
+            {
+                age--; // Subtract 1 if the birthday hasn't occurred yet this year
+            }
+
+
+            if (string.IsNullOrEmpty(emplName) || string.IsNullOrEmpty(emplGender) || string.IsNullOrEmpty(emplBday) ||
+                string.IsNullOrEmpty(emplAge) || string.IsNullOrEmpty(emplAdd) || string.IsNullOrEmpty(emplEmail) ||
+                string.IsNullOrEmpty(emplPass) || string.IsNullOrEmpty(emplPosition))
+            {
+                MessageBox.Show("Missing text in required fields.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Exit the method since there's an error
+            }
+            else if (emplName.Contains("Admin") || emplID.Contains("Admin") || emplPass.Contains("Admin123"))
+            {
+                MessageBox.Show("This student already has an account.");
+                return;
+            }
+            else if (age < 18)
+            {
+                MessageBox.Show("Employee must be at least 18 years old to create an account.", "Age Verification Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            // Validate fields using regex patterns
+            else if (!nameRegex.IsMatch(emplName))
+            {
+                MessageBox.Show("Name must start with a capital letter and only contain alphabetic values.");
+                return;
+            }
+            else if (!int.TryParse(emplAge, out _))
+            {
+                MessageBox.Show("Age must only contain numeric values.");
+                return;
+            }
+            //else if (!int.TryParse(BtnSN, out _))
+            //{
+            //    MessageBox.Show("Incorrect Student Number.");
+            //    return;
+            //}
+            else if (!gmailRegex.IsMatch(emplEmail))
+            {
+                MessageBox.Show("Invalid Gmail address format.");
+                return;
+            }
+            else if (!passwordRegex.IsMatch(emplPass))
+            {
+                MessageBox.Show("Password must be at least 8 characters long and contain a combination of alphabetic characters, numeric digits, and special characters like (!, @, #, $, %, ^, &, *).");
+                return;
+            }
+
+            // Check if an image has been selected
+            else if (UpdateEmplPicBox.Image == null)
+            {
+                MessageBox.Show("Please select an image for the employee.", "Image Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (string.IsNullOrEmpty(emplID))
+            {
+                MessageBox.Show("Employee ID is required to update an account.", "Missing Employee ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                try
+                {
+                    using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                    {
+                        connection.Open();
+
+                        // Check if the employee with the given Employee ID exists
+                        string checkExistQuery = "SELECT COUNT(*) FROM accounts WHERE EmployeeID = @EmplID";
+                        MySqlCommand checkExistCmd = new MySqlCommand(checkExistQuery, connection);
+                        checkExistCmd.Parameters.AddWithValue("@EmplID", emplID);
+                        int employeeCount = Convert.ToInt32(checkExistCmd.ExecuteScalar());
+
+                        if (employeeCount == 0)
+                        {
+                            MessageBox.Show("Employee with the provided ID does not exist in the database.", "Employee Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        byte[] imageData = null;
+
+                        // Check if the image in the PictureBox has been modified
+                        if (UpdateEmplPicBox.Image != null)
+                        {
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                UpdateEmplPicBox.Image.Save(ms, ImageFormat.Jpeg); // Replace with the correct image format
+                                imageData = ms.ToArray();
+                            }
+                        }
+
+
+                        // Update data in the accounts table, including the image (AccountPfp in the first position)
+                        string updateQuery = "UPDATE accounts SET EmployeeName = @EmplName, EmployeePosition = @EmplPosition, " +
+                            "EmployeeAge = @EmplAge, EmployeeBday = @EmplBday, EmployeeGender = @EmplGender, EmployeeAddress = @EmplAdd, " +
+                            "EmployeeEmail = @EmplEmail, HashedPass = @Password, SaltedPass = @FixedSalt, PerEmplSaltedPass = @PerUserSalt ";
+
+                        // Add the image update if imageData is not null
+                        if (imageData != null)
+                        {
+                            updateQuery += ", AccountPfp = @Image ";
+                        }
+
+                        updateQuery += "WHERE EmployeeID = @EmplID";
+
+                        MySqlCommand updateCmd = new MySqlCommand(updateQuery, connection);
+
+                        if (imageData != null)
+                        {
+                            updateCmd.Parameters.AddWithValue("@Image", imageData);
+                        }
+
+                        updateCmd.Parameters.AddWithValue("@EmplName", emplName);
+                        updateCmd.Parameters.AddWithValue("@EmplPosition", emplPosition);
+                        updateCmd.Parameters.AddWithValue("@EmplAge", age); // Assuming age is the correct variable
+                        updateCmd.Parameters.AddWithValue("@EmplBday", emplBday);
+                        updateCmd.Parameters.AddWithValue("@EmplGender", emplGender);
+                        updateCmd.Parameters.AddWithValue("@EmplAdd", emplAdd);
+                        updateCmd.Parameters.AddWithValue("@EmplEmail", emplEmail);
+                        updateCmd.Parameters.AddWithValue("@EmplID", emplID);
+                        updateCmd.Parameters.AddWithValue("@Password", hashedPassword);
+                        updateCmd.Parameters.AddWithValue("@FixedSalt", fixedSalt);
+                        updateCmd.Parameters.AddWithValue("@PerUserSalt", perUserSalt);
+
+                        updateCmd.ExecuteNonQuery();
+                    }
+
+                    // Successful update
+                    MessageBox.Show("Employee account has been successfully updated.", "Update Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    UpdateAccBoxClear();
+                    LoadEmployeeAcc();
+                }
+                catch (MySqlException ex)
+                {
+                    // Handle MySQL database exception
+                    MessageBox.Show("MySQL Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    // Make sure to close the connection
+                    connection.Close();
+                }
+
+            }
+
+
+        }
+
+
+
+        private void UpdateAccBoxClear()
+        {
+            UpdateEmplPicBox.Image = null;
+            UpdateEmplNameBox.Text = "";
+            UpdateEmplGenderComboBox.SelectedIndex = -1;
+            UpdateEmplBdayPicker.Value = DateTime.Now;
+            UpdateEmplAgeBox.Text = "";
+            UpdateEmplAddBox.Text = "";
+            UpdateEmplEmailBox.Text = "";
+            UpdateEmplPositionComboBox.SelectedIndex = -1;
+            UpdateEmplIDBox.Text = "";
+            UpdateEmplPassBox.Text = "";
+        }
+
+        private void UpdateEmplAccExitBtn_Click(object sender, EventArgs e)
+        {
+            if (UpdateEmplAccPanel.Visible)
+            {
+                CreateAccBtnPanel.Visible = true;
+                UpdateEmplAccPanel.Visible = false;
+            }
+            else
+            {
+                CreateAccBtnPanel.Visible = false;
+                UpdateEmplAccPanel.Visible = true;
+            }
+        }
     }
 }

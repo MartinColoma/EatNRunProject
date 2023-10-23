@@ -10,12 +10,12 @@ namespace EatNRunProject
         private Panel AccUpdateItemForm;
         private Panel CreateAccItemForm;
 
-        public AdminAccPanelCard(Panel AccNewItemFormPanel, Panel AccUpdateItemFormPanel, Panel AccFoodItemFormPanel)
+        public AdminAccPanelCard(Panel AccNewItemFormPanel, Panel AccUpdateItemFormPanel, Panel AccItemFormPanel)
         {
 
             AccNewItemForm = AccNewItemFormPanel;
             AccUpdateItemForm = AccUpdateItemFormPanel;
-            CreateAccItemForm = AccFoodItemFormPanel;
+            CreateAccItemForm = AccItemFormPanel;
         }
 
         public void AdminAccFormShow(Panel panelToShow)
