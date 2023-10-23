@@ -83,6 +83,16 @@ namespace EatNRunProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AP_Logo_128x128_YellowBG {
+            get {
+                object obj = ResourceManager.GetObject("AP Logo 128x128 YellowBG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cashier {
             get {
                 object obj = ResourceManager.GetObject("Cashier", resourceCulture);
