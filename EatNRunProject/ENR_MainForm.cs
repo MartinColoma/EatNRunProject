@@ -346,6 +346,51 @@ namespace EatNRunProject
                                     {
                                         MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
+                                    return;
+                                }
+                                else if (employeePosition == "Manager")
+                                {
+                                    // Retrieve the HashedPass column
+                                    string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
+
+                                    // Check if the entered password matches
+                                    bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
+
+                                    if (passwordMatches)
+                                    {
+                                        MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MFpanelManager.MFShow(ManagerPanel);
+
+                                        AdminEmpIDBox.Text = "";
+                                        AdminEmpPassBox.Text = "";
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                    return;
+                                }
+                                else if (employeePosition == "Cashier")
+                                {
+                                    // Retrieve the HashedPass column
+                                    string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
+
+                                    // Check if the entered password matches
+                                    bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
+
+                                    if (passwordMatches)
+                                    {
+                                        MessageBox.Show("Welcome back, Cashier.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MFpanelManager.MFShow(CashierPanel);
+
+                                        AdminEmpIDBox.Text = "";
+                                        AdminEmpPassBox.Text = "";
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                    return;
                                 }
                                 else
                                 {
