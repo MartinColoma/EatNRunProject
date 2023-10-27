@@ -261,7 +261,6 @@
     <Compile Include="AdminAccPanelCard.cs" />
     <Compile Include="AdminFoodPanelCard.cs" />
     <Compile Include="AdminPanelCard.cs" />
-    <Compile Include="LoginPanelCard.cs" />
     <Compile Include="MainFormCard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -317,6 +316,8 @@
     <None Include="Resources\AP Logo 128x128 YellowBG.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\AddItemDefaultPic.png" />
+    <None Include="Resources\AddAccDefaultPic.png" />
     <Content Include="Resources\EatNRun Logo Red Text.ico" />
     <Content Include="Resources\EatNRun Logo Yellow Text.ico" />
   </ItemGroup>

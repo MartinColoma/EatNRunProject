@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using EatNRunProject.Properties;
+using MySql.Data.MySqlClient;
 using Syncfusion.Windows.Forms.Interop;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,10 @@ using System.Windows.Forms;
 
 namespace EatNRunProject
 {
-    public partial class ENR_MainForm : Form
+    public partial class ENRMainForm : Form
     {
         //panel classes
         private MainFormCard MFpanelManager;
-        private LoginPanelCard LoginpanelManager;
         private AdminPanelCard AdminPanelManager;
         private AdminFoodPanelCard AdminFoodPanelManager;
         private AdminAccPanelCard AdminAccPanelManager;
@@ -37,13 +37,20 @@ namespace EatNRunProject
         //job position combo box
         private string[] position = { "Admin", "Manager", "Cashier" };
 
+        //Food Item combo box
+        private string[] itemType = { "Set Meals", "Burger", "Sides", "Drinks" };
+
         //per user salt and employee id generator
         string ID;
         private int minTextLength = 5; // Minimum required text length
 
-        public ENR_MainForm()
+
+
+        public ENRMainForm()
         {
             InitializeComponent();
+
+
 
             //add acc gender combo box
             AddEmplGenderComboBox.Items.AddRange(genders);
@@ -57,22 +64,29 @@ namespace EatNRunProject
             UpdateEmplGenderComboBox.Items.AddRange(genders);
             UpdateEmplGenderComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            //add acc job position combo box
+            //update acc job position combo box
             UpdateEmplPositionComboBox.Items.AddRange(position);
             UpdateEmplPositionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
+            //add item type combo box
+            AddItemTypeComboBox.Items.AddRange(itemType);
+            AddItemTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
             //Panel Manager
             MFpanelManager = new MainFormCard(LoginPanel, AdminPanel, ManagerPanel, CashierPanel);
-            LoginpanelManager = new LoginPanelCard(UserSelector, AdminLoginFormPanel, MngrLoginFormPanel, CashierLoginFormPanel);
             AdminPanelManager = new AdminPanelCard(FoodItemPanel, SalesPanel, AccountsPanel);
-            AdminFoodPanelManager = new AdminFoodPanelCard(NewItemPanel, UpdateItemPanel, CreateNewFoodBtnPanel);
+            AdminFoodPanelManager = new AdminFoodPanelCard(AddItemPanel, UpdateItemPanel, CreateNewFoodBtnPanel);
             AdminAccPanelManager = new AdminAccPanelCard(NewAccPanel, UpdateEmplAccPanel, CreateAccBtnPanel);
 
             MFpanelManager.MFShow(LoginPanel);
-            LoginpanelManager.LoginFormShow(UserSelector);
+
 
             AccountListTable.DataError += new DataGridViewDataErrorEventHandler(AccountListTable_DataError);
             AccountListTable.RowPostPaint += new DataGridViewRowPostPaintEventHandler(AccountListTable_RowPostPaint);
+
+
+            FoodItemListTable.DataError += new DataGridViewDataErrorEventHandler(FoodItemListTable_DataError);
+            FoodItemListTable.RowPostPaint += new DataGridViewRowPostPaintEventHandler(FoodItemListTable_RowPostPaint);
 
 
             this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
@@ -82,6 +96,7 @@ namespace EatNRunProject
         private void ENR_MainForm_Load(object sender, EventArgs e)
         {
             LoadEmployeeAcc();
+            LoadItemMenu();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -117,6 +132,19 @@ namespace EatNRunProject
             AccountListTable.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
         }
 
+        private void FoodItemListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            if (e.ColumnIndex == 0) // Assuming column index for "AccountPfp" is 1
+            {
+                // Set the cell value to null to display an empty cell
+                e.ThrowException = false;
+                FoodItemListTable[e.ColumnIndex, e.RowIndex].Value = null;
+            }
+        }
+        private void FoodItemListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            FoodItemListTable.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
+        }
 
 
 
@@ -197,7 +225,7 @@ namespace EatNRunProject
 
                         // Create the "AccountPfp" column with the specified settings
                         DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
-                        imageColumn.HeaderText = "AccountPfp";
+                        imageColumn.HeaderText = "Employee Picture";
                         imageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                         imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
 
@@ -233,73 +261,260 @@ namespace EatNRunProject
         }
 
 
-
-
-
-        private void AdminPB_MouseDown(object sender, MouseEventArgs e)
+        public void LoadItemMenu()
         {
-            //Admin Picture Box
-            LoginpanelManager.LoginFormShow(AdminLoginFormPanel);
-            AdminUserLbl.Text = "Admin Login";
-
-        }
-
-        private void ManagerPB_MouseDown(object sender, MouseEventArgs e)
-        {
-            //Manager Picture Box
-
-            LoginpanelManager.LoginFormShow(MngrLoginFormPanel);
-            MngrUserLbl.Text = "Manager Login";
-
-
-        }
-
-        private void CashierPB_MouseDown(object sender, MouseEventArgs e)
-        {
-            //Cashier Picture Box
-
-            LoginpanelManager.LoginFormShow(CashierLoginFormPanel);
-            CashierUserLbl.Text = "Cashier Login";
-
-        }
-
-        private void exitBtn_Click(object sender, EventArgs e)
-        {
-            if (AdminLoginFormPanel.Visible)
+            try
             {
-                AdminLoginFormPanel.Visible = false;
-                UserSelector.Visible = true;
-                AdminUserLbl.Text = "";
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+                    string sql = "SELECT * FROM `foodmenu`";
+                    MySqlCommand cmd = new MySqlCommand(sql, connection);
+                    System.Data.DataTable dataTable = new System.Data.DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+
+                        // Create the "AccountPfp" column with the specified settings
+                        DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
+                        imageColumn.HeaderText = "Item Picture";
+                        imageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+                        // Clear any existing columns to remove the extra "AccountPfp" column
+                        FoodItemListTable.Columns.Clear();
+
+                        // Add the image column to the DataGridView
+                        FoodItemListTable.Columns.Add(imageColumn);
+                        FoodItemListTable.Columns[0].Visible = false; // hashedpass
+                        FoodItemListTable.DataSource = dataTable;
+
+                        FoodItemListTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error occurred: " + e.Message);
+            }
+            finally
+            {
+                // Make sure to close the connection (if it's open)
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
             }
 
-            else
-            {
-                AdminLoginFormPanel.Visible = true;
-                UserSelector.Visible = false;
-                AdminUserLbl.Text = "";
+            // Rest of your code for configuring DataGridView to display images without distortion
+        }
 
+
+        private void ENREmplPassBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                if (ENREmplIDBox.Text == "Admin" && ENREmplPassBox.Text == "Admin123")
+                {
+                    MessageBox.Show("Welcome back, Admin.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MFpanelManager.MFShow(AdminPanel);
+                    AdminPanelManager.AdminFormShow(FoodItemPanel);
+                    AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
+                    ENREmplIDBox.Text = "";
+                    ENREmplPassBox.Text = "";
+                    SalesDatePicker.Visible = false;
+                    return;
+                }
+                else if (ENREmplIDBox.Text == "Manager" && ENREmplPassBox.Text == "Manager123")
+                {
+                    MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MFpanelManager.MFShow(ManagerPanel);
+
+                    ENREmplIDBox.Text = "";
+                    ENREmplPassBox.Text = "";
+                    return;
+                }
+                else if (ENREmplIDBox.Text == "Cashier" && ENREmplPassBox.Text == "Cashier123")
+                {
+                    MessageBox.Show("Welcome back, Cashier.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MFpanelManager.MFShow(CashierPanel);
+
+                    ENREmplIDBox.Text = "";
+                    ENREmplPassBox.Text = "";
+                    return;
+                }
+                else if (string.IsNullOrEmpty(ENREmplIDBox.Text) || string.IsNullOrEmpty(ENREmplPassBox.Text))
+                {
+                    MessageBox.Show("Missing text on required Field.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    string emplID = ENREmplIDBox.Text;
+                    string emplPass = ENREmplPassBox.Text;
+                    string passchecker = HashHelper.HashString(emplPass); // Assuming "enteredPassword" is supposed to be "emplPass"
+
+                    MySqlConnection connection = null;
+
+                    try
+                    {
+                        connection = new MySqlConnection(mysqlconn);
+                        connection.Open();
+
+                        // Query the database for the provided Employee ID in the accounts table
+                        string queryApproved = "SELECT EmployeeName, EmployeeID, EmployeePosition, HashedPass FROM accounts WHERE EmployeeID = @EmplID";
+
+                        using (MySqlCommand cmdApproved = new MySqlCommand(queryApproved, connection))
+                        {
+                            cmdApproved.Parameters.AddWithValue("@EmplID", emplID);
+
+                            using (MySqlDataReader readerApproved = cmdApproved.ExecuteReader())
+                            {
+                                if (readerApproved.Read())
+                                {
+                                    // Retrieve user information
+                                    string name = readerApproved["EmployeeName"].ToString();
+                                    string employeePosition = readerApproved["EmployeePosition"].ToString();
+
+                                    // Check if the entered EmployeePosition matches the one in the database
+                                    if (employeePosition == "Admin")
+                                    {
+                                        // Retrieve the HashedPass column
+                                        string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
+
+                                        // Check if the entered password matches
+                                        bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
+
+                                        if (passwordMatches)
+                                        {
+                                            MessageBox.Show("Welcome back, Admin.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            MFpanelManager.MFShow(AdminPanel);
+                                            AdminPanelManager.AdminFormShow(FoodItemPanel);
+                                            AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
+                                            ENREmplIDBox.Text = "";
+                                            ENREmplPassBox.Text = "";
+                                            SalesDatePicker.Visible = false;
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                        return;
+                                    }
+                                    else if (employeePosition == "Manager")
+                                    {
+                                        // Retrieve the HashedPass column
+                                        string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
+
+                                        // Check if the entered password matches
+                                        bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
+
+                                        if (passwordMatches)
+                                        {
+                                            MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            MFpanelManager.MFShow(ManagerPanel);
+
+                                            ENREmplIDBox.Text = "";
+                                            ENREmplPassBox.Text = "";
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                        return;
+                                    }
+                                    else if (employeePosition == "Cashier")
+                                    {
+                                        // Retrieve the HashedPass column
+                                        string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
+
+                                        // Check if the entered password matches
+                                        bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
+
+                                        if (passwordMatches)
+                                        {
+                                            MessageBox.Show("Welcome back, Cashier.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            MFpanelManager.MFShow(CashierPanel);
+
+                                            ENREmplIDBox.Text = "";
+                                            ENREmplPassBox.Text = "";
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        // The EmployeePosition doesn't match the expected "Admin"
+                                        MessageBox.Show("Account not found.", "Ooooops", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                }
+                                else
+                                {
+                                    // The entered Employee ID does not exist in the database
+                                    MessageBox.Show("Account not found.", "Ooooops", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        connection?.Close();
+                    }
+                }
+
+                e.SuppressKeyPress = true;
             }
+            
         }
 
         private void AdminLoginBtn_Click(object sender, EventArgs e)
         {
-            if (AdminEmpIDBox.Text == "Admin" && AdminEmpPassBox.Text == "Admin123")
+            if (ENREmplIDBox.Text == "Admin" && ENREmplPassBox.Text == "Admin123")
             {
                 MessageBox.Show("Welcome back, Admin.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MFpanelManager.MFShow(AdminPanel);
                 AdminPanelManager.AdminFormShow(FoodItemPanel);
                 AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
-                AdminEmpIDBox.Text = "";
-                AdminEmpPassBox.Text = "";
+                ENREmplIDBox.Text = "";
+                ENREmplPassBox.Text = "";
+                SalesDatePicker.Visible = false;
+                return;
             }
-            else if (string.IsNullOrEmpty(AdminEmpIDBox.Text) || string.IsNullOrEmpty(AdminEmpPassBox.Text))
+            else if (ENREmplIDBox.Text == "Manager" && ENREmplPassBox.Text == "Manager123")
+            {
+                MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MFpanelManager.MFShow(ManagerPanel);
+
+                ENREmplIDBox.Text = "";
+                ENREmplPassBox.Text = "";
+                return;
+            }
+            else if (ENREmplIDBox.Text == "Cashier" && ENREmplPassBox.Text == "Cashier123")
+            {
+                MessageBox.Show("Welcome back, Cashier.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MFpanelManager.MFShow(CashierPanel);
+
+                ENREmplIDBox.Text = "";
+                ENREmplPassBox.Text = "";
+                return;
+            }
+            else if (string.IsNullOrEmpty(ENREmplIDBox.Text) || string.IsNullOrEmpty(ENREmplPassBox.Text))
             {
                 MessageBox.Show("Missing text on required Field.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                string emplID = AdminEmpIDBox.Text;
-                string emplPass = AdminEmpPassBox.Text;
+                string emplID = ENREmplIDBox.Text;
+                string emplPass = ENREmplPassBox.Text;
                 string passchecker = HashHelper.HashString(emplPass); // Assuming "enteredPassword" is supposed to be "emplPass"
 
                 MySqlConnection connection = null;
@@ -339,8 +554,9 @@ namespace EatNRunProject
                                         MFpanelManager.MFShow(AdminPanel);
                                         AdminPanelManager.AdminFormShow(FoodItemPanel);
                                         AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
-                                        AdminEmpIDBox.Text = "";
-                                        AdminEmpPassBox.Text = "";
+                                        ENREmplIDBox.Text = "";
+                                        ENREmplPassBox.Text = "";
+                                        SalesDatePicker.Visible = false;
                                     }
                                     else
                                     {
@@ -361,8 +577,8 @@ namespace EatNRunProject
                                         MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         MFpanelManager.MFShow(ManagerPanel);
 
-                                        AdminEmpIDBox.Text = "";
-                                        AdminEmpPassBox.Text = "";
+                                        ENREmplIDBox.Text = "";
+                                        ENREmplPassBox.Text = "";
                                     }
                                     else
                                     {
@@ -383,8 +599,8 @@ namespace EatNRunProject
                                         MessageBox.Show("Welcome back, Cashier.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         MFpanelManager.MFShow(CashierPanel);
 
-                                        AdminEmpIDBox.Text = "";
-                                        AdminEmpPassBox.Text = "";
+                                        ENREmplIDBox.Text = "";
+                                        ENREmplPassBox.Text = "";
                                     }
                                     else
                                     {
@@ -421,13 +637,15 @@ namespace EatNRunProject
 
         private void EmpShowPass_CheckedChanged(object sender, EventArgs e)
         {
-            AdminEmpPassBox.UseSystemPasswordChar = !AdminEmpShowPass.Checked;
+            ENREmplPassBox.UseSystemPasswordChar = !ENREmplShowPass.Checked;
         }
 
         private void ADFoodItemBtn_Click(object sender, EventArgs e)
         {
             AdminPanelManager.AdminFormShow(FoodItemPanel);
             AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
+            LoadItemMenu();
+            SalesDatePicker.Visible = false;
 
 
         }
@@ -436,6 +654,7 @@ namespace EatNRunProject
         {
             AdminPanelManager.AdminFormShow(AccountsPanel);
             AdminAccPanelManager.AdminAccFormShow(CreateAccBtnPanel);
+            SalesDatePicker.Visible = false;
             LoadEmployeeAcc();
 
         }
@@ -443,6 +662,7 @@ namespace EatNRunProject
         private void ADSalesBtn_Click(object sender, EventArgs e)
         {
             AdminPanelManager.AdminFormShow(SalesPanel);
+            SalesDatePicker.Visible = true;
 
         }
 
@@ -453,7 +673,6 @@ namespace EatNRunProject
             if (result == DialogResult.Yes)
             {
                 MFpanelManager.MFShow(LoginPanel);
-                LoginpanelManager.LoginFormShow(UserSelector);
             }
         }
 
@@ -464,7 +683,6 @@ namespace EatNRunProject
             if (result == DialogResult.Yes)
             {
                 MFpanelManager.MFShow(LoginPanel);
-                LoginpanelManager.LoginFormShow(UserSelector);
             }
             else
             {
@@ -479,7 +697,6 @@ namespace EatNRunProject
             if (result == DialogResult.Yes)
             {
                 MFpanelManager.MFShow(LoginPanel);
-                LoginpanelManager.LoginFormShow(UserSelector);
             }
         }
 
@@ -489,22 +706,9 @@ namespace EatNRunProject
             DialogResult result = MessageBox.Show("Do you want to add a new food item?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                AdminFoodPanelManager.AdminFoodFormShow(NewItemPanel);
-            }
-        }
-
-        private void iconButton1_Click(object sender, EventArgs e)
-        {
-            if (NewItemPanel.Visible)
-            {
-                NewItemPanel.Visible = false;
-                CreateNewFoodBtnPanel.Visible = true;
-            }
-
-            else
-            {
-                NewItemPanel.Visible = true;
-                CreateNewFoodBtnPanel.Visible = false;
+                AdminFoodPanelManager.AdminFoodFormShow(AddItemPanel);
+                AddItemBoxClear();
+                ItemIDRefresher();
             }
         }
 
@@ -534,11 +738,6 @@ namespace EatNRunProject
 
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void CreateNewAccBtn_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Do you want to add a new Employee Acount?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -546,6 +745,7 @@ namespace EatNRunProject
             {
                 AdminAccPanelManager.AdminAccFormShow(NewAccPanel);
                 EmplIDRefresher();
+
             }
         }
 
@@ -713,210 +913,6 @@ namespace EatNRunProject
             }
         }
 
-
-
-
-        private void MngrEmplShowPass_CheckedChanged(object sender, EventArgs e)
-        {
-            MngrEmplPassBox.UseSystemPasswordChar = !MngrEmplShowPass.Checked;
-
-        }
-
-        private void MngrLoginBtn_Click(object sender, EventArgs e)
-        {
-
-            if (MngrEmplIDBox.Text == "Manager" && MngrEmplPassBox.Text == "Manager123")
-            {
-                MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                MFpanelManager.MFShow(ManagerPanel);
-                MngrEmplIDBox.Text = "";
-                MngrEmplPassBox.Text = "";
-            }
-            else if (string.IsNullOrEmpty(MngrEmplIDBox.Text) || string.IsNullOrEmpty(MngrEmplPassBox.Text))
-            {
-                MessageBox.Show("Missing text on required Field.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                string emplID = MngrEmplIDBox.Text;
-                string emplPass = MngrEmplPassBox.Text;
-                string passchecker = HashHelper.HashString(emplPass); // Assuming "enteredPassword" is supposed to be "emplPass"
-
-                MySqlConnection connection = null;
-
-                try
-                {
-                    connection = new MySqlConnection(mysqlconn);
-                    connection.Open();
-
-                    // Query the database for the provided Employee ID in the accounts table
-                    string queryApproved = "SELECT EmployeeName, EmployeeID, EmployeePosition, HashedPass FROM accounts WHERE EmployeeID = @EmplID";
-
-                    using (MySqlCommand cmdApproved = new MySqlCommand(queryApproved, connection))
-                    {
-                        cmdApproved.Parameters.AddWithValue("@EmplID", emplID);
-
-                        using (MySqlDataReader readerApproved = cmdApproved.ExecuteReader())
-                        {
-                            if (readerApproved.Read())
-                            {
-                                // Retrieve user information
-                                string name = readerApproved["EmployeeName"].ToString();
-                                string employeePosition = readerApproved["EmployeePosition"].ToString();
-
-                                // Check if the entered EmployeePosition matches the one in the database
-                                if (employeePosition == "Manager")
-                                {
-                                    // Retrieve the HashedPass column
-                                    string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
-
-                                    // Check if the entered password matches
-                                    bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
-
-                                    if (passwordMatches)
-                                    {
-                                        MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        MFpanelManager.MFShow(ManagerPanel);
-                                        MngrEmplIDBox.Text = "";
-                                        MngrEmplPassBox.Text = "";
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                }
-                                else
-                                {
-                                    // The EmployeePosition doesn't match the expected "Admin"
-                                    MessageBox.Show("Account not found.", "Ooooops", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-                            else
-                            {
-                                // The entered Employee ID does not exist in the database
-                                MessageBox.Show("Account not found.", "Ooooops", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    connection?.Close();
-                }
-            }
-        }
-
-        private void MngrExitButton_Click(object sender, EventArgs e)
-        {
-            LoginpanelManager.LoginFormShow(UserSelector);
-        }
-
-        private void CashierExitBtn_Click(object sender, EventArgs e)
-        {
-            LoginpanelManager.LoginFormShow(UserSelector);
-
-        }
-
-        private void CashierEmplShowPass_CheckedChanged(object sender, EventArgs e)
-        {
-            CashierEmplPassBox.UseSystemPasswordChar = !CashierEmplShowPass.Checked;
-
-        }
-
-        private void CashierLoginBtn_Click(object sender, EventArgs e)
-        {
-
-            if (CashierEmplIDBox.Text == "Cashier" && CashierEmplPassBox.Text == "Cashier123")
-            {
-                MessageBox.Show("Welcome back Admin.", "Greetings", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                MFpanelManager.MFShow(CashierPanel);
-                CashierEmplIDBox.Text = "";
-                CashierEmplPassBox.Text = "";
-            }
-            else if (string.IsNullOrEmpty(CashierEmplIDBox.Text) || string.IsNullOrEmpty(CashierEmplPassBox.Text))
-            {
-                MessageBox.Show("Missing text on required Field.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                string emplID = CashierEmplIDBox.Text;
-                string emplPass = CashierEmplPassBox.Text;
-                string passchecker = HashHelper.HashString(emplPass); // Assuming "enteredPassword" is supposed to be "emplPass"
-
-                MySqlConnection connection = null;
-
-                try
-                {
-                    connection = new MySqlConnection(mysqlconn);
-                    connection.Open();
-
-                    // Query the database for the provided Employee ID in the accounts table
-                    string queryApproved = "SELECT EmployeeName, EmployeeID, EmployeePosition, HashedPass FROM accounts WHERE EmployeeID = @EmplID";
-
-                    using (MySqlCommand cmdApproved = new MySqlCommand(queryApproved, connection))
-                    {
-                        cmdApproved.Parameters.AddWithValue("@EmplID", emplID);
-
-                        using (MySqlDataReader readerApproved = cmdApproved.ExecuteReader())
-                        {
-                            if (readerApproved.Read())
-                            {
-                                // Retrieve user information
-                                string name = readerApproved["EmployeeName"].ToString();
-                                string employeePosition = readerApproved["EmployeePosition"].ToString();
-
-                                // Check if the entered EmployeePosition matches the one in the database
-                                if (employeePosition == "Admin")
-                                {
-                                    // Retrieve the HashedPass column
-                                    string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
-
-                                    // Check if the entered password matches
-                                    bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
-
-                                    if (passwordMatches)
-                                    {
-                                        MessageBox.Show("Welcome back, Cashier.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        MFpanelManager.MFShow(CashierPanel);
-                                        CashierEmplIDBox.Text = "";
-                                        CashierEmplPassBox.Text = "";
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                }
-                                else
-                                {
-                                    // The EmployeePosition doesn't match the expected "Admin"
-                                    MessageBox.Show("Account not found.", "Ooooops", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-                            else
-                            {
-                                // The entered Employee ID does not exist in the database
-                                MessageBox.Show("Account not found.", "Ooooops", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    connection?.Close();
-                }
-            }
-
-
-        }
-
         private void NewAddAccBtn_Click(object sender, EventArgs e)
         {
             //Create Acc Btn
@@ -952,8 +948,8 @@ namespace EatNRunProject
 
 
             if (string.IsNullOrEmpty(emplName) || string.IsNullOrEmpty(emplGender) || string.IsNullOrEmpty(emplBday) ||
-    string.IsNullOrEmpty(emplAge) || string.IsNullOrEmpty(emplAdd) || string.IsNullOrEmpty(emplEmail) ||
-    string.IsNullOrEmpty(emplID) || string.IsNullOrEmpty(emplPass) || string.IsNullOrEmpty(emplPosition))
+            string.IsNullOrEmpty(emplAge) || string.IsNullOrEmpty(emplAdd) || string.IsNullOrEmpty(emplEmail) ||
+            string.IsNullOrEmpty(emplID) || string.IsNullOrEmpty(emplPass) || string.IsNullOrEmpty(emplPosition))
             {
                 MessageBox.Show("Missing text in required fields.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; // Exit the method since there's an error
@@ -1422,6 +1418,200 @@ namespace EatNRunProject
                 CreateAccBtnPanel.Visible = false;
                 UpdateEmplAccPanel.Visible = true;
             }
+        }
+
+        private void AdminPB_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ManagerPB_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CashierPB_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddItemExitBtn_Click(object sender, EventArgs e)
+        {
+            if (AddItemPanel.Visible)
+            {
+                AddItemPanel.Visible = false;
+                CreateNewFoodBtnPanel.Visible = true;
+                AddItemBoxClear();            }
+
+            else
+            {
+                AddItemPanel.Visible = true;
+                CreateNewFoodBtnPanel.Visible = false;
+            }
+        }
+
+        private void AddItemCreatedDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddItemPicBtn_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Load the selected image into the PictureBox
+                    Image selectedImage = Image.FromFile(openFileDialog.FileName);
+
+                    // Check if the image dimensions are 64x64 pixels
+                    if (selectedImage.Width == 64 && selectedImage.Height == 64)
+                    {
+                        AddItemPicBox.Image = selectedImage;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select an image with dimensions of 64x64 pixels.");
+                    }
+                }
+            }
+        }
+
+        private void AddItemTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (AddItemTypeComboBox.SelectedItem != null)
+            {
+                string selectedType = AddItemTypeComboBox.SelectedItem.ToString();
+                string resultType = ID + "-" + selectedType;
+                AddItemCodeBox.Text = resultType;
+            }
+            else
+            {
+                // Handle the case where AddItemTypeComboBox.SelectedItem is null
+                // You might want to display an error message or take appropriate action.
+                // For now, you can set AddItemCodeBox.Text to a default value or leave it empty.
+                AddItemCodeBox.Text = "No item selected";
+            }
+
+        }
+
+        private void AddItemBtn_Click(object sender, EventArgs e)
+        {
+            //Create Acc Btn
+            DateTime selectedDate = AddItemCreatedDatePicker.Value;
+
+            string itemName = AddItemNameBox.Text;
+            string itemCode = AddItemCodeBox.Text;
+            string itemCreated = selectedDate.ToString("MM-dd-yyyy dddd");
+            string itemType = AddItemTypeComboBox.Text;
+            string itemPrice = AddItemPriceBox.Text;
+
+            Regex nameRegex = new Regex("^[A-Z][a-zA-Z]+(?: [a-zA-Z]+)*$");
+
+
+            if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(itemCode) || string.IsNullOrEmpty(itemCreated) ||
+            string.IsNullOrEmpty(itemType) || string.IsNullOrEmpty(itemPrice))
+            {
+                MessageBox.Show("Missing text in required fields.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Exit the method since there's an error
+            }
+            else if (itemName.Contains("Admin") || itemPrice.Contains("Admin") || itemCode.Contains("Admin123") || itemPrice.Contains("Admin123"))
+            {
+                MessageBox.Show("The word 'Admin' cannot be used as a Food Item credentials.");
+                return;
+            }
+            // Validate fields using regex patterns
+            else if (!nameRegex.IsMatch(itemName))
+            {
+                MessageBox.Show("Name must start with a capital letter and only contain alphabetic values.");
+                return;
+            }
+            //else if (!int.TryParse(itemPrice, out _))
+            //{
+            //    MessageBox.Show("Price must only contain numeric values.");
+            //    return;
+            //}
+            // Check if an image has been selected
+            else if (AddItemPicBox.Image == null)
+            {
+                MessageBox.Show("Please select an image for the employee.", "Image Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                try
+                {
+                    using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                    {
+                        connection.Open();
+
+                        // Convert the image to bytes
+                        byte[] imageData;
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            AddItemPicBox.Image.Save(ms, ImageFormat.Jpeg); // You can choose the format you want
+                            imageData = ms.ToArray();
+                        }
+
+                        // Insert data into the accounts table, including the image (AccountPfp in the first position)
+                        string insertQuery = "INSERT INTO foodmenu (FoodPic, FoodName, FoodCode, FoodType, FoodPrice, FoodDateCreated)"  +
+                            "VALUES (@Image, @itemName, @UID, @itemType, @itemPrice, @itemCreated)";
+
+                        MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
+                        cmd.Parameters.AddWithValue("@Image", imageData);
+                        cmd.Parameters.AddWithValue("@itemName", itemName);
+                        cmd.Parameters.AddWithValue("@UID", itemCode);
+                        cmd.Parameters.AddWithValue("@itemType", itemType);
+                        cmd.Parameters.AddWithValue("@itemPrice", itemPrice);
+                        cmd.Parameters.AddWithValue("@itemCreated", itemCreated);
+
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Successful insertion
+                    MessageBox.Show("Welcome to Eat N' Run. \n Employee Account successfully created.", "Hooray!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ItemIDRefresher();
+                    AddItemBoxClear();
+                    LoadItemMenu();
+                }
+                catch (MySqlException ex)
+                {
+                    // Handle MySQL database exception
+                    MessageBox.Show("MySQL Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    // Make sure to close the connection
+                    connection.Close();
+                }
+            }
+        }
+
+        private void AddItemBoxClear()
+        {
+            AddItemPicBox.Image = null;
+            AddItemNameBox.Text = "";
+            AddItemCodeBox.Text = "";
+            AddItemCreatedDatePicker.Value = DateTime.Now;
+            AddItemTypeComboBox.SelectedIndex = -1 ;
+            AddItemPriceBox.Text = "";
+
+        }
+
+        private void ItemIDRefresher()
+        {
+            AddItemCodeBox.Text = "";
+            ID = RandomNumberGenerator.GenerateRandomNumber();
+            string BtnSN = AddItemTypeComboBox.Text;
+            AddItemCodeBox.Text = ID + "-" + BtnSN;
+        }
+
+        private void AddItemTypeComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

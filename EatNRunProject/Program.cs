@@ -16,7 +16,7 @@ namespace EatNRunProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ENR_MainForm());
+            Application.Run(new ENRMainForm());
         }
     }
 }
