@@ -139,44 +139,18 @@
             this.ENRLogoY = new System.Windows.Forms.PictureBox();
             this.LoginPanel = new System.Windows.Forms.Panel();
             this.SelectAccountPanel = new System.Windows.Forms.Panel();
-            this.CashierLoginFormPanel = new System.Windows.Forms.Panel();
-            this.CashierEmplPassLbl = new System.Windows.Forms.Label();
-            this.CashierEmplPassPanelBox = new System.Windows.Forms.Panel();
-            this.CashierEmplPassBox = new System.Windows.Forms.TextBox();
-            this.CashierEmplShowPass = new System.Windows.Forms.CheckBox();
-            this.CashierEmplIDLbl = new System.Windows.Forms.Label();
-            this.CashierEmplIDPanelBox = new System.Windows.Forms.Panel();
-            this.CashierEmplIDBox = new System.Windows.Forms.TextBox();
-            this.CashierUserLbl = new System.Windows.Forms.Label();
-            this.CashierExitBtn = new FontAwesome.Sharp.IconButton();
-            this.CashierENRLogoR2 = new System.Windows.Forms.PictureBox();
-            this.CashierLoginBtn = new FontAwesome.Sharp.IconButton();
-            this.MngrLoginFormPanel = new System.Windows.Forms.Panel();
-            this.MngrEmplPassLbl = new System.Windows.Forms.Label();
-            this.MngrEmplPassPanelBox = new System.Windows.Forms.Panel();
-            this.MngrEmplPassBox = new System.Windows.Forms.TextBox();
-            this.MngrEmplShowPass = new System.Windows.Forms.CheckBox();
-            this.MngrEmplIDLbl = new System.Windows.Forms.Label();
-            this.MngrEmplIDPanelBox = new System.Windows.Forms.Panel();
-            this.MngrEmplIDBox = new System.Windows.Forms.TextBox();
-            this.MngrUserLbl = new System.Windows.Forms.Label();
-            this.MngrExitButton = new FontAwesome.Sharp.IconButton();
-            this.MngrENRLogoR2 = new System.Windows.Forms.PictureBox();
-            this.MngrLoginBtn = new FontAwesome.Sharp.IconButton();
             this.UserSelector = new System.Windows.Forms.Panel();
-            this.CashierPB = new System.Windows.Forms.PictureBox();
+            this.ENRGetStartedBtn = new FontAwesome.Sharp.IconButton();
             this.ENRLogoR1 = new System.Windows.Forms.PictureBox();
-            this.ManagerPB = new System.Windows.Forms.PictureBox();
-            this.AdminPB = new System.Windows.Forms.PictureBox();
             this.AdminLoginFormPanel = new System.Windows.Forms.Panel();
             this.AdminEmpPassLbl = new System.Windows.Forms.Label();
             this.AdminEmpPassPanelBox = new System.Windows.Forms.Panel();
             this.AdminEmpPassBox = new System.Windows.Forms.TextBox();
             this.AdminEmpShowPass = new System.Windows.Forms.CheckBox();
-            this.AdminEmpIDLbl = new System.Windows.Forms.Label();
-            this.EmpIDPanelBox = new System.Windows.Forms.Panel();
-            this.AdminEmpIDBox = new System.Windows.Forms.TextBox();
-            this.AdminUserLbl = new System.Windows.Forms.Label();
+            this.ENREmplIDLbl = new System.Windows.Forms.Label();
+            this.ENREmplIDPanelBox = new System.Windows.Forms.Panel();
+            this.ENREmplIDBox = new System.Windows.Forms.TextBox();
+            this.ENRLoginUserLbl = new System.Windows.Forms.Label();
             this.AdminExitBtn = new FontAwesome.Sharp.IconButton();
             this.AdminENRLogoR2 = new System.Windows.Forms.PictureBox();
             this.AdminLoginBtn = new FontAwesome.Sharp.IconButton();
@@ -232,22 +206,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.ENRLogoY)).BeginInit();
             this.LoginPanel.SuspendLayout();
             this.SelectAccountPanel.SuspendLayout();
-            this.CashierLoginFormPanel.SuspendLayout();
-            this.CashierEmplPassPanelBox.SuspendLayout();
-            this.CashierEmplIDPanelBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CashierENRLogoR2)).BeginInit();
-            this.MngrLoginFormPanel.SuspendLayout();
-            this.MngrEmplPassPanelBox.SuspendLayout();
-            this.MngrEmplIDPanelBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MngrENRLogoR2)).BeginInit();
             this.UserSelector.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CashierPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ENRLogoR1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ManagerPB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AdminPB)).BeginInit();
             this.AdminLoginFormPanel.SuspendLayout();
             this.AdminEmpPassPanelBox.SuspendLayout();
-            this.EmpIDPanelBox.SuspendLayout();
+            this.ENREmplIDPanelBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminENRLogoR2)).BeginInit();
             this.ManagerPanel.SuspendLayout();
             this.CashierPanel.SuspendLayout();
@@ -1623,8 +1586,6 @@
             // SelectAccountPanel
             // 
             this.SelectAccountPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SelectAccountPanel.Controls.Add(this.CashierLoginFormPanel);
-            this.SelectAccountPanel.Controls.Add(this.MngrLoginFormPanel);
             this.SelectAccountPanel.Controls.Add(this.UserSelector);
             this.SelectAccountPanel.Controls.Add(this.AdminLoginFormPanel);
             this.SelectAccountPanel.Location = new System.Drawing.Point(383, 113);
@@ -1632,321 +1593,11 @@
             this.SelectAccountPanel.Size = new System.Drawing.Size(498, 455);
             this.SelectAccountPanel.TabIndex = 9;
             // 
-            // CashierLoginFormPanel
-            // 
-            this.LoginFormPicker.SetCardName(this.CashierLoginFormPanel, "Card4");
-            this.CashierLoginFormPanel.Controls.Add(this.CashierEmplPassLbl);
-            this.CashierLoginFormPanel.Controls.Add(this.CashierEmplPassPanelBox);
-            this.CashierLoginFormPanel.Controls.Add(this.CashierEmplIDLbl);
-            this.CashierLoginFormPanel.Controls.Add(this.CashierEmplIDPanelBox);
-            this.CashierLoginFormPanel.Controls.Add(this.CashierUserLbl);
-            this.CashierLoginFormPanel.Controls.Add(this.CashierExitBtn);
-            this.CashierLoginFormPanel.Controls.Add(this.CashierENRLogoR2);
-            this.CashierLoginFormPanel.Controls.Add(this.CashierLoginBtn);
-            this.CashierLoginFormPanel.Location = new System.Drawing.Point(0, 0);
-            this.LoginFormPicker.SetMinimumSize(this.CashierLoginFormPanel, new System.Drawing.Size(200, 100));
-            this.CashierLoginFormPanel.Name = "CashierLoginFormPanel";
-            this.LoginFormPicker.SetPreferredSize(this.CashierLoginFormPanel, new System.Drawing.Size(200, 100));
-            this.CashierLoginFormPanel.Size = new System.Drawing.Size(496, 453);
-            this.CashierLoginFormPanel.TabIndex = 11;
-            // 
-            // CashierEmplPassLbl
-            // 
-            this.CashierEmplPassLbl.AutoSize = true;
-            this.CashierEmplPassLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CashierEmplPassLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierEmplPassLbl.Location = new System.Drawing.Point(86, 289);
-            this.CashierEmplPassLbl.Name = "CashierEmplPassLbl";
-            this.CashierEmplPassLbl.Size = new System.Drawing.Size(156, 18);
-            this.CashierEmplPassLbl.TabIndex = 6;
-            this.CashierEmplPassLbl.Text = "Employee Password:";
-            // 
-            // CashierEmplPassPanelBox
-            // 
-            this.CashierEmplPassPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CashierEmplPassPanelBox.Controls.Add(this.CashierEmplPassBox);
-            this.CashierEmplPassPanelBox.Controls.Add(this.CashierEmplShowPass);
-            this.CashierEmplPassPanelBox.ForeColor = System.Drawing.Color.Coral;
-            this.CashierEmplPassPanelBox.Location = new System.Drawing.Point(89, 320);
-            this.CashierEmplPassPanelBox.Name = "CashierEmplPassPanelBox";
-            this.CashierEmplPassPanelBox.Size = new System.Drawing.Size(320, 30);
-            this.CashierEmplPassPanelBox.TabIndex = 7;
-            // 
-            // CashierEmplPassBox
-            // 
-            this.CashierEmplPassBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.CashierEmplPassBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CashierEmplPassBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CashierEmplPassBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierEmplPassBox.Location = new System.Drawing.Point(3, 5);
-            this.CashierEmplPassBox.Name = "CashierEmplPassBox";
-            this.CashierEmplPassBox.Size = new System.Drawing.Size(278, 16);
-            this.CashierEmplPassBox.TabIndex = 8;
-            this.CashierEmplPassBox.UseSystemPasswordChar = true;
-            // 
-            // CashierEmplShowPass
-            // 
-            this.CashierEmplShowPass.AutoSize = true;
-            this.CashierEmplShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CashierEmplShowPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierEmplShowPass.Location = new System.Drawing.Point(300, 7);
-            this.CashierEmplShowPass.Name = "CashierEmplShowPass";
-            this.CashierEmplShowPass.Size = new System.Drawing.Size(12, 11);
-            this.CashierEmplShowPass.TabIndex = 1;
-            this.CashierEmplShowPass.UseVisualStyleBackColor = true;
-            this.CashierEmplShowPass.CheckedChanged += new System.EventHandler(this.CashierEmplShowPass_CheckedChanged);
-            // 
-            // CashierEmplIDLbl
-            // 
-            this.CashierEmplIDLbl.AutoSize = true;
-            this.CashierEmplIDLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CashierEmplIDLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierEmplIDLbl.Location = new System.Drawing.Point(86, 225);
-            this.CashierEmplIDLbl.Name = "CashierEmplIDLbl";
-            this.CashierEmplIDLbl.Size = new System.Drawing.Size(101, 18);
-            this.CashierEmplIDLbl.TabIndex = 3;
-            this.CashierEmplIDLbl.Text = "Employee ID:";
-            // 
-            // CashierEmplIDPanelBox
-            // 
-            this.CashierEmplIDPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CashierEmplIDPanelBox.Controls.Add(this.CashierEmplIDBox);
-            this.CashierEmplIDPanelBox.ForeColor = System.Drawing.Color.Coral;
-            this.CashierEmplIDPanelBox.Location = new System.Drawing.Point(89, 256);
-            this.CashierEmplIDPanelBox.Name = "CashierEmplIDPanelBox";
-            this.CashierEmplIDPanelBox.Size = new System.Drawing.Size(320, 30);
-            this.CashierEmplIDPanelBox.TabIndex = 5;
-            // 
-            // CashierEmplIDBox
-            // 
-            this.CashierEmplIDBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.CashierEmplIDBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CashierEmplIDBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CashierEmplIDBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierEmplIDBox.Location = new System.Drawing.Point(3, 6);
-            this.CashierEmplIDBox.Name = "CashierEmplIDBox";
-            this.CashierEmplIDBox.Size = new System.Drawing.Size(312, 16);
-            this.CashierEmplIDBox.TabIndex = 0;
-            // 
-            // CashierUserLbl
-            // 
-            this.CashierUserLbl.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CashierUserLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierUserLbl.Location = new System.Drawing.Point(3, 164);
-            this.CashierUserLbl.Name = "CashierUserLbl";
-            this.CashierUserLbl.Size = new System.Drawing.Size(490, 47);
-            this.CashierUserLbl.TabIndex = 0;
-            this.CashierUserLbl.Text = "CASHIER";
-            this.CashierUserLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // CashierExitBtn
-            // 
-            this.CashierExitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.CashierExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.CashierExitBtn.FlatAppearance.BorderSize = 0;
-            this.CashierExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CashierExitBtn.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.CashierExitBtn.IconColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.CashierExitBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.CashierExitBtn.IconSize = 24;
-            this.CashierExitBtn.Location = new System.Drawing.Point(452, 3);
-            this.CashierExitBtn.Name = "CashierExitBtn";
-            this.CashierExitBtn.Size = new System.Drawing.Size(43, 34);
-            this.CashierExitBtn.TabIndex = 4;
-            this.CashierExitBtn.UseVisualStyleBackColor = false;
-            this.CashierExitBtn.Click += new System.EventHandler(this.CashierExitBtn_Click);
-            // 
-            // CashierENRLogoR2
-            // 
-            this.CashierENRLogoR2.Image = global::EatNRunProject.Properties.Resources.AP_Logo_128x128;
-            this.CashierENRLogoR2.Location = new System.Drawing.Point(184, 33);
-            this.CashierENRLogoR2.Name = "CashierENRLogoR2";
-            this.CashierENRLogoR2.Size = new System.Drawing.Size(128, 128);
-            this.CashierENRLogoR2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.CashierENRLogoR2.TabIndex = 0;
-            this.CashierENRLogoR2.TabStop = false;
-            // 
-            // CashierLoginBtn
-            // 
-            this.CashierLoginBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierLoginBtn.FlatAppearance.BorderSize = 2;
-            this.CashierLoginBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.CashierLoginBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(90)))), ((int)(((byte)(105)))));
-            this.CashierLoginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CashierLoginBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CashierLoginBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierLoginBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.CashierLoginBtn.IconColor = System.Drawing.Color.Black;
-            this.CashierLoginBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.CashierLoginBtn.Location = new System.Drawing.Point(319, 374);
-            this.CashierLoginBtn.Name = "CashierLoginBtn";
-            this.CashierLoginBtn.Size = new System.Drawing.Size(90, 38);
-            this.CashierLoginBtn.TabIndex = 2;
-            this.CashierLoginBtn.Text = "LOGIN";
-            this.CashierLoginBtn.UseVisualStyleBackColor = true;
-            this.CashierLoginBtn.Click += new System.EventHandler(this.CashierLoginBtn_Click);
-            // 
-            // MngrLoginFormPanel
-            // 
-            this.LoginFormPicker.SetCardName(this.MngrLoginFormPanel, "Card3");
-            this.MngrLoginFormPanel.Controls.Add(this.MngrEmplPassLbl);
-            this.MngrLoginFormPanel.Controls.Add(this.MngrEmplPassPanelBox);
-            this.MngrLoginFormPanel.Controls.Add(this.MngrEmplIDLbl);
-            this.MngrLoginFormPanel.Controls.Add(this.MngrEmplIDPanelBox);
-            this.MngrLoginFormPanel.Controls.Add(this.MngrUserLbl);
-            this.MngrLoginFormPanel.Controls.Add(this.MngrExitButton);
-            this.MngrLoginFormPanel.Controls.Add(this.MngrENRLogoR2);
-            this.MngrLoginFormPanel.Controls.Add(this.MngrLoginBtn);
-            this.MngrLoginFormPanel.Location = new System.Drawing.Point(0, 0);
-            this.LoginFormPicker.SetMinimumSize(this.MngrLoginFormPanel, new System.Drawing.Size(200, 100));
-            this.MngrLoginFormPanel.Name = "MngrLoginFormPanel";
-            this.LoginFormPicker.SetPreferredSize(this.MngrLoginFormPanel, new System.Drawing.Size(200, 100));
-            this.MngrLoginFormPanel.Size = new System.Drawing.Size(496, 453);
-            this.MngrLoginFormPanel.TabIndex = 10;
-            // 
-            // MngrEmplPassLbl
-            // 
-            this.MngrEmplPassLbl.AutoSize = true;
-            this.MngrEmplPassLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MngrEmplPassLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrEmplPassLbl.Location = new System.Drawing.Point(86, 289);
-            this.MngrEmplPassLbl.Name = "MngrEmplPassLbl";
-            this.MngrEmplPassLbl.Size = new System.Drawing.Size(156, 18);
-            this.MngrEmplPassLbl.TabIndex = 6;
-            this.MngrEmplPassLbl.Text = "Employee Password:";
-            // 
-            // MngrEmplPassPanelBox
-            // 
-            this.MngrEmplPassPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MngrEmplPassPanelBox.Controls.Add(this.MngrEmplPassBox);
-            this.MngrEmplPassPanelBox.Controls.Add(this.MngrEmplShowPass);
-            this.MngrEmplPassPanelBox.ForeColor = System.Drawing.Color.Coral;
-            this.MngrEmplPassPanelBox.Location = new System.Drawing.Point(89, 320);
-            this.MngrEmplPassPanelBox.Name = "MngrEmplPassPanelBox";
-            this.MngrEmplPassPanelBox.Size = new System.Drawing.Size(320, 30);
-            this.MngrEmplPassPanelBox.TabIndex = 7;
-            // 
-            // MngrEmplPassBox
-            // 
-            this.MngrEmplPassBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrEmplPassBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.MngrEmplPassBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MngrEmplPassBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrEmplPassBox.Location = new System.Drawing.Point(3, 5);
-            this.MngrEmplPassBox.Name = "MngrEmplPassBox";
-            this.MngrEmplPassBox.Size = new System.Drawing.Size(278, 16);
-            this.MngrEmplPassBox.TabIndex = 8;
-            this.MngrEmplPassBox.UseSystemPasswordChar = true;
-            // 
-            // MngrEmplShowPass
-            // 
-            this.MngrEmplShowPass.AutoSize = true;
-            this.MngrEmplShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MngrEmplShowPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrEmplShowPass.Location = new System.Drawing.Point(300, 7);
-            this.MngrEmplShowPass.Name = "MngrEmplShowPass";
-            this.MngrEmplShowPass.Size = new System.Drawing.Size(12, 11);
-            this.MngrEmplShowPass.TabIndex = 1;
-            this.MngrEmplShowPass.UseVisualStyleBackColor = true;
-            this.MngrEmplShowPass.CheckedChanged += new System.EventHandler(this.MngrEmplShowPass_CheckedChanged);
-            // 
-            // MngrEmplIDLbl
-            // 
-            this.MngrEmplIDLbl.AutoSize = true;
-            this.MngrEmplIDLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MngrEmplIDLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrEmplIDLbl.Location = new System.Drawing.Point(86, 225);
-            this.MngrEmplIDLbl.Name = "MngrEmplIDLbl";
-            this.MngrEmplIDLbl.Size = new System.Drawing.Size(101, 18);
-            this.MngrEmplIDLbl.TabIndex = 3;
-            this.MngrEmplIDLbl.Text = "Employee ID:";
-            // 
-            // MngrEmplIDPanelBox
-            // 
-            this.MngrEmplIDPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MngrEmplIDPanelBox.Controls.Add(this.MngrEmplIDBox);
-            this.MngrEmplIDPanelBox.ForeColor = System.Drawing.Color.Coral;
-            this.MngrEmplIDPanelBox.Location = new System.Drawing.Point(89, 256);
-            this.MngrEmplIDPanelBox.Name = "MngrEmplIDPanelBox";
-            this.MngrEmplIDPanelBox.Size = new System.Drawing.Size(320, 30);
-            this.MngrEmplIDPanelBox.TabIndex = 5;
-            // 
-            // MngrEmplIDBox
-            // 
-            this.MngrEmplIDBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrEmplIDBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.MngrEmplIDBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MngrEmplIDBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrEmplIDBox.Location = new System.Drawing.Point(3, 6);
-            this.MngrEmplIDBox.Name = "MngrEmplIDBox";
-            this.MngrEmplIDBox.Size = new System.Drawing.Size(312, 16);
-            this.MngrEmplIDBox.TabIndex = 0;
-            // 
-            // MngrUserLbl
-            // 
-            this.MngrUserLbl.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MngrUserLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrUserLbl.Location = new System.Drawing.Point(3, 164);
-            this.MngrUserLbl.Name = "MngrUserLbl";
-            this.MngrUserLbl.Size = new System.Drawing.Size(490, 47);
-            this.MngrUserLbl.TabIndex = 0;
-            this.MngrUserLbl.Text = "MANAGER";
-            this.MngrUserLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // MngrExitButton
-            // 
-            this.MngrExitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrExitButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrExitButton.FlatAppearance.BorderSize = 0;
-            this.MngrExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MngrExitButton.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.MngrExitButton.IconColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MngrExitButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.MngrExitButton.IconSize = 24;
-            this.MngrExitButton.Location = new System.Drawing.Point(452, 3);
-            this.MngrExitButton.Name = "MngrExitButton";
-            this.MngrExitButton.Size = new System.Drawing.Size(43, 34);
-            this.MngrExitButton.TabIndex = 4;
-            this.MngrExitButton.UseVisualStyleBackColor = false;
-            this.MngrExitButton.Click += new System.EventHandler(this.MngrExitButton_Click);
-            // 
-            // MngrENRLogoR2
-            // 
-            this.MngrENRLogoR2.Image = global::EatNRunProject.Properties.Resources.AP_Logo_128x128;
-            this.MngrENRLogoR2.Location = new System.Drawing.Point(184, 33);
-            this.MngrENRLogoR2.Name = "MngrENRLogoR2";
-            this.MngrENRLogoR2.Size = new System.Drawing.Size(128, 128);
-            this.MngrENRLogoR2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.MngrENRLogoR2.TabIndex = 0;
-            this.MngrENRLogoR2.TabStop = false;
-            // 
-            // MngrLoginBtn
-            // 
-            this.MngrLoginBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrLoginBtn.FlatAppearance.BorderSize = 2;
-            this.MngrLoginBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.MngrLoginBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(90)))), ((int)(((byte)(105)))));
-            this.MngrLoginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MngrLoginBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MngrLoginBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrLoginBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.MngrLoginBtn.IconColor = System.Drawing.Color.Black;
-            this.MngrLoginBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.MngrLoginBtn.Location = new System.Drawing.Point(319, 374);
-            this.MngrLoginBtn.Name = "MngrLoginBtn";
-            this.MngrLoginBtn.Size = new System.Drawing.Size(90, 38);
-            this.MngrLoginBtn.TabIndex = 2;
-            this.MngrLoginBtn.Text = "LOGIN";
-            this.MngrLoginBtn.UseVisualStyleBackColor = true;
-            this.MngrLoginBtn.Click += new System.EventHandler(this.MngrLoginBtn_Click);
-            // 
             // UserSelector
             // 
             this.LoginFormPicker.SetCardName(this.UserSelector, "Card2");
-            this.UserSelector.Controls.Add(this.CashierPB);
+            this.UserSelector.Controls.Add(this.ENRGetStartedBtn);
             this.UserSelector.Controls.Add(this.ENRLogoR1);
-            this.UserSelector.Controls.Add(this.ManagerPB);
-            this.UserSelector.Controls.Add(this.AdminPB);
             this.UserSelector.Location = new System.Drawing.Point(0, 0);
             this.LoginFormPicker.SetMinimumSize(this.UserSelector, new System.Drawing.Size(200, 100));
             this.UserSelector.Name = "UserSelector";
@@ -1954,57 +1605,46 @@
             this.UserSelector.Size = new System.Drawing.Size(496, 453);
             this.UserSelector.TabIndex = 1;
             // 
-            // CashierPB
+            // ENRGetStartedBtn
             // 
-            this.CashierPB.Image = global::EatNRunProject.Properties.Resources.Cashier;
-            this.CashierPB.Location = new System.Drawing.Point(337, 245);
-            this.CashierPB.Name = "CashierPB";
-            this.CashierPB.Size = new System.Drawing.Size(128, 128);
-            this.CashierPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.CashierPB.TabIndex = 3;
-            this.CashierPB.TabStop = false;
-            this.CashierPB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CashierPB_MouseDown);
+            this.ENRGetStartedBtn.FlatAppearance.BorderSize = 0;
+            this.ENRGetStartedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ENRGetStartedBtn.Flip = FontAwesome.Sharp.FlipOrientation.Vertical;
+            this.ENRGetStartedBtn.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ENRGetStartedBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.ENRGetStartedBtn.IconChar = FontAwesome.Sharp.IconChar.SignIn;
+            this.ENRGetStartedBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.ENRGetStartedBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ENRGetStartedBtn.IconSize = 40;
+            this.ENRGetStartedBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ENRGetStartedBtn.Location = new System.Drawing.Point(127, 199);
+            this.ENRGetStartedBtn.Name = "ENRGetStartedBtn";
+            this.ENRGetStartedBtn.Size = new System.Drawing.Size(259, 55);
+            this.ENRGetStartedBtn.TabIndex = 4;
+            this.ENRGetStartedBtn.Text = "Get Started";
+            this.ENRGetStartedBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ENRGetStartedBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.ENRGetStartedBtn.UseVisualStyleBackColor = true;
+            this.ENRGetStartedBtn.Click += new System.EventHandler(this.ENRGetStartedBtn_Click);
             // 
             // ENRLogoR1
             // 
             this.ENRLogoR1.Image = global::EatNRunProject.Properties.Resources.AP_Logo_128x128;
-            this.ENRLogoR1.Location = new System.Drawing.Point(184, 82);
+            this.ENRLogoR1.Location = new System.Drawing.Point(181, 48);
             this.ENRLogoR1.Name = "ENRLogoR1";
             this.ENRLogoR1.Size = new System.Drawing.Size(128, 128);
             this.ENRLogoR1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.ENRLogoR1.TabIndex = 0;
             this.ENRLogoR1.TabStop = false;
             // 
-            // ManagerPB
-            // 
-            this.ManagerPB.Image = global::EatNRunProject.Properties.Resources.Manager;
-            this.ManagerPB.Location = new System.Drawing.Point(182, 245);
-            this.ManagerPB.Name = "ManagerPB";
-            this.ManagerPB.Size = new System.Drawing.Size(128, 128);
-            this.ManagerPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ManagerPB.TabIndex = 2;
-            this.ManagerPB.TabStop = false;
-            this.ManagerPB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ManagerPB_MouseDown);
-            // 
-            // AdminPB
-            // 
-            this.AdminPB.Image = global::EatNRunProject.Properties.Resources.Admin;
-            this.AdminPB.Location = new System.Drawing.Point(33, 245);
-            this.AdminPB.Name = "AdminPB";
-            this.AdminPB.Size = new System.Drawing.Size(128, 128);
-            this.AdminPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.AdminPB.TabIndex = 1;
-            this.AdminPB.TabStop = false;
-            this.AdminPB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdminPB_MouseDown);
-            // 
             // AdminLoginFormPanel
             // 
             this.LoginFormPicker.SetCardName(this.AdminLoginFormPanel, "Card1");
             this.AdminLoginFormPanel.Controls.Add(this.AdminEmpPassLbl);
             this.AdminLoginFormPanel.Controls.Add(this.AdminEmpPassPanelBox);
-            this.AdminLoginFormPanel.Controls.Add(this.AdminEmpIDLbl);
-            this.AdminLoginFormPanel.Controls.Add(this.EmpIDPanelBox);
-            this.AdminLoginFormPanel.Controls.Add(this.AdminUserLbl);
+            this.AdminLoginFormPanel.Controls.Add(this.ENREmplIDLbl);
+            this.AdminLoginFormPanel.Controls.Add(this.ENREmplIDPanelBox);
+            this.AdminLoginFormPanel.Controls.Add(this.ENRLoginUserLbl);
             this.AdminLoginFormPanel.Controls.Add(this.AdminExitBtn);
             this.AdminLoginFormPanel.Controls.Add(this.AdminENRLogoR2);
             this.AdminLoginFormPanel.Controls.Add(this.AdminLoginBtn);
@@ -2061,48 +1701,48 @@
             this.AdminEmpShowPass.UseVisualStyleBackColor = true;
             this.AdminEmpShowPass.CheckedChanged += new System.EventHandler(this.EmpShowPass_CheckedChanged);
             // 
-            // AdminEmpIDLbl
+            // ENREmplIDLbl
             // 
-            this.AdminEmpIDLbl.AutoSize = true;
-            this.AdminEmpIDLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminEmpIDLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.AdminEmpIDLbl.Location = new System.Drawing.Point(86, 225);
-            this.AdminEmpIDLbl.Name = "AdminEmpIDLbl";
-            this.AdminEmpIDLbl.Size = new System.Drawing.Size(101, 18);
-            this.AdminEmpIDLbl.TabIndex = 3;
-            this.AdminEmpIDLbl.Text = "Employee ID:";
+            this.ENREmplIDLbl.AutoSize = true;
+            this.ENREmplIDLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ENREmplIDLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.ENREmplIDLbl.Location = new System.Drawing.Point(86, 225);
+            this.ENREmplIDLbl.Name = "ENREmplIDLbl";
+            this.ENREmplIDLbl.Size = new System.Drawing.Size(101, 18);
+            this.ENREmplIDLbl.TabIndex = 3;
+            this.ENREmplIDLbl.Text = "Employee ID:";
             // 
-            // EmpIDPanelBox
+            // ENREmplIDPanelBox
             // 
-            this.EmpIDPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.EmpIDPanelBox.Controls.Add(this.AdminEmpIDBox);
-            this.EmpIDPanelBox.ForeColor = System.Drawing.Color.Coral;
-            this.EmpIDPanelBox.Location = new System.Drawing.Point(89, 256);
-            this.EmpIDPanelBox.Name = "EmpIDPanelBox";
-            this.EmpIDPanelBox.Size = new System.Drawing.Size(320, 30);
-            this.EmpIDPanelBox.TabIndex = 5;
+            this.ENREmplIDPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ENREmplIDPanelBox.Controls.Add(this.ENREmplIDBox);
+            this.ENREmplIDPanelBox.ForeColor = System.Drawing.Color.Coral;
+            this.ENREmplIDPanelBox.Location = new System.Drawing.Point(89, 256);
+            this.ENREmplIDPanelBox.Name = "ENREmplIDPanelBox";
+            this.ENREmplIDPanelBox.Size = new System.Drawing.Size(320, 30);
+            this.ENREmplIDPanelBox.TabIndex = 5;
             // 
-            // AdminEmpIDBox
+            // ENREmplIDBox
             // 
-            this.AdminEmpIDBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.AdminEmpIDBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.AdminEmpIDBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminEmpIDBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.AdminEmpIDBox.Location = new System.Drawing.Point(3, 6);
-            this.AdminEmpIDBox.Name = "AdminEmpIDBox";
-            this.AdminEmpIDBox.Size = new System.Drawing.Size(312, 16);
-            this.AdminEmpIDBox.TabIndex = 0;
+            this.ENREmplIDBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.ENREmplIDBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ENREmplIDBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ENREmplIDBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.ENREmplIDBox.Location = new System.Drawing.Point(3, 6);
+            this.ENREmplIDBox.Name = "ENREmplIDBox";
+            this.ENREmplIDBox.Size = new System.Drawing.Size(312, 16);
+            this.ENREmplIDBox.TabIndex = 0;
             // 
-            // AdminUserLbl
+            // ENRLoginUserLbl
             // 
-            this.AdminUserLbl.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminUserLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.AdminUserLbl.Location = new System.Drawing.Point(3, 164);
-            this.AdminUserLbl.Name = "AdminUserLbl";
-            this.AdminUserLbl.Size = new System.Drawing.Size(490, 47);
-            this.AdminUserLbl.TabIndex = 0;
-            this.AdminUserLbl.Text = "ADMIN";
-            this.AdminUserLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ENRLoginUserLbl.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ENRLoginUserLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.ENRLoginUserLbl.Location = new System.Drawing.Point(76, 164);
+            this.ENRLoginUserLbl.Name = "ENRLoginUserLbl";
+            this.ENRLoginUserLbl.Size = new System.Drawing.Size(333, 47);
+            this.ENRLoginUserLbl.TabIndex = 0;
+            this.ENRLoginUserLbl.Text = "| Login Here";
+            this.ENRLoginUserLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // AdminExitBtn
             // 
@@ -2256,7 +1896,7 @@
             // 
             this.LoginFormPicker.ContainerControl = this.SelectAccountPanel;
             this.LoginFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.LoginFormPicker.SelectedCard = "Card1";
+            this.LoginFormPicker.SelectedCard = "Card2";
             // 
             // AdminFormPicker
             // 
@@ -2346,32 +1986,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.ENRLogoY)).EndInit();
             this.LoginPanel.ResumeLayout(false);
             this.SelectAccountPanel.ResumeLayout(false);
-            this.CashierLoginFormPanel.ResumeLayout(false);
-            this.CashierLoginFormPanel.PerformLayout();
-            this.CashierEmplPassPanelBox.ResumeLayout(false);
-            this.CashierEmplPassPanelBox.PerformLayout();
-            this.CashierEmplIDPanelBox.ResumeLayout(false);
-            this.CashierEmplIDPanelBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CashierENRLogoR2)).EndInit();
-            this.MngrLoginFormPanel.ResumeLayout(false);
-            this.MngrLoginFormPanel.PerformLayout();
-            this.MngrEmplPassPanelBox.ResumeLayout(false);
-            this.MngrEmplPassPanelBox.PerformLayout();
-            this.MngrEmplIDPanelBox.ResumeLayout(false);
-            this.MngrEmplIDPanelBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MngrENRLogoR2)).EndInit();
             this.UserSelector.ResumeLayout(false);
             this.UserSelector.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CashierPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ENRLogoR1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ManagerPB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AdminPB)).EndInit();
             this.AdminLoginFormPanel.ResumeLayout(false);
             this.AdminLoginFormPanel.PerformLayout();
             this.AdminEmpPassPanelBox.ResumeLayout(false);
             this.AdminEmpPassPanelBox.PerformLayout();
-            this.EmpIDPanelBox.ResumeLayout(false);
-            this.EmpIDPanelBox.PerformLayout();
+            this.ENREmplIDPanelBox.ResumeLayout(false);
+            this.ENREmplIDPanelBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminENRLogoR2)).EndInit();
             this.ManagerPanel.ResumeLayout(false);
             this.ManagerPanel.PerformLayout();
@@ -2392,21 +2015,18 @@
         private System.Windows.Forms.Panel ManagerPanel;
         private System.Windows.Forms.Panel CashierPanel;
         private System.Windows.Forms.Label ManagerPanelLbl;
-        private System.Windows.Forms.Label AdminUserLbl;
+        private System.Windows.Forms.Label ENRLoginUserLbl;
         private System.Windows.Forms.PictureBox AdminENRLogoR2;
-        private System.Windows.Forms.PictureBox CashierPB;
-        private System.Windows.Forms.PictureBox ManagerPB;
-        private System.Windows.Forms.PictureBox AdminPB;
         private System.Windows.Forms.PictureBox ENRLogoR1;
         private FontAwesome.Sharp.IconButton AdminLoginBtn;
         private System.Windows.Forms.Panel SelectAccountPanel;
         private System.Windows.Forms.Panel AdminLoginFormPanel;
         private Syncfusion.Windows.Forms.Tools.CardLayout LoginFormPicker;
         private System.Windows.Forms.Panel UserSelector;
-        private System.Windows.Forms.Label AdminEmpIDLbl;
-        private System.Windows.Forms.Panel EmpIDPanelBox;
+        private System.Windows.Forms.Label ENREmplIDLbl;
+        private System.Windows.Forms.Panel ENREmplIDPanelBox;
         private FontAwesome.Sharp.IconButton AdminExitBtn;
-        private System.Windows.Forms.TextBox AdminEmpIDBox;
+        private System.Windows.Forms.TextBox ENREmplIDBox;
         private System.Windows.Forms.Label AdminEmpPassLbl;
         private System.Windows.Forms.Panel AdminEmpPassPanelBox;
         private System.Windows.Forms.CheckBox AdminEmpShowPass;
@@ -2446,31 +2066,7 @@
         private FontAwesome.Sharp.IconButton NewItemExitBtn;
         private FontAwesome.Sharp.IconButton UpdateItemExitBtn;
         private Syncfusion.Windows.Forms.Tools.CardLayout AccountsFormPicker;
-        private System.Windows.Forms.Panel MngrLoginFormPanel;
-        private System.Windows.Forms.Label MngrEmplPassLbl;
-        private System.Windows.Forms.Panel MngrEmplPassPanelBox;
-        private System.Windows.Forms.TextBox MngrEmplPassBox;
-        private System.Windows.Forms.CheckBox MngrEmplShowPass;
-        private System.Windows.Forms.Label MngrEmplIDLbl;
-        private System.Windows.Forms.Panel MngrEmplIDPanelBox;
-        private System.Windows.Forms.TextBox MngrEmplIDBox;
-        private System.Windows.Forms.Label MngrUserLbl;
-        private FontAwesome.Sharp.IconButton MngrExitButton;
-        private System.Windows.Forms.PictureBox MngrENRLogoR2;
-        private FontAwesome.Sharp.IconButton MngrLoginBtn;
         private System.Windows.Forms.TextBox AdminEmpPassBox;
-        private System.Windows.Forms.Panel CashierLoginFormPanel;
-        private System.Windows.Forms.Label CashierEmplPassLbl;
-        private System.Windows.Forms.Panel CashierEmplPassPanelBox;
-        private System.Windows.Forms.TextBox CashierEmplPassBox;
-        private System.Windows.Forms.CheckBox CashierEmplShowPass;
-        private System.Windows.Forms.Label CashierEmplIDLbl;
-        private System.Windows.Forms.Panel CashierEmplIDPanelBox;
-        private System.Windows.Forms.TextBox CashierEmplIDBox;
-        private System.Windows.Forms.Label CashierUserLbl;
-        private FontAwesome.Sharp.IconButton CashierExitBtn;
-        private System.Windows.Forms.PictureBox CashierENRLogoR2;
-        private FontAwesome.Sharp.IconButton CashierLoginBtn;
         private System.Windows.Forms.Panel AccountsFormPanel;
         private System.Windows.Forms.Panel UpdateEmplAccPanel;
         private System.Windows.Forms.Panel UpdateEmplPositionPanelBox;
@@ -2545,5 +2141,6 @@
         private System.Windows.Forms.Panel CreateAccBtnPanel;
         private FontAwesome.Sharp.IconButton CreateNewAccBtn;
         private System.Windows.Forms.DataGridView AccountListTable;
+        private FontAwesome.Sharp.IconButton ENRGetStartedBtn;
     }
 }

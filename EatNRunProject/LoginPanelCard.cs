@@ -6,26 +6,21 @@ namespace EatNRunProject
     internal class LoginPanelCard
     {
 
-        private Panel AdminLoginForm;
-        private Panel ManagerLoginForm;
-        private Panel CashierLoginForm;
+        private Panel EmployeeLoginForm;
+
 
         private Panel UserSelect;
 
-        public LoginPanelCard(Panel AdminLoginFormPanel, Panel ManagerLoginFormPanel, Panel CashierLoginFormPanel, Panel UserSelector)
+        public LoginPanelCard(Panel EmployeeLoginFormPanel, Panel UserSelector)
         {
 
-            AdminLoginForm = AdminLoginFormPanel;
-            ManagerLoginForm = ManagerLoginFormPanel;
-            CashierLoginForm = CashierLoginFormPanel;
+            EmployeeLoginForm = EmployeeLoginFormPanel;
             UserSelect = UserSelector;
         }
 
         public void LoginFormShow(Panel panelToShow)
         {
-            AdminLoginForm.Hide();
-            ManagerLoginForm.Hide();
-            CashierLoginForm.Hide();
+            EmployeeLoginForm.Hide();
             UserSelect.Hide();
             panelToShow.Show();
         }
