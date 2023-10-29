@@ -44,6 +44,8 @@ namespace EatNRunProject
         string ID;
         private int minTextLength = 5; // Minimum required text length
 
+        //basta image
+        Image selectedImage;
 
 
         public ENRMainForm()
@@ -71,6 +73,11 @@ namespace EatNRunProject
             //add item type combo box
             AddItemTypeComboBox.Items.AddRange(itemType);
             AddItemTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            //update item type combo box
+            UpdateItemTypeComboBox.Items.AddRange(itemType);
+            UpdateItemTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
 
             //Panel Manager
             MFpanelManager = new MainFormCard(LoginPanel, AdminPanel, ManagerPanel, CashierPanel);
@@ -473,7 +480,7 @@ namespace EatNRunProject
 
                 e.SuppressKeyPress = true;
             }
-            
+
         }
 
         private void AdminLoginBtn_Click(object sender, EventArgs e)
@@ -712,28 +719,43 @@ namespace EatNRunProject
             }
         }
 
-        private void UpdateItemExitBtn_Click(object sender, EventArgs e)
-        {
-            if (UpdateItemPanel.Visible)
-            {
-                CreateNewFoodBtnPanel.Visible = true;
-                UpdateItemPanel.Visible = false;
-            }
-
-            else
-            {
-                CreateNewFoodBtnPanel.Visible = false;
-                UpdateItemPanel.Visible = true;
-            }
-        }
-
         private void FoodItemEditBtn_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Do you want to edit this food item?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                AdminFoodPanelManager.AdminFoodFormShow(UpdateItemPanel);
 
+            if (FoodItemListTable.SelectedRows.Count > 0)
+            {
+                DialogResult result = MessageBox.Show("Do you want to edit this food item?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    // Iterate through selected rows in PendingTable
+                    foreach (DataGridViewRow selectedRow in FoodItemListTable.SelectedRows)
+                    {
+                        try
+                        {
+                            //// Re data into the database
+                            RetrieveItemDataFromDB(selectedRow);
+                            RetrieveItemImageFromDB(selectedRow);
+                            AdminFoodPanelManager.AdminFoodFormShow(UpdateItemPanel);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle any database-related errors here
+                            MessageBox.Show("Error: " + ex.Message);
+                        }
+                    }
+
+
+                }
+                else if (result == DialogResult.No)
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select a table row first.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
 
         }
@@ -765,7 +787,7 @@ namespace EatNRunProject
                         {
                             //// Re data into the database
                             RetrieveEmployeeDataFromDB(selectedRow);
-                            RetrieveImageFromDB(selectedRow);
+                            RetrieveEmplImageFromDB(selectedRow);
                             AdminAccPanelManager.AdminAccFormShow(UpdateEmplAccPanel);
 
                         }
@@ -853,7 +875,7 @@ namespace EatNRunProject
             }
         }
 
-        private void RetrieveImageFromDB(DataGridViewRow selectedRow)
+        private void RetrieveEmplImageFromDB(DataGridViewRow selectedRow)
         {
             try
             {
@@ -1053,7 +1075,7 @@ namespace EatNRunProject
                 }
             }
 
-            
+
         }
 
 
@@ -1420,28 +1442,14 @@ namespace EatNRunProject
             }
         }
 
-        private void AdminPB_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ManagerPB_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CashierPB_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddItemExitBtn_Click(object sender, EventArgs e)
         {
             if (AddItemPanel.Visible)
             {
                 AddItemPanel.Visible = false;
                 CreateNewFoodBtnPanel.Visible = true;
-                AddItemBoxClear();            }
+                AddItemBoxClear();
+            }
 
             else
             {
@@ -1536,7 +1544,7 @@ namespace EatNRunProject
             // Check if an image has been selected
             else if (AddItemPicBox.Image == null)
             {
-                MessageBox.Show("Please select an image for the employee.", "Image Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select an image for this item.", "Image Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
@@ -1556,7 +1564,7 @@ namespace EatNRunProject
                         }
 
                         // Insert data into the accounts table, including the image (AccountPfp in the first position)
-                        string insertQuery = "INSERT INTO foodmenu (FoodPic, FoodName, FoodCode, FoodType, FoodPrice, FoodDateCreated)"  +
+                        string insertQuery = "INSERT INTO foodmenu (FoodPic, FoodName, FoodCode, FoodType, FoodPrice, FoodDateCreated)" +
                             "VALUES (@Image, @itemName, @UID, @itemType, @itemPrice, @itemCreated)";
 
                         MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
@@ -1572,7 +1580,7 @@ namespace EatNRunProject
                     }
 
                     // Successful insertion
-                    MessageBox.Show("Welcome to Eat N' Run. \n Employee Account successfully created.", "Hooray!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Food item successfully created.", "Hooray!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ItemIDRefresher();
                     AddItemBoxClear();
                     LoadItemMenu();
@@ -1596,7 +1604,7 @@ namespace EatNRunProject
             AddItemNameBox.Text = "";
             AddItemCodeBox.Text = "";
             AddItemCreatedDatePicker.Value = DateTime.Now;
-            AddItemTypeComboBox.SelectedIndex = -1 ;
+            AddItemTypeComboBox.SelectedIndex = -1;
             AddItemPriceBox.Text = "";
 
         }
@@ -1613,5 +1621,283 @@ namespace EatNRunProject
         {
 
         }
+
+        private void UpdateItemExitBtn_Click_1(object sender, EventArgs e)
+        {
+            if (UpdateItemPanel.Visible)
+            {
+                CreateNewFoodBtnPanel.Visible = true;
+                UpdateItemPanel.Visible = false;
+            }
+
+            else
+            {
+                CreateNewFoodBtnPanel.Visible = false;
+                UpdateItemPanel.Visible = true;
+            }
+        }
+
+        private void UpdateItemPicBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateItemPicBtn_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Load the selected image into the PictureBox
+                    selectedImage = Image.FromFile(openFileDialog.FileName);
+
+                    // Check if the image dimensions are 64x64 pixels
+                    if (selectedImage.Width == 64 && selectedImage.Height == 64)
+                    {
+                        UpdateItemPicBox.Image = selectedImage;
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select an image with dimensions of 64x64 pixels.");
+                    }
+                }
+            }
+        }
+
+        private void UpdateItemBtn_Click(object sender, EventArgs e)
+        {
+            //Update Acc Btn
+            DateTime selectedDate = UpdateItemCreatedDatePicker.Value;
+
+            string itemName = UpdateItemNameBox.Text;
+            string itemCode = UpdateItemCodeBox.Text;
+            string itemType = UpdateItemTypeComboBox.Text;
+            string itemPrice = UpdateItemPriceBox.Text;
+            string itemCreated = selectedDate.ToString("MM-dd-yyyy dddd");
+            
+            Regex nameRegex = new Regex("^[A-Z][a-zA-Z]+(?: [a-zA-Z]+)*$");
+
+            if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(itemCode) || string.IsNullOrEmpty(itemType) ||
+                string.IsNullOrEmpty(itemPrice) || string.IsNullOrEmpty(itemCreated))
+            {
+                MessageBox.Show("Missing text in required fields.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Exit the method since there's an error
+            }
+            // Validate fields using regex patterns
+            else if (!nameRegex.IsMatch(itemName))
+            {
+                MessageBox.Show("Item Name must start with a capital letter and only contain alphabetic values.");
+                return;
+            }
+            // Check if an image has been selected
+            else if (UpdateItemPicBox.Image == null)
+            {
+                MessageBox.Show("Please select an image for this item.", "Image Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (string.IsNullOrEmpty(itemCode))
+            {
+                MessageBox.Show("Item Code is required to update an item.", "Missing Item Code", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                byte[] imageData = null;
+
+                // Check if the image in the PictureBox has been modified
+                if (selectedImage != null)
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        selectedImage.Save(ms, ImageFormat.Jpeg); // Replace with the correct image format
+                        imageData = ms.ToArray();
+                    }
+                }
+
+                try
+                {
+                    using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                    {
+                        connection.Open();
+
+                        // Check if the item with the given Item Code exists
+                        string checkExistQuery = "SELECT COUNT(*) FROM foodmenu WHERE FoodCode = @itemCode";
+                        MySqlCommand checkExistCmd = new MySqlCommand(checkExistQuery, connection);
+                        checkExistCmd.Parameters.AddWithValue("@itemCode", itemCode);
+                        int itemCount = Convert.ToInt32(checkExistCmd.ExecuteScalar());
+
+                        if (itemCount == 0)
+                        {
+                            MessageBox.Show("Item with the provided CODE does not exist in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        // Update data in the foodmenu table, including the image conditionally
+                        if (imageData != null)
+                        {
+                            // Update with image
+                            string updateWithImageQuery = "UPDATE foodmenu SET FoodName = @itemName, FoodType = @itemType, FoodPrice = @itemPrice, FoodPic = @imageData WHERE FoodCode = @itemCode";
+                            MySqlCommand updateWithImageCmd = new MySqlCommand(updateWithImageQuery, connection);
+                            updateWithImageCmd.Parameters.AddWithValue("@itemName", itemName);
+                            updateWithImageCmd.Parameters.AddWithValue("@itemCode", itemCode);
+                            updateWithImageCmd.Parameters.AddWithValue("@itemType", itemType);
+                            updateWithImageCmd.Parameters.AddWithValue("@itemPrice", itemPrice);
+                            updateWithImageCmd.Parameters.AddWithValue("@imageData", imageData);
+                            updateWithImageCmd.ExecuteNonQuery();
+                            selectedImage = null;
+                        }
+                        else
+                        {
+                            // Update without image
+                            string updateWithoutImageQuery = "UPDATE foodmenu SET FoodName = @itemName, FoodType = @itemType, FoodPrice = @itemPrice WHERE FoodCode = @itemCode";
+                            MySqlCommand updateWithoutImageCmd = new MySqlCommand(updateWithoutImageQuery, connection);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@itemName", itemName);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@itemCode", itemCode);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@itemType", itemType);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@itemPrice", itemPrice);
+                            updateWithoutImageCmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    // Successful update
+                    MessageBox.Show("Item has been successfully updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    UpdateItemBoxClear();
+                    LoadItemMenu();
+                }
+                catch (MySqlException ex)
+                {
+                    // Handle MySQL database exception
+                    MessageBox.Show("MySQL Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                        connection.Close();
+                }
+
+            }
+        }
+
+        private void UpdateItemTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateItemCreatedDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateItemBoxClear()
+        {
+            UpdateItemPicBox.Image = null;
+            UpdateItemNameBox.Text = "";
+            UpdateItemCodeBox.Text = "";
+            UpdateItemCreatedDatePicker.Value = DateTime.Now;
+            UpdateItemTypeComboBox.SelectedIndex = -1;
+            UpdateItemPriceBox.Text = "";
+
+        }
+
+        private void RetrieveItemDataFromDB(DataGridViewRow selectedRow)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    string ItemCode = selectedRow.Cells[3].Value.ToString();
+
+                    string selectQuery = "SELECT * FROM foodmenu WHERE FoodCode = @ItemCode";
+                    MySqlCommand selectCmd = new MySqlCommand(selectQuery, connection);
+                    selectCmd.Parameters.AddWithValue("@ItemCode", ItemCode);
+
+                    using (MySqlDataReader reader = selectCmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string itemName = reader["FoodName"].ToString();
+                            string itemCode = reader["FoodCode"].ToString();
+                            string itemType = reader["FoodType"].ToString();
+                            string itemPrice = reader["FoodPrice"].ToString();
+                            string itemCreated = reader["FoodDateCreated"].ToString();
+
+                            // Assuming emplBday is in the "MM-DD-YYYY DDDD" format
+                            string dateFormat = "MM-dd-yyyy dddd";
+
+                            if (DateTime.TryParseExact(itemCreated, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateValue))
+                            {
+                                UpdateItemCreatedDatePicker.Value = dateValue;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Invalid date format in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                            UpdateItemNameBox.Text = itemName;
+                            UpdateItemCodeBox.Text = itemCode;
+                            UpdateItemTypeComboBox.Text = itemType;
+                            UpdateItemPriceBox.Text = itemPrice;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        private void RetrieveItemImageFromDB(DataGridViewRow selectedRow)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    string ItemCode = selectedRow.Cells[3].Value.ToString();
+
+                    string selectQuery = "SELECT * FROM foodmenu WHERE FoodCode = @ItemCode";
+                    MySqlCommand selectCmd = new MySqlCommand(selectQuery, connection);
+                    selectCmd.Parameters.AddWithValue("@ItemCode", ItemCode);
+
+                    using (MySqlDataReader reader = selectCmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // Check if the "AccountPfp" column contains a blob
+                            if (!reader.IsDBNull(reader.GetOrdinal("FoodPic")))
+                            {
+                                byte[] imgData = (byte[])reader["FoodPic"];
+                                using (MemoryStream ms = new MemoryStream(imgData))
+                                {
+                                    // Display the image in the PictureBox control
+                                    UpdateItemPicBox.Image = Image.FromStream(ms);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Close the database connection
+                connection.Close();
+            }
+        }
+
+
     }
 }
