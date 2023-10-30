@@ -1324,6 +1324,18 @@ namespace EatNRunProject
             }
             else
             {
+                byte[] imageData = null;
+
+                // Check if the image in the PictureBox has been modified
+                if (selectedImage != null)
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        selectedImage.Save(ms, ImageFormat.Jpeg); // Replace with the correct image format
+                        imageData = ms.ToArray();
+                    }
+                }
+
                 try
                 {
                     using (MySqlConnection connection = new MySqlConnection(mysqlconn))
@@ -1342,52 +1354,52 @@ namespace EatNRunProject
                             return;
                         }
 
-                        byte[] imageData = null;
-
-                        // Check if the image in the PictureBox has been modified
-                        if (UpdateEmplPicBox.Image != null)
-                        {
-                            using (MemoryStream ms = new MemoryStream())
-                            {
-                                UpdateEmplPicBox.Image.Save(ms, ImageFormat.Jpeg); // Replace with the correct image format
-                                imageData = ms.ToArray();
-                            }
-                        }
-
-
-                        // Update data in the accounts table, including the image (AccountPfp in the first position)
-                        string updateQuery = "UPDATE accounts SET EmployeeName = @EmplName, EmployeePosition = @EmplPosition, " +
-                            "EmployeeAge = @EmplAge, EmployeeBday = @EmplBday, EmployeeGender = @EmplGender, EmployeeAddress = @EmplAdd, " +
-                            "EmployeeEmail = @EmplEmail, HashedPass = @Password, SaltedPass = @FixedSalt, PerEmplSaltedPass = @PerUserSalt ";
-
-                        // Add the image update if imageData is not null
+                        // Update data in the accounts table, including the image conditionally
                         if (imageData != null)
                         {
-                            updateQuery += ", AccountPfp = @Image ";
+                            // Update with image
+                            string updateWithImageQuery = "UPDATE accounts SET EmployeeName = @EmplName, EmployeePosition = @EmplPosition, " +
+                                "EmployeeAge = @EmplAge, EmployeeBday = @EmplBday, EmployeeGender = @EmplGender, EmployeeAddress = @EmplAdd, " +
+                                "EmployeeEmail = @EmplEmail, HashedPass = @Password, SaltedPass = @FixedSalt, PerEmplSaltedPass = @PerUserSalt, " +
+                                "AccountPfp = @Image " +
+                                "WHERE EmployeeID = @EmplID";
+                            MySqlCommand updateWithImageCmd = new MySqlCommand(updateWithImageQuery, connection);
+                            updateWithImageCmd.Parameters.AddWithValue("@Image", imageData);
+                            updateWithImageCmd.Parameters.AddWithValue("@EmplName", emplName);
+                            updateWithImageCmd.Parameters.AddWithValue("@EmplPosition", emplPosition);
+                            updateWithImageCmd.Parameters.AddWithValue("@EmplAge", age);
+                            updateWithImageCmd.Parameters.AddWithValue("@EmplBday", emplBday);
+                            updateWithImageCmd.Parameters.AddWithValue("@EmplGender", emplGender);
+                            updateWithImageCmd.Parameters.AddWithValue("@EmplAdd", emplAdd);
+                            updateWithImageCmd.Parameters.AddWithValue("@EmplEmail", emplEmail);
+                            updateWithImageCmd.Parameters.AddWithValue("@EmplID", emplID);
+                            updateWithImageCmd.Parameters.AddWithValue("@Password", hashedPassword);
+                            updateWithImageCmd.Parameters.AddWithValue("@FixedSalt", fixedSalt);
+                            updateWithImageCmd.Parameters.AddWithValue("@PerUserSalt", perUserSalt);
+                            updateWithImageCmd.ExecuteNonQuery();
+                            selectedImage = null;
                         }
-
-                        updateQuery += "WHERE EmployeeID = @EmplID";
-
-                        MySqlCommand updateCmd = new MySqlCommand(updateQuery, connection);
-
-                        if (imageData != null)
+                        else
                         {
-                            updateCmd.Parameters.AddWithValue("@Image", imageData);
+                            // Update without image
+                            string updateWithoutImageQuery = "UPDATE accounts SET EmployeeName = @EmplName, EmployeePosition = @EmplPosition, " +
+                                "EmployeeAge = @EmplAge, EmployeeBday = @EmplBday, EmployeeGender = @EmplGender, EmployeeAddress = @EmplAdd, " +
+                                "EmployeeEmail = @EmplEmail, HashedPass = @Password, SaltedPass = @FixedSalt, PerEmplSaltedPass = @PerUserSalt " +
+                                "WHERE EmployeeID = @EmplID";
+                            MySqlCommand updateWithoutImageCmd = new MySqlCommand(updateWithoutImageQuery, connection);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@EmplName", emplName);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@EmplPosition", emplPosition);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@EmplAge", age);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@EmplBday", emplBday);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@EmplGender", emplGender);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@EmplAdd", emplAdd);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@EmplEmail", emplEmail);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@EmplID", emplID);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@Password", hashedPassword);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@FixedSalt", fixedSalt);
+                            updateWithoutImageCmd.Parameters.AddWithValue("@PerUserSalt", perUserSalt);
+                            updateWithoutImageCmd.ExecuteNonQuery();
                         }
-
-                        updateCmd.Parameters.AddWithValue("@EmplName", emplName);
-                        updateCmd.Parameters.AddWithValue("@EmplPosition", emplPosition);
-                        updateCmd.Parameters.AddWithValue("@EmplAge", age); // Assuming age is the correct variable
-                        updateCmd.Parameters.AddWithValue("@EmplBday", emplBday);
-                        updateCmd.Parameters.AddWithValue("@EmplGender", emplGender);
-                        updateCmd.Parameters.AddWithValue("@EmplAdd", emplAdd);
-                        updateCmd.Parameters.AddWithValue("@EmplEmail", emplEmail);
-                        updateCmd.Parameters.AddWithValue("@EmplID", emplID);
-                        updateCmd.Parameters.AddWithValue("@Password", hashedPassword);
-                        updateCmd.Parameters.AddWithValue("@FixedSalt", fixedSalt);
-                        updateCmd.Parameters.AddWithValue("@PerUserSalt", perUserSalt);
-
-                        updateCmd.ExecuteNonQuery();
                     }
 
                     // Successful update
@@ -1405,8 +1417,8 @@ namespace EatNRunProject
                     // Make sure to close the connection
                     connection.Close();
                 }
-
             }
+
 
 
         }
