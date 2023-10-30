@@ -52,7 +52,8 @@ namespace EatNRunProject
         {
             InitializeComponent();
 
-
+            //Mngr Order View
+            InitializeDataGridView();
 
             //add acc gender combo box
             AddEmplGenderComboBox.Items.AddRange(genders);
@@ -154,7 +155,43 @@ namespace EatNRunProject
         }
 
 
+        private void InitializeDataGridView()
+        {
+            DataGridViewButtonColumn trashColumn = new DataGridViewButtonColumn();
+            trashColumn.Name = "Bin";
+            trashColumn.Text = "T";
+            trashColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            trashColumn.Width = 10;
+            MngrOrderViewTable.Columns.Add(trashColumn);
 
+            DataGridViewTextBoxColumn itemNameColumn = new DataGridViewTextBoxColumn();
+            itemNameColumn.Name = "ItemName";
+            MngrOrderViewTable.Columns.Add(itemNameColumn);
+
+            DataGridViewButtonColumn minusColumn = new DataGridViewButtonColumn();
+            minusColumn.Name = "-";
+            minusColumn.Text = "-";
+            minusColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            minusColumn.Width = 10;
+            MngrOrderViewTable.Columns.Add(minusColumn);
+
+            DataGridViewTextBoxColumn quantityColumn = new DataGridViewTextBoxColumn();
+            quantityColumn.Name = "Qty";
+            quantityColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            quantityColumn.Width = 15;
+            MngrOrderViewTable.Columns.Add(quantityColumn);
+
+            DataGridViewButtonColumn plusColumn = new DataGridViewButtonColumn();
+            plusColumn.Name = "+";
+            plusColumn.Text = "+";
+            plusColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            plusColumn.Width = 10;
+            MngrOrderViewTable.Columns.Add(plusColumn);
+
+            DataGridViewTextBoxColumn itemCostColumn = new DataGridViewTextBoxColumn();
+            itemCostColumn.Name = "ItemCost";
+            MngrOrderViewTable.Columns.Add(itemCostColumn);
+        }
         public class HashHelper
         {
             public static string HashString(string input)

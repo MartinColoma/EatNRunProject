@@ -262,6 +262,7 @@
     <Compile Include="AdminFoodPanelCard.cs" />
     <Compile Include="AdminPanelCard.cs" />
     <Compile Include="MainFormCard.cs" />
+    <Compile Include="MNGRPanelCard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ENR_MainForm.cs">
