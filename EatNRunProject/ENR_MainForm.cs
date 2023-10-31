@@ -1203,13 +1203,18 @@ namespace EatNRunProject
                     Image selectedImage = Image.FromFile(openFileDialog.FileName);
 
                     // Check if the image dimensions are 64x64 pixels
-                    if (selectedImage.Width == 64 && selectedImage.Height == 64)
+                    if (selectedImage.Width == 128 && selectedImage.Height == 128)
                     {
                         AddEmplPicBox.Image = selectedImage;
                     }
+                    else if (selectedImage.Width != 128 && selectedImage.Height != 128)
+                    {
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                     else
                     {
-                        MessageBox.Show("Please select an image with dimensions of 64x64 pixels.");
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -1226,13 +1231,18 @@ namespace EatNRunProject
                     Image selectedImage = Image.FromFile(openFileDialog.FileName);
 
                     // Check if the image dimensions are 64x64 pixels
-                    if (selectedImage.Width == 64 && selectedImage.Height == 64)
+                    if (selectedImage.Width == 128 && selectedImage.Height == 128)
                     {
                         UpdateEmplPicBox.Image = selectedImage;
                     }
+                    else if (selectedImage.Width != 128 && selectedImage.Height != 128)
+                    {
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                     else
                     {
-                        MessageBox.Show("Please select an image with dimensions of 64x64 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -1525,13 +1535,18 @@ namespace EatNRunProject
                     Image selectedImage = Image.FromFile(openFileDialog.FileName);
 
                     // Check if the image dimensions are 64x64 pixels
-                    if (selectedImage.Width == 64 && selectedImage.Height == 64)
+                    if (selectedImage.Width == 128 && selectedImage.Height == 128)
                     {
                         AddItemPicBox.Image = selectedImage;
                     }
+                    else if (selectedImage.Width != 128 && selectedImage.Height != 128)
+                    {
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                     else
                     {
-                        MessageBox.Show("Please select an image with dimensions of 64x64 pixels.");
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -1704,14 +1719,19 @@ namespace EatNRunProject
                     selectedImage = Image.FromFile(openFileDialog.FileName);
 
                     // Check if the image dimensions are 64x64 pixels
-                    if (selectedImage.Width == 64 && selectedImage.Height == 64)
+                    if (selectedImage.Width == 128 && selectedImage.Height == 128)
                     {
                         UpdateItemPicBox.Image = selectedImage;
                         return;
                     }
+                    else if (selectedImage.Width != 128 && selectedImage.Height != 128)
+                    {
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                     else
                     {
-                        MessageBox.Show("Please select an image with dimensions of 64x64 pixels.");
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
