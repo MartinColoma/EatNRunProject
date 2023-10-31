@@ -623,6 +623,8 @@ namespace EatNRunProject
 
                                         ENREmplIDBox.Text = "";
                                         ENREmplPassBox.Text = "";
+
+                                        MngrDashboardLbl.Text = name;
                                     }
                                     else
                                     {
