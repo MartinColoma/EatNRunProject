@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ENRMainForm));
             this.MainFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.AdminPanel = new System.Windows.Forms.Panel();
@@ -125,6 +125,27 @@
             this.AccEditBtn = new midterm.RoundBtn();
             this.FoodItemPanel = new System.Windows.Forms.Panel();
             this.ItemFormPanel = new System.Windows.Forms.Panel();
+            this.UpdateItemPanel = new System.Windows.Forms.Panel();
+            this.UpdateItemCodePanelBox = new System.Windows.Forms.Panel();
+            this.UpdateItemCodeBox = new System.Windows.Forms.TextBox();
+            this.UpdateItemTypePanelBox = new System.Windows.Forms.Panel();
+            this.UpdateItemTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.UpdateItemTypeLbl = new System.Windows.Forms.Label();
+            this.UpdateItemPricePanelBox = new System.Windows.Forms.Panel();
+            this.UpdateItemPriceBox = new System.Windows.Forms.TextBox();
+            this.UpdateItemPriceLbl = new System.Windows.Forms.Label();
+            this.UpdateItemDatePickerPanelBox = new System.Windows.Forms.Panel();
+            this.UpdateItemCreatedDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.UpdateItemCreatedLbl = new System.Windows.Forms.Label();
+            this.UpdateItemCodeLbl = new System.Windows.Forms.Label();
+            this.UpdateItemNamePanelBox = new System.Windows.Forms.Panel();
+            this.UpdateItemNameBox = new System.Windows.Forms.TextBox();
+            this.UpdateItemNameLbl = new System.Windows.Forms.Label();
+            this.UpdateItemLbl = new System.Windows.Forms.Label();
+            this.UpdateItemPicBox = new System.Windows.Forms.PictureBox();
+            this.UpdateItemPicBtn = new FontAwesome.Sharp.IconButton();
+            this.UpdateItemExitBtn = new FontAwesome.Sharp.IconButton();
+            this.UpdateItemBtn = new midterm.RoundBtn();
             this.AddItemPanel = new System.Windows.Forms.Panel();
             this.AddItemCodePanelBox = new System.Windows.Forms.Panel();
             this.AddItemCodeBox = new System.Windows.Forms.TextBox();
@@ -148,9 +169,6 @@
             this.AddItemBtn = new midterm.RoundBtn();
             this.CreateNewFoodBtnPanel = new System.Windows.Forms.Panel();
             this.CreateNewFoodBtn = new FontAwesome.Sharp.IconButton();
-            this.UpdateItemPanel = new System.Windows.Forms.Panel();
-            this.UpdateItemExitBtn = new FontAwesome.Sharp.IconButton();
-            this.UpdateFoodLbl = new System.Windows.Forms.Label();
             this.FoodItemListPanel = new System.Windows.Forms.Panel();
             this.FoodItemListLbl = new System.Windows.Forms.Label();
             this.FoodItemListTable = new System.Windows.Forms.DataGridView();
@@ -172,15 +190,35 @@
             this.AdminENRLogoR2 = new System.Windows.Forms.PictureBox();
             this.ENRLoginBtn = new FontAwesome.Sharp.IconButton();
             this.ManagerPanel = new System.Windows.Forms.Panel();
+            this.MngrFormPanel = new System.Windows.Forms.Panel();
+            this.MngrNewOrderBtnPanel = new System.Windows.Forms.Panel();
+            this.MngrCreateNewOrderBtn = new FontAwesome.Sharp.IconButton();
+            this.MngrOrderDashboardPanel = new System.Windows.Forms.Panel();
+            this.MngrOrderViewPanel = new System.Windows.Forms.Panel();
+            this.MngrOrderViewTable = new System.Windows.Forms.DataGridView();
+            this.MngrItemPanel = new System.Windows.Forms.Panel();
+            this.MngrItemSetMealsPanel = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.MngrItemDrinksPanel = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.MngrItemSidesPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.MngrItemBurgerPanel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.ManagerSwitchBtn = new FontAwesome.Sharp.IconButton();
-            this.ManagerLbl = new System.Windows.Forms.Label();
-            this.ManagerPanelLbl = new System.Windows.Forms.Label();
+            this.MngrItemBtnPanel = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.MNGRHeaderPanel = new System.Windows.Forms.Panel();
+            this.ENRMngrHeaderLogo = new System.Windows.Forms.PictureBox();
+            this.MngrDashboardLbl = new System.Windows.Forms.Label();
             this.CashierPanel = new System.Windows.Forms.Panel();
             this.CashierSwtichBtn = new FontAwesome.Sharp.IconButton();
             this.CashierLbl = new System.Windows.Forms.Label();
             this.AdminFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.FoodItemFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.AccountsFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
+            this.MngrFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
+            this.MngrItemFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MainFormPicker)).BeginInit();
             this.AdminPanel.SuspendLayout();
             this.ENRAdminHeader.SuspendLayout();
@@ -217,6 +255,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.AccountListTable)).BeginInit();
             this.FoodItemPanel.SuspendLayout();
             this.ItemFormPanel.SuspendLayout();
+            this.UpdateItemPanel.SuspendLayout();
+            this.UpdateItemCodePanelBox.SuspendLayout();
+            this.UpdateItemTypePanelBox.SuspendLayout();
+            this.UpdateItemPricePanelBox.SuspendLayout();
+            this.UpdateItemDatePickerPanelBox.SuspendLayout();
+            this.UpdateItemNamePanelBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpdateItemPicBox)).BeginInit();
             this.AddItemPanel.SuspendLayout();
             this.AddItemCodePanelBox.SuspendLayout();
             this.AddItemTypePanelBox.SuspendLayout();
@@ -225,7 +270,6 @@
             this.AddItemNamePanelBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddItemPicBox)).BeginInit();
             this.CreateNewFoodBtnPanel.SuspendLayout();
-            this.UpdateItemPanel.SuspendLayout();
             this.FoodItemListPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FoodItemListTable)).BeginInit();
             this.LoginPanel.SuspendLayout();
@@ -234,17 +278,33 @@
             this.ENREmplIDPanelBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminENRLogoR2)).BeginInit();
             this.ManagerPanel.SuspendLayout();
+            this.MngrFormPanel.SuspendLayout();
+            this.MngrNewOrderBtnPanel.SuspendLayout();
+            this.MngrOrderDashboardPanel.SuspendLayout();
+            this.MngrOrderViewPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrOrderViewTable)).BeginInit();
+            this.MngrItemPanel.SuspendLayout();
+            this.MngrItemSetMealsPanel.SuspendLayout();
+            this.MngrItemDrinksPanel.SuspendLayout();
+            this.MngrItemSidesPanel.SuspendLayout();
+            this.MngrItemBurgerPanel.SuspendLayout();
+            this.MngrItemBtnPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.MNGRHeaderPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ENRMngrHeaderLogo)).BeginInit();
             this.CashierPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminFormPicker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FoodItemFormPicker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountsFormPicker)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrFormPicker)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrItemFormPicker)).BeginInit();
             this.SuspendLayout();
             // 
             // MainFormPicker
             // 
             this.MainFormPicker.ContainerControl = this;
             this.MainFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.MainFormPicker.SelectedCard = "Card4";
+            this.MainFormPicker.SelectedCard = "Card2";
             // 
             // AdminPanel
             // 
@@ -340,23 +400,23 @@
             this.SalesTable.AllowUserToAddRows = false;
             this.SalesTable.AllowUserToDeleteRows = false;
             this.SalesTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SalesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SalesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.SalesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SalesTable.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SalesTable.DefaultCellStyle = dataGridViewCellStyle2;
             this.SalesTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SalesTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.SalesTable.Location = new System.Drawing.Point(0, 0);
@@ -1301,23 +1361,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AccountListTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AccountListTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AccountListTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.AccountListTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AccountListTable.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AccountListTable.DefaultCellStyle = dataGridViewCellStyle4;
             this.AccountListTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.AccountListTable.Location = new System.Drawing.Point(16, 75);
             this.AccountListTable.Name = "AccountListTable";
@@ -1368,13 +1428,282 @@
             // ItemFormPanel
             // 
             this.ItemFormPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ItemFormPanel.Controls.Add(this.UpdateItemPanel);
             this.ItemFormPanel.Controls.Add(this.AddItemPanel);
             this.ItemFormPanel.Controls.Add(this.CreateNewFoodBtnPanel);
-            this.ItemFormPanel.Controls.Add(this.UpdateItemPanel);
             this.ItemFormPanel.Location = new System.Drawing.Point(577, 15);
             this.ItemFormPanel.Name = "ItemFormPanel";
             this.ItemFormPanel.Size = new System.Drawing.Size(537, 389);
             this.ItemFormPanel.TabIndex = 2;
+            // 
+            // UpdateItemPanel
+            // 
+            this.FoodItemFormPicker.SetCardName(this.UpdateItemPanel, "Card7");
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemCodePanelBox);
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemTypePanelBox);
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemTypeLbl);
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemPricePanelBox);
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemPriceLbl);
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemDatePickerPanelBox);
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemCreatedLbl);
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemCodeLbl);
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemNamePanelBox);
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemNameLbl);
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemLbl);
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemPicBox);
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemPicBtn);
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemExitBtn);
+            this.UpdateItemPanel.Controls.Add(this.UpdateItemBtn);
+            this.UpdateItemPanel.Location = new System.Drawing.Point(0, 0);
+            this.FoodItemFormPicker.SetMinimumSize(this.UpdateItemPanel, new System.Drawing.Size(547, 385));
+            this.UpdateItemPanel.Name = "UpdateItemPanel";
+            this.FoodItemFormPicker.SetPreferredSize(this.UpdateItemPanel, new System.Drawing.Size(547, 385));
+            this.UpdateItemPanel.Size = new System.Drawing.Size(535, 387);
+            this.UpdateItemPanel.TabIndex = 21;
+            // 
+            // UpdateItemCodePanelBox
+            // 
+            this.UpdateItemCodePanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateItemCodePanelBox.Controls.Add(this.UpdateItemCodeBox);
+            this.UpdateItemCodePanelBox.Location = new System.Drawing.Point(244, 115);
+            this.UpdateItemCodePanelBox.Name = "UpdateItemCodePanelBox";
+            this.UpdateItemCodePanelBox.Size = new System.Drawing.Size(127, 22);
+            this.UpdateItemCodePanelBox.TabIndex = 14;
+            // 
+            // UpdateItemCodeBox
+            // 
+            this.UpdateItemCodeBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateItemCodeBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UpdateItemCodeBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateItemCodeBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateItemCodeBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemCodeBox.Location = new System.Drawing.Point(0, 0);
+            this.UpdateItemCodeBox.Name = "UpdateItemCodeBox";
+            this.UpdateItemCodeBox.ReadOnly = true;
+            this.UpdateItemCodeBox.Size = new System.Drawing.Size(125, 16);
+            this.UpdateItemCodeBox.TabIndex = 11;
+            // 
+            // UpdateItemTypePanelBox
+            // 
+            this.UpdateItemTypePanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateItemTypePanelBox.Controls.Add(this.UpdateItemTypeComboBox);
+            this.UpdateItemTypePanelBox.Location = new System.Drawing.Point(22, 206);
+            this.UpdateItemTypePanelBox.Name = "UpdateItemTypePanelBox";
+            this.UpdateItemTypePanelBox.Size = new System.Drawing.Size(349, 22);
+            this.UpdateItemTypePanelBox.TabIndex = 15;
+            // 
+            // UpdateItemTypeComboBox
+            // 
+            this.UpdateItemTypeComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateItemTypeComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateItemTypeComboBox.Enabled = false;
+            this.UpdateItemTypeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateItemTypeComboBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateItemTypeComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemTypeComboBox.FormattingEnabled = true;
+            this.UpdateItemTypeComboBox.Location = new System.Drawing.Point(0, 0);
+            this.UpdateItemTypeComboBox.Name = "UpdateItemTypeComboBox";
+            this.UpdateItemTypeComboBox.Size = new System.Drawing.Size(347, 23);
+            this.UpdateItemTypeComboBox.TabIndex = 0;
+            this.UpdateItemTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.UpdateItemTypeComboBox_SelectedIndexChanged);
+            // 
+            // UpdateItemTypeLbl
+            // 
+            this.UpdateItemTypeLbl.AutoSize = true;
+            this.UpdateItemTypeLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateItemTypeLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemTypeLbl.Location = new System.Drawing.Point(19, 185);
+            this.UpdateItemTypeLbl.Name = "UpdateItemTypeLbl";
+            this.UpdateItemTypeLbl.Size = new System.Drawing.Size(84, 18);
+            this.UpdateItemTypeLbl.TabIndex = 14;
+            this.UpdateItemTypeLbl.Text = "Item Type:";
+            // 
+            // UpdateItemPricePanelBox
+            // 
+            this.UpdateItemPricePanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateItemPricePanelBox.Controls.Add(this.UpdateItemPriceBox);
+            this.UpdateItemPricePanelBox.Location = new System.Drawing.Point(22, 254);
+            this.UpdateItemPricePanelBox.Name = "UpdateItemPricePanelBox";
+            this.UpdateItemPricePanelBox.Size = new System.Drawing.Size(349, 22);
+            this.UpdateItemPricePanelBox.TabIndex = 19;
+            // 
+            // UpdateItemPriceBox
+            // 
+            this.UpdateItemPriceBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateItemPriceBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UpdateItemPriceBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateItemPriceBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateItemPriceBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemPriceBox.Location = new System.Drawing.Point(0, 0);
+            this.UpdateItemPriceBox.Name = "UpdateItemPriceBox";
+            this.UpdateItemPriceBox.Size = new System.Drawing.Size(347, 16);
+            this.UpdateItemPriceBox.TabIndex = 11;
+            // 
+            // UpdateItemPriceLbl
+            // 
+            this.UpdateItemPriceLbl.AutoSize = true;
+            this.UpdateItemPriceLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateItemPriceLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemPriceLbl.Location = new System.Drawing.Point(19, 233);
+            this.UpdateItemPriceLbl.Name = "UpdateItemPriceLbl";
+            this.UpdateItemPriceLbl.Size = new System.Drawing.Size(86, 18);
+            this.UpdateItemPriceLbl.TabIndex = 18;
+            this.UpdateItemPriceLbl.Text = "Item Price:";
+            // 
+            // UpdateItemDatePickerPanelBox
+            // 
+            this.UpdateItemDatePickerPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateItemDatePickerPanelBox.Controls.Add(this.UpdateItemCreatedDatePicker);
+            this.UpdateItemDatePickerPanelBox.Location = new System.Drawing.Point(22, 160);
+            this.UpdateItemDatePickerPanelBox.Name = "UpdateItemDatePickerPanelBox";
+            this.UpdateItemDatePickerPanelBox.Size = new System.Drawing.Size(349, 22);
+            this.UpdateItemDatePickerPanelBox.TabIndex = 15;
+            // 
+            // UpdateItemCreatedDatePicker
+            // 
+            this.UpdateItemCreatedDatePicker.CalendarFont = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateItemCreatedDatePicker.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemCreatedDatePicker.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateItemCreatedDatePicker.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateItemCreatedDatePicker.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemCreatedDatePicker.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(90)))), ((int)(((byte)(105)))));
+            this.UpdateItemCreatedDatePicker.CustomFormat = "MM-dd-yyyy dddd";
+            this.UpdateItemCreatedDatePicker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateItemCreatedDatePicker.Enabled = false;
+            this.UpdateItemCreatedDatePicker.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateItemCreatedDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.UpdateItemCreatedDatePicker.Location = new System.Drawing.Point(0, 0);
+            this.UpdateItemCreatedDatePicker.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
+            this.UpdateItemCreatedDatePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.UpdateItemCreatedDatePicker.Name = "UpdateItemCreatedDatePicker";
+            this.UpdateItemCreatedDatePicker.Size = new System.Drawing.Size(347, 23);
+            this.UpdateItemCreatedDatePicker.TabIndex = 16;
+            this.UpdateItemCreatedDatePicker.ValueChanged += new System.EventHandler(this.UpdateItemCreatedDatePicker_ValueChanged);
+            // 
+            // UpdateItemCreatedLbl
+            // 
+            this.UpdateItemCreatedLbl.AutoSize = true;
+            this.UpdateItemCreatedLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateItemCreatedLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemCreatedLbl.Location = new System.Drawing.Point(19, 139);
+            this.UpdateItemCreatedLbl.Name = "UpdateItemCreatedLbl";
+            this.UpdateItemCreatedLbl.Size = new System.Drawing.Size(145, 18);
+            this.UpdateItemCreatedLbl.TabIndex = 14;
+            this.UpdateItemCreatedLbl.Text = "Item Date Created:";
+            // 
+            // UpdateItemCodeLbl
+            // 
+            this.UpdateItemCodeLbl.AutoSize = true;
+            this.UpdateItemCodeLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateItemCodeLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemCodeLbl.Location = new System.Drawing.Point(241, 93);
+            this.UpdateItemCodeLbl.Name = "UpdateItemCodeLbl";
+            this.UpdateItemCodeLbl.Size = new System.Drawing.Size(86, 18);
+            this.UpdateItemCodeLbl.TabIndex = 12;
+            this.UpdateItemCodeLbl.Text = "Item Code:";
+            // 
+            // UpdateItemNamePanelBox
+            // 
+            this.UpdateItemNamePanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateItemNamePanelBox.Controls.Add(this.UpdateItemNameBox);
+            this.UpdateItemNamePanelBox.Location = new System.Drawing.Point(22, 114);
+            this.UpdateItemNamePanelBox.Name = "UpdateItemNamePanelBox";
+            this.UpdateItemNamePanelBox.Size = new System.Drawing.Size(217, 22);
+            this.UpdateItemNamePanelBox.TabIndex = 10;
+            // 
+            // UpdateItemNameBox
+            // 
+            this.UpdateItemNameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.UpdateItemNameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UpdateItemNameBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UpdateItemNameBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateItemNameBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemNameBox.Location = new System.Drawing.Point(0, 0);
+            this.UpdateItemNameBox.Name = "UpdateItemNameBox";
+            this.UpdateItemNameBox.Size = new System.Drawing.Size(215, 16);
+            this.UpdateItemNameBox.TabIndex = 11;
+            // 
+            // UpdateItemNameLbl
+            // 
+            this.UpdateItemNameLbl.AutoSize = true;
+            this.UpdateItemNameLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateItemNameLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemNameLbl.Location = new System.Drawing.Point(19, 93);
+            this.UpdateItemNameLbl.Name = "UpdateItemNameLbl";
+            this.UpdateItemNameLbl.Size = new System.Drawing.Size(131, 18);
+            this.UpdateItemNameLbl.TabIndex = 9;
+            this.UpdateItemNameLbl.Text = "Food Item Name:";
+            // 
+            // UpdateItemLbl
+            // 
+            this.UpdateItemLbl.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateItemLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemLbl.Location = new System.Drawing.Point(22, 29);
+            this.UpdateItemLbl.Name = "UpdateItemLbl";
+            this.UpdateItemLbl.Size = new System.Drawing.Size(490, 47);
+            this.UpdateItemLbl.TabIndex = 7;
+            this.UpdateItemLbl.Text = "Update Food Item";
+            this.UpdateItemLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // UpdateItemPicBox
+            // 
+            this.UpdateItemPicBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UpdateItemPicBox.Location = new System.Drawing.Point(384, 115);
+            this.UpdateItemPicBox.Name = "UpdateItemPicBox";
+            this.UpdateItemPicBox.Size = new System.Drawing.Size(128, 128);
+            this.UpdateItemPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.UpdateItemPicBox.TabIndex = 8;
+            this.UpdateItemPicBox.TabStop = false;
+            this.UpdateItemPicBox.Click += new System.EventHandler(this.UpdateItemPicBox_Click);
+            // 
+            // UpdateItemPicBtn
+            // 
+            this.UpdateItemPicBtn.FlatAppearance.BorderSize = 0;
+            this.UpdateItemPicBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateItemPicBtn.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateItemPicBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemPicBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.UpdateItemPicBtn.IconColor = System.Drawing.Color.Black;
+            this.UpdateItemPicBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.UpdateItemPicBtn.Location = new System.Drawing.Point(384, 249);
+            this.UpdateItemPicBtn.Name = "UpdateItemPicBtn";
+            this.UpdateItemPicBtn.Size = new System.Drawing.Size(131, 23);
+            this.UpdateItemPicBtn.TabIndex = 11;
+            this.UpdateItemPicBtn.Text = "Add a new picture..";
+            this.UpdateItemPicBtn.UseVisualStyleBackColor = true;
+            this.UpdateItemPicBtn.Click += new System.EventHandler(this.UpdateItemPicBtn_Click);
+            // 
+            // UpdateItemExitBtn
+            // 
+            this.UpdateItemExitBtn.BackColor = System.Drawing.Color.Transparent;
+            this.UpdateItemExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemExitBtn.FlatAppearance.BorderSize = 0;
+            this.UpdateItemExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateItemExitBtn.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            this.UpdateItemExitBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemExitBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.UpdateItemExitBtn.IconSize = 24;
+            this.UpdateItemExitBtn.Location = new System.Drawing.Point(509, 3);
+            this.UpdateItemExitBtn.Name = "UpdateItemExitBtn";
+            this.UpdateItemExitBtn.Size = new System.Drawing.Size(24, 24);
+            this.UpdateItemExitBtn.TabIndex = 7;
+            this.UpdateItemExitBtn.UseVisualStyleBackColor = false;
+            this.UpdateItemExitBtn.Click += new System.EventHandler(this.UpdateItemExitBtn_Click_1);
+            // 
+            // UpdateItemBtn
+            // 
+            this.UpdateItemBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateItemBtn.FlatAppearance.BorderSize = 0;
+            this.UpdateItemBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateItemBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateItemBtn.ForeColor = System.Drawing.Color.White;
+            this.UpdateItemBtn.Location = new System.Drawing.Point(196, 288);
+            this.UpdateItemBtn.Name = "UpdateItemBtn";
+            this.UpdateItemBtn.Size = new System.Drawing.Size(143, 40);
+            this.UpdateItemBtn.TabIndex = 1;
+            this.UpdateItemBtn.Text = "UPDATE ITEM";
+            this.UpdateItemBtn.UseVisualStyleBackColor = false;
+            this.UpdateItemBtn.Click += new System.EventHandler(this.UpdateItemBtn_Click);
             // 
             // AddItemPanel
             // 
@@ -1670,46 +1999,6 @@
             this.CreateNewFoodBtn.UseVisualStyleBackColor = true;
             this.CreateNewFoodBtn.Click += new System.EventHandler(this.CreateNewFoodBtn_Click);
             // 
-            // UpdateItemPanel
-            // 
-            this.FoodItemFormPicker.SetCardName(this.UpdateItemPanel, "Card2");
-            this.UpdateItemPanel.Controls.Add(this.UpdateItemExitBtn);
-            this.UpdateItemPanel.Controls.Add(this.UpdateFoodLbl);
-            this.UpdateItemPanel.Location = new System.Drawing.Point(0, 0);
-            this.FoodItemFormPicker.SetMinimumSize(this.UpdateItemPanel, new System.Drawing.Size(200, 100));
-            this.UpdateItemPanel.Name = "UpdateItemPanel";
-            this.FoodItemFormPicker.SetPreferredSize(this.UpdateItemPanel, new System.Drawing.Size(200, 100));
-            this.UpdateItemPanel.Size = new System.Drawing.Size(535, 387);
-            this.UpdateItemPanel.TabIndex = 1;
-            // 
-            // UpdateItemExitBtn
-            // 
-            this.UpdateItemExitBtn.BackColor = System.Drawing.Color.Transparent;
-            this.UpdateItemExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.UpdateItemExitBtn.FlatAppearance.BorderSize = 0;
-            this.UpdateItemExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateItemExitBtn.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.UpdateItemExitBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.UpdateItemExitBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.UpdateItemExitBtn.IconSize = 24;
-            this.UpdateItemExitBtn.Location = new System.Drawing.Point(493, 0);
-            this.UpdateItemExitBtn.Name = "UpdateItemExitBtn";
-            this.UpdateItemExitBtn.Size = new System.Drawing.Size(43, 34);
-            this.UpdateItemExitBtn.TabIndex = 8;
-            this.UpdateItemExitBtn.UseVisualStyleBackColor = false;
-            this.UpdateItemExitBtn.Click += new System.EventHandler(this.UpdateItemExitBtn_Click);
-            // 
-            // UpdateFoodLbl
-            // 
-            this.UpdateFoodLbl.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateFoodLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.UpdateFoodLbl.Location = new System.Drawing.Point(23, 10);
-            this.UpdateFoodLbl.Name = "UpdateFoodLbl";
-            this.UpdateFoodLbl.Size = new System.Drawing.Size(490, 47);
-            this.UpdateFoodLbl.TabIndex = 6;
-            this.UpdateFoodLbl.Text = "Update Food Item";
-            this.UpdateFoodLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // FoodItemListPanel
             // 
             this.FoodItemListPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1741,23 +2030,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FoodItemListTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FoodItemListTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FoodItemListTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.FoodItemListTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.FoodItemListTable.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.FoodItemListTable.DefaultCellStyle = dataGridViewCellStyle6;
             this.FoodItemListTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.FoodItemListTable.Location = new System.Drawing.Point(16, 75);
             this.FoodItemListTable.Name = "FoodItemListTable";
@@ -2015,15 +2304,177 @@
             // 
             this.ManagerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             this.MainFormPicker.SetCardName(this.ManagerPanel, "Card2");
-            this.ManagerPanel.Controls.Add(this.ManagerSwitchBtn);
-            this.ManagerPanel.Controls.Add(this.ManagerLbl);
-            this.ManagerPanel.Controls.Add(this.ManagerPanelLbl);
+            this.ManagerPanel.Controls.Add(this.MngrFormPanel);
+            this.ManagerPanel.Controls.Add(this.MNGRHeaderPanel);
             this.ManagerPanel.Location = new System.Drawing.Point(0, 0);
             this.MainFormPicker.SetMinimumSize(this.ManagerPanel, new System.Drawing.Size(200, 100));
             this.ManagerPanel.Name = "ManagerPanel";
             this.MainFormPicker.SetPreferredSize(this.ManagerPanel, new System.Drawing.Size(200, 100));
             this.ManagerPanel.Size = new System.Drawing.Size(1264, 681);
             this.ManagerPanel.TabIndex = 2;
+            // 
+            // MngrFormPanel
+            // 
+            this.MngrFormPanel.Controls.Add(this.MngrNewOrderBtnPanel);
+            this.MngrFormPanel.Controls.Add(this.MngrOrderDashboardPanel);
+            this.MngrFormPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.MngrFormPanel.Location = new System.Drawing.Point(0, 146);
+            this.MngrFormPanel.Name = "MngrFormPanel";
+            this.MngrFormPanel.Size = new System.Drawing.Size(1264, 535);
+            this.MngrFormPanel.TabIndex = 22;
+            // 
+            // MngrNewOrderBtnPanel
+            // 
+            this.MngrFormPicker.SetCardName(this.MngrNewOrderBtnPanel, "Card1");
+            this.MngrNewOrderBtnPanel.Controls.Add(this.MngrCreateNewOrderBtn);
+            this.MngrNewOrderBtnPanel.Location = new System.Drawing.Point(0, 0);
+            this.MngrFormPicker.SetMinimumSize(this.MngrNewOrderBtnPanel, new System.Drawing.Size(200, 100));
+            this.MngrNewOrderBtnPanel.Name = "MngrNewOrderBtnPanel";
+            this.MngrFormPicker.SetPreferredSize(this.MngrNewOrderBtnPanel, new System.Drawing.Size(200, 100));
+            this.MngrNewOrderBtnPanel.Size = new System.Drawing.Size(1264, 535);
+            this.MngrNewOrderBtnPanel.TabIndex = 0;
+            // 
+            // MngrCreateNewOrderBtn
+            // 
+            this.MngrCreateNewOrderBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MngrCreateNewOrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MngrCreateNewOrderBtn.Font = new System.Drawing.Font("Arial Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrCreateNewOrderBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrCreateNewOrderBtn.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            this.MngrCreateNewOrderBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrCreateNewOrderBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.MngrCreateNewOrderBtn.IconSize = 40;
+            this.MngrCreateNewOrderBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MngrCreateNewOrderBtn.Location = new System.Drawing.Point(0, 0);
+            this.MngrCreateNewOrderBtn.Name = "MngrCreateNewOrderBtn";
+            this.MngrCreateNewOrderBtn.Size = new System.Drawing.Size(1264, 535);
+            this.MngrCreateNewOrderBtn.TabIndex = 0;
+            this.MngrCreateNewOrderBtn.Text = "CREATE NEW ORDER";
+            this.MngrCreateNewOrderBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.MngrCreateNewOrderBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.MngrCreateNewOrderBtn.UseVisualStyleBackColor = true;
+            // 
+            // MngrOrderDashboardPanel
+            // 
+            this.MngrFormPicker.SetCardName(this.MngrOrderDashboardPanel, "Card2");
+            this.MngrOrderDashboardPanel.Controls.Add(this.MngrOrderViewPanel);
+            this.MngrOrderDashboardPanel.Controls.Add(this.MngrItemPanel);
+            this.MngrOrderDashboardPanel.Controls.Add(this.ManagerSwitchBtn);
+            this.MngrOrderDashboardPanel.Controls.Add(this.MngrItemBtnPanel);
+            this.MngrOrderDashboardPanel.Location = new System.Drawing.Point(0, 0);
+            this.MngrFormPicker.SetMinimumSize(this.MngrOrderDashboardPanel, new System.Drawing.Size(200, 100));
+            this.MngrOrderDashboardPanel.Name = "MngrOrderDashboardPanel";
+            this.MngrFormPicker.SetPreferredSize(this.MngrOrderDashboardPanel, new System.Drawing.Size(200, 100));
+            this.MngrOrderDashboardPanel.Size = new System.Drawing.Size(1264, 535);
+            this.MngrOrderDashboardPanel.TabIndex = 1;
+            // 
+            // MngrOrderViewPanel
+            // 
+            this.MngrOrderViewPanel.Controls.Add(this.MngrOrderViewTable);
+            this.MngrOrderViewPanel.Location = new System.Drawing.Point(867, 33);
+            this.MngrOrderViewPanel.Name = "MngrOrderViewPanel";
+            this.MngrOrderViewPanel.Size = new System.Drawing.Size(373, 446);
+            this.MngrOrderViewPanel.TabIndex = 24;
+            // 
+            // MngrOrderViewTable
+            // 
+            this.MngrOrderViewTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MngrOrderViewTable.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MngrOrderViewTable.Location = new System.Drawing.Point(0, 0);
+            this.MngrOrderViewTable.Name = "MngrOrderViewTable";
+            this.MngrOrderViewTable.Size = new System.Drawing.Size(373, 334);
+            this.MngrOrderViewTable.TabIndex = 22;
+            // 
+            // MngrItemPanel
+            // 
+            this.MngrItemPanel.Controls.Add(this.MngrItemSetMealsPanel);
+            this.MngrItemPanel.Controls.Add(this.MngrItemDrinksPanel);
+            this.MngrItemPanel.Controls.Add(this.MngrItemSidesPanel);
+            this.MngrItemPanel.Controls.Add(this.MngrItemBurgerPanel);
+            this.MngrItemPanel.Location = new System.Drawing.Point(233, 33);
+            this.MngrItemPanel.Name = "MngrItemPanel";
+            this.MngrItemPanel.Size = new System.Drawing.Size(605, 446);
+            this.MngrItemPanel.TabIndex = 23;
+            // 
+            // MngrItemSetMealsPanel
+            // 
+            this.MngrItemFormPicker.SetCardName(this.MngrItemSetMealsPanel, "Card4");
+            this.MngrItemSetMealsPanel.Controls.Add(this.label3);
+            this.MngrItemSetMealsPanel.Location = new System.Drawing.Point(0, 0);
+            this.MngrItemFormPicker.SetMinimumSize(this.MngrItemSetMealsPanel, new System.Drawing.Size(200, 100));
+            this.MngrItemSetMealsPanel.Name = "MngrItemSetMealsPanel";
+            this.MngrItemFormPicker.SetPreferredSize(this.MngrItemSetMealsPanel, new System.Drawing.Size(200, 100));
+            this.MngrItemSetMealsPanel.Size = new System.Drawing.Size(605, 446);
+            this.MngrItemSetMealsPanel.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(289, 165);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Set Meals";
+            // 
+            // MngrItemDrinksPanel
+            // 
+            this.MngrItemFormPicker.SetCardName(this.MngrItemDrinksPanel, "Card3");
+            this.MngrItemDrinksPanel.Controls.Add(this.label4);
+            this.MngrItemDrinksPanel.Location = new System.Drawing.Point(0, 0);
+            this.MngrItemFormPicker.SetMinimumSize(this.MngrItemDrinksPanel, new System.Drawing.Size(200, 100));
+            this.MngrItemDrinksPanel.Name = "MngrItemDrinksPanel";
+            this.MngrItemFormPicker.SetPreferredSize(this.MngrItemDrinksPanel, new System.Drawing.Size(200, 100));
+            this.MngrItemDrinksPanel.Size = new System.Drawing.Size(605, 446);
+            this.MngrItemDrinksPanel.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(467, 217);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Drinks";
+            // 
+            // MngrItemSidesPanel
+            // 
+            this.MngrItemFormPicker.SetCardName(this.MngrItemSidesPanel, "Card2");
+            this.MngrItemSidesPanel.Controls.Add(this.label1);
+            this.MngrItemSidesPanel.Location = new System.Drawing.Point(0, 0);
+            this.MngrItemFormPicker.SetMinimumSize(this.MngrItemSidesPanel, new System.Drawing.Size(200, 100));
+            this.MngrItemSidesPanel.Name = "MngrItemSidesPanel";
+            this.MngrItemFormPicker.SetPreferredSize(this.MngrItemSidesPanel, new System.Drawing.Size(200, 100));
+            this.MngrItemSidesPanel.Size = new System.Drawing.Size(605, 446);
+            this.MngrItemSidesPanel.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(420, 167);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Sides";
+            // 
+            // MngrItemBurgerPanel
+            // 
+            this.MngrItemFormPicker.SetCardName(this.MngrItemBurgerPanel, "Card1");
+            this.MngrItemBurgerPanel.Controls.Add(this.label2);
+            this.MngrItemBurgerPanel.Location = new System.Drawing.Point(0, 0);
+            this.MngrItemFormPicker.SetMinimumSize(this.MngrItemBurgerPanel, new System.Drawing.Size(200, 100));
+            this.MngrItemBurgerPanel.Name = "MngrItemBurgerPanel";
+            this.MngrItemFormPicker.SetPreferredSize(this.MngrItemBurgerPanel, new System.Drawing.Size(200, 100));
+            this.MngrItemBurgerPanel.Size = new System.Drawing.Size(605, 446);
+            this.MngrItemBurgerPanel.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(424, 181);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Burger";
             // 
             // ManagerSwitchBtn
             // 
@@ -2037,7 +2488,7 @@
             this.ManagerSwitchBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ManagerSwitchBtn.IconSize = 24;
             this.ManagerSwitchBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ManagerSwitchBtn.Location = new System.Drawing.Point(1113, 622);
+            this.ManagerSwitchBtn.Location = new System.Drawing.Point(1116, 485);
             this.ManagerSwitchBtn.Name = "ManagerSwitchBtn";
             this.ManagerSwitchBtn.Size = new System.Drawing.Size(148, 47);
             this.ManagerSwitchBtn.TabIndex = 7;
@@ -2047,25 +2498,55 @@
             this.ManagerSwitchBtn.UseVisualStyleBackColor = false;
             this.ManagerSwitchBtn.Click += new System.EventHandler(this.ManagerSwitchBtn_Click);
             // 
-            // ManagerLbl
+            // MngrItemBtnPanel
             // 
-            this.ManagerLbl.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ManagerLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.ManagerLbl.Location = new System.Drawing.Point(340, 202);
-            this.ManagerLbl.Name = "ManagerLbl";
-            this.ManagerLbl.Size = new System.Drawing.Size(490, 47);
-            this.ManagerLbl.TabIndex = 1;
-            this.ManagerLbl.Text = "Manager";
-            this.ManagerLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.MngrItemBtnPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MngrItemBtnPanel.Controls.Add(this.pictureBox2);
+            this.MngrItemBtnPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.MngrItemBtnPanel.Location = new System.Drawing.Point(0, 0);
+            this.MngrItemBtnPanel.Name = "MngrItemBtnPanel";
+            this.MngrItemBtnPanel.Size = new System.Drawing.Size(196, 535);
+            this.MngrItemBtnPanel.TabIndex = 21;
             // 
-            // ManagerPanelLbl
+            // pictureBox2
             // 
-            this.ManagerPanelLbl.AutoSize = true;
-            this.ManagerPanelLbl.Location = new System.Drawing.Point(582, 326);
-            this.ManagerPanelLbl.Name = "ManagerPanelLbl";
-            this.ManagerPanelLbl.Size = new System.Drawing.Size(49, 13);
-            this.ManagerPanelLbl.TabIndex = 0;
-            this.ManagerPanelLbl.Text = "Manager";
+            this.pictureBox2.Location = new System.Drawing.Point(36, 32);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(128, 128);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // MNGRHeaderPanel
+            // 
+            this.MNGRHeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MNGRHeaderPanel.Controls.Add(this.ENRMngrHeaderLogo);
+            this.MNGRHeaderPanel.Controls.Add(this.MngrDashboardLbl);
+            this.MNGRHeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MNGRHeaderPanel.Location = new System.Drawing.Point(0, 0);
+            this.MNGRHeaderPanel.Name = "MNGRHeaderPanel";
+            this.MNGRHeaderPanel.Size = new System.Drawing.Size(1264, 155);
+            this.MNGRHeaderPanel.TabIndex = 20;
+            // 
+            // ENRMngrHeaderLogo
+            // 
+            this.ENRMngrHeaderLogo.Image = global::EatNRunProject.Properties.Resources.AP_Logo_128x128;
+            this.ENRMngrHeaderLogo.Location = new System.Drawing.Point(68, 12);
+            this.ENRMngrHeaderLogo.Name = "ENRMngrHeaderLogo";
+            this.ENRMngrHeaderLogo.Size = new System.Drawing.Size(128, 128);
+            this.ENRMngrHeaderLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ENRMngrHeaderLogo.TabIndex = 1;
+            this.ENRMngrHeaderLogo.TabStop = false;
+            // 
+            // MngrDashboardLbl
+            // 
+            this.MngrDashboardLbl.Font = new System.Drawing.Font("Arial Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrDashboardLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.MngrDashboardLbl.Location = new System.Drawing.Point(202, 39);
+            this.MngrDashboardLbl.Name = "MngrDashboardLbl";
+            this.MngrDashboardLbl.Size = new System.Drawing.Size(602, 75);
+            this.MngrDashboardLbl.TabIndex = 18;
+            this.MngrDashboardLbl.Text = "Manager ";
+            this.MngrDashboardLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CashierPanel
             // 
@@ -2116,19 +2597,31 @@
             // 
             this.AdminFormPicker.ContainerControl = this.AdminFormPanel;
             this.AdminFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.AdminFormPicker.SelectedCard = "Card1";
+            this.AdminFormPicker.SelectedCard = "Card2";
             // 
             // FoodItemFormPicker
             // 
             this.FoodItemFormPicker.ContainerControl = this.ItemFormPanel;
             this.FoodItemFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.FoodItemFormPicker.SelectedCard = "Card3";
+            this.FoodItemFormPicker.SelectedCard = "Card7";
             // 
             // AccountsFormPicker
             // 
             this.AccountsFormPicker.ContainerControl = this.AccountsFormPanel;
             this.AccountsFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.AccountsFormPicker.SelectedCard = "Card7";
+            this.AccountsFormPicker.SelectedCard = "Card6";
+            // 
+            // MngrFormPicker
+            // 
+            this.MngrFormPicker.ContainerControl = this.MngrFormPanel;
+            this.MngrFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
+            this.MngrFormPicker.SelectedCard = "Card1";
+            // 
+            // MngrItemFormPicker
+            // 
+            this.MngrItemFormPicker.ContainerControl = this.MngrItemPanel;
+            this.MngrItemFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
+            this.MngrItemFormPicker.SelectedCard = "Card3";
             // 
             // ENRMainForm
             // 
@@ -2195,6 +2688,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.AccountListTable)).EndInit();
             this.FoodItemPanel.ResumeLayout(false);
             this.ItemFormPanel.ResumeLayout(false);
+            this.UpdateItemPanel.ResumeLayout(false);
+            this.UpdateItemPanel.PerformLayout();
+            this.UpdateItemCodePanelBox.ResumeLayout(false);
+            this.UpdateItemCodePanelBox.PerformLayout();
+            this.UpdateItemTypePanelBox.ResumeLayout(false);
+            this.UpdateItemPricePanelBox.ResumeLayout(false);
+            this.UpdateItemPricePanelBox.PerformLayout();
+            this.UpdateItemDatePickerPanelBox.ResumeLayout(false);
+            this.UpdateItemNamePanelBox.ResumeLayout(false);
+            this.UpdateItemNamePanelBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpdateItemPicBox)).EndInit();
             this.AddItemPanel.ResumeLayout(false);
             this.AddItemPanel.PerformLayout();
             this.AddItemCodePanelBox.ResumeLayout(false);
@@ -2207,7 +2711,6 @@
             this.AddItemNamePanelBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddItemPicBox)).EndInit();
             this.CreateNewFoodBtnPanel.ResumeLayout(false);
-            this.UpdateItemPanel.ResumeLayout(false);
             this.FoodItemListPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FoodItemListTable)).EndInit();
             this.LoginPanel.ResumeLayout(false);
@@ -2219,11 +2722,31 @@
             this.ENREmplIDPanelBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminENRLogoR2)).EndInit();
             this.ManagerPanel.ResumeLayout(false);
-            this.ManagerPanel.PerformLayout();
+            this.MngrFormPanel.ResumeLayout(false);
+            this.MngrNewOrderBtnPanel.ResumeLayout(false);
+            this.MngrOrderDashboardPanel.ResumeLayout(false);
+            this.MngrOrderViewPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MngrOrderViewTable)).EndInit();
+            this.MngrItemPanel.ResumeLayout(false);
+            this.MngrItemSetMealsPanel.ResumeLayout(false);
+            this.MngrItemSetMealsPanel.PerformLayout();
+            this.MngrItemDrinksPanel.ResumeLayout(false);
+            this.MngrItemDrinksPanel.PerformLayout();
+            this.MngrItemSidesPanel.ResumeLayout(false);
+            this.MngrItemSidesPanel.PerformLayout();
+            this.MngrItemBurgerPanel.ResumeLayout(false);
+            this.MngrItemBurgerPanel.PerformLayout();
+            this.MngrItemBtnPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.MNGRHeaderPanel.ResumeLayout(false);
+            this.MNGRHeaderPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ENRMngrHeaderLogo)).EndInit();
             this.CashierPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AdminFormPicker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FoodItemFormPicker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountsFormPicker)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrFormPicker)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrItemFormPicker)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2235,7 +2758,6 @@
         private System.Windows.Forms.Panel LoginPanel;
         private System.Windows.Forms.Panel ManagerPanel;
         private System.Windows.Forms.Panel CashierPanel;
-        private System.Windows.Forms.Label ManagerPanelLbl;
         private System.Windows.Forms.Label ENRLoginUserLbl;
         private System.Windows.Forms.PictureBox AdminENRLogoR2;
         private FontAwesome.Sharp.IconButton ENRLoginBtn;
@@ -2256,12 +2778,8 @@
         private System.Windows.Forms.Panel AccountsPanel;
         private System.Windows.Forms.Panel FoodItemPanel;
         private System.Windows.Forms.Panel FoodItemListPanel;
-        private System.Windows.Forms.Panel ItemFormPanel;
         private Syncfusion.Windows.Forms.Tools.CardLayout FoodItemFormPicker;
-        private System.Windows.Forms.Label ManagerLbl;
         private System.Windows.Forms.Label CashierLbl;
-        private System.Windows.Forms.Panel UpdateItemPanel;
-        private System.Windows.Forms.Label UpdateFoodLbl;
         private System.Windows.Forms.DataGridView FoodItemListTable;
         private midterm.RoundBtn FoodItemEditBtn;
         private FontAwesome.Sharp.IconButton AdminSwitchBtn;
@@ -2271,9 +2789,6 @@
         private System.Windows.Forms.Panel AccListPanel;
         private midterm.RoundBtn AccEditBtn;
         private System.Windows.Forms.Label FoodItemListLbl;
-        private System.Windows.Forms.Panel CreateNewFoodBtnPanel;
-        private FontAwesome.Sharp.IconButton CreateNewFoodBtn;
-        private FontAwesome.Sharp.IconButton UpdateItemExitBtn;
         private Syncfusion.Windows.Forms.Tools.CardLayout AccountsFormPicker;
         private System.Windows.Forms.TextBox ENREmplPassBox;
         private System.Windows.Forms.Panel AccountsFormPanel;
@@ -2354,11 +2869,34 @@
         private System.Windows.Forms.Label ENRAdminLbl;
         private System.Windows.Forms.Panel ENRAdminHeader;
         private System.Windows.Forms.DataGridView SalesTable;
+        private System.Windows.Forms.Panel ItemFormPanel;
+        private System.Windows.Forms.Panel UpdateItemPanel;
+        private System.Windows.Forms.Panel UpdateItemCodePanelBox;
+        private System.Windows.Forms.TextBox UpdateItemCodeBox;
+        private System.Windows.Forms.Panel UpdateItemTypePanelBox;
+        private System.Windows.Forms.ComboBox UpdateItemTypeComboBox;
+        private System.Windows.Forms.Label UpdateItemTypeLbl;
+        private System.Windows.Forms.Panel UpdateItemPricePanelBox;
+        private System.Windows.Forms.TextBox UpdateItemPriceBox;
+        private System.Windows.Forms.Label UpdateItemPriceLbl;
+        private System.Windows.Forms.Panel UpdateItemDatePickerPanelBox;
+        private System.Windows.Forms.DateTimePicker UpdateItemCreatedDatePicker;
+        private System.Windows.Forms.Label UpdateItemCreatedLbl;
+        private System.Windows.Forms.Label UpdateItemCodeLbl;
+        private System.Windows.Forms.Panel UpdateItemNamePanelBox;
+        private System.Windows.Forms.TextBox UpdateItemNameBox;
+        private System.Windows.Forms.Label UpdateItemNameLbl;
+        private System.Windows.Forms.Label UpdateItemLbl;
+        private System.Windows.Forms.PictureBox UpdateItemPicBox;
+        private FontAwesome.Sharp.IconButton UpdateItemPicBtn;
+        private FontAwesome.Sharp.IconButton UpdateItemExitBtn;
+        private midterm.RoundBtn UpdateItemBtn;
         private System.Windows.Forms.Panel AddItemPanel;
+        private System.Windows.Forms.Panel AddItemCodePanelBox;
+        private System.Windows.Forms.TextBox AddItemCodeBox;
         private System.Windows.Forms.Panel AddItemTypePanelBox;
         private System.Windows.Forms.ComboBox AddItemTypeComboBox;
         private System.Windows.Forms.Label AddItemTypeLbl;
-        private System.Windows.Forms.PictureBox AddItemPicBox;
         private System.Windows.Forms.Panel AddItemPricePanelBox;
         private System.Windows.Forms.TextBox AddItemPriceBox;
         private System.Windows.Forms.Label AddItemPriceLbl;
@@ -2366,14 +2904,37 @@
         private System.Windows.Forms.DateTimePicker AddItemCreatedDatePicker;
         private System.Windows.Forms.Label AddItemCreatedLbl;
         private System.Windows.Forms.Label AddItemCodeLbl;
-        private FontAwesome.Sharp.IconButton AddItemPicBtn;
         private System.Windows.Forms.Panel AddItemNamePanelBox;
         private System.Windows.Forms.TextBox AddItemNameBox;
         private System.Windows.Forms.Label AddItemNameLbl;
-        private FontAwesome.Sharp.IconButton AddItemExitBtn;
         private System.Windows.Forms.Label AddItemLbl;
+        private System.Windows.Forms.PictureBox AddItemPicBox;
+        private FontAwesome.Sharp.IconButton AddItemPicBtn;
+        private FontAwesome.Sharp.IconButton AddItemExitBtn;
         private midterm.RoundBtn AddItemBtn;
-        private System.Windows.Forms.Panel AddItemCodePanelBox;
-        private System.Windows.Forms.TextBox AddItemCodeBox;
+        private System.Windows.Forms.Panel CreateNewFoodBtnPanel;
+        private FontAwesome.Sharp.IconButton CreateNewFoodBtn;
+        private System.Windows.Forms.Panel MNGRHeaderPanel;
+        private System.Windows.Forms.PictureBox ENRMngrHeaderLogo;
+        private System.Windows.Forms.Label MngrDashboardLbl;
+        private System.Windows.Forms.Panel MngrItemBtnPanel;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel MngrFormPanel;
+        private Syncfusion.Windows.Forms.Tools.CardLayout MngrFormPicker;
+        private System.Windows.Forms.Panel MngrNewOrderBtnPanel;
+        private System.Windows.Forms.Panel MngrOrderDashboardPanel;
+        private System.Windows.Forms.DataGridView MngrOrderViewTable;
+        private System.Windows.Forms.Panel MngrOrderViewPanel;
+        private System.Windows.Forms.Panel MngrItemPanel;
+        private System.Windows.Forms.Panel MngrItemBurgerPanel;
+        private Syncfusion.Windows.Forms.Tools.CardLayout MngrItemFormPicker;
+        private System.Windows.Forms.Panel MngrItemSidesPanel;
+        private System.Windows.Forms.Panel MngrItemSetMealsPanel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel MngrItemDrinksPanel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private FontAwesome.Sharp.IconButton MngrCreateNewOrderBtn;
     }
 }
