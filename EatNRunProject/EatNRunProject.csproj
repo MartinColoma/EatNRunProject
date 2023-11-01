@@ -283,7 +283,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MainFormCard.cs" />
-    <Compile Include="MNGRPanelCard.cs" />
+    <Compile Include="MngrItemPanelCard.cs" />
+    <Compile Include="MngrOrderPanelCard.cs" />
+    <Compile Include="MngrPanelCard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ENR_MainForm.cs">
@@ -295,6 +297,7 @@
     <Compile Include="RoundBtn.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TxtPlaceholder.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

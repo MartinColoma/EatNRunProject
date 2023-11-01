@@ -3,13 +3,13 @@
 
 namespace EatNRunProject
 {
-    internal class MNGRPanelCard
+    internal class MngrPanelCard
     {
 
         private Panel MngrOrderBtn;
         private Panel MngrOrderDashboard;
 
-        public MNGRPanelCard(Panel OrderBtn, Panel Dashboard)
+        public MngrPanelCard(Panel OrderBtn, Panel Dashboard)
         {
 
             MngrOrderBtn = OrderBtn;
@@ -17,7 +17,7 @@ namespace EatNRunProject
 
         }
 
-        public void AdminFormShow(Panel panelToShow)
+        public void MngrFormShow(Panel panelToShow)
         {
             MngrOrderBtn.Hide();
             MngrOrderDashboard.Hide();

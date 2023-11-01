@@ -1,4 +1,5 @@
-﻿using EatNRunProject.Properties;
+﻿using CafeDeLunaSystem;
+using EatNRunProject.Properties;
 using MySql.Data.MySqlClient;
 using Syncfusion.Windows.Forms.Interop;
 using System;
@@ -26,6 +27,8 @@ namespace EatNRunProject
         private AdminPanelCard AdminPanelManager;
         private AdminFoodPanelCard AdminFoodPanelManager;
         private AdminAccPanelCard AdminAccPanelManager;
+        private MngrPanelCard MngrPanelManager;
+        private MngrItemPanelCard MngrItemPanelManager;
 
         //db connection
         public static string mysqlconn = "server=localhost;user=root;database=eatnrun;password=";
@@ -57,6 +60,11 @@ namespace EatNRunProject
             //Mngr Order View
             InitializeDataGridView();
 
+            //Placeholder Text
+            //TxtPlaceholder.SetPlaceholder(ENREmplIDBox, "Enter Employee ID");
+            //TxtPlaceholder.SetPlaceholder(ENREmplPassBox, "Enter Employee Password");
+
+
             //add acc gender combo box
             AddEmplGenderComboBox.Items.AddRange(genders);
             AddEmplGenderComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -82,14 +90,21 @@ namespace EatNRunProject
             UpdateItemTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
 
-            //Panel Manager
+            //Main Form Panel Manager
             MFpanelManager = new MainFormCard(LoginPanel, AdminPanel, ManagerPanel, CashierPanel);
+            
+            //Admin Form Manager
             AdminPanelManager = new AdminPanelCard(FoodItemPanel, SalesPanel, AccountsPanel);
             AdminFoodPanelManager = new AdminFoodPanelCard(AddItemPanel, UpdateItemPanel, CreateNewFoodBtnPanel);
             AdminAccPanelManager = new AdminAccPanelCard(NewAccPanel, UpdateEmplAccPanel, CreateAccBtnPanel);
 
+            //Mngr Form Manager
+            MngrPanelManager = new MngrPanelCard(MngrNewOrderBtnPanel, MngrOrderDashboardPanel);
+            MngrItemPanelManager = new MngrItemPanelCard(MngrItemBurgerPanel, MngrItemSidesPanel, MngrItemSetMealsPanel,MngrItemDrinksPanel);
+
             MFpanelManager.MFShow(LoginPanel);
 
+            MngrItemPanelManager.MngrItemFormShow(MngrItemBurgerPanel);
 
             AccountListTable.DataError += new DataGridViewDataErrorEventHandler(AccountListTable_DataError);
             AccountListTable.RowPostPaint += new DataGridViewRowPostPaintEventHandler(AccountListTable_RowPostPaint);
@@ -390,6 +405,7 @@ namespace EatNRunProject
             {
                 MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MFpanelManager.MFShow(ManagerPanel);
+                MngrPanelManager.MngrFormShow(MngrNewOrderBtnPanel);
                 rememberAccount();
                 logincredclear();
                 return;
@@ -471,7 +487,9 @@ namespace EatNRunProject
                                     {
                                         MessageBox.Show($"Welcome back, Manager {name}.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         MFpanelManager.MFShow(ManagerPanel);
-                                        MngrDashboardLbl.Text = "Manager " + name;
+                                        MngrPanelManager.MngrFormShow(MngrNewOrderBtnPanel);
+                                        MngrNameLbl.Text = "| Manager Name: " + name;
+                                        MngrSessionNumRefresh();
                                         rememberAccount();
                                         logincredclear();
 
@@ -532,6 +550,20 @@ namespace EatNRunProject
                     connection?.Close();
                 }
             }
+        }
+
+        private void MngrSessionNumRefresh()
+        {
+            MngrSessionNum.Text = "";
+            ID = RandomNumberGenerator.GenerateRandomNumber();
+            MngrSessionNum.Text = "| Session Number: " + ID;
+        }
+
+        private void MngrOrderNumRefresh()
+        {
+            MngrOrderNumLbl.Text = "";
+            ID = RandomNumberGenerator.GenerateRandomNumber();
+            MngrOrderNumLbl.Text = "| Order Number: " + ID;
         }
 
         private void logincredclear()
@@ -866,6 +898,7 @@ namespace EatNRunProject
 
         private void NewAddAccBtn_Click(object sender, EventArgs e)
         {
+            //Create Acc Btn
             //Create Acc Btn
             DateTime selectedDate = AddEmplBdayPicker.Value;
 
@@ -1859,5 +1892,59 @@ namespace EatNRunProject
             }
         }
 
+        private void MngrCreateNewOrderBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to create a new order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                MngrPanelManager.MngrFormShow(MngrOrderDashboardPanel);
+                MngrItemPanelManager.MngrItemFormShow(MngrItemBurgerPanel);
+                MngrOrderNumRefresh();
+            }
+        }
+
+        private void MngrOrderExitBtn_Click(object sender, EventArgs e)
+        {
+            if (MngrOrderDashboardPanel.Visible)
+            {
+                DialogResult result = MessageBox.Show("Do you want to delete this order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    MngrOrderDashboardPanel.Visible = false;
+                    MngrNewOrderBtnPanel.Visible = true;
+                }
+
+            }
+
+            else
+            {
+                MngrOrderDashboardPanel.Visible = true;
+                MngrNewOrderBtnPanel.Visible = false;
+            }
+        }
+
+        private void MngrItemBurgerBtn_Click(object sender, EventArgs e)
+        {
+            MngrItemPanelManager.MngrItemFormShow(MngrItemBurgerPanel);
+
+        }
+
+        private void MngrItemSideBtn_Click(object sender, EventArgs e)
+        {
+            MngrItemPanelManager.MngrItemFormShow(MngrItemSidesPanel);
+
+        }
+
+        private void MngrItemDrinksBtn_Click(object sender, EventArgs e)
+        {
+            MngrItemPanelManager.MngrItemFormShow(MngrItemDrinksPanel);
+
+        }
+
+        private void MngrItemSetBtn_Click(object sender, EventArgs e)
+        {
+            MngrItemPanelManager.MngrItemFormShow(MngrItemSetMealsPanel);
+
+        }
     }
 }
