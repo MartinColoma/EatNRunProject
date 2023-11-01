@@ -29,12 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ENRMainForm));
             this.MainFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.AdminPanel = new System.Windows.Forms.Panel();
@@ -179,13 +191,14 @@
             this.ADFoodItemBtn = new FontAwesome.Sharp.IconButton();
             this.LoginPanel = new System.Windows.Forms.Panel();
             this.AdminLoginFormPanel = new System.Windows.Forms.Panel();
+            this.RmbrAccCheckbox = new System.Windows.Forms.CheckBox();
             this.ENREmplPassLbl = new System.Windows.Forms.Label();
             this.ENREmplPassPanelBox = new System.Windows.Forms.Panel();
             this.ENREmplPassBox = new System.Windows.Forms.TextBox();
             this.ENREmplShowPass = new System.Windows.Forms.CheckBox();
             this.ENREmplIDLbl = new System.Windows.Forms.Label();
             this.ENREmplIDPanelBox = new System.Windows.Forms.Panel();
-            this.ENREmplIDBox = new System.Windows.Forms.TextBox();
+            this.ENREmplIDBox = new System.Windows.Forms.ComboBox();
             this.ENRLoginUserLbl = new System.Windows.Forms.Label();
             this.AdminENRLogoR2 = new System.Windows.Forms.PictureBox();
             this.ENRLoginBtn = new FontAwesome.Sharp.IconButton();
@@ -194,21 +207,41 @@
             this.MngrNewOrderBtnPanel = new System.Windows.Forms.Panel();
             this.MngrCreateNewOrderBtn = new FontAwesome.Sharp.IconButton();
             this.MngrOrderDashboardPanel = new System.Windows.Forms.Panel();
+            this.MngrViewPanel = new System.Windows.Forms.Panel();
+            this.MngrVoidViewPanel = new System.Windows.Forms.Panel();
+            this.MngrVoidLbl = new System.Windows.Forms.Label();
+            this.MngrCheckoutViewPanel = new System.Windows.Forms.Panel();
+            this.MngrCheckoutExitBtn = new FontAwesome.Sharp.IconButton();
+            this.MngrPaymentButton = new FontAwesome.Sharp.IconButton();
+            this.MngrCheckoutLbl = new System.Windows.Forms.Label();
+            this.MngrCheckoutViewTable = new System.Windows.Forms.DataGridView();
             this.MngrOrderViewPanel = new System.Windows.Forms.Panel();
+            this.MngrCheckoutBtn = new FontAwesome.Sharp.IconButton();
+            this.MngrOrderNumLbl = new System.Windows.Forms.Label();
             this.MngrOrderViewTable = new System.Windows.Forms.DataGridView();
+            this.MngrOrderExitBtn = new FontAwesome.Sharp.IconButton();
             this.MngrItemPanel = new System.Windows.Forms.Panel();
             this.MngrItemSetMealsPanel = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.MngrItemDrinksPanel = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.MngrItemSetLbl = new System.Windows.Forms.Label();
+            this.MngrItemSetMealView = new System.Windows.Forms.DataGridView();
             this.MngrItemSidesPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.MngrItemSideLbl = new System.Windows.Forms.Label();
+            this.MngrItemSidesView = new System.Windows.Forms.DataGridView();
             this.MngrItemBurgerPanel = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.MngrItemBurgerLbl = new System.Windows.Forms.Label();
+            this.MngrItemBurgerView = new System.Windows.Forms.DataGridView();
+            this.MngrItemDrinksPanel = new System.Windows.Forms.Panel();
+            this.MngrItemDrinksLbl = new System.Windows.Forms.Label();
+            this.MngrItemDrinkView = new System.Windows.Forms.DataGridView();
             this.ManagerSwitchBtn = new FontAwesome.Sharp.IconButton();
             this.MngrItemBtnPanel = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.MngrItemSideBtn = new FontAwesome.Sharp.IconButton();
+            this.MngrItemDrinksBtn = new FontAwesome.Sharp.IconButton();
+            this.MngrItemSetBtn = new FontAwesome.Sharp.IconButton();
+            this.MngrItemBurgerBtn = new FontAwesome.Sharp.IconButton();
             this.MNGRHeaderPanel = new System.Windows.Forms.Panel();
+            this.MngrNameLbl = new System.Windows.Forms.Label();
+            this.MngrSessionNum = new System.Windows.Forms.Label();
             this.ENRMngrHeaderLogo = new System.Windows.Forms.PictureBox();
             this.MngrDashboardLbl = new System.Windows.Forms.Label();
             this.CashierPanel = new System.Windows.Forms.Panel();
@@ -219,6 +252,7 @@
             this.AccountsFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.MngrFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.MngrItemFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
+            this.MngrViewFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MainFormPicker)).BeginInit();
             this.AdminPanel.SuspendLayout();
             this.ENRAdminHeader.SuspendLayout();
@@ -281,15 +315,22 @@
             this.MngrFormPanel.SuspendLayout();
             this.MngrNewOrderBtnPanel.SuspendLayout();
             this.MngrOrderDashboardPanel.SuspendLayout();
+            this.MngrViewPanel.SuspendLayout();
+            this.MngrVoidViewPanel.SuspendLayout();
+            this.MngrCheckoutViewPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrCheckoutViewTable)).BeginInit();
             this.MngrOrderViewPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MngrOrderViewTable)).BeginInit();
             this.MngrItemPanel.SuspendLayout();
             this.MngrItemSetMealsPanel.SuspendLayout();
-            this.MngrItemDrinksPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrItemSetMealView)).BeginInit();
             this.MngrItemSidesPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrItemSidesView)).BeginInit();
             this.MngrItemBurgerPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrItemBurgerView)).BeginInit();
+            this.MngrItemDrinksPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrItemDrinkView)).BeginInit();
             this.MngrItemBtnPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.MNGRHeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ENRMngrHeaderLogo)).BeginInit();
             this.CashierPanel.SuspendLayout();
@@ -298,13 +339,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.AccountsFormPicker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MngrFormPicker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MngrItemFormPicker)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrViewFormPicker)).BeginInit();
             this.SuspendLayout();
             // 
             // MainFormPicker
             // 
             this.MainFormPicker.ContainerControl = this;
             this.MainFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.MainFormPicker.SelectedCard = "Card2";
+            this.MainFormPicker.SelectedCard = "Card1";
             // 
             // AdminPanel
             // 
@@ -400,23 +442,23 @@
             this.SalesTable.AllowUserToAddRows = false;
             this.SalesTable.AllowUserToDeleteRows = false;
             this.SalesTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SalesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SalesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
             this.SalesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SalesTable.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SalesTable.DefaultCellStyle = dataGridViewCellStyle38;
             this.SalesTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SalesTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.SalesTable.Location = new System.Drawing.Point(0, 0);
@@ -1361,23 +1403,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AccountListTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AccountListTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AccountListTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle39;
             this.AccountListTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AccountListTable.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AccountListTable.DefaultCellStyle = dataGridViewCellStyle40;
             this.AccountListTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.AccountListTable.Location = new System.Drawing.Point(16, 75);
             this.AccountListTable.Name = "AccountListTable";
@@ -2030,23 +2072,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FoodItemListTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FoodItemListTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle41.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FoodItemListTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle41;
             this.FoodItemListTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.FoodItemListTable.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.FoodItemListTable.DefaultCellStyle = dataGridViewCellStyle42;
             this.FoodItemListTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.FoodItemListTable.Location = new System.Drawing.Point(16, 75);
             this.FoodItemListTable.Name = "FoodItemListTable";
@@ -2168,6 +2210,7 @@
             // AdminLoginFormPanel
             // 
             this.AdminLoginFormPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AdminLoginFormPanel.Controls.Add(this.RmbrAccCheckbox);
             this.AdminLoginFormPanel.Controls.Add(this.ENREmplPassLbl);
             this.AdminLoginFormPanel.Controls.Add(this.ENREmplPassPanelBox);
             this.AdminLoginFormPanel.Controls.Add(this.ENREmplIDLbl);
@@ -2179,6 +2222,19 @@
             this.AdminLoginFormPanel.Name = "AdminLoginFormPanel";
             this.AdminLoginFormPanel.Size = new System.Drawing.Size(500, 500);
             this.AdminLoginFormPanel.TabIndex = 0;
+            // 
+            // RmbrAccCheckbox
+            // 
+            this.RmbrAccCheckbox.AutoSize = true;
+            this.RmbrAccCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RmbrAccCheckbox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RmbrAccCheckbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.RmbrAccCheckbox.Location = new System.Drawing.Point(97, 400);
+            this.RmbrAccCheckbox.Name = "RmbrAccCheckbox";
+            this.RmbrAccCheckbox.Size = new System.Drawing.Size(140, 19);
+            this.RmbrAccCheckbox.TabIndex = 9;
+            this.RmbrAccCheckbox.Text = "Remember Account";
+            this.RmbrAccCheckbox.UseVisualStyleBackColor = true;
             // 
             // ENREmplPassLbl
             // 
@@ -2251,13 +2307,17 @@
             // ENREmplIDBox
             // 
             this.ENREmplIDBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.ENREmplIDBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ENREmplIDBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ENREmplIDBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ENREmplIDBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ENREmplIDBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.ENREmplIDBox.Location = new System.Drawing.Point(3, 6);
+            this.ENREmplIDBox.FormattingEnabled = true;
+            this.ENREmplIDBox.Location = new System.Drawing.Point(0, 0);
+            this.ENREmplIDBox.MaxLength = 10;
             this.ENREmplIDBox.Name = "ENREmplIDBox";
-            this.ENREmplIDBox.Size = new System.Drawing.Size(312, 16);
+            this.ENREmplIDBox.Size = new System.Drawing.Size(318, 23);
             this.ENREmplIDBox.TabIndex = 0;
+            this.ENREmplIDBox.SelectedIndexChanged += new System.EventHandler(this.ENREmplIDBox_SelectedIndexChanged);
             // 
             // ENRLoginUserLbl
             // 
@@ -2318,9 +2378,9 @@
             this.MngrFormPanel.Controls.Add(this.MngrNewOrderBtnPanel);
             this.MngrFormPanel.Controls.Add(this.MngrOrderDashboardPanel);
             this.MngrFormPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.MngrFormPanel.Location = new System.Drawing.Point(0, 146);
+            this.MngrFormPanel.Location = new System.Drawing.Point(0, 149);
             this.MngrFormPanel.Name = "MngrFormPanel";
-            this.MngrFormPanel.Size = new System.Drawing.Size(1264, 535);
+            this.MngrFormPanel.Size = new System.Drawing.Size(1264, 532);
             this.MngrFormPanel.TabIndex = 22;
             // 
             // MngrNewOrderBtnPanel
@@ -2331,7 +2391,7 @@
             this.MngrFormPicker.SetMinimumSize(this.MngrNewOrderBtnPanel, new System.Drawing.Size(200, 100));
             this.MngrNewOrderBtnPanel.Name = "MngrNewOrderBtnPanel";
             this.MngrFormPicker.SetPreferredSize(this.MngrNewOrderBtnPanel, new System.Drawing.Size(200, 100));
-            this.MngrNewOrderBtnPanel.Size = new System.Drawing.Size(1264, 535);
+            this.MngrNewOrderBtnPanel.Size = new System.Drawing.Size(1264, 532);
             this.MngrNewOrderBtnPanel.TabIndex = 0;
             // 
             // MngrCreateNewOrderBtn
@@ -2347,17 +2407,19 @@
             this.MngrCreateNewOrderBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MngrCreateNewOrderBtn.Location = new System.Drawing.Point(0, 0);
             this.MngrCreateNewOrderBtn.Name = "MngrCreateNewOrderBtn";
-            this.MngrCreateNewOrderBtn.Size = new System.Drawing.Size(1264, 535);
+            this.MngrCreateNewOrderBtn.Size = new System.Drawing.Size(1264, 532);
             this.MngrCreateNewOrderBtn.TabIndex = 0;
             this.MngrCreateNewOrderBtn.Text = "CREATE NEW ORDER";
             this.MngrCreateNewOrderBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.MngrCreateNewOrderBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.MngrCreateNewOrderBtn.UseVisualStyleBackColor = true;
+            this.MngrCreateNewOrderBtn.Click += new System.EventHandler(this.MngrCreateNewOrderBtn_Click);
             // 
             // MngrOrderDashboardPanel
             // 
             this.MngrFormPicker.SetCardName(this.MngrOrderDashboardPanel, "Card2");
-            this.MngrOrderDashboardPanel.Controls.Add(this.MngrOrderViewPanel);
+            this.MngrOrderDashboardPanel.Controls.Add(this.MngrViewPanel);
+            this.MngrOrderDashboardPanel.Controls.Add(this.MngrOrderExitBtn);
             this.MngrOrderDashboardPanel.Controls.Add(this.MngrItemPanel);
             this.MngrOrderDashboardPanel.Controls.Add(this.ManagerSwitchBtn);
             this.MngrOrderDashboardPanel.Controls.Add(this.MngrItemBtnPanel);
@@ -2365,116 +2427,490 @@
             this.MngrFormPicker.SetMinimumSize(this.MngrOrderDashboardPanel, new System.Drawing.Size(200, 100));
             this.MngrOrderDashboardPanel.Name = "MngrOrderDashboardPanel";
             this.MngrFormPicker.SetPreferredSize(this.MngrOrderDashboardPanel, new System.Drawing.Size(200, 100));
-            this.MngrOrderDashboardPanel.Size = new System.Drawing.Size(1264, 535);
+            this.MngrOrderDashboardPanel.Size = new System.Drawing.Size(1264, 532);
             this.MngrOrderDashboardPanel.TabIndex = 1;
+            // 
+            // MngrViewPanel
+            // 
+            this.MngrViewPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MngrViewPanel.Controls.Add(this.MngrVoidViewPanel);
+            this.MngrViewPanel.Controls.Add(this.MngrCheckoutViewPanel);
+            this.MngrViewPanel.Controls.Add(this.MngrOrderViewPanel);
+            this.MngrViewPanel.Location = new System.Drawing.Point(758, 25);
+            this.MngrViewPanel.Name = "MngrViewPanel";
+            this.MngrViewPanel.Size = new System.Drawing.Size(450, 454);
+            this.MngrViewPanel.TabIndex = 26;
+            // 
+            // MngrVoidViewPanel
+            // 
+            this.MngrVoidViewPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MngrViewFormPicker.SetCardName(this.MngrVoidViewPanel, "Card3");
+            this.MngrVoidViewPanel.Controls.Add(this.MngrVoidLbl);
+            this.MngrVoidViewPanel.Location = new System.Drawing.Point(0, 0);
+            this.MngrViewFormPicker.SetMinimumSize(this.MngrVoidViewPanel, new System.Drawing.Size(450, 454));
+            this.MngrVoidViewPanel.Name = "MngrVoidViewPanel";
+            this.MngrViewFormPicker.SetPreferredSize(this.MngrVoidViewPanel, new System.Drawing.Size(450, 454));
+            this.MngrVoidViewPanel.Size = new System.Drawing.Size(450, 454);
+            this.MngrVoidViewPanel.TabIndex = 27;
+            // 
+            // MngrVoidLbl
+            // 
+            this.MngrVoidLbl.AutoSize = true;
+            this.MngrVoidLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrVoidLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrVoidLbl.Location = new System.Drawing.Point(19, 16);
+            this.MngrVoidLbl.Name = "MngrVoidLbl";
+            this.MngrVoidLbl.Size = new System.Drawing.Size(258, 23);
+            this.MngrVoidLbl.TabIndex = 13;
+            this.MngrVoidLbl.Text = "| Manager Void Confirmation";
+            // 
+            // MngrCheckoutViewPanel
+            // 
+            this.MngrCheckoutViewPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MngrViewFormPicker.SetCardName(this.MngrCheckoutViewPanel, "Card1");
+            this.MngrCheckoutViewPanel.Controls.Add(this.MngrCheckoutExitBtn);
+            this.MngrCheckoutViewPanel.Controls.Add(this.MngrPaymentButton);
+            this.MngrCheckoutViewPanel.Controls.Add(this.MngrCheckoutLbl);
+            this.MngrCheckoutViewPanel.Controls.Add(this.MngrCheckoutViewTable);
+            this.MngrCheckoutViewPanel.Location = new System.Drawing.Point(0, 0);
+            this.MngrViewFormPicker.SetMinimumSize(this.MngrCheckoutViewPanel, new System.Drawing.Size(450, 454));
+            this.MngrCheckoutViewPanel.Name = "MngrCheckoutViewPanel";
+            this.MngrViewFormPicker.SetPreferredSize(this.MngrCheckoutViewPanel, new System.Drawing.Size(450, 454));
+            this.MngrCheckoutViewPanel.Size = new System.Drawing.Size(450, 454);
+            this.MngrCheckoutViewPanel.TabIndex = 25;
+            // 
+            // MngrCheckoutExitBtn
+            // 
+            this.MngrCheckoutExitBtn.BackColor = System.Drawing.Color.Transparent;
+            this.MngrCheckoutExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrCheckoutExitBtn.FlatAppearance.BorderSize = 0;
+            this.MngrCheckoutExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MngrCheckoutExitBtn.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            this.MngrCheckoutExitBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrCheckoutExitBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.MngrCheckoutExitBtn.IconSize = 24;
+            this.MngrCheckoutExitBtn.Location = new System.Drawing.Point(424, 2);
+            this.MngrCheckoutExitBtn.Name = "MngrCheckoutExitBtn";
+            this.MngrCheckoutExitBtn.Size = new System.Drawing.Size(24, 24);
+            this.MngrCheckoutExitBtn.TabIndex = 26;
+            this.MngrCheckoutExitBtn.UseVisualStyleBackColor = false;
+            this.MngrCheckoutExitBtn.Click += new System.EventHandler(this.MngrCheckoutExitBtn_Click);
+            // 
+            // MngrPaymentButton
+            // 
+            this.MngrPaymentButton.FlatAppearance.BorderSize = 0;
+            this.MngrPaymentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MngrPaymentButton.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrPaymentButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrPaymentButton.IconChar = FontAwesome.Sharp.IconChar.ShoppingCart;
+            this.MngrPaymentButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrPaymentButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.MngrPaymentButton.IconSize = 24;
+            this.MngrPaymentButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MngrPaymentButton.Location = new System.Drawing.Point(284, 390);
+            this.MngrPaymentButton.Name = "MngrPaymentButton";
+            this.MngrPaymentButton.Size = new System.Drawing.Size(148, 43);
+            this.MngrPaymentButton.TabIndex = 14;
+            this.MngrPaymentButton.Text = "Proceed";
+            this.MngrPaymentButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.MngrPaymentButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.MngrPaymentButton.UseVisualStyleBackColor = true;
+            this.MngrPaymentButton.Click += new System.EventHandler(this.MngrPaymentButton_Click);
+            // 
+            // MngrCheckoutLbl
+            // 
+            this.MngrCheckoutLbl.AutoSize = true;
+            this.MngrCheckoutLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrCheckoutLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrCheckoutLbl.Location = new System.Drawing.Point(19, 16);
+            this.MngrCheckoutLbl.Name = "MngrCheckoutLbl";
+            this.MngrCheckoutLbl.Size = new System.Drawing.Size(179, 23);
+            this.MngrCheckoutLbl.TabIndex = 13;
+            this.MngrCheckoutLbl.Text = "| Checkout Preview";
+            // 
+            // MngrCheckoutViewTable
+            // 
+            this.MngrCheckoutViewTable.AllowUserToAddRows = false;
+            this.MngrCheckoutViewTable.AllowUserToDeleteRows = false;
+            this.MngrCheckoutViewTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MngrCheckoutViewTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.MngrCheckoutViewTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle43.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MngrCheckoutViewTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle43;
+            this.MngrCheckoutViewTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle44.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MngrCheckoutViewTable.DefaultCellStyle = dataGridViewCellStyle44;
+            this.MngrCheckoutViewTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrCheckoutViewTable.Location = new System.Drawing.Point(23, 57);
+            this.MngrCheckoutViewTable.Name = "MngrCheckoutViewTable";
+            this.MngrCheckoutViewTable.ReadOnly = true;
+            this.MngrCheckoutViewTable.RowHeadersVisible = false;
+            this.MngrCheckoutViewTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.MngrCheckoutViewTable.Size = new System.Drawing.Size(409, 221);
+            this.MngrCheckoutViewTable.TabIndex = 11;
             // 
             // MngrOrderViewPanel
             // 
+            this.MngrOrderViewPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MngrViewFormPicker.SetCardName(this.MngrOrderViewPanel, "Card2");
+            this.MngrOrderViewPanel.Controls.Add(this.MngrCheckoutBtn);
+            this.MngrOrderViewPanel.Controls.Add(this.MngrOrderNumLbl);
             this.MngrOrderViewPanel.Controls.Add(this.MngrOrderViewTable);
-            this.MngrOrderViewPanel.Location = new System.Drawing.Point(867, 33);
+            this.MngrOrderViewPanel.Location = new System.Drawing.Point(0, 0);
+            this.MngrViewFormPicker.SetMinimumSize(this.MngrOrderViewPanel, new System.Drawing.Size(450, 454));
             this.MngrOrderViewPanel.Name = "MngrOrderViewPanel";
-            this.MngrOrderViewPanel.Size = new System.Drawing.Size(373, 446);
+            this.MngrViewFormPicker.SetPreferredSize(this.MngrOrderViewPanel, new System.Drawing.Size(450, 454));
+            this.MngrOrderViewPanel.Size = new System.Drawing.Size(450, 454);
             this.MngrOrderViewPanel.TabIndex = 24;
+            // 
+            // MngrCheckoutBtn
+            // 
+            this.MngrCheckoutBtn.FlatAppearance.BorderSize = 0;
+            this.MngrCheckoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MngrCheckoutBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrCheckoutBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrCheckoutBtn.IconChar = FontAwesome.Sharp.IconChar.ShoppingCart;
+            this.MngrCheckoutBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrCheckoutBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.MngrCheckoutBtn.IconSize = 24;
+            this.MngrCheckoutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MngrCheckoutBtn.Location = new System.Drawing.Point(248, 391);
+            this.MngrCheckoutBtn.Name = "MngrCheckoutBtn";
+            this.MngrCheckoutBtn.Size = new System.Drawing.Size(184, 43);
+            this.MngrCheckoutBtn.TabIndex = 14;
+            this.MngrCheckoutBtn.Text = "Checkout Order";
+            this.MngrCheckoutBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.MngrCheckoutBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.MngrCheckoutBtn.UseVisualStyleBackColor = true;
+            this.MngrCheckoutBtn.Click += new System.EventHandler(this.MngrCheckoutBtn_Click);
+            // 
+            // MngrOrderNumLbl
+            // 
+            this.MngrOrderNumLbl.AutoSize = true;
+            this.MngrOrderNumLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrOrderNumLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrOrderNumLbl.Location = new System.Drawing.Point(19, 16);
+            this.MngrOrderNumLbl.Name = "MngrOrderNumLbl";
+            this.MngrOrderNumLbl.Size = new System.Drawing.Size(151, 23);
+            this.MngrOrderNumLbl.TabIndex = 13;
+            this.MngrOrderNumLbl.Text = "| Order Number.:";
             // 
             // MngrOrderViewTable
             // 
+            this.MngrOrderViewTable.AllowUserToAddRows = false;
+            this.MngrOrderViewTable.AllowUserToDeleteRows = false;
+            this.MngrOrderViewTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MngrOrderViewTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.MngrOrderViewTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle45.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MngrOrderViewTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle45;
             this.MngrOrderViewTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MngrOrderViewTable.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MngrOrderViewTable.Location = new System.Drawing.Point(0, 0);
+            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle46.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MngrOrderViewTable.DefaultCellStyle = dataGridViewCellStyle46;
+            this.MngrOrderViewTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrOrderViewTable.Location = new System.Drawing.Point(23, 57);
             this.MngrOrderViewTable.Name = "MngrOrderViewTable";
-            this.MngrOrderViewTable.Size = new System.Drawing.Size(373, 334);
-            this.MngrOrderViewTable.TabIndex = 22;
+            this.MngrOrderViewTable.ReadOnly = true;
+            this.MngrOrderViewTable.RowHeadersVisible = false;
+            this.MngrOrderViewTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.MngrOrderViewTable.Size = new System.Drawing.Size(409, 319);
+            this.MngrOrderViewTable.TabIndex = 11;
+            // 
+            // MngrOrderExitBtn
+            // 
+            this.MngrOrderExitBtn.BackColor = System.Drawing.Color.Transparent;
+            this.MngrOrderExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrOrderExitBtn.FlatAppearance.BorderSize = 0;
+            this.MngrOrderExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MngrOrderExitBtn.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            this.MngrOrderExitBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrOrderExitBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.MngrOrderExitBtn.IconSize = 24;
+            this.MngrOrderExitBtn.Location = new System.Drawing.Point(1240, 0);
+            this.MngrOrderExitBtn.Name = "MngrOrderExitBtn";
+            this.MngrOrderExitBtn.Size = new System.Drawing.Size(24, 24);
+            this.MngrOrderExitBtn.TabIndex = 25;
+            this.MngrOrderExitBtn.UseVisualStyleBackColor = false;
+            this.MngrOrderExitBtn.Click += new System.EventHandler(this.MngrOrderExitBtn_Click);
             // 
             // MngrItemPanel
             // 
             this.MngrItemPanel.Controls.Add(this.MngrItemSetMealsPanel);
-            this.MngrItemPanel.Controls.Add(this.MngrItemDrinksPanel);
             this.MngrItemPanel.Controls.Add(this.MngrItemSidesPanel);
             this.MngrItemPanel.Controls.Add(this.MngrItemBurgerPanel);
-            this.MngrItemPanel.Location = new System.Drawing.Point(233, 33);
+            this.MngrItemPanel.Controls.Add(this.MngrItemDrinksPanel);
+            this.MngrItemPanel.Location = new System.Drawing.Point(202, 25);
             this.MngrItemPanel.Name = "MngrItemPanel";
-            this.MngrItemPanel.Size = new System.Drawing.Size(605, 446);
+            this.MngrItemPanel.Size = new System.Drawing.Size(533, 454);
             this.MngrItemPanel.TabIndex = 23;
             // 
             // MngrItemSetMealsPanel
             // 
-            this.MngrItemFormPicker.SetCardName(this.MngrItemSetMealsPanel, "Card4");
-            this.MngrItemSetMealsPanel.Controls.Add(this.label3);
+            this.MngrItemSetMealsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MngrItemFormPicker.SetCardName(this.MngrItemSetMealsPanel, "Card1");
+            this.MngrItemSetMealsPanel.Controls.Add(this.MngrItemSetLbl);
+            this.MngrItemSetMealsPanel.Controls.Add(this.MngrItemSetMealView);
             this.MngrItemSetMealsPanel.Location = new System.Drawing.Point(0, 0);
             this.MngrItemFormPicker.SetMinimumSize(this.MngrItemSetMealsPanel, new System.Drawing.Size(200, 100));
             this.MngrItemSetMealsPanel.Name = "MngrItemSetMealsPanel";
             this.MngrItemFormPicker.SetPreferredSize(this.MngrItemSetMealsPanel, new System.Drawing.Size(200, 100));
-            this.MngrItemSetMealsPanel.Size = new System.Drawing.Size(605, 446);
-            this.MngrItemSetMealsPanel.TabIndex = 3;
+            this.MngrItemSetMealsPanel.Size = new System.Drawing.Size(533, 454);
+            this.MngrItemSetMealsPanel.TabIndex = 14;
             // 
-            // label3
+            // MngrItemSetLbl
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(289, 165);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Set Meals";
+            this.MngrItemSetLbl.AutoSize = true;
+            this.MngrItemSetLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrItemSetLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemSetLbl.Location = new System.Drawing.Point(12, 16);
+            this.MngrItemSetLbl.Name = "MngrItemSetLbl";
+            this.MngrItemSetLbl.Size = new System.Drawing.Size(106, 23);
+            this.MngrItemSetLbl.TabIndex = 3;
+            this.MngrItemSetLbl.Text = "| Set Meals";
             // 
-            // MngrItemDrinksPanel
+            // MngrItemSetMealView
             // 
-            this.MngrItemFormPicker.SetCardName(this.MngrItemDrinksPanel, "Card3");
-            this.MngrItemDrinksPanel.Controls.Add(this.label4);
-            this.MngrItemDrinksPanel.Location = new System.Drawing.Point(0, 0);
-            this.MngrItemFormPicker.SetMinimumSize(this.MngrItemDrinksPanel, new System.Drawing.Size(200, 100));
-            this.MngrItemDrinksPanel.Name = "MngrItemDrinksPanel";
-            this.MngrItemFormPicker.SetPreferredSize(this.MngrItemDrinksPanel, new System.Drawing.Size(200, 100));
-            this.MngrItemDrinksPanel.Size = new System.Drawing.Size(605, 446);
-            this.MngrItemDrinksPanel.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(467, 217);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Drinks";
+            this.MngrItemSetMealView.AllowUserToAddRows = false;
+            this.MngrItemSetMealView.AllowUserToDeleteRows = false;
+            this.MngrItemSetMealView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MngrItemSetMealView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.MngrItemSetMealView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MngrItemSetMealView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle47;
+            this.MngrItemSetMealView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle48.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MngrItemSetMealView.DefaultCellStyle = dataGridViewCellStyle48;
+            this.MngrItemSetMealView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemSetMealView.Location = new System.Drawing.Point(16, 57);
+            this.MngrItemSetMealView.Name = "MngrItemSetMealView";
+            this.MngrItemSetMealView.ReadOnly = true;
+            this.MngrItemSetMealView.RowHeadersVisible = false;
+            this.MngrItemSetMealView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.MngrItemSetMealView.Size = new System.Drawing.Size(499, 377);
+            this.MngrItemSetMealView.TabIndex = 12;
+            this.MngrItemSetMealView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MngrItemSetMealView_CellClick);
             // 
             // MngrItemSidesPanel
             // 
+            this.MngrItemSidesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MngrItemFormPicker.SetCardName(this.MngrItemSidesPanel, "Card2");
-            this.MngrItemSidesPanel.Controls.Add(this.label1);
+            this.MngrItemSidesPanel.Controls.Add(this.MngrItemSideLbl);
+            this.MngrItemSidesPanel.Controls.Add(this.MngrItemSidesView);
             this.MngrItemSidesPanel.Location = new System.Drawing.Point(0, 0);
             this.MngrItemFormPicker.SetMinimumSize(this.MngrItemSidesPanel, new System.Drawing.Size(200, 100));
             this.MngrItemSidesPanel.Name = "MngrItemSidesPanel";
             this.MngrItemFormPicker.SetPreferredSize(this.MngrItemSidesPanel, new System.Drawing.Size(200, 100));
-            this.MngrItemSidesPanel.Size = new System.Drawing.Size(605, 446);
-            this.MngrItemSidesPanel.TabIndex = 1;
+            this.MngrItemSidesPanel.Size = new System.Drawing.Size(533, 454);
+            this.MngrItemSidesPanel.TabIndex = 15;
             // 
-            // label1
+            // MngrItemSideLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(420, 167);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Sides";
+            this.MngrItemSideLbl.AutoSize = true;
+            this.MngrItemSideLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrItemSideLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemSideLbl.Location = new System.Drawing.Point(12, 16);
+            this.MngrItemSideLbl.Name = "MngrItemSideLbl";
+            this.MngrItemSideLbl.Size = new System.Drawing.Size(68, 23);
+            this.MngrItemSideLbl.TabIndex = 3;
+            this.MngrItemSideLbl.Text = "| Sides";
+            // 
+            // MngrItemSidesView
+            // 
+            this.MngrItemSidesView.AllowUserToAddRows = false;
+            this.MngrItemSidesView.AllowUserToDeleteRows = false;
+            this.MngrItemSidesView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MngrItemSidesView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.MngrItemSidesView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle49.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MngrItemSidesView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle49;
+            this.MngrItemSidesView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MngrItemSidesView.DefaultCellStyle = dataGridViewCellStyle50;
+            this.MngrItemSidesView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemSidesView.Location = new System.Drawing.Point(16, 57);
+            this.MngrItemSidesView.Name = "MngrItemSidesView";
+            this.MngrItemSidesView.ReadOnly = true;
+            this.MngrItemSidesView.RowHeadersVisible = false;
+            this.MngrItemSidesView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.MngrItemSidesView.Size = new System.Drawing.Size(499, 377);
+            this.MngrItemSidesView.TabIndex = 12;
+            this.MngrItemSidesView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MngrItemSidesView_CellClick);
             // 
             // MngrItemBurgerPanel
             // 
-            this.MngrItemFormPicker.SetCardName(this.MngrItemBurgerPanel, "Card1");
-            this.MngrItemBurgerPanel.Controls.Add(this.label2);
+            this.MngrItemBurgerPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MngrItemFormPicker.SetCardName(this.MngrItemBurgerPanel, "Card3");
+            this.MngrItemBurgerPanel.Controls.Add(this.MngrItemBurgerLbl);
+            this.MngrItemBurgerPanel.Controls.Add(this.MngrItemBurgerView);
             this.MngrItemBurgerPanel.Location = new System.Drawing.Point(0, 0);
             this.MngrItemFormPicker.SetMinimumSize(this.MngrItemBurgerPanel, new System.Drawing.Size(200, 100));
             this.MngrItemBurgerPanel.Name = "MngrItemBurgerPanel";
             this.MngrItemFormPicker.SetPreferredSize(this.MngrItemBurgerPanel, new System.Drawing.Size(200, 100));
-            this.MngrItemBurgerPanel.Size = new System.Drawing.Size(605, 446);
-            this.MngrItemBurgerPanel.TabIndex = 0;
+            this.MngrItemBurgerPanel.Size = new System.Drawing.Size(533, 454);
+            this.MngrItemBurgerPanel.TabIndex = 13;
             // 
-            // label2
+            // MngrItemBurgerLbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(424, 181);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Burger";
+            this.MngrItemBurgerLbl.AutoSize = true;
+            this.MngrItemBurgerLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrItemBurgerLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemBurgerLbl.Location = new System.Drawing.Point(12, 16);
+            this.MngrItemBurgerLbl.Name = "MngrItemBurgerLbl";
+            this.MngrItemBurgerLbl.Size = new System.Drawing.Size(78, 23);
+            this.MngrItemBurgerLbl.TabIndex = 3;
+            this.MngrItemBurgerLbl.Text = "| Burger";
+            // 
+            // MngrItemBurgerView
+            // 
+            this.MngrItemBurgerView.AllowUserToAddRows = false;
+            this.MngrItemBurgerView.AllowUserToDeleteRows = false;
+            this.MngrItemBurgerView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MngrItemBurgerView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.MngrItemBurgerView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle51.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MngrItemBurgerView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle51;
+            this.MngrItemBurgerView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle52.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MngrItemBurgerView.DefaultCellStyle = dataGridViewCellStyle52;
+            this.MngrItemBurgerView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemBurgerView.Location = new System.Drawing.Point(16, 57);
+            this.MngrItemBurgerView.Name = "MngrItemBurgerView";
+            this.MngrItemBurgerView.ReadOnly = true;
+            this.MngrItemBurgerView.RowHeadersVisible = false;
+            this.MngrItemBurgerView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.MngrItemBurgerView.Size = new System.Drawing.Size(499, 377);
+            this.MngrItemBurgerView.TabIndex = 12;
+            this.MngrItemBurgerView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MngrItemBurgerView_CellClick);
+            // 
+            // MngrItemDrinksPanel
+            // 
+            this.MngrItemDrinksPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MngrItemFormPicker.SetCardName(this.MngrItemDrinksPanel, "Card4");
+            this.MngrItemDrinksPanel.Controls.Add(this.MngrItemDrinksLbl);
+            this.MngrItemDrinksPanel.Controls.Add(this.MngrItemDrinkView);
+            this.MngrItemDrinksPanel.Location = new System.Drawing.Point(0, 0);
+            this.MngrItemFormPicker.SetMinimumSize(this.MngrItemDrinksPanel, new System.Drawing.Size(200, 100));
+            this.MngrItemDrinksPanel.Name = "MngrItemDrinksPanel";
+            this.MngrItemFormPicker.SetPreferredSize(this.MngrItemDrinksPanel, new System.Drawing.Size(200, 100));
+            this.MngrItemDrinksPanel.Size = new System.Drawing.Size(533, 454);
+            this.MngrItemDrinksPanel.TabIndex = 2;
+            // 
+            // MngrItemDrinksLbl
+            // 
+            this.MngrItemDrinksLbl.AutoSize = true;
+            this.MngrItemDrinksLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrItemDrinksLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemDrinksLbl.Location = new System.Drawing.Point(12, 16);
+            this.MngrItemDrinksLbl.Name = "MngrItemDrinksLbl";
+            this.MngrItemDrinksLbl.Size = new System.Drawing.Size(75, 23);
+            this.MngrItemDrinksLbl.TabIndex = 3;
+            this.MngrItemDrinksLbl.Text = "| Drinks";
+            // 
+            // MngrItemDrinkView
+            // 
+            this.MngrItemDrinkView.AllowUserToAddRows = false;
+            this.MngrItemDrinkView.AllowUserToDeleteRows = false;
+            this.MngrItemDrinkView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MngrItemDrinkView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.MngrItemDrinkView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle53.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MngrItemDrinkView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle53;
+            this.MngrItemDrinkView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle54.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MngrItemDrinkView.DefaultCellStyle = dataGridViewCellStyle54;
+            this.MngrItemDrinkView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemDrinkView.Location = new System.Drawing.Point(16, 57);
+            this.MngrItemDrinkView.Name = "MngrItemDrinkView";
+            this.MngrItemDrinkView.ReadOnly = true;
+            this.MngrItemDrinkView.RowHeadersVisible = false;
+            this.MngrItemDrinkView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.MngrItemDrinkView.Size = new System.Drawing.Size(499, 377);
+            this.MngrItemDrinkView.TabIndex = 12;
+            this.MngrItemDrinkView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MngrItemDrinkView_CellClick);
             // 
             // ManagerSwitchBtn
             // 
@@ -2488,7 +2924,7 @@
             this.ManagerSwitchBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ManagerSwitchBtn.IconSize = 24;
             this.ManagerSwitchBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ManagerSwitchBtn.Location = new System.Drawing.Point(1116, 485);
+            this.ManagerSwitchBtn.Location = new System.Drawing.Point(1116, 486);
             this.ManagerSwitchBtn.Name = "ManagerSwitchBtn";
             this.ManagerSwitchBtn.Size = new System.Drawing.Size(148, 47);
             this.ManagerSwitchBtn.TabIndex = 7;
@@ -2501,31 +2937,134 @@
             // MngrItemBtnPanel
             // 
             this.MngrItemBtnPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MngrItemBtnPanel.Controls.Add(this.pictureBox2);
+            this.MngrItemBtnPanel.Controls.Add(this.MngrItemSideBtn);
+            this.MngrItemBtnPanel.Controls.Add(this.MngrItemDrinksBtn);
+            this.MngrItemBtnPanel.Controls.Add(this.MngrItemSetBtn);
+            this.MngrItemBtnPanel.Controls.Add(this.MngrItemBurgerBtn);
             this.MngrItemBtnPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.MngrItemBtnPanel.Location = new System.Drawing.Point(0, 0);
             this.MngrItemBtnPanel.Name = "MngrItemBtnPanel";
-            this.MngrItemBtnPanel.Size = new System.Drawing.Size(196, 535);
+            this.MngrItemBtnPanel.Size = new System.Drawing.Size(196, 532);
             this.MngrItemBtnPanel.TabIndex = 21;
             // 
-            // pictureBox2
+            // MngrItemSideBtn
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(36, 32);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(128, 128);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.MngrItemSideBtn.FlatAppearance.BorderSize = 0;
+            this.MngrItemSideBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MngrItemSideBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrItemSideBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemSideBtn.IconChar = FontAwesome.Sharp.IconChar.Bacon;
+            this.MngrItemSideBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemSideBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.MngrItemSideBtn.IconSize = 24;
+            this.MngrItemSideBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MngrItemSideBtn.Location = new System.Drawing.Point(3, 73);
+            this.MngrItemSideBtn.Name = "MngrItemSideBtn";
+            this.MngrItemSideBtn.Size = new System.Drawing.Size(193, 43);
+            this.MngrItemSideBtn.TabIndex = 18;
+            this.MngrItemSideBtn.Text = "SIDE";
+            this.MngrItemSideBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MngrItemSideBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.MngrItemSideBtn.UseVisualStyleBackColor = true;
+            this.MngrItemSideBtn.Click += new System.EventHandler(this.MngrItemSideBtn_Click);
+            // 
+            // MngrItemDrinksBtn
+            // 
+            this.MngrItemDrinksBtn.FlatAppearance.BorderSize = 0;
+            this.MngrItemDrinksBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MngrItemDrinksBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrItemDrinksBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemDrinksBtn.IconChar = FontAwesome.Sharp.IconChar.MartiniGlassCitrus;
+            this.MngrItemDrinksBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemDrinksBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.MngrItemDrinksBtn.IconSize = 24;
+            this.MngrItemDrinksBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MngrItemDrinksBtn.Location = new System.Drawing.Point(3, 122);
+            this.MngrItemDrinksBtn.Name = "MngrItemDrinksBtn";
+            this.MngrItemDrinksBtn.Size = new System.Drawing.Size(193, 43);
+            this.MngrItemDrinksBtn.TabIndex = 17;
+            this.MngrItemDrinksBtn.Text = "DRINKS";
+            this.MngrItemDrinksBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MngrItemDrinksBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.MngrItemDrinksBtn.UseVisualStyleBackColor = true;
+            this.MngrItemDrinksBtn.Click += new System.EventHandler(this.MngrItemDrinksBtn_Click);
+            // 
+            // MngrItemSetBtn
+            // 
+            this.MngrItemSetBtn.FlatAppearance.BorderSize = 0;
+            this.MngrItemSetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MngrItemSetBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrItemSetBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemSetBtn.IconChar = FontAwesome.Sharp.IconChar.Utensils;
+            this.MngrItemSetBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemSetBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.MngrItemSetBtn.IconSize = 24;
+            this.MngrItemSetBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MngrItemSetBtn.Location = new System.Drawing.Point(3, 181);
+            this.MngrItemSetBtn.Name = "MngrItemSetBtn";
+            this.MngrItemSetBtn.Size = new System.Drawing.Size(193, 43);
+            this.MngrItemSetBtn.TabIndex = 16;
+            this.MngrItemSetBtn.Text = "SET MEALS";
+            this.MngrItemSetBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MngrItemSetBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.MngrItemSetBtn.UseVisualStyleBackColor = true;
+            this.MngrItemSetBtn.Click += new System.EventHandler(this.MngrItemSetBtn_Click);
+            // 
+            // MngrItemBurgerBtn
+            // 
+            this.MngrItemBurgerBtn.FlatAppearance.BorderSize = 0;
+            this.MngrItemBurgerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MngrItemBurgerBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrItemBurgerBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemBurgerBtn.IconChar = FontAwesome.Sharp.IconChar.Hamburger;
+            this.MngrItemBurgerBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrItemBurgerBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.MngrItemBurgerBtn.IconSize = 24;
+            this.MngrItemBurgerBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MngrItemBurgerBtn.Location = new System.Drawing.Point(3, 24);
+            this.MngrItemBurgerBtn.Name = "MngrItemBurgerBtn";
+            this.MngrItemBurgerBtn.Size = new System.Drawing.Size(193, 43);
+            this.MngrItemBurgerBtn.TabIndex = 15;
+            this.MngrItemBurgerBtn.Text = "BURGER";
+            this.MngrItemBurgerBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MngrItemBurgerBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.MngrItemBurgerBtn.UseVisualStyleBackColor = true;
+            this.MngrItemBurgerBtn.Click += new System.EventHandler(this.MngrItemBurgerBtn_Click);
             // 
             // MNGRHeaderPanel
             // 
             this.MNGRHeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MNGRHeaderPanel.Controls.Add(this.MngrNameLbl);
+            this.MNGRHeaderPanel.Controls.Add(this.MngrSessionNum);
             this.MNGRHeaderPanel.Controls.Add(this.ENRMngrHeaderLogo);
             this.MNGRHeaderPanel.Controls.Add(this.MngrDashboardLbl);
             this.MNGRHeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.MNGRHeaderPanel.Location = new System.Drawing.Point(0, 0);
             this.MNGRHeaderPanel.Name = "MNGRHeaderPanel";
-            this.MNGRHeaderPanel.Size = new System.Drawing.Size(1264, 155);
+            this.MNGRHeaderPanel.Size = new System.Drawing.Size(1264, 178);
             this.MNGRHeaderPanel.TabIndex = 20;
+            // 
+            // MngrNameLbl
+            // 
+            this.MngrNameLbl.AutoSize = true;
+            this.MngrNameLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrNameLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.MngrNameLbl.Location = new System.Drawing.Point(210, 114);
+            this.MngrNameLbl.Name = "MngrNameLbl";
+            this.MngrNameLbl.Size = new System.Drawing.Size(157, 23);
+            this.MngrNameLbl.TabIndex = 13;
+            this.MngrNameLbl.Text = "| Manager Name:";
+            // 
+            // MngrSessionNum
+            // 
+            this.MngrSessionNum.AutoSize = true;
+            this.MngrSessionNum.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrSessionNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.MngrSessionNum.Location = new System.Drawing.Point(978, 114);
+            this.MngrSessionNum.Name = "MngrSessionNum";
+            this.MngrSessionNum.Size = new System.Drawing.Size(169, 23);
+            this.MngrSessionNum.TabIndex = 19;
+            this.MngrSessionNum.Text = "| Session Number:";
             // 
             // ENRMngrHeaderLogo
             // 
@@ -2545,7 +3084,7 @@
             this.MngrDashboardLbl.Name = "MngrDashboardLbl";
             this.MngrDashboardLbl.Size = new System.Drawing.Size(602, 75);
             this.MngrDashboardLbl.TabIndex = 18;
-            this.MngrDashboardLbl.Text = "Manager ";
+            this.MngrDashboardLbl.Text = "Manager Dashboard";
             this.MngrDashboardLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CashierPanel
@@ -2615,13 +3154,18 @@
             // 
             this.MngrFormPicker.ContainerControl = this.MngrFormPanel;
             this.MngrFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.MngrFormPicker.SelectedCard = "Card1";
+            this.MngrFormPicker.SelectedCard = "Card2";
             // 
             // MngrItemFormPicker
             // 
             this.MngrItemFormPicker.ContainerControl = this.MngrItemPanel;
             this.MngrItemFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.MngrItemFormPicker.SelectedCard = "Card3";
+            this.MngrItemFormPicker.SelectedCard = "Card1";
+            // 
+            // MngrViewFormPicker
+            // 
+            this.MngrViewFormPicker.ContainerControl = this.MngrViewPanel;
+            this.MngrViewFormPicker.SelectedCard = "Card2";
             // 
             // ENRMainForm
             // 
@@ -2633,6 +3177,8 @@
             this.Controls.Add(this.CashierPanel);
             this.Controls.Add(this.AdminPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1280, 720);
+            this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "ENRMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Eat N\'Run";
@@ -2719,25 +3265,34 @@
             this.ENREmplPassPanelBox.ResumeLayout(false);
             this.ENREmplPassPanelBox.PerformLayout();
             this.ENREmplIDPanelBox.ResumeLayout(false);
-            this.ENREmplIDPanelBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminENRLogoR2)).EndInit();
             this.ManagerPanel.ResumeLayout(false);
             this.MngrFormPanel.ResumeLayout(false);
             this.MngrNewOrderBtnPanel.ResumeLayout(false);
             this.MngrOrderDashboardPanel.ResumeLayout(false);
+            this.MngrViewPanel.ResumeLayout(false);
+            this.MngrVoidViewPanel.ResumeLayout(false);
+            this.MngrVoidViewPanel.PerformLayout();
+            this.MngrCheckoutViewPanel.ResumeLayout(false);
+            this.MngrCheckoutViewPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrCheckoutViewTable)).EndInit();
             this.MngrOrderViewPanel.ResumeLayout(false);
+            this.MngrOrderViewPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MngrOrderViewTable)).EndInit();
             this.MngrItemPanel.ResumeLayout(false);
             this.MngrItemSetMealsPanel.ResumeLayout(false);
             this.MngrItemSetMealsPanel.PerformLayout();
-            this.MngrItemDrinksPanel.ResumeLayout(false);
-            this.MngrItemDrinksPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrItemSetMealView)).EndInit();
             this.MngrItemSidesPanel.ResumeLayout(false);
             this.MngrItemSidesPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrItemSidesView)).EndInit();
             this.MngrItemBurgerPanel.ResumeLayout(false);
             this.MngrItemBurgerPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrItemBurgerView)).EndInit();
+            this.MngrItemDrinksPanel.ResumeLayout(false);
+            this.MngrItemDrinksPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrItemDrinkView)).EndInit();
             this.MngrItemBtnPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.MNGRHeaderPanel.ResumeLayout(false);
             this.MNGRHeaderPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ENRMngrHeaderLogo)).EndInit();
@@ -2747,6 +3302,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AccountsFormPicker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MngrFormPicker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MngrItemFormPicker)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MngrViewFormPicker)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2764,7 +3320,6 @@
         private System.Windows.Forms.Panel AdminLoginFormPanel;
         private System.Windows.Forms.Label ENREmplIDLbl;
         private System.Windows.Forms.Panel ENREmplIDPanelBox;
-        private System.Windows.Forms.TextBox ENREmplIDBox;
         private System.Windows.Forms.Label ENREmplPassLbl;
         private System.Windows.Forms.Panel ENREmplPassPanelBox;
         private System.Windows.Forms.CheckBox ENREmplShowPass;
@@ -2918,7 +3473,6 @@
         private System.Windows.Forms.PictureBox ENRMngrHeaderLogo;
         private System.Windows.Forms.Label MngrDashboardLbl;
         private System.Windows.Forms.Panel MngrItemBtnPanel;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel MngrFormPanel;
         private Syncfusion.Windows.Forms.Tools.CardLayout MngrFormPicker;
         private System.Windows.Forms.Panel MngrNewOrderBtnPanel;
@@ -2926,15 +3480,39 @@
         private System.Windows.Forms.DataGridView MngrOrderViewTable;
         private System.Windows.Forms.Panel MngrOrderViewPanel;
         private System.Windows.Forms.Panel MngrItemPanel;
-        private System.Windows.Forms.Panel MngrItemBurgerPanel;
         private Syncfusion.Windows.Forms.Tools.CardLayout MngrItemFormPicker;
-        private System.Windows.Forms.Panel MngrItemSidesPanel;
-        private System.Windows.Forms.Panel MngrItemSetMealsPanel;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel MngrItemDrinksPanel;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private FontAwesome.Sharp.IconButton MngrCreateNewOrderBtn;
+        private System.Windows.Forms.CheckBox RmbrAccCheckbox;
+        private System.Windows.Forms.ComboBox ENREmplIDBox;
+        private System.Windows.Forms.DataGridView MngrItemDrinkView;
+        private System.Windows.Forms.Label MngrItemDrinksLbl;
+        private System.Windows.Forms.Panel MngrItemSetMealsPanel;
+        private System.Windows.Forms.Label MngrItemSetLbl;
+        private System.Windows.Forms.DataGridView MngrItemSetMealView;
+        private System.Windows.Forms.Panel MngrItemSidesPanel;
+        private System.Windows.Forms.Label MngrItemSideLbl;
+        private System.Windows.Forms.DataGridView MngrItemSidesView;
+        private System.Windows.Forms.Panel MngrItemBurgerPanel;
+        private System.Windows.Forms.Label MngrItemBurgerLbl;
+        private System.Windows.Forms.DataGridView MngrItemBurgerView;
+        private System.Windows.Forms.Label MngrNameLbl;
+        private System.Windows.Forms.Label MngrSessionNum;
+        private System.Windows.Forms.Label MngrOrderNumLbl;
+        private FontAwesome.Sharp.IconButton MngrOrderExitBtn;
+        private FontAwesome.Sharp.IconButton MngrCheckoutBtn;
+        private System.Windows.Forms.Panel MngrCheckoutViewPanel;
+        private FontAwesome.Sharp.IconButton MngrPaymentButton;
+        private System.Windows.Forms.Label MngrCheckoutLbl;
+        private System.Windows.Forms.DataGridView MngrCheckoutViewTable;
+        private System.Windows.Forms.Panel MngrViewPanel;
+        private Syncfusion.Windows.Forms.Tools.CardLayout MngrViewFormPicker;
+        private System.Windows.Forms.Panel MngrVoidViewPanel;
+        private System.Windows.Forms.Label MngrVoidLbl;
+        private FontAwesome.Sharp.IconButton MngrItemBurgerBtn;
+        private FontAwesome.Sharp.IconButton MngrItemSideBtn;
+        private FontAwesome.Sharp.IconButton MngrItemDrinksBtn;
+        private FontAwesome.Sharp.IconButton MngrItemSetBtn;
+        private FontAwesome.Sharp.IconButton MngrCheckoutExitBtn;
     }
 }

@@ -1,4 +1,5 @@
-﻿using EatNRunProject.Properties;
+﻿using CafeDeLunaSystem;
+using EatNRunProject.Properties;
 using MySql.Data.MySqlClient;
 using Syncfusion.Windows.Forms.Interop;
 using System;
@@ -26,6 +27,9 @@ namespace EatNRunProject
         private AdminPanelCard AdminPanelManager;
         private AdminFoodPanelCard AdminFoodPanelManager;
         private AdminAccPanelCard AdminAccPanelManager;
+        private MngrPanelCard MngrPanelManager;
+        private MngrItemPanelCard MngrItemPanelManager;
+        private MngrOrderPanelCard MngrOrderPanelManager;
 
         //db connection
         public static string mysqlconn = "server=localhost;user=root;database=eatnrun;password=";
@@ -47,6 +51,8 @@ namespace EatNRunProject
         //basta image
         Image selectedImage;
 
+        //Remember Account dictionary
+        private Dictionary<string, string> accountData = new Dictionary<string, string>();
 
         public ENRMainForm()
         {
@@ -54,6 +60,25 @@ namespace EatNRunProject
 
             //Mngr Order View
             InitializeDataGridView();
+
+            //Placeholder Text
+            //TxtPlaceholder.SetPlaceholder(ENREmplIDBox, "Enter Employee ID");
+            //TxtPlaceholder.SetPlaceholder(ENREmplPassBox, "Enter Employee Password");
+
+            //Main Form Panel Manager
+            MFpanelManager = new MainFormCard(LoginPanel, AdminPanel, ManagerPanel, CashierPanel);
+
+            //Admin Form Manager
+            AdminPanelManager = new AdminPanelCard(FoodItemPanel, SalesPanel, AccountsPanel);
+            AdminFoodPanelManager = new AdminFoodPanelCard(AddItemPanel, UpdateItemPanel, CreateNewFoodBtnPanel);
+            AdminAccPanelManager = new AdminAccPanelCard(NewAccPanel, UpdateEmplAccPanel, CreateAccBtnPanel);
+
+            //Mngr Form Manager
+            MngrPanelManager = new MngrPanelCard(MngrNewOrderBtnPanel, MngrOrderDashboardPanel);
+            MngrItemPanelManager = new MngrItemPanelCard(MngrItemBurgerPanel, MngrItemSidesPanel, MngrItemSetMealsPanel, MngrItemDrinksPanel);
+            MngrOrderPanelManager = new MngrOrderPanelCard(MngrOrderViewPanel, MngrCheckoutViewPanel, MngrVoidViewPanel); 
+
+            MFpanelManager.MFShow(LoginPanel);
 
             //add acc gender combo box
             AddEmplGenderComboBox.Items.AddRange(genders);
@@ -79,22 +104,24 @@ namespace EatNRunProject
             UpdateItemTypeComboBox.Items.AddRange(itemType);
             UpdateItemTypeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
-
-            //Panel Manager
-            MFpanelManager = new MainFormCard(LoginPanel, AdminPanel, ManagerPanel, CashierPanel);
-            AdminPanelManager = new AdminPanelCard(FoodItemPanel, SalesPanel, AccountsPanel);
-            AdminFoodPanelManager = new AdminFoodPanelCard(AddItemPanel, UpdateItemPanel, CreateNewFoodBtnPanel);
-            AdminAccPanelManager = new AdminAccPanelCard(NewAccPanel, UpdateEmplAccPanel, CreateAccBtnPanel);
-
-            MFpanelManager.MFShow(LoginPanel);
-
-
+            //DGV Error Handlers Admin
             AccountListTable.DataError += new DataGridViewDataErrorEventHandler(AccountListTable_DataError);
             AccountListTable.RowPostPaint += new DataGridViewRowPostPaintEventHandler(AccountListTable_RowPostPaint);
-
-
             FoodItemListTable.DataError += new DataGridViewDataErrorEventHandler(FoodItemListTable_DataError);
             FoodItemListTable.RowPostPaint += new DataGridViewRowPostPaintEventHandler(FoodItemListTable_RowPostPaint);
+
+            //DGV Error Handlers Manager
+            MngrItemBurgerView.DataError += new DataGridViewDataErrorEventHandler(FoodItemBurgerListTable_DataError);
+            MngrItemBurgerView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(FoodItemBurgerListTable_RowPostPaint);
+            MngrItemSidesView.DataError += new DataGridViewDataErrorEventHandler(FoodItemSideListTable_DataError);
+            MngrItemSidesView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(FoodItemSideListTable_RowPostPaint);
+            MngrItemSetMealView.DataError += new DataGridViewDataErrorEventHandler(FoodItemSetListTable_DataError);
+            MngrItemSetMealView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(FoodItemSetListTable_RowPostPaint);
+            MngrItemDrinkView.DataError += new DataGridViewDataErrorEventHandler(FoodItemDrinkListTable_DataError);
+            MngrItemDrinkView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(FoodItemDrinkListTable_RowPostPaint);
+
+            //DGV Error Handlers Cashier
+
 
 
             this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
@@ -105,6 +132,12 @@ namespace EatNRunProject
         {
             LoadEmployeeAcc();
             LoadItemMenu();
+            LoadBurgerItemMenu();
+            LoadSideItemMenu();
+            LoadDrinksItemMenu();
+            LoadSetItemMenu();
+
+
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -126,6 +159,7 @@ namespace EatNRunProject
             }
         }
 
+        //DGV Error Handlers Admin
         private void AccountListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             if (e.ColumnIndex == 0) // Assuming column index for "AccountPfp" is 1
@@ -154,7 +188,66 @@ namespace EatNRunProject
             FoodItemListTable.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
         }
 
+        //DGV Error Handlers Mngr
+        //Burger
+        private void FoodItemBurgerListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            if (e.ColumnIndex == 0) // Assuming column index for "AccountPfp" is 1
+            {
+                // Set the cell value to null to display an empty cell
+                e.ThrowException = false;
+                MngrItemBurgerView[e.ColumnIndex, e.RowIndex].Value = null;
+            }
+        }
+        private void FoodItemBurgerListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            MngrItemBurgerView.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
+        }
+        //Side
+        private void FoodItemSideListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            if (e.ColumnIndex == 0) // Assuming column index for "AccountPfp" is 1
+            {
+                // Set the cell value to null to display an empty cell
+                e.ThrowException = false;
+                MngrItemSidesView[e.ColumnIndex, e.RowIndex].Value = null;
+            }
+        }
+        private void FoodItemSideListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            MngrItemSidesView.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
+        }
+        //Set
+        private void FoodItemSetListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            if (e.ColumnIndex == 0) // Assuming column index for "AccountPfp" is 1
+            {
+                // Set the cell value to null to display an empty cell
+                e.ThrowException = false;
+                MngrItemSetMealView[e.ColumnIndex, e.RowIndex].Value = null;
+            }
+        }
+        private void FoodItemSetListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            MngrItemSetMealView.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
+        }
+        //Drinks
+        private void FoodItemDrinkListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            if (e.ColumnIndex == 0) // Assuming column index for "AccountPfp" is 1
+            {
+                // Set the cell value to null to display an empty cell
+                e.ThrowException = false;
+                MngrItemDrinkView[e.ColumnIndex, e.RowIndex].Value = null;
+            }
+        }
+        private void FoodItemDrinkListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            MngrItemDrinkView.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
+        }
 
+
+        //Order View Table
         private void InitializeDataGridView()
         {
             DataGridViewButtonColumn trashColumn = new DataGridViewButtonColumn();
@@ -355,165 +448,205 @@ namespace EatNRunProject
         }
 
 
+        public void LoadBurgerItemMenu()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    // Filter and sort the data by FoodType
+                    string sql = "SELECT * FROM `foodmenu` WHERE FoodType = 'Burger' ORDER BY FoodType";
+                    MySqlCommand cmd = new MySqlCommand(sql, connection);
+                    System.Data.DataTable dataTable = new System.Data.DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+
+                        // Create the "FoodPic" column with the specified settings
+                        DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
+                        imageColumn.HeaderText = "Item Picture";
+                        imageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+                        // Clear any existing columns to remove the extra "AccountPfp" column
+                        MngrItemBurgerView.Columns.Clear();
+
+                        // Add the image column to the DataGridView
+                        MngrItemBurgerView.Columns.Add(imageColumn);
+
+                        MngrItemBurgerView.DataSource = dataTable;
+
+                        MngrItemBurgerView.Columns[0].Visible = false;  // Assuming 0 is the index of "Food Pic"
+                        MngrItemBurgerView.Columns[4].Visible = false;  // Assuming 3 is the index of "FoodType"
+                        MngrItemBurgerView.Columns[6].Visible = false;  // Assuming 5 is the index of "FoodCreated"
+                        MngrItemBurgerView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error occurred: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+
+        public void LoadSideItemMenu()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    // Filter and sort the data by FoodType
+                    string sql = "SELECT * FROM `foodmenu` WHERE FoodType = 'Sides' ORDER BY FoodType";
+                    MySqlCommand cmd = new MySqlCommand(sql, connection);
+                    System.Data.DataTable dataTable = new System.Data.DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+
+                        // Create the "FoodPic" column with the specified settings
+                        DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
+                        imageColumn.HeaderText = "Item Picture";
+                        imageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+                        // Clear any existing columns to remove the extra "AccountPfp" column
+                        MngrItemSidesView.Columns.Clear();
+
+                        // Add the image column to the DataGridView
+                        MngrItemSidesView.Columns.Add(imageColumn);
+
+                        MngrItemSidesView.DataSource = dataTable;
+
+                        MngrItemSidesView.Columns[0].Visible = false;  // Assuming 0 is the index of "Food Pic"
+                        MngrItemSidesView.Columns[4].Visible = false;  // Assuming 3 is the index of "FoodType"
+                        MngrItemSidesView.Columns[6].Visible = false;  // Assuming 5 is the index of "FoodCreated"
+                        MngrItemSidesView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error occurred: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public void LoadDrinksItemMenu()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    // Filter and sort the data by FoodType
+                    string sql = "SELECT * FROM `foodmenu` WHERE FoodType = 'Drinks' ORDER BY FoodType";
+                    MySqlCommand cmd = new MySqlCommand(sql, connection);
+                    System.Data.DataTable dataTable = new System.Data.DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+
+                        // Create the "FoodPic" column with the specified settings
+                        DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
+                        imageColumn.HeaderText = "Item Picture";
+                        imageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+                        // Clear any existing columns to remove the extra "AccountPfp" column
+                        MngrItemDrinkView.Columns.Clear();
+
+                        // Add the image column to the DataGridView
+                        MngrItemDrinkView.Columns.Add(imageColumn);
+
+                        MngrItemDrinkView.DataSource = dataTable;
+
+                        MngrItemDrinkView.Columns[0].Visible = false;  // Assuming 0 is the index of "Food Pic"
+                        MngrItemDrinkView.Columns[4].Visible = false;  // Assuming 3 is the index of "FoodType"
+                        MngrItemDrinkView.Columns[6].Visible = false;  // Assuming 5 is the index of "FoodCreated"
+                        MngrItemDrinkView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error occurred: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public void LoadSetItemMenu()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    // Filter and sort the data by FoodType
+                    string sql = "SELECT * FROM `foodmenu` WHERE FoodType = 'Set Meals' ORDER BY FoodType";
+                    MySqlCommand cmd = new MySqlCommand(sql, connection);
+                    System.Data.DataTable dataTable = new System.Data.DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+
+                        // Create the "FoodPic" column with the specified settings
+                        DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
+                        imageColumn.HeaderText = "Item Picture";
+                        imageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+                        // Clear any existing columns to remove the extra "AccountPfp" column
+                        MngrItemSetMealView.Columns.Clear();
+
+                        // Add the image column to the DataGridView
+                        MngrItemSetMealView.Columns.Add(imageColumn);
+
+                        MngrItemSetMealView.DataSource = dataTable;
+
+                        MngrItemSetMealView.Columns[0].Visible = false;  // Assuming 0 is the index of "Food Pic"
+                        MngrItemSetMealView.Columns[4].Visible = false;  // Assuming 3 is the index of "FoodType"
+                        MngrItemSetMealView.Columns[6].Visible = false;  // Assuming 5 is the index of "FoodCreated"
+                        MngrItemSetMealView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error occurred: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+
         private void ENREmplPassBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-
-                if (ENREmplIDBox.Text == "Admin" && ENREmplPassBox.Text == "Admin123")
-                {
-                    MessageBox.Show("Welcome back, Admin.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MFpanelManager.MFShow(AdminPanel);
-                    AdminPanelManager.AdminFormShow(FoodItemPanel);
-                    AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
-                    ENREmplIDBox.Text = "";
-                    ENREmplPassBox.Text = "";
-                    SalesDatePicker.Visible = false;
-                    return;
-                }
-                else if (ENREmplIDBox.Text == "Manager" && ENREmplPassBox.Text == "Manager123")
-                {
-                    MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MFpanelManager.MFShow(ManagerPanel);
-
-                    ENREmplIDBox.Text = "";
-                    ENREmplPassBox.Text = "";
-                    return;
-                }
-                else if (ENREmplIDBox.Text == "Cashier" && ENREmplPassBox.Text == "Cashier123")
-                {
-                    MessageBox.Show("Welcome back, Cashier.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MFpanelManager.MFShow(CashierPanel);
-
-                    ENREmplIDBox.Text = "";
-                    ENREmplPassBox.Text = "";
-                    return;
-                }
-                else if (string.IsNullOrEmpty(ENREmplIDBox.Text) || string.IsNullOrEmpty(ENREmplPassBox.Text))
-                {
-                    MessageBox.Show("Missing text on required Field.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    string emplID = ENREmplIDBox.Text;
-                    string emplPass = ENREmplPassBox.Text;
-                    string passchecker = HashHelper.HashString(emplPass); // Assuming "enteredPassword" is supposed to be "emplPass"
-
-                    MySqlConnection connection = null;
-
-                    try
-                    {
-                        connection = new MySqlConnection(mysqlconn);
-                        connection.Open();
-
-                        // Query the database for the provided Employee ID in the accounts table
-                        string queryApproved = "SELECT EmployeeName, EmployeeID, EmployeePosition, HashedPass FROM accounts WHERE EmployeeID = @EmplID";
-
-                        using (MySqlCommand cmdApproved = new MySqlCommand(queryApproved, connection))
-                        {
-                            cmdApproved.Parameters.AddWithValue("@EmplID", emplID);
-
-                            using (MySqlDataReader readerApproved = cmdApproved.ExecuteReader())
-                            {
-                                if (readerApproved.Read())
-                                {
-                                    // Retrieve user information
-                                    string name = readerApproved["EmployeeName"].ToString();
-                                    string employeePosition = readerApproved["EmployeePosition"].ToString();
-
-                                    // Check if the entered EmployeePosition matches the one in the database
-                                    if (employeePosition == "Admin")
-                                    {
-                                        // Retrieve the HashedPass column
-                                        string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
-
-                                        // Check if the entered password matches
-                                        bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
-
-                                        if (passwordMatches)
-                                        {
-                                            MessageBox.Show("Welcome back, Admin.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            MFpanelManager.MFShow(AdminPanel);
-                                            AdminPanelManager.AdminFormShow(FoodItemPanel);
-                                            AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
-                                            ENREmplIDBox.Text = "";
-                                            ENREmplPassBox.Text = "";
-                                            SalesDatePicker.Visible = false;
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
-                                        return;
-                                    }
-                                    else if (employeePosition == "Manager")
-                                    {
-                                        // Retrieve the HashedPass column
-                                        string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
-
-                                        // Check if the entered password matches
-                                        bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
-
-                                        if (passwordMatches)
-                                        {
-                                            MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            MFpanelManager.MFShow(ManagerPanel);
-
-                                            ENREmplIDBox.Text = "";
-                                            ENREmplPassBox.Text = "";
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
-                                        return;
-                                    }
-                                    else if (employeePosition == "Cashier")
-                                    {
-                                        // Retrieve the HashedPass column
-                                        string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
-
-                                        // Check if the entered password matches
-                                        bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
-
-                                        if (passwordMatches)
-                                        {
-                                            MessageBox.Show("Welcome back, Cashier.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            MFpanelManager.MFShow(CashierPanel);
-
-                                            ENREmplIDBox.Text = "";
-                                            ENREmplPassBox.Text = "";
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
-                                        return;
-                                    }
-                                    else
-                                    {
-                                        // The EmployeePosition doesn't match the expected "Admin"
-                                        MessageBox.Show("Account not found.", "Ooooops", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                }
-                                else
-                                {
-                                    // The entered Employee ID does not exist in the database
-                                    MessageBox.Show("Account not found.", "Ooooops", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        connection?.Close();
-                    }
-                }
+                LoginVerifier();
 
                 e.SuppressKeyPress = true;
             }
@@ -522,14 +655,19 @@ namespace EatNRunProject
 
         private void AdminLoginBtn_Click(object sender, EventArgs e)
         {
+            LoginVerifier();
+        }
+
+        private void LoginVerifier()
+        {
             if (ENREmplIDBox.Text == "Admin" && ENREmplPassBox.Text == "Admin123")
             {
                 MessageBox.Show("Welcome back, Admin.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MFpanelManager.MFShow(AdminPanel);
                 AdminPanelManager.AdminFormShow(FoodItemPanel);
                 AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
-                ENREmplIDBox.Text = "";
-                ENREmplPassBox.Text = "";
+                rememberAccount();
+                logincredclear();
                 SalesDatePicker.Visible = false;
                 return;
             }
@@ -537,18 +675,17 @@ namespace EatNRunProject
             {
                 MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MFpanelManager.MFShow(ManagerPanel);
-
-                ENREmplIDBox.Text = "";
-                ENREmplPassBox.Text = "";
+                MngrPanelManager.MngrFormShow(MngrNewOrderBtnPanel);
+                rememberAccount();
+                logincredclear();
                 return;
             }
             else if (ENREmplIDBox.Text == "Cashier" && ENREmplPassBox.Text == "Cashier123")
             {
                 MessageBox.Show("Welcome back, Cashier.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MFpanelManager.MFShow(CashierPanel);
-
-                ENREmplIDBox.Text = "";
-                ENREmplPassBox.Text = "";
+                rememberAccount();
+                logincredclear();
                 return;
             }
             else if (string.IsNullOrEmpty(ENREmplIDBox.Text) || string.IsNullOrEmpty(ENREmplPassBox.Text))
@@ -598,8 +735,8 @@ namespace EatNRunProject
                                         MFpanelManager.MFShow(AdminPanel);
                                         AdminPanelManager.AdminFormShow(FoodItemPanel);
                                         AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
-                                        ENREmplIDBox.Text = "";
-                                        ENREmplPassBox.Text = "";
+                                        rememberAccount();
+                                        logincredclear();
                                         SalesDatePicker.Visible = false;
                                     }
                                     else
@@ -618,20 +755,23 @@ namespace EatNRunProject
 
                                     if (passwordMatches)
                                     {
-                                        MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MessageBox.Show($"Welcome back, Manager {name}.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         MFpanelManager.MFShow(ManagerPanel);
+                                        MngrPanelManager.MngrFormShow(MngrNewOrderBtnPanel);
+                                        MngrNameLbl.Text = "| Manager Name: " + name;
+                                        MngrSessionNumRefresh();
+                                        rememberAccount();
+                                        logincredclear();
 
-                                        ENREmplIDBox.Text = "";
-                                        ENREmplPassBox.Text = "";
-
-                                        MngrDashboardLbl.Text = name;
+                                        return;
                                     }
                                     else
                                     {
                                         MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
-                                    return;
                                 }
+
+
                                 else if (employeePosition == "Cashier")
                                 {
                                     // Retrieve the HashedPass column
@@ -642,11 +782,13 @@ namespace EatNRunProject
 
                                     if (passwordMatches)
                                     {
-                                        MessageBox.Show("Welcome back, Cashier.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MessageBox.Show($"Welcome back, Cashier {name}.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         MFpanelManager.MFShow(CashierPanel);
+                                        CashierLbl.Text = "Cashier " + name;
+                                        rememberAccount();
+                                        logincredclear();
 
-                                        ENREmplIDBox.Text = "";
-                                        ENREmplPassBox.Text = "";
+
                                     }
                                     else
                                     {
@@ -678,7 +820,57 @@ namespace EatNRunProject
                     connection?.Close();
                 }
             }
+        }
 
+        private void MngrSessionNumRefresh()
+        {
+            MngrSessionNum.Text = "";
+            ID = RandomNumberGenerator.GenerateRandomNumber();
+            MngrSessionNum.Text = "| Session Number: " + ID;
+        }
+
+        private void MngrOrderNumRefresh()
+        {
+            MngrOrderNumLbl.Text = "";
+            ID = RandomNumberGenerator.GenerateRandomNumber();
+            MngrOrderNumLbl.Text = "| Order Number: " + ID;
+        }
+
+        private void logincredclear()
+        {
+            ENREmplIDBox.Text = "";
+            ENREmplPassBox.Text = "";
+        }
+
+        private void rememberAccount()
+        {
+            string newItem = ENREmplIDBox.Text.Trim();
+            string newPassword = ENREmplPassBox.Text.Trim();
+
+            bool itemExists = ENREmplIDBox.Items.Contains(newItem);
+
+            if (RmbrAccCheckbox.Checked == true && !itemExists)
+            {
+                // Store username and password in the dictionary
+                accountData[newItem] = newPassword;
+
+                // Add the username to the combo box
+                ENREmplIDBox.Items.Add(newItem);
+
+                // Clear the textboxes
+                ENREmplIDBox.SelectedIndex = ENREmplIDBox.Items.IndexOf(newItem);
+                ENREmplIDBox.Text = "";
+                ENREmplPassBox.Text = "";
+            }
+        }
+
+        private void ENREmplIDBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedItem = ENREmplIDBox.SelectedItem as string;
+            if (selectedItem != null && accountData.ContainsKey(selectedItem))
+            {
+                ENREmplPassBox.Text = accountData[selectedItem];
+            }
         }
 
         private void EmpShowPass_CheckedChanged(object sender, EventArgs e)
@@ -977,6 +1169,7 @@ namespace EatNRunProject
         private void NewAddAccBtn_Click(object sender, EventArgs e)
         {
             //Create Acc Btn
+            //Create Acc Btn
             DateTime selectedDate = AddEmplBdayPicker.Value;
 
             string emplName = AddEmplNameBox.Text;
@@ -1203,13 +1396,18 @@ namespace EatNRunProject
                     Image selectedImage = Image.FromFile(openFileDialog.FileName);
 
                     // Check if the image dimensions are 64x64 pixels
-                    if (selectedImage.Width == 64 && selectedImage.Height == 64)
+                    if (selectedImage.Width == 128 && selectedImage.Height == 128)
                     {
                         AddEmplPicBox.Image = selectedImage;
                     }
+                    else if (selectedImage.Width != 128 && selectedImage.Height != 128)
+                    {
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                     else
                     {
-                        MessageBox.Show("Please select an image with dimensions of 64x64 pixels.");
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -1226,13 +1424,18 @@ namespace EatNRunProject
                     Image selectedImage = Image.FromFile(openFileDialog.FileName);
 
                     // Check if the image dimensions are 64x64 pixels
-                    if (selectedImage.Width == 64 && selectedImage.Height == 64)
+                    if (selectedImage.Width == 128 && selectedImage.Height == 128)
                     {
                         UpdateEmplPicBox.Image = selectedImage;
                     }
+                    else if (selectedImage.Width != 128 && selectedImage.Height != 128)
+                    {
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                     else
                     {
-                        MessageBox.Show("Please select an image with dimensions of 64x64 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -1525,13 +1728,18 @@ namespace EatNRunProject
                     Image selectedImage = Image.FromFile(openFileDialog.FileName);
 
                     // Check if the image dimensions are 64x64 pixels
-                    if (selectedImage.Width == 64 && selectedImage.Height == 64)
+                    if (selectedImage.Width == 128 && selectedImage.Height == 128)
                     {
                         AddItemPicBox.Image = selectedImage;
                     }
+                    else if (selectedImage.Width != 128 && selectedImage.Height != 128)
+                    {
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                     else
                     {
-                        MessageBox.Show("Please select an image with dimensions of 64x64 pixels.");
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -1704,14 +1912,19 @@ namespace EatNRunProject
                     selectedImage = Image.FromFile(openFileDialog.FileName);
 
                     // Check if the image dimensions are 64x64 pixels
-                    if (selectedImage.Width == 64 && selectedImage.Height == 64)
+                    if (selectedImage.Width == 128 && selectedImage.Height == 128)
                     {
                         UpdateItemPicBox.Image = selectedImage;
                         return;
                     }
+                    else if (selectedImage.Width != 128 && selectedImage.Height != 128)
+                    {
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                     else
                     {
-                        MessageBox.Show("Please select an image with dimensions of 64x64 pixels.");
+                        MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -1949,6 +2162,109 @@ namespace EatNRunProject
             }
         }
 
+        private void MngrCreateNewOrderBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to create a new order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                MngrPanelManager.MngrFormShow(MngrOrderDashboardPanel);
+                MngrItemPanelManager.MngrItemFormShow(MngrItemBurgerPanel);
+                MngrOrderPanelManager.MngrOrderFormShow(MngrOrderViewPanel);
+                MngrOrderNumRefresh();
+            }
+        }
 
+        private void MngrOrderExitBtn_Click(object sender, EventArgs e)
+        {
+            if (MngrOrderDashboardPanel.Visible)
+            {
+                DialogResult result = MessageBox.Show("Do you want to delete this order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    MngrOrderDashboardPanel.Visible = false;
+                    MngrNewOrderBtnPanel.Visible = true;
+                }
+
+            }
+
+            else
+            {
+                MngrOrderDashboardPanel.Visible = true;
+                MngrNewOrderBtnPanel.Visible = false;
+            }
+        }
+
+ 
+        private void MngrItemBurgerBtn_Click(object sender, EventArgs e)
+        {
+            MngrItemPanelManager.MngrItemFormShow(MngrItemBurgerPanel);
+
+        }
+
+        private void MngrItemSideBtn_Click(object sender, EventArgs e)
+        {
+            MngrItemPanelManager.MngrItemFormShow(MngrItemSidesPanel);
+
+        }
+
+        private void MngrItemDrinksBtn_Click(object sender, EventArgs e)
+        {
+            MngrItemPanelManager.MngrItemFormShow(MngrItemDrinksPanel);
+
+        }
+
+        private void MngrItemSetBtn_Click(object sender, EventArgs e)
+        {
+            MngrItemPanelManager.MngrItemFormShow(MngrItemSetMealsPanel);
+
+        }
+
+        private void MngrCheckoutBtn_Click(object sender, EventArgs e)
+        {
+            MngrOrderPanelManager.MngrOrderFormShow(MngrCheckoutViewPanel);
+
+        }
+
+        private void MngrPaymentButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MngrCheckoutExitBtn_Click(object sender, EventArgs e)
+        {
+            if (MngrCheckoutViewPanel.Visible)
+            {
+
+                MngrCheckoutViewPanel.Visible = false;
+                MngrOrderViewPanel.Visible = true;
+
+            }
+
+            else
+            {
+                MngrCheckoutViewPanel.Visible = true;
+                MngrOrderViewPanel.Visible = false;
+            }
+        }
+
+        private void MngrItemSidesView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void MngrItemBurgerView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void MngrItemDrinkView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void MngrItemSetMealView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
-}
+    }
