@@ -618,20 +618,24 @@ namespace EatNRunProject
 
                                     if (passwordMatches)
                                     {
-                                        MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MessageBox.Show($"Welcome back, Manager {name}.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                        MngrDashboardLbl.Text = "Manager " + name;
+
                                         MFpanelManager.MFShow(ManagerPanel);
 
                                         ENREmplIDBox.Text = "";
                                         ENREmplPassBox.Text = "";
 
-                                        MngrDashboardLbl.Text = name;
+                                        return;
                                     }
                                     else
                                     {
                                         MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
-                                    return;
                                 }
+
+
                                 else if (employeePosition == "Cashier")
                                 {
                                     // Retrieve the HashedPass column
@@ -647,6 +651,8 @@ namespace EatNRunProject
 
                                         ENREmplIDBox.Text = "";
                                         ENREmplPassBox.Text = "";
+
+
                                     }
                                     else
                                     {
