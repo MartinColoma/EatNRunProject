@@ -74,7 +74,7 @@ namespace EatNRunProject
             AdminAccPanelManager = new AdminAccPanelCard(NewAccPanel, UpdateEmplAccPanel, CreateAccBtnPanel);
 
             //Mngr Form Manager
-            MngrPanelManager = new MngrPanelCard(MngrNewOrderBtnPanel, MngrOrderDashboardPanel);
+            MngrPanelManager = new MngrPanelCard(MngrNewOrderBtnPanel, MngrOrderDashboardPanel, MngrSalesPanel);
             MngrItemPanelManager = new MngrItemPanelCard(MngrItemBurgerPanel, MngrItemSidesPanel, MngrItemSetMealsPanel, MngrItemDrinksPanel);
             MngrOrderPanelManager = new MngrOrderPanelCard(MngrOrderViewPanel, MngrCheckoutViewPanel, MngrVoidViewPanel); 
 
@@ -123,6 +123,9 @@ namespace EatNRunProject
             //DGV Error Handlers Cashier
 
 
+
+            //Order Buttons
+            MngrOrderViewTable.CellContentClick += MngrOrderViewTable_CellContentClick;
 
             this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
 
@@ -188,7 +191,7 @@ namespace EatNRunProject
             FoodItemListTable.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
         }
 
-        //DGV Error Handlers Mngr
+        //Mngr DGV Error Handlers
         //Burger
         private void FoodItemBurgerListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
@@ -668,7 +671,7 @@ namespace EatNRunProject
                 AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
                 rememberAccount();
                 logincredclear();
-                SalesDatePicker.Visible = false;
+                AdminSalesStartDatePicker.Visible = false;
                 return;
             }
             else if (ENREmplIDBox.Text == "Manager" && ENREmplPassBox.Text == "Manager123")
@@ -737,7 +740,7 @@ namespace EatNRunProject
                                         AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
                                         rememberAccount();
                                         logincredclear();
-                                        SalesDatePicker.Visible = false;
+                                        AdminSalesStartDatePicker.Visible = false;
                                     }
                                     else
                                     {
@@ -883,7 +886,7 @@ namespace EatNRunProject
             AdminPanelManager.AdminFormShow(FoodItemPanel);
             AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
             LoadItemMenu();
-            SalesDatePicker.Visible = false;
+            AdminSalesStartDatePicker.Visible = false;
 
 
         }
@@ -892,7 +895,7 @@ namespace EatNRunProject
         {
             AdminPanelManager.AdminFormShow(AccountsPanel);
             AdminAccPanelManager.AdminAccFormShow(CreateAccBtnPanel);
-            SalesDatePicker.Visible = false;
+            AdminSalesStartDatePicker.Visible = false;
             LoadEmployeeAcc();
 
         }
@@ -900,7 +903,7 @@ namespace EatNRunProject
         private void ADSalesBtn_Click(object sender, EventArgs e)
         {
             AdminPanelManager.AdminFormShow(SalesPanel);
-            SalesDatePicker.Visible = true;
+            AdminSalesStartDatePicker.Visible = true;
 
         }
 
@@ -2178,11 +2181,12 @@ namespace EatNRunProject
         {
             if (MngrOrderDashboardPanel.Visible)
             {
-                DialogResult result = MessageBox.Show("Do you want to delete this order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Do you want to cancel this order?", "Order Cancellation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     MngrOrderDashboardPanel.Visible = false;
                     MngrNewOrderBtnPanel.Visible = true;
+                    MngrOrderViewTable.Rows.Clear();
                 }
 
             }
@@ -2249,22 +2253,254 @@ namespace EatNRunProject
 
         private void MngrItemSidesView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("Do you want to add this in the order?", "Add Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    DataGridView dgv = (DataGridView)sender;
+                    DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
+                    // Assuming you want to get data from the first and second columns of the selected row.
+                    string cellValue1 = selectedRow.Cells[2].Value.ToString(); //Item Name
+                    string cellValue3 = selectedRow.Cells[5].Value.ToString(); //Item Price
+
+                    bool itemExists = false;
+
+                    foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
+                    {
+                        if (row.Cells["ItemName"].Value != null && row.Cells["ItemName"].Value.ToString() == cellValue1)
+                        {
+                            itemExists = true;
+                            break;
+                        }
+                    }
+
+                    if (!itemExists)
+                    {
+                        MngrOrderViewTable.Rows.Add("T", cellValue1, "-", "1", "+", cellValue3);
+                        //MngrOrderViewTable.CalculateTotalItemCost();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item already exists in the list.", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
         }
 
         private void MngrItemBurgerView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("Do you want to add this in the order?", "Add Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    DataGridView dgv = (DataGridView)sender;
+                    DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
+                    // Assuming you want to get data from the first and second columns of the selected row.
+                    string cellValue1 = selectedRow.Cells[2].Value.ToString(); //Item Name
+                    string cellValue3 = selectedRow.Cells[5].Value.ToString(); //Item Price
+
+                    bool itemExists = false;
+
+                    foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
+                    {
+                        if (row.Cells["ItemName"].Value != null && row.Cells["ItemName"].Value.ToString() == cellValue1)
+                        {
+                            itemExists = true;
+                            break;
+                        }
+                    }
+
+                    if (!itemExists)
+                    {
+                        MngrOrderViewTable.Rows.Add("T", cellValue1, "-", "1", "+", cellValue3);
+                        //MngrOrderViewTable.CalculateTotalItemCost();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item already exists in the list.", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
         }
 
         private void MngrItemDrinkView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("Do you want to add this in the order?", "Add Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    DataGridView dgv = (DataGridView)sender;
+                    DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
+                    // Assuming you want to get data from the first and second columns of the selected row.
+                    string cellValue1 = selectedRow.Cells[2].Value.ToString(); //Item Name
+                    string cellValue3 = selectedRow.Cells[5].Value.ToString(); //Item Price
+
+                    bool itemExists = false;
+
+                    foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
+                    {
+                        if (row.Cells["ItemName"].Value != null && row.Cells["ItemName"].Value.ToString() == cellValue1)
+                        {
+                            itemExists = true;
+                            break;
+                        }
+                    }
+
+                    if (!itemExists)
+                    {
+                        MngrOrderViewTable.Rows.Add("T", cellValue1, "-", "1", "+", cellValue3);
+                        //MngrOrderViewTable.CalculateTotalItemCost();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item already exists in the list.", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
         }
 
         private void MngrItemSetMealView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("Do you want to add this in the order?", "Add Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    DataGridView dgv = (DataGridView)sender;
+                    DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
+
+                    // Assuming you want to get data from the first and second columns of the selected row.
+                    string cellValue1 = selectedRow.Cells[2].Value.ToString(); //Item Name
+                    string cellValue3 = selectedRow.Cells[5].Value.ToString(); //Item Price
+
+                    bool itemExists = false;
+
+                    foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
+                    {
+                        if (row.Cells["ItemName"].Value != null && row.Cells["ItemName"].Value.ToString() == cellValue1)
+                        {
+                            itemExists = true;
+                            break;
+                        }
+                    }
+
+                    if (!itemExists)
+                    {
+                        MngrOrderViewTable.Rows.Add("T", cellValue1, "-", "1", "+", cellValue3);
+                        //MngrOrderViewTable.CalculateTotalItemCost();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item already exists in the list.", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+        }
+
+        private void MngrOrderViewTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
+
+        private void SearchAccDB(string searchText)
+        {
+            connection.Open();
+            // Modify your MySQL query to search in specific columns of the table
+            string query = "SELECT * FROM accounts WHERE " +
+                           "EmployeeName LIKE @searchText OR " +
+                           "EmployeePosition LIKE @searchText OR " +
+                           "EmployeeAge LIKE @searchText OR " +
+                           "EmployeeBday LIKE @searchText OR " +
+                           "EmployeeGender LIKE @searchText OR " +
+                           "EmployeeAddress LIKE @searchText OR " +
+                           "EmployeeEmail LIKE @searchText OR " +
+                           "UID LIKE @searchText OR " +
+                           "EmployeeID LIKE @searchText";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@searchText", "%" + searchText + "%"); // Adjust the parameter name and value accordingly
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    // Bind the DataGridView (PendingTable) to the search results
+                    AccountListTable.DataSource = dataTable;
+                }
+            }
+            connection.Close();
+        }
+
+        private void SearchFoodDB(string searchText)
+        {
+            connection.Open();
+            // Modify your MySQL query to search in specific columns of the table
+            string query = "SELECT * FROM foodmenu WHERE " +
+                           "FoodName LIKE @searchText OR " +
+                           "FoodCode LIKE @searchText OR " +
+                           "FoodType LIKE @searchText OR " +
+                           "FoodPrice LIKE @searchText OR " +
+                           "FoodDateCreated LIKE @searchText";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@searchText", "%" + searchText + "%"); // Adjust the parameter name and value accordingly
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    // Bind the DataGridView (PendingTable) to the search results
+                    FoodItemListTable.DataSource = dataTable;
+                }
+            }
+            connection.Close();
+        }
+
+        private void AdminFoodItemSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = AdminFoodItemSearchBox.Text;
+            SearchFoodDB(searchText);
+            SearchAccDB(searchText);
+
+        }
+
+        private void AdminFoodItemSearchBtn_Click(object sender, EventArgs e)
+        {
+            string searchText = AdminFoodItemSearchBox.Text;
+            SearchFoodDB(searchText);
+            SearchAccDB(searchText);
+
+        }
+
+        private void MngrSalesBtn_Click(object sender, EventArgs e)
+        {
+            MngrPanelManager.MngrFormShow(MngrSalesPanel);
+
+        }
+
+        private void MngrSalesExitBtn_Click(object sender, EventArgs e)
+        {
+            if (MngrSalesPanel.Visible)
+            {
+                MngrSalesPanel.Visible = false;
+                MngrNewOrderBtnPanel.Visible = true;
+            }
+
+            else
+            {
+                MngrSalesPanel.Visible = true;
+                MngrNewOrderBtnPanel.Visible = false;
+            }
+        }
     }
-    }
+}
