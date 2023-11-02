@@ -931,7 +931,7 @@ namespace EatNRunProject
             }
         }
 
-        private void CashierSwtichBtn_Click(object sender, EventArgs e)
+        private void CashierSwitchBtn_Click(object sender, EventArgs e)
         {
 
             DialogResult result = MessageBox.Show("Do you want to switch user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -2502,5 +2502,7 @@ namespace EatNRunProject
                 MngrNewOrderBtnPanel.Visible = false;
             }
         }
+
+
     }
 }
