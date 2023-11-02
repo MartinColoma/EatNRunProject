@@ -124,9 +124,6 @@ namespace EatNRunProject
 
 
 
-            //Order Buttons
-            MngrOrderViewTable.CellContentClick += MngrOrderViewTable_CellContentClick;
-
             this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
 
         }
@@ -254,14 +251,14 @@ namespace EatNRunProject
         private void InitializeDataGridView()
         {
             DataGridViewButtonColumn trashColumn = new DataGridViewButtonColumn();
-            trashColumn.Name = "Bin";
+            trashColumn.Name = "Void";
             trashColumn.Text = "T";
             trashColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             trashColumn.Width = 10;
             MngrOrderViewTable.Columns.Add(trashColumn);
 
             DataGridViewTextBoxColumn itemNameColumn = new DataGridViewTextBoxColumn();
-            itemNameColumn.Name = "ItemName";
+            itemNameColumn.Name = "Item Name";
             MngrOrderViewTable.Columns.Add(itemNameColumn);
 
             DataGridViewButtonColumn minusColumn = new DataGridViewButtonColumn();
@@ -285,7 +282,7 @@ namespace EatNRunProject
             MngrOrderViewTable.Columns.Add(plusColumn);
 
             DataGridViewTextBoxColumn itemCostColumn = new DataGridViewTextBoxColumn();
-            itemCostColumn.Name = "ItemCost";
+            itemCostColumn.Name = "Price";
             MngrOrderViewTable.Columns.Add(itemCostColumn);
         }
         public class HashHelper
@@ -376,7 +373,7 @@ namespace EatNRunProject
                         AccountListTable.Columns.Add(imageColumn);
 
                         AccountListTable.DataSource = dataTable;
-                        AccountListTable.Columns[0].Visible = false; // hashedpass
+                        AccountListTable.Columns[0].Visible = false; 
                         AccountListTable.Columns[11].Visible = false; // hashedpass
                         AccountListTable.Columns[12].Visible = false; // fixedsalt
                         AccountListTable.Columns[13].Visible = false; // perusersalt
@@ -427,7 +424,7 @@ namespace EatNRunProject
 
                         // Add the image column to the DataGridView
                         FoodItemListTable.Columns.Add(imageColumn);
-                        FoodItemListTable.Columns[0].Visible = false; // hashedpass
+                        FoodItemListTable.Columns[0].Visible = false; 
                         FoodItemListTable.DataSource = dataTable;
 
                         FoodItemListTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -2228,6 +2225,10 @@ namespace EatNRunProject
             MngrOrderPanelManager.MngrOrderFormShow(MngrCheckoutViewPanel);
 
         }
+        private void MngrVoidBtn_Click(object sender, EventArgs e)
+        {
+            MngrOrderPanelManager.MngrOrderFormShow(MngrVoidViewPanel);
+        }
 
         private void MngrPaymentButton_Click(object sender, EventArgs e)
         {
@@ -2255,37 +2256,11 @@ namespace EatNRunProject
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                DialogResult result = MessageBox.Show("Do you want to add this in the order?", "Add Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    DataGridView dgv = (DataGridView)sender;
-                    DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
+                DataGridView dgv = (DataGridView)sender;
+                DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
-                    // Assuming you want to get data from the first and second columns of the selected row.
-                    string cellValue1 = selectedRow.Cells[2].Value.ToString(); //Item Name
-                    string cellValue3 = selectedRow.Cells[5].Value.ToString(); //Item Price
-
-                    bool itemExists = false;
-
-                    foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
-                    {
-                        if (row.Cells["ItemName"].Value != null && row.Cells["ItemName"].Value.ToString() == cellValue1)
-                        {
-                            itemExists = true;
-                            break;
-                        }
-                    }
-
-                    if (!itemExists)
-                    {
-                        MngrOrderViewTable.Rows.Add("T", cellValue1, "-", "1", "+", cellValue3);
-                        //MngrOrderViewTable.CalculateTotalItemCost();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Item already exists in the list.", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
+                // Call the method to handle the click event
+                HandleDataGridViewCellClick(dgv, selectedRow);
             }
         }
 
@@ -2293,37 +2268,11 @@ namespace EatNRunProject
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                DialogResult result = MessageBox.Show("Do you want to add this in the order?", "Add Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    DataGridView dgv = (DataGridView)sender;
-                    DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
+                DataGridView dgv = (DataGridView)sender;
+                DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
-                    // Assuming you want to get data from the first and second columns of the selected row.
-                    string cellValue1 = selectedRow.Cells[2].Value.ToString(); //Item Name
-                    string cellValue3 = selectedRow.Cells[5].Value.ToString(); //Item Price
-
-                    bool itemExists = false;
-
-                    foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
-                    {
-                        if (row.Cells["ItemName"].Value != null && row.Cells["ItemName"].Value.ToString() == cellValue1)
-                        {
-                            itemExists = true;
-                            break;
-                        }
-                    }
-
-                    if (!itemExists)
-                    {
-                        MngrOrderViewTable.Rows.Add("T", cellValue1, "-", "1", "+", cellValue3);
-                        //MngrOrderViewTable.CalculateTotalItemCost();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Item already exists in the list.", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
+                // Call the method to handle the click event
+                HandleDataGridViewCellClick(dgv, selectedRow);
             }
         }
 
@@ -2331,37 +2280,11 @@ namespace EatNRunProject
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                DialogResult result = MessageBox.Show("Do you want to add this in the order?", "Add Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    DataGridView dgv = (DataGridView)sender;
-                    DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
+                DataGridView dgv = (DataGridView)sender;
+                DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
-                    // Assuming you want to get data from the first and second columns of the selected row.
-                    string cellValue1 = selectedRow.Cells[2].Value.ToString(); //Item Name
-                    string cellValue3 = selectedRow.Cells[5].Value.ToString(); //Item Price
-
-                    bool itemExists = false;
-
-                    foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
-                    {
-                        if (row.Cells["ItemName"].Value != null && row.Cells["ItemName"].Value.ToString() == cellValue1)
-                        {
-                            itemExists = true;
-                            break;
-                        }
-                    }
-
-                    if (!itemExists)
-                    {
-                        MngrOrderViewTable.Rows.Add("T", cellValue1, "-", "1", "+", cellValue3);
-                        //MngrOrderViewTable.CalculateTotalItemCost();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Item already exists in the list.", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
+                // Call the method to handle the click event
+                HandleDataGridViewCellClick(dgv, selectedRow);
             }
         }
 
@@ -2369,44 +2292,144 @@ namespace EatNRunProject
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
+                DataGridView dgv = (DataGridView)sender;
+                DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
+
+                // Call the method to handle the click event
+                HandleDataGridViewCellClick(dgv, selectedRow);
+            }
+        }
+
+        private void HandleDataGridViewCellClick(DataGridView dgv, DataGridViewRow selectedRow)
+        {
+            string cellValue1 = selectedRow.Cells[2].Value.ToString(); // Item Name
+
+            bool itemExists = false;
+            int existingRowIndex = -1;
+
+            // Check if the item already exists in the order
+            foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
+            {
+                if (row.Cells["Item Name"].Value != null && row.Cells["Item Name"].Value.ToString() == cellValue1)
+                {
+                    itemExists = true;
+                    existingRowIndex = row.Index;
+                    break;
+                }
+            }
+
+            if (itemExists)
+            {
+                // The item already exists, increment quantity and update price
+                string quantityString = MngrOrderViewTable.Rows[existingRowIndex].Cells["Qty"].Value?.ToString();
+                if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
+                {
+                    decimal itemCost = decimal.Parse(MngrOrderViewTable.Rows[existingRowIndex].Cells["Price"].Value?.ToString());
+
+                    // Calculate the cost per item
+                    decimal costPerItem = itemCost / quantity;
+
+                    // Increase quantity
+                    quantity++;
+
+                    // Calculate updated item cost
+                    decimal updatedCost = costPerItem * quantity;
+
+                    // Update Qty and ItemCost in the DataGridView
+                    MngrOrderViewTable.Rows[existingRowIndex].Cells["Qty"].Value = quantity.ToString();
+                    MngrOrderViewTable.Rows[existingRowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                }
+                else
+                {
+                    // Handle the case where quantityString is empty or not a valid integer
+                    // For example, show an error message or set a default value
+                }
+            }
+            else
+            {
+                // The item doesn't exist in the order, add it
                 DialogResult result = MessageBox.Show("Do you want to add this in the order?", "Add Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    DataGridView dgv = (DataGridView)sender;
-                    DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
+                    string cellValue3 = selectedRow.Cells[5].Value.ToString(); // Item Price
 
-                    // Assuming you want to get data from the first and second columns of the selected row.
-                    string cellValue1 = selectedRow.Cells[2].Value.ToString(); //Item Name
-                    string cellValue3 = selectedRow.Cells[5].Value.ToString(); //Item Price
+                    MngrOrderViewTable.Rows.Add("T", cellValue1, "-", "1", "+", cellValue3);
+                    // MngrOrderViewTable.CalculateTotalItemCost();
+                }
+            }
+        }
 
-                    bool itemExists = false;
 
-                    foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
+        private void MngrOrderViewTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && MngrOrderViewTable.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                // Handle the Bin column
+                if (MngrOrderViewTable.Columns[e.ColumnIndex].Name == "Bin")
+                {
+                    // Remove the entire row
+                    MngrOrderViewTable.Rows.RemoveAt(e.RowIndex);
+                }
+                else if (MngrOrderViewTable.Columns[e.ColumnIndex].Name == "-")
+                {
+                    string quantityString = MngrOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
+                    if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
                     {
-                        if (row.Cells["ItemName"].Value != null && row.Cells["ItemName"].Value.ToString() == cellValue1)
+                        decimal itemCost = decimal.Parse(MngrOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString());
+
+                        // Calculate the cost per item
+                        decimal costPerItem = itemCost / quantity;
+
+                        // Decrease quantity
+                        if (quantity > 1)
                         {
-                            itemExists = true;
-                            break;
-                        }
-                    }
+                            quantity--;
 
-                    if (!itemExists)
-                    {
-                        MngrOrderViewTable.Rows.Add("T", cellValue1, "-", "1", "+", cellValue3);
-                        //MngrOrderViewTable.CalculateTotalItemCost();
+                            // Calculate updated item cost (reset to original price)
+                            decimal updatedCost = costPerItem * quantity;
+
+                            // Update Qty and ItemCost in the DataGridView
+                            MngrOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity.ToString();
+                            MngrOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Item already exists in the list.", "Duplicate Item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        // Handle the case where quantityString is empty or not a valid integer
+                        // For example, show an error message or set a default value
+                    }
+                }
+                else if (MngrOrderViewTable.Columns[e.ColumnIndex].Name == "+")
+                {
+                    string quantityString = MngrOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
+                    if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
+                    {
+                        decimal itemCost = decimal.Parse(MngrOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString());
+
+                        // Calculate the cost per item
+                        decimal costPerItem = itemCost / quantity;
+
+                        // Increase quantity
+                        quantity++;
+
+                        // Calculate updated item cost
+                        decimal updatedCost = costPerItem * quantity;
+
+                        // Update Qty and ItemCost in the DataGridView
+                        MngrOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity.ToString();
+                        MngrOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                    }
+                    else
+                    {
+                        // Handle the case where quantityString is empty or not a valid integer
+                        // For example, show an error message or set a default value
                     }
                 }
             }
         }
 
-        private void MngrOrderViewTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
+
 
         private void SearchAccDB(string searchText)
         {
