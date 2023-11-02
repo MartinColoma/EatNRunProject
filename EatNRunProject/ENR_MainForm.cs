@@ -856,6 +856,7 @@ namespace EatNRunProject
 
                 // Add the username to the combo box
                 ENREmplIDBox.Items.Add(newItem);
+                MngrVoidEmplIDBox.Items.Add(newItem); // Add to the new combo box
 
                 // Clear the textboxes
                 ENREmplIDBox.SelectedIndex = ENREmplIDBox.Items.IndexOf(newItem);
@@ -863,6 +864,7 @@ namespace EatNRunProject
                 ENREmplPassBox.Text = "";
             }
         }
+
 
         private void ENREmplIDBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -921,6 +923,8 @@ namespace EatNRunProject
             if (result == DialogResult.Yes)
             {
                 MFpanelManager.MFShow(LoginPanel);
+                MngrOrderViewTable.Rows.Clear();
+
             }
             else
             {
@@ -1664,8 +1668,6 @@ namespace EatNRunProject
 
 
         }
-
-
 
         private void UpdateAccBoxClear()
         {
@@ -2609,6 +2611,108 @@ namespace EatNRunProject
         private void SearchDrinks(string searchText)
         {
             SearchFoodByFoodType(searchText, "Drinks");
+        }
+
+        private void MngrVoidEmplIDBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedItem = MngrVoidEmplIDBox.SelectedItem as string;
+            if (selectedItem != null && accountData.ContainsKey(selectedItem))
+            {
+                MngrVoidEmplPassBox.Text = accountData[selectedItem];
+            }
+        }
+
+        private void MngrVoidOrderBtn_Click(object sender, EventArgs e)
+        {
+            Voider();
+        }
+
+        private void Voider()
+        {
+            string emplID = MngrVoidEmplIDBox.Text;
+            string emplPass = MngrVoidEmplPassBox.Text;
+            string passchecker = HashHelper.HashString(emplPass); // Assuming "enteredPassword" is supposed to be "emplPass"
+
+            MySqlConnection connection = null;
+
+            try
+            {
+                connection = new MySqlConnection(mysqlconn);
+                connection.Open();
+
+                // Query the database for the provided Employee ID in the accounts table
+                string queryApproved = "SELECT EmployeeName, EmployeeID, EmployeePosition, HashedPass FROM accounts WHERE EmployeeID = @EmplID";
+
+                using (MySqlCommand cmdApproved = new MySqlCommand(queryApproved, connection))
+                {
+                    cmdApproved.Parameters.AddWithValue("@EmplID", emplID);
+
+                    using (MySqlDataReader readerApproved = cmdApproved.ExecuteReader())
+                    {
+                        if (readerApproved.Read())
+                        {
+                            // Retrieve user information
+                            string name = readerApproved["EmployeeName"].ToString();
+                            string employeePosition = readerApproved["EmployeePosition"].ToString();
+
+                            // Check if the entered EmployeePosition matches the one in the database
+                            if (employeePosition == "Manager")
+                            {
+                                // Retrieve the HashedPass column
+                                string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
+
+                                // Check if the entered password matches
+                                bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
+
+                                if (passwordMatches)
+                                {
+                                    MessageBox.Show("Ordered items are voided.", "Item Void Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MngrOrderViewTable.Rows.Clear();
+                                    MngrOrderPanelManager.MngrOrderFormShow(MngrOrderViewPanel);
+
+                                    //Other
+
+                                    return;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else
+                            {
+                                // The entered Employee ID does not exist in the database
+                                MessageBox.Show("Account not found.", "Ooooops", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+        }
+
+        private void MngrVoidExitBtn_Click(object sender, EventArgs e)
+        {
+            if (MngrVoidViewPanel.Visible)
+            {
+
+                MngrVoidViewPanel.Visible = false;
+                MngrOrderViewPanel.Visible = true;
+
+            }
+
+            else
+            {
+                MngrVoidViewPanel.Visible = true;
+                MngrOrderViewPanel.Visible = false;
+            }
         }
     }
 }
