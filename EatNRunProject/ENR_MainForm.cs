@@ -2484,6 +2484,7 @@ namespace EatNRunProject
 
                     // Bind the DataGridView (PendingTable) to the search results
                     FoodItemListTable.DataSource = dataTable;
+
                 }
             }
             connection.Close();
@@ -2526,6 +2527,88 @@ namespace EatNRunProject
             }
         }
 
+        private void MngrSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = MngrSearchBox.Text;
+            SearchBurger(searchText);
+            SearchDrinks(searchText);
+            SearchSetMeals(searchText);
+            SearchSides(searchText);
+        }
 
+        private void MngrSearchBoxBtn_Click(object sender, EventArgs e)
+        {
+            string searchText = MngrSearchBox.Text;
+            SearchBurger(searchText);
+            SearchDrinks(searchText);
+            SearchSetMeals(searchText);
+            SearchSides(searchText);
+        }
+
+        private void SearchFoodByFoodType(string searchText, string foodType)
+        {
+            connection.Open();
+            // Modify your MySQL query to search in specific columns of the table for the specified food type
+            string query = "SELECT * FROM `foodmenu` WHERE FoodType = @foodType AND " +
+                           "(FoodName LIKE @searchText OR " +
+                           "FoodCode LIKE @searchText OR " +
+                           "FoodType LIKE @searchText OR " +
+                           "FoodPrice LIKE @searchText OR " +
+                           "FoodDateCreated LIKE @searchText)";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@foodType", foodType);
+                cmd.Parameters.AddWithValue("@searchText", "%" + searchText + "%");
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    // Bind the DataGridView to the search results based on the food type
+                    switch (foodType)
+                    {
+                        case "Burger":
+                            MngrItemBurgerView.DataSource = dataTable;
+                            break;
+                        case "Sides":
+                            MngrItemSidesView.DataSource = dataTable;
+                            break;
+                        case "Set Meals":
+                            MngrItemSetMealView.DataSource = dataTable;
+                            break;
+                        case "Drinks":
+                            MngrItemDrinkView.DataSource = dataTable;
+                            break;
+                        default:
+                            // Handle an unknown food type or provide a default view
+                            break;
+                    }
+                }
+            }
+            connection.Close();
+        }
+
+        // Separate methods for each food type
+        private void SearchBurger(string searchText)
+        {
+            SearchFoodByFoodType(searchText, "Burger");
+        }
+
+        private void SearchSides(string searchText)
+        {
+            SearchFoodByFoodType(searchText, "Sides");
+        }
+
+        private void SearchSetMeals(string searchText)
+        {
+            SearchFoodByFoodType(searchText, "Set Meals");
+        }
+
+        private void SearchDrinks(string searchText)
+        {
+            SearchFoodByFoodType(searchText, "Drinks");
+        }
     }
 }
