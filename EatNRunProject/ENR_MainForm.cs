@@ -54,6 +54,10 @@ namespace EatNRunProject
         //Remember Account dictionary
         private Dictionary<string, string> accountData = new Dictionary<string, string>();
 
+        //Ordered Discount Value
+        private decimal originalGrossAmount; // Store the original value
+        private bool discountApplied = false; // Flag to track if the discount has been applied
+
         public ENRMainForm()
         {
             InitializeComponent();
@@ -74,7 +78,7 @@ namespace EatNRunProject
             AdminAccPanelManager = new AdminAccPanelCard(NewAccPanel, UpdateEmplAccPanel, CreateAccBtnPanel);
 
             //Mngr Form Manager
-            MngrPanelManager = new MngrPanelCard(MngrNewOrderBtnPanel, MngrOrderDashboardPanel);
+            MngrPanelManager = new MngrPanelCard(MngrNewOrderBtnPanel, MngrOrderDashboardPanel, MngrSalesPanel);
             MngrItemPanelManager = new MngrItemPanelCard(MngrItemBurgerPanel, MngrItemSidesPanel, MngrItemSetMealsPanel, MngrItemDrinksPanel);
             MngrOrderPanelManager = new MngrOrderPanelCard(MngrOrderViewPanel, MngrCheckoutViewPanel, MngrVoidViewPanel); 
 
@@ -124,6 +128,8 @@ namespace EatNRunProject
 
 
 
+
+
             this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
 
         }
@@ -137,7 +143,8 @@ namespace EatNRunProject
             LoadDrinksItemMenu();
             LoadSetItemMenu();
 
-
+            DateTimePickerTimer.Interval = 1000;
+            DateTimePickerTimer.Start();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -188,7 +195,7 @@ namespace EatNRunProject
             FoodItemListTable.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
         }
 
-        //DGV Error Handlers Mngr
+        //Mngr DGV Error Handlers
         //Burger
         private void FoodItemBurgerListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
@@ -250,15 +257,15 @@ namespace EatNRunProject
         //Order View Table
         private void InitializeDataGridView()
         {
-            DataGridViewButtonColumn trashColumn = new DataGridViewButtonColumn();
-            trashColumn.Name = "Bin";
-            trashColumn.Text = "T";
-            trashColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            trashColumn.Width = 10;
-            MngrOrderViewTable.Columns.Add(trashColumn);
+            //DataGridViewButtonColumn trashColumn = new DataGridViewButtonColumn();
+            //trashColumn.Name = "Void";
+            //trashColumn.Text = "T";
+            //trashColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            //trashColumn.Width = 10;
+            //MngrOrderViewTable.Columns.Add(trashColumn);
 
             DataGridViewTextBoxColumn itemNameColumn = new DataGridViewTextBoxColumn();
-            itemNameColumn.Name = "ItemName";
+            itemNameColumn.Name = "Item Name";
             MngrOrderViewTable.Columns.Add(itemNameColumn);
 
             DataGridViewButtonColumn minusColumn = new DataGridViewButtonColumn();
@@ -282,7 +289,7 @@ namespace EatNRunProject
             MngrOrderViewTable.Columns.Add(plusColumn);
 
             DataGridViewTextBoxColumn itemCostColumn = new DataGridViewTextBoxColumn();
-            itemCostColumn.Name = "ItemCost";
+            itemCostColumn.Name = "Price";
             MngrOrderViewTable.Columns.Add(itemCostColumn);
         }
         public class HashHelper
@@ -373,7 +380,7 @@ namespace EatNRunProject
                         AccountListTable.Columns.Add(imageColumn);
 
                         AccountListTable.DataSource = dataTable;
-                        AccountListTable.Columns[0].Visible = false; // hashedpass
+                        AccountListTable.Columns[0].Visible = false; 
                         AccountListTable.Columns[11].Visible = false; // hashedpass
                         AccountListTable.Columns[12].Visible = false; // fixedsalt
                         AccountListTable.Columns[13].Visible = false; // perusersalt
@@ -424,7 +431,7 @@ namespace EatNRunProject
 
                         // Add the image column to the DataGridView
                         FoodItemListTable.Columns.Add(imageColumn);
-                        FoodItemListTable.Columns[0].Visible = false; // hashedpass
+                        FoodItemListTable.Columns[0].Visible = false; 
                         FoodItemListTable.DataSource = dataTable;
 
                         FoodItemListTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -668,7 +675,7 @@ namespace EatNRunProject
                 AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
                 rememberAccount();
                 logincredclear();
-                SalesDatePicker.Visible = false;
+                AdminSalesStartDatePicker.Visible = false;
                 return;
             }
             else if (ENREmplIDBox.Text == "Manager" && ENREmplPassBox.Text == "Manager123")
@@ -737,7 +744,7 @@ namespace EatNRunProject
                                         AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
                                         rememberAccount();
                                         logincredclear();
-                                        SalesDatePicker.Visible = false;
+                                        AdminSalesStartDatePicker.Visible = false;
                                     }
                                     else
                                     {
@@ -856,6 +863,7 @@ namespace EatNRunProject
 
                 // Add the username to the combo box
                 ENREmplIDBox.Items.Add(newItem);
+                MngrVoidEmplIDBox.Items.Add(newItem); // Add to the new combo box
 
                 // Clear the textboxes
                 ENREmplIDBox.SelectedIndex = ENREmplIDBox.Items.IndexOf(newItem);
@@ -863,6 +871,7 @@ namespace EatNRunProject
                 ENREmplPassBox.Text = "";
             }
         }
+
 
         private void ENREmplIDBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -878,12 +887,87 @@ namespace EatNRunProject
             ENREmplPassBox.UseSystemPasswordChar = !ENREmplShowPass.Checked;
         }
 
+        private void SearchAccDB(string searchText)
+        {
+            connection.Open();
+            // Modify your MySQL query to search in specific columns of the table
+            string query = "SELECT * FROM accounts WHERE " +
+                           "EmployeeName LIKE @searchText OR " +
+                           "EmployeePosition LIKE @searchText OR " +
+                           "EmployeeAge LIKE @searchText OR " +
+                           "EmployeeBday LIKE @searchText OR " +
+                           "EmployeeGender LIKE @searchText OR " +
+                           "EmployeeAddress LIKE @searchText OR " +
+                           "EmployeeEmail LIKE @searchText OR " +
+                           "UID LIKE @searchText OR " +
+                           "EmployeeID LIKE @searchText";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@searchText", "%" + searchText + "%"); // Adjust the parameter name and value accordingly
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    // Bind the DataGridView (PendingTable) to the search results
+                    AccountListTable.DataSource = dataTable;
+                }
+            }
+            connection.Close();
+        }
+
+        private void SearchFoodDB(string searchText)
+        {
+            connection.Open();
+            // Modify your MySQL query to search in specific columns of the table
+            string query = "SELECT * FROM foodmenu WHERE " +
+                           "FoodName LIKE @searchText OR " +
+                           "FoodCode LIKE @searchText OR " +
+                           "FoodType LIKE @searchText OR " +
+                           "FoodPrice LIKE @searchText OR " +
+                           "FoodDateCreated LIKE @searchText";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@searchText", "%" + searchText + "%"); // Adjust the parameter name and value accordingly
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    // Bind the DataGridView (PendingTable) to the search results
+                    FoodItemListTable.DataSource = dataTable;
+
+                }
+            }
+            connection.Close();
+        }
+
+        private void AdminFoodItemSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = AdminFoodItemSearchBox.Text;
+            SearchFoodDB(searchText);
+            SearchAccDB(searchText);
+
+        }
+
+        private void AdminFoodItemSearchBtn_Click(object sender, EventArgs e)
+        {
+            string searchText = AdminFoodItemSearchBox.Text;
+            SearchFoodDB(searchText);
+            SearchAccDB(searchText);
+
+        }
+
         private void ADFoodItemBtn_Click(object sender, EventArgs e)
         {
             AdminPanelManager.AdminFormShow(FoodItemPanel);
             AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
             LoadItemMenu();
-            SalesDatePicker.Visible = false;
+            AdminSalesStartDatePicker.Visible = false;
 
 
         }
@@ -892,7 +976,7 @@ namespace EatNRunProject
         {
             AdminPanelManager.AdminFormShow(AccountsPanel);
             AdminAccPanelManager.AdminAccFormShow(CreateAccBtnPanel);
-            SalesDatePicker.Visible = false;
+            AdminSalesStartDatePicker.Visible = false;
             LoadEmployeeAcc();
 
         }
@@ -900,7 +984,7 @@ namespace EatNRunProject
         private void ADSalesBtn_Click(object sender, EventArgs e)
         {
             AdminPanelManager.AdminFormShow(SalesPanel);
-            SalesDatePicker.Visible = true;
+            AdminSalesStartDatePicker.Visible = true;
 
         }
 
@@ -921,6 +1005,9 @@ namespace EatNRunProject
             if (result == DialogResult.Yes)
             {
                 MFpanelManager.MFShow(LoginPanel);
+                MngrOrderViewTable.Rows.Clear();
+                MngrItemPanel.Enabled = true;
+
             }
             else
             {
@@ -928,7 +1015,7 @@ namespace EatNRunProject
             }
         }
 
-        private void CashierSwtichBtn_Click(object sender, EventArgs e)
+        private void CashierSwitchBtn_Click(object sender, EventArgs e)
         {
 
             DialogResult result = MessageBox.Show("Do you want to switch user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -950,7 +1037,8 @@ namespace EatNRunProject
             }
         }
 
-        private void FoodItemEditBtn_Click(object sender, EventArgs e)
+
+        private void EditFoodItemBtn_Click(object sender, EventArgs e)
         {
 
             if (FoodItemListTable.SelectedRows.Count > 0)
@@ -1002,9 +1090,8 @@ namespace EatNRunProject
             }
         }
 
-        private void UpdateAccBtn_Click(object sender, EventArgs e)
+        private void EditEmplAccBtn_Click(object sender, EventArgs e)
         {
-
             if (AccountListTable.SelectedRows.Count > 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Do you want to edit the selected data?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -1040,8 +1127,6 @@ namespace EatNRunProject
             {
                 MessageBox.Show("Select a table row first.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
-
-
         }
 
         private void RetrieveEmployeeDataFromDB(DataGridViewRow selectedRow)
@@ -1166,8 +1251,9 @@ namespace EatNRunProject
             }
         }
 
-        private void NewAddAccBtn_Click(object sender, EventArgs e)
+        private void AddEmplAccBtn_Click(object sender, EventArgs e)
         {
+
             //Create Acc Btn
             //Create Acc Btn
             DateTime selectedDate = AddEmplBdayPicker.Value;
@@ -1306,11 +1392,7 @@ namespace EatNRunProject
                     connection.Close();
                 }
             }
-
-
         }
-
-
 
 
         private void AddNewAccBoxClear()
@@ -1476,7 +1558,8 @@ namespace EatNRunProject
 
         }
 
-        private void UpdateEmplUpdateBtn_Click(object sender, EventArgs e)
+
+        private void UpdateEmplAccBtn_Click(object sender, EventArgs e)
         {
             //Update Acc Btn
             DateTime selectedDate = UpdateEmplBdayPicker.Value;
@@ -1492,7 +1575,6 @@ namespace EatNRunProject
             string emplPass = UpdateEmplPassBox.Text;
 
             Regex nameRegex = new Regex("^[A-Z][a-zA-Z]+(?: [a-zA-Z]+)*$");
-            Regex courseRegex = new Regex("^[A-Za-z]+(?: [A-Za-z]+)*$");
             Regex passwordRegex = new Regex("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?])[A-Za-z\\d!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]{8,}$");
             Regex gmailRegex = new Regex(@"^[A-Za-z0-9._%+-]*\d*@gmail\.com$");
 
@@ -1596,7 +1678,6 @@ namespace EatNRunProject
                             return;
                         }
 
-                        // Update data in the accounts table, including the image conditionally
                         if (imageData != null)
                         {
                             // Update with image
@@ -1656,16 +1737,13 @@ namespace EatNRunProject
                 }
                 finally
                 {
-                    // Make sure to close the connection
                     connection.Close();
                 }
+
+
             }
 
-
-
         }
-
-
 
         private void UpdateAccBoxClear()
         {
@@ -1764,7 +1842,7 @@ namespace EatNRunProject
 
         }
 
-        private void AddItemBtn_Click(object sender, EventArgs e)
+        private void AddFoodItemBtn_Click(object sender, EventArgs e)
         {
             //Create Acc Btn
             DateTime selectedDate = AddItemCreatedDatePicker.Value;
@@ -1857,6 +1935,7 @@ namespace EatNRunProject
             }
         }
 
+
         private void AddItemBoxClear()
         {
             AddItemPicBox.Image = null;
@@ -1930,7 +2009,7 @@ namespace EatNRunProject
             }
         }
 
-        private void UpdateItemBtn_Click(object sender, EventArgs e)
+        private void UpdateFoodItemBtn_Click(object sender, EventArgs e)
         {
             //Update Acc Btn
             DateTime selectedDate = UpdateItemCreatedDatePicker.Value;
@@ -1940,7 +2019,7 @@ namespace EatNRunProject
             string itemType = UpdateItemTypeComboBox.Text;
             string itemPrice = UpdateItemPriceBox.Text;
             string itemCreated = selectedDate.ToString("MM-dd-yyyy dddd");
-            
+
             Regex nameRegex = new Regex("^[A-Z][a-zA-Z]+(?: [a-zA-Z]+)*$");
 
             if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(itemCode) || string.IsNullOrEmpty(itemType) ||
@@ -2037,11 +2116,12 @@ namespace EatNRunProject
                 }
                 finally
                 {
-                        connection.Close();
+                    connection.Close();
                 }
 
             }
         }
+
 
         private void UpdateItemTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2171,6 +2251,7 @@ namespace EatNRunProject
                 MngrItemPanelManager.MngrItemFormShow(MngrItemBurgerPanel);
                 MngrOrderPanelManager.MngrOrderFormShow(MngrOrderViewPanel);
                 MngrOrderNumRefresh();
+                MngrItemPanel.Enabled = true;
             }
         }
 
@@ -2178,11 +2259,14 @@ namespace EatNRunProject
         {
             if (MngrOrderDashboardPanel.Visible)
             {
-                DialogResult result = MessageBox.Show("Do you want to delete this order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Do you want to cancel this order?", "Order Cancellation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     MngrOrderDashboardPanel.Visible = false;
                     MngrNewOrderBtnPanel.Visible = true;
+                    MngrOrderViewTable.Rows.Clear();
+                    MngrItemPanel.Enabled = true;
+
                 }
 
             }
@@ -2222,12 +2306,15 @@ namespace EatNRunProject
         private void MngrCheckoutBtn_Click(object sender, EventArgs e)
         {
             MngrOrderPanelManager.MngrOrderFormShow(MngrCheckoutViewPanel);
+            CalculateTotalPrice();
 
         }
-
-        private void MngrPaymentButton_Click(object sender, EventArgs e)
+        private void MngrVoidBtn_Click(object sender, EventArgs e)
         {
+            // Perform login verification before deleting the entire DataGridView
 
+            MngrItemPanel.Enabled = true;
+            MngrOrderPanelManager.MngrOrderFormShow(MngrVoidViewPanel);
         }
 
         private void MngrCheckoutExitBtn_Click(object sender, EventArgs e)
@@ -2249,22 +2336,505 @@ namespace EatNRunProject
 
         private void MngrItemSidesView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridView dgv = (DataGridView)sender;
+                DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
+                // Call the method to handle the click event
+                HandleDataGridViewCellClick(dgv, selectedRow);
+            }
         }
 
         private void MngrItemBurgerView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridView dgv = (DataGridView)sender;
+                DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
+                // Call the method to handle the click event
+                HandleDataGridViewCellClick(dgv, selectedRow);
+            }
         }
 
         private void MngrItemDrinkView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridView dgv = (DataGridView)sender;
+                DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
+                // Call the method to handle the click event
+                HandleDataGridViewCellClick(dgv, selectedRow);
+            }
         }
 
         private void MngrItemSetMealView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridView dgv = (DataGridView)sender;
+                DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
+
+                // Call the method to handle the click event
+                HandleDataGridViewCellClick(dgv, selectedRow);
+            }
+        }
+
+        private void HandleDataGridViewCellClick(DataGridView dgv, DataGridViewRow selectedRow)
+        {
+            string cellValue1 = selectedRow.Cells[2].Value.ToString(); // Item Name
+
+            bool itemExists = false;
+            int existingRowIndex = -1;
+
+            // Check if the item already exists in the order
+            foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
+            {
+                if (row.Cells["Item Name"].Value != null && row.Cells["Item Name"].Value.ToString() == cellValue1)
+                {
+                    itemExists = true;
+                    existingRowIndex = row.Index;
+                    break;
+                }
+            }
+
+            if (itemExists)
+            {
+                // The item already exists, increment quantity and update price
+                string quantityString = MngrOrderViewTable.Rows[existingRowIndex].Cells["Qty"].Value?.ToString();
+                if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
+                {
+                    decimal itemCost = decimal.Parse(MngrOrderViewTable.Rows[existingRowIndex].Cells["Price"].Value?.ToString());
+
+                    // Calculate the cost per item
+                    decimal costPerItem = itemCost / quantity;
+
+                    // Increase quantity
+                    quantity++;
+
+                    // Calculate updated item cost
+                    decimal updatedCost = costPerItem * quantity;
+
+                    // Update Qty and ItemCost in the DataGridView
+                    MngrOrderViewTable.Rows[existingRowIndex].Cells["Qty"].Value = quantity.ToString();
+                    MngrOrderViewTable.Rows[existingRowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                    CalculateTotalPrice();
+                }
+                else
+                {
+                    // Handle the case where quantityString is empty or not a valid integer
+                    // For example, show an error message or set a default value
+                }
+            }
+            else
+            {
+                // The item doesn't exist in the order, add it
+                DialogResult result = MessageBox.Show("Do you want to add this in the order?", "Add Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    string cellValue3 = selectedRow.Cells[5].Value.ToString(); // Item Price
+
+                    MngrOrderViewTable.Rows.Add(cellValue1, "-", "1", "+", cellValue3);
+                    CalculateTotalPrice();
+                }
+            }
+        }
+        private void CalculateTotalPrice()
+        {
+            decimal total = 0;
+
+            // Assuming the "Price" column is of decimal type
+            int priceColumnIndex = MngrOrderViewTable.Columns["Price"].Index;
+
+            foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
+            {
+                if (row.Cells[priceColumnIndex].Value != null)
+                {
+                    decimal price = decimal.Parse(row.Cells[priceColumnIndex].Value.ToString());
+                    total += price;
+                }
+            }
+
+            // Display the total price in the GrossAmountBox TextBox
+            MngrGrossAmountBox.Text = total.ToString("F2"); // Format to two decimal places
+            CalculateVATAndNetAmount();
+        }
+
+        public void CalculateVATAndNetAmount()
+        {
+            // Get the Gross Amount from the TextBox (MngrGrossAmountBox)
+            if (decimal.TryParse(MngrGrossAmountBox.Text, out decimal grossAmount))
+            {
+                // Fixed VAT rate of 12%
+                decimal rate = 12;
+
+                // Calculate the VAT Amount
+                decimal netAmount = grossAmount / ((rate / 100)+1);
+
+                // Calculate the Net Amount
+                decimal vatAmount = grossAmount - netAmount;
+
+                // Display the calculated values in TextBoxes
+                MngrVATBox.Text = vatAmount.ToString("0.00");
+                MngrNetAmountBox.Text = netAmount.ToString("0.00");
+            }
+            else
+            {
+                // Handle invalid Gross Amount input
+                MessageBox.Show("Invalid Gross Amount. Please enter a valid number.");
+            }
+        }
+
+
+        private void MngrOrderViewTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && MngrOrderViewTable.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                // Handle the Bin column
+                if (MngrOrderViewTable.Columns[e.ColumnIndex].Name == "Void")
+                {
+                    // Remove the entire row
+                    MngrOrderViewTable.Rows.RemoveAt(e.RowIndex);
+                }
+                else if (MngrOrderViewTable.Columns[e.ColumnIndex].Name == "-")
+                {
+                    string quantityString = MngrOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
+                    if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
+                    {
+                        decimal itemCost = decimal.Parse(MngrOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString());
+
+                        // Calculate the cost per item
+                        decimal costPerItem = itemCost / quantity;
+
+                        // Decrease quantity
+                        if (quantity > 1)
+                        {
+                            quantity--;
+
+                            // Calculate updated item cost (reset to original price)
+                            decimal updatedCost = costPerItem * quantity;
+
+                            // Update Qty and ItemCost in the DataGridView
+                            MngrOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity.ToString();
+                            MngrOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                        }
+                    }
+                    else
+                    {
+                        // Handle the case where quantityString is empty or not a valid integer
+                        // For example, show an error message or set a default value
+                    }
+                }
+                else if (MngrOrderViewTable.Columns[e.ColumnIndex].Name == "+")
+                {
+                    string quantityString = MngrOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
+                    if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
+                    {
+                        decimal itemCost = decimal.Parse(MngrOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString());
+
+                        // Calculate the cost per item
+                        decimal costPerItem = itemCost / quantity;
+
+                        // Increase quantity
+                        quantity++;
+
+                        // Calculate updated item cost
+                        decimal updatedCost = costPerItem * quantity;
+
+                        // Update Qty and ItemCost in the DataGridView
+                        MngrOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity.ToString();
+                        MngrOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                    }
+                    else
+                    {
+                        // Handle the case where quantityString is empty or not a valid integer
+                        // For example, show an error message or set a default value
+                    }
+                }
+            }
+        }
+
+
+
+        private void MngrSalesBtn_Click(object sender, EventArgs e)
+        {
+            MngrPanelManager.MngrFormShow(MngrSalesPanel);
 
         }
+
+        private void MngrSalesExitBtn_Click(object sender, EventArgs e)
+        {
+            if (MngrSalesPanel.Visible)
+            {
+                MngrSalesPanel.Visible = false;
+                MngrNewOrderBtnPanel.Visible = true;
+            }
+
+            else
+            {
+                MngrSalesPanel.Visible = true;
+                MngrNewOrderBtnPanel.Visible = false;
+            }
+        }
+
+        private void MngrSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = MngrSearchBox.Text;
+            SearchBurger(searchText);
+            SearchDrinks(searchText);
+            SearchSetMeals(searchText);
+            SearchSides(searchText);
+        }
+
+        private void MngrSearchBoxBtn_Click(object sender, EventArgs e)
+        {
+            string searchText = MngrSearchBox.Text;
+            SearchBurger(searchText);
+            SearchDrinks(searchText);
+            SearchSetMeals(searchText);
+            SearchSides(searchText);
+        }
+
+        private void SearchFoodByFoodType(string searchText, string foodType)
+        {
+            connection.Open();
+            // Modify your MySQL query to search in specific columns of the table for the specified food type
+            string query = "SELECT * FROM `foodmenu` WHERE FoodType = @foodType AND " +
+                           "(FoodName LIKE @searchText OR " +
+                           "FoodCode LIKE @searchText OR " +
+                           "FoodType LIKE @searchText OR " +
+                           "FoodPrice LIKE @searchText OR " +
+                           "FoodDateCreated LIKE @searchText)";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@foodType", foodType);
+                cmd.Parameters.AddWithValue("@searchText", "%" + searchText + "%");
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    // Bind the DataGridView to the search results based on the food type
+                    switch (foodType)
+                    {
+                        case "Burger":
+                            MngrItemBurgerView.DataSource = dataTable;
+                            break;
+                        case "Sides":
+                            MngrItemSidesView.DataSource = dataTable;
+                            break;
+                        case "Set Meals":
+                            MngrItemSetMealView.DataSource = dataTable;
+                            break;
+                        case "Drinks":
+                            MngrItemDrinkView.DataSource = dataTable;
+                            break;
+                        default:
+                            // Handle an unknown food type or provide a default view
+                            break;
+                    }
+                }
+            }
+            connection.Close();
+        }
+
+        // Separate methods for each food type
+        private void SearchBurger(string searchText)
+        {
+            SearchFoodByFoodType(searchText, "Burger");
+        }
+
+        private void SearchSides(string searchText)
+        {
+            SearchFoodByFoodType(searchText, "Sides");
+        }
+
+        private void SearchSetMeals(string searchText)
+        {
+            SearchFoodByFoodType(searchText, "Set Meals");
+        }
+
+        private void SearchDrinks(string searchText)
+        {
+            SearchFoodByFoodType(searchText, "Drinks");
+        }
+
+        private void MngrVoidEmplIDBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedItem = MngrVoidEmplIDBox.SelectedItem as string;
+            if (selectedItem != null && accountData.ContainsKey(selectedItem))
+            {
+                MngrVoidEmplPassBox.Text = accountData[selectedItem];
+            }
+        }
+
+        // MngrVoidOrderBtn click event
+        private void MngrVoidOrderBtn_Click(object sender, EventArgs e)
+        {
+            OrderVoider();
+        }
+
+
+
+
+        private void OrderVoider()
+        {
+            string emplID = MngrVoidEmplIDBox.Text;
+            string emplPass = MngrVoidEmplPassBox.Text;
+            string passchecker = HashHelper.HashString(emplPass); // Assuming "enteredPassword" is supposed to be "emplPass"
+
+            MySqlConnection connection = null;
+
+            try
+            {
+                connection = new MySqlConnection(mysqlconn);
+                connection.Open();
+
+                // Query the database for the provided Employee ID in the accounts table
+                string queryApproved = "SELECT EmployeeName, EmployeeID, EmployeePosition, HashedPass FROM accounts WHERE EmployeeID = @EmplID";
+
+                using (MySqlCommand cmdApproved = new MySqlCommand(queryApproved, connection))
+                {
+                    cmdApproved.Parameters.AddWithValue("@EmplID", emplID);
+
+                    using (MySqlDataReader readerApproved = cmdApproved.ExecuteReader())
+                    {
+                        if (readerApproved.Read())
+                        {
+                            // Retrieve user information
+                            string name = readerApproved["EmployeeName"].ToString();
+                            string employeePosition = readerApproved["EmployeePosition"].ToString();
+
+                            // Check if the entered EmployeePosition matches the one in the database
+                            if (employeePosition == "Manager")
+                            {
+                                // Retrieve the HashedPass column
+                                string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
+
+                                // Check if the entered password matches
+                                bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
+
+                                if (passwordMatches)
+                                {
+                                    MessageBox.Show("Ordered items are voided.", "Item Void Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MngrItemPanel.Enabled = true;
+                                    MngrOrderViewTable.Rows.Clear();
+                                    MngrOrderPanelManager.MngrOrderFormShow(MngrOrderViewPanel);
+
+                                    //Other
+
+                                    return;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else
+                            {
+                                // The entered Employee ID does not exist in the database
+                                MessageBox.Show("Account not found.", "Ooooops", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+        }
+
+        private void MngrVoidExitBtn_Click(object sender, EventArgs e)
+        {
+            if (MngrVoidViewPanel.Visible)
+            {
+
+                MngrVoidViewPanel.Visible = false;
+                MngrOrderViewPanel.Visible = true;
+                MngrItemPanel.Enabled = true;
+            }
+
+            else
+            {
+                MngrVoidViewPanel.Visible = true;
+                MngrOrderViewPanel.Visible = false;
+            }
+        }
+
+        private void MngrDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DateTimePickerTimer_Tick(object sender, EventArgs e)
+        {
+            MngrDateTimePicker.Value = DateTime.Now;
+
+        }
+
+        private void MngrDiscountSenior_CheckedChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(MngrGrossAmountBox.Text, out decimal grossAmount))
+            {
+                if (MngrDiscountSenior.Checked && !discountApplied)
+                {
+                    // Apply the 20% discount if the checkbox is checked and the discount hasn't been applied before
+                    originalGrossAmount = grossAmount; // Store the original value
+                    decimal discountedAmount = grossAmount * 0.8m; // 20% discount using decimal
+                    MngrGrossAmountBox.Text = discountedAmount.ToString("0.00"); // Format to display as currency
+                    discountApplied = true; // Set the flag to indicate that the discount has been applied
+                }
+                else if (!MngrDiscountSenior.Checked && discountApplied)
+                {
+                    // Unchecked, set MngrGrossAmount to the original value if the discount has been applied before
+                    MngrGrossAmountBox.Text = originalGrossAmount.ToString("0.00");
+                    discountApplied = false; // Reset the flag
+                }
+            }
+        }
+
+
+        private void MngrDiscountPWD_CheckedChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(MngrGrossAmountBox.Text, out decimal grossAmount))
+            {
+                if (MngrDiscountPWD.Checked && !discountApplied)
+                {
+                    // Apply the 20% discount if the checkbox is checked and the discount hasn't been applied before
+                    originalGrossAmount = grossAmount; // Store the original value
+                    decimal discountedAmount = grossAmount * 0.8m; // 20% discount using decimal
+                    MngrGrossAmountBox.Text = discountedAmount.ToString("0.00"); // Format to display as currency
+                    discountApplied = true; // Set the flag to indicate that the discount has been applied
+                }
+                else if (!MngrDiscountPWD.Checked && discountApplied)
+                {
+                    // Unchecked, set MngrGrossAmount to the original value if the discount has been applied before
+                    MngrGrossAmountBox.Text = originalGrossAmount.ToString("0.00");
+                    discountApplied = false; // Reset the flag
+                }
+            }
+        }
+
+
+
+        private void MngrGrossAmountBox_TextChanged(object sender, EventArgs e)
+        {
+            CalculateVATAndNetAmount();
+        }
+
+        private void MngrPaymentButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
-    }
+}
