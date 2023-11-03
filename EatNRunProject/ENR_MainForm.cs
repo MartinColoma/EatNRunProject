@@ -954,7 +954,8 @@ namespace EatNRunProject
             }
         }
 
-        private void FoodItemEditBtn_Click(object sender, EventArgs e)
+
+        private void EditFoodItemBtn_Click(object sender, EventArgs e)
         {
 
             if (FoodItemListTable.SelectedRows.Count > 0)
@@ -1006,9 +1007,8 @@ namespace EatNRunProject
             }
         }
 
-        private void UpdateAccBtn_Click(object sender, EventArgs e)
+        private void EditEmplAccBtn_Click(object sender, EventArgs e)
         {
-
             if (AccountListTable.SelectedRows.Count > 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Do you want to edit the selected data?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -1044,8 +1044,6 @@ namespace EatNRunProject
             {
                 MessageBox.Show("Select a table row first.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
-
-
         }
 
         private void RetrieveEmployeeDataFromDB(DataGridViewRow selectedRow)
@@ -1170,8 +1168,9 @@ namespace EatNRunProject
             }
         }
 
-        private void NewAddAccBtn_Click(object sender, EventArgs e)
+        private void AddEmplAccBtn_Click(object sender, EventArgs e)
         {
+
             //Create Acc Btn
             //Create Acc Btn
             DateTime selectedDate = AddEmplBdayPicker.Value;
@@ -1310,11 +1309,7 @@ namespace EatNRunProject
                     connection.Close();
                 }
             }
-
-
         }
-
-
 
 
         private void AddNewAccBoxClear()
@@ -1480,7 +1475,8 @@ namespace EatNRunProject
 
         }
 
-        private void UpdateEmplUpdateBtn_Click(object sender, EventArgs e)
+
+        private void UpdateEmplAccBtn_Click(object sender, EventArgs e)
         {
             //Update Acc Btn
             DateTime selectedDate = UpdateEmplBdayPicker.Value;
@@ -1496,7 +1492,6 @@ namespace EatNRunProject
             string emplPass = UpdateEmplPassBox.Text;
 
             Regex nameRegex = new Regex("^[A-Z][a-zA-Z]+(?: [a-zA-Z]+)*$");
-            Regex courseRegex = new Regex("^[A-Za-z]+(?: [A-Za-z]+)*$");
             Regex passwordRegex = new Regex("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?])[A-Za-z\\d!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]{8,}$");
             Regex gmailRegex = new Regex(@"^[A-Za-z0-9._%+-]*\d*@gmail\.com$");
 
@@ -1600,7 +1595,6 @@ namespace EatNRunProject
                             return;
                         }
 
-                        // Update data in the accounts table, including the image conditionally
                         if (imageData != null)
                         {
                             // Update with image
@@ -1660,12 +1654,11 @@ namespace EatNRunProject
                 }
                 finally
                 {
-                    // Make sure to close the connection
                     connection.Close();
                 }
+
+
             }
-
-
 
         }
 
@@ -1766,7 +1759,7 @@ namespace EatNRunProject
 
         }
 
-        private void AddItemBtn_Click(object sender, EventArgs e)
+        private void AddFoodItemBtn_Click(object sender, EventArgs e)
         {
             //Create Acc Btn
             DateTime selectedDate = AddItemCreatedDatePicker.Value;
@@ -1859,6 +1852,7 @@ namespace EatNRunProject
             }
         }
 
+
         private void AddItemBoxClear()
         {
             AddItemPicBox.Image = null;
@@ -1932,7 +1926,7 @@ namespace EatNRunProject
             }
         }
 
-        private void UpdateItemBtn_Click(object sender, EventArgs e)
+        private void UpdateFoodItemBtn_Click(object sender, EventArgs e)
         {
             //Update Acc Btn
             DateTime selectedDate = UpdateItemCreatedDatePicker.Value;
@@ -1942,7 +1936,7 @@ namespace EatNRunProject
             string itemType = UpdateItemTypeComboBox.Text;
             string itemPrice = UpdateItemPriceBox.Text;
             string itemCreated = selectedDate.ToString("MM-dd-yyyy dddd");
-            
+
             Regex nameRegex = new Regex("^[A-Z][a-zA-Z]+(?: [a-zA-Z]+)*$");
 
             if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(itemCode) || string.IsNullOrEmpty(itemType) ||
@@ -2039,11 +2033,12 @@ namespace EatNRunProject
                 }
                 finally
                 {
-                        connection.Close();
+                    connection.Close();
                 }
 
             }
         }
+
 
         private void UpdateItemTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2367,7 +2362,7 @@ namespace EatNRunProject
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && MngrOrderViewTable.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
             {
                 // Handle the Bin column
-                if (MngrOrderViewTable.Columns[e.ColumnIndex].Name == "Bin")
+                if (MngrOrderViewTable.Columns[e.ColumnIndex].Name == "Void")
                 {
                     // Remove the entire row
                     MngrOrderViewTable.Rows.RemoveAt(e.RowIndex);
@@ -2714,5 +2709,22 @@ namespace EatNRunProject
                 MngrOrderViewPanel.Visible = false;
             }
         }
+
+        private void MngrDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+            //DateTime selectedDate = MngrDateTimePicker.Value;
+
+            //string MngrDateTime = selectedDate.ToString("yyyy-MM-dd hh:mm tt");
+
+            //MngrDateTimeLbl.Text = MngrDateTime;
+
+        }
+
+
+
+
+
+
     }
 }

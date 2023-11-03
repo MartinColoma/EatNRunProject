@@ -35,6 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ENRMainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -59,7 +60,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ENRMainForm));
             this.MainFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.AdminPanel = new System.Windows.Forms.Panel();
             this.AdminFoodItemSearchPanelBox = new System.Windows.Forms.Panel();
@@ -79,6 +79,7 @@
             this.AccountsPanel = new System.Windows.Forms.Panel();
             this.AccountsFormPanel = new System.Windows.Forms.Panel();
             this.UpdateEmplAccPanel = new System.Windows.Forms.Panel();
+            this.UpdateEmplAccBtn = new FontAwesome.Sharp.IconButton();
             this.UpdateEmplPositionPanelBox = new System.Windows.Forms.Panel();
             this.UpdateEmplPositionComboBox = new System.Windows.Forms.ComboBox();
             this.UpdateEmplPositionLbl = new System.Windows.Forms.Label();
@@ -113,6 +114,7 @@
             this.UpdateEmplPicBtn = new FontAwesome.Sharp.IconButton();
             this.UpdateEmplAccExitBtn = new FontAwesome.Sharp.IconButton();
             this.NewAccPanel = new System.Windows.Forms.Panel();
+            this.AddEmplAccBtn = new FontAwesome.Sharp.IconButton();
             this.AddEmplPositionPanelBox = new System.Windows.Forms.Panel();
             this.AddEmplPositionComboBox = new System.Windows.Forms.ComboBox();
             this.AddEmplPositionLbl = new System.Windows.Forms.Label();
@@ -149,11 +151,13 @@
             this.CreateAccBtnPanel = new System.Windows.Forms.Panel();
             this.CreateNewAccBtn = new FontAwesome.Sharp.IconButton();
             this.AccListPanel = new System.Windows.Forms.Panel();
+            this.EditEmplAccBtn = new FontAwesome.Sharp.IconButton();
             this.AccountListTable = new System.Windows.Forms.DataGridView();
             this.AccountsListLbl = new System.Windows.Forms.Label();
             this.FoodItemPanel = new System.Windows.Forms.Panel();
             this.ItemFormPanel = new System.Windows.Forms.Panel();
             this.UpdateItemPanel = new System.Windows.Forms.Panel();
+            this.UpdateFoodItemBtn = new FontAwesome.Sharp.IconButton();
             this.UpdateItemCodePanelBox = new System.Windows.Forms.Panel();
             this.UpdateItemCodeBox = new System.Windows.Forms.TextBox();
             this.UpdateItemTypePanelBox = new System.Windows.Forms.Panel();
@@ -174,6 +178,7 @@
             this.UpdateItemPicBtn = new FontAwesome.Sharp.IconButton();
             this.UpdateItemExitBtn = new FontAwesome.Sharp.IconButton();
             this.AddItemPanel = new System.Windows.Forms.Panel();
+            this.AddFoodItemBtn = new FontAwesome.Sharp.IconButton();
             this.AddItemCodePanelBox = new System.Windows.Forms.Panel();
             this.AddItemCodeBox = new System.Windows.Forms.TextBox();
             this.AddItemTypePanelBox = new System.Windows.Forms.Panel();
@@ -196,6 +201,7 @@
             this.CreateNewFoodBtnPanel = new System.Windows.Forms.Panel();
             this.CreateNewFoodBtn = new FontAwesome.Sharp.IconButton();
             this.FoodItemListPanel = new System.Windows.Forms.Panel();
+            this.EditFoodItemBtn = new FontAwesome.Sharp.IconButton();
             this.FoodItemListLbl = new System.Windows.Forms.Label();
             this.FoodItemListTable = new System.Windows.Forms.DataGridView();
             this.AdminSwitchBtn = new FontAwesome.Sharp.IconButton();
@@ -277,6 +283,7 @@
             this.MngrSessionNum = new System.Windows.Forms.Label();
             this.ENRMngrHeaderLogo = new System.Windows.Forms.PictureBox();
             this.MngrDashboardLbl = new System.Windows.Forms.Label();
+            this.MngrDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.CashierPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -328,12 +335,6 @@
             this.CashierFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.CashierItemFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.CashierViewFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
-            this.UpdateEmplUpdateBtn = new midterm.RoundBtn();
-            this.AdddAccBtn = new midterm.RoundBtn();
-            this.AccEditBtn = new midterm.RoundBtn();
-            this.UpdateItemBtn = new midterm.RoundBtn();
-            this.AddItemBtn = new midterm.RoundBtn();
-            this.FoodItemEditBtn = new midterm.RoundBtn();
             ((System.ComponentModel.ISupportInitialize)(this.MainFormPicker)).BeginInit();
             this.AdminPanel.SuspendLayout();
             this.AdminFoodItemSearchPanelBox.SuspendLayout();
@@ -699,6 +700,7 @@
             // UpdateEmplAccPanel
             // 
             this.AccountsFormPicker.SetCardName(this.UpdateEmplAccPanel, "Card5");
+            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplAccBtn);
             this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplPositionPanelBox);
             this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplPositionLbl);
             this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplIDNoteLbl);
@@ -722,13 +724,31 @@
             this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplPicBox);
             this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplPicBtn);
             this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplAccExitBtn);
-            this.UpdateEmplAccPanel.Controls.Add(this.UpdateEmplUpdateBtn);
             this.UpdateEmplAccPanel.Location = new System.Drawing.Point(0, 0);
             this.AccountsFormPicker.SetMinimumSize(this.UpdateEmplAccPanel, new System.Drawing.Size(200, 100));
             this.UpdateEmplAccPanel.Name = "UpdateEmplAccPanel";
             this.AccountsFormPicker.SetPreferredSize(this.UpdateEmplAccPanel, new System.Drawing.Size(200, 100));
             this.UpdateEmplAccPanel.Size = new System.Drawing.Size(547, 385);
             this.UpdateEmplAccPanel.TabIndex = 21;
+            // 
+            // UpdateEmplAccBtn
+            // 
+            this.UpdateEmplAccBtn.FlatAppearance.BorderSize = 2;
+            this.UpdateEmplAccBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateEmplAccBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplAccBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplAccBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.UpdateEmplAccBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplAccBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.UpdateEmplAccBtn.IconSize = 24;
+            this.UpdateEmplAccBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.UpdateEmplAccBtn.Location = new System.Drawing.Point(167, 321);
+            this.UpdateEmplAccBtn.Name = "UpdateEmplAccBtn";
+            this.UpdateEmplAccBtn.Size = new System.Drawing.Size(206, 40);
+            this.UpdateEmplAccBtn.TabIndex = 23;
+            this.UpdateEmplAccBtn.Text = "UPDATE ACCOUNT";
+            this.UpdateEmplAccBtn.UseVisualStyleBackColor = true;
+            this.UpdateEmplAccBtn.Click += new System.EventHandler(this.UpdateEmplAccBtn_Click);
             // 
             // UpdateEmplPositionPanelBox
             // 
@@ -1115,6 +1135,7 @@
             // NewAccPanel
             // 
             this.AccountsFormPicker.SetCardName(this.NewAccPanel, "Card6");
+            this.NewAccPanel.Controls.Add(this.AddEmplAccBtn);
             this.NewAccPanel.Controls.Add(this.AddEmplPositionPanelBox);
             this.NewAccPanel.Controls.Add(this.AddEmplPositionLbl);
             this.NewAccPanel.Controls.Add(this.AddEmplIDNoteLbl);
@@ -1138,13 +1159,31 @@
             this.NewAccPanel.Controls.Add(this.AddEmplPicBox);
             this.NewAccPanel.Controls.Add(this.AddEmplPicBtn);
             this.NewAccPanel.Controls.Add(this.NewAccExitBtn);
-            this.NewAccPanel.Controls.Add(this.AdddAccBtn);
             this.NewAccPanel.Location = new System.Drawing.Point(0, 0);
             this.AccountsFormPicker.SetMinimumSize(this.NewAccPanel, new System.Drawing.Size(200, 100));
             this.NewAccPanel.Name = "NewAccPanel";
             this.AccountsFormPicker.SetPreferredSize(this.NewAccPanel, new System.Drawing.Size(200, 100));
             this.NewAccPanel.Size = new System.Drawing.Size(547, 385);
             this.NewAccPanel.TabIndex = 1;
+            // 
+            // AddEmplAccBtn
+            // 
+            this.AddEmplAccBtn.FlatAppearance.BorderSize = 2;
+            this.AddEmplAccBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddEmplAccBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddEmplAccBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.AddEmplAccBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.AddEmplAccBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.AddEmplAccBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.AddEmplAccBtn.IconSize = 24;
+            this.AddEmplAccBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddEmplAccBtn.Location = new System.Drawing.Point(175, 325);
+            this.AddEmplAccBtn.Name = "AddEmplAccBtn";
+            this.AddEmplAccBtn.Size = new System.Drawing.Size(196, 40);
+            this.AddEmplAccBtn.TabIndex = 21;
+            this.AddEmplAccBtn.Text = "CREATE ACCOUNT";
+            this.AddEmplAccBtn.UseVisualStyleBackColor = true;
+            this.AddEmplAccBtn.Click += new System.EventHandler(this.AddEmplAccBtn_Click);
             // 
             // AddEmplPositionPanelBox
             // 
@@ -1560,14 +1599,33 @@
             // AccListPanel
             // 
             this.AccListPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AccListPanel.Controls.Add(this.EditEmplAccBtn);
             this.AccListPanel.Controls.Add(this.AccountListTable);
             this.AccListPanel.Controls.Add(this.AccountsListLbl);
-            this.AccListPanel.Controls.Add(this.AccEditBtn);
             this.AccListPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.AccListPanel.Location = new System.Drawing.Point(15, 19);
             this.AccListPanel.Name = "AccListPanel";
             this.AccListPanel.Size = new System.Drawing.Size(538, 386);
             this.AccListPanel.TabIndex = 9;
+            // 
+            // EditEmplAccBtn
+            // 
+            this.EditEmplAccBtn.FlatAppearance.BorderSize = 2;
+            this.EditEmplAccBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditEmplAccBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditEmplAccBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.EditEmplAccBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.EditEmplAccBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.EditEmplAccBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.EditEmplAccBtn.IconSize = 24;
+            this.EditEmplAccBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.EditEmplAccBtn.Location = new System.Drawing.Point(441, 334);
+            this.EditEmplAccBtn.Name = "EditEmplAccBtn";
+            this.EditEmplAccBtn.Size = new System.Drawing.Size(82, 40);
+            this.EditEmplAccBtn.TabIndex = 22;
+            this.EditEmplAccBtn.Text = "EDIT";
+            this.EditEmplAccBtn.UseVisualStyleBackColor = true;
+            this.EditEmplAccBtn.Click += new System.EventHandler(this.EditEmplAccBtn_Click);
             // 
             // AccountListTable
             // 
@@ -1640,6 +1698,7 @@
             // UpdateItemPanel
             // 
             this.FoodItemFormPicker.SetCardName(this.UpdateItemPanel, "Card7");
+            this.UpdateItemPanel.Controls.Add(this.UpdateFoodItemBtn);
             this.UpdateItemPanel.Controls.Add(this.UpdateItemCodePanelBox);
             this.UpdateItemPanel.Controls.Add(this.UpdateItemTypePanelBox);
             this.UpdateItemPanel.Controls.Add(this.UpdateItemTypeLbl);
@@ -1654,13 +1713,31 @@
             this.UpdateItemPanel.Controls.Add(this.UpdateItemPicBox);
             this.UpdateItemPanel.Controls.Add(this.UpdateItemPicBtn);
             this.UpdateItemPanel.Controls.Add(this.UpdateItemExitBtn);
-            this.UpdateItemPanel.Controls.Add(this.UpdateItemBtn);
             this.UpdateItemPanel.Location = new System.Drawing.Point(0, 0);
             this.FoodItemFormPicker.SetMinimumSize(this.UpdateItemPanel, new System.Drawing.Size(547, 385));
             this.UpdateItemPanel.Name = "UpdateItemPanel";
             this.FoodItemFormPicker.SetPreferredSize(this.UpdateItemPanel, new System.Drawing.Size(547, 385));
             this.UpdateItemPanel.Size = new System.Drawing.Size(535, 387);
             this.UpdateItemPanel.TabIndex = 21;
+            // 
+            // UpdateFoodItemBtn
+            // 
+            this.UpdateFoodItemBtn.FlatAppearance.BorderSize = 2;
+            this.UpdateFoodItemBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateFoodItemBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateFoodItemBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateFoodItemBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.UpdateFoodItemBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateFoodItemBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.UpdateFoodItemBtn.IconSize = 24;
+            this.UpdateFoodItemBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.UpdateFoodItemBtn.Location = new System.Drawing.Point(44, 282);
+            this.UpdateFoodItemBtn.Name = "UpdateFoodItemBtn";
+            this.UpdateFoodItemBtn.Size = new System.Drawing.Size(146, 40);
+            this.UpdateFoodItemBtn.TabIndex = 24;
+            this.UpdateFoodItemBtn.Text = "UPDATE ITEM";
+            this.UpdateFoodItemBtn.UseVisualStyleBackColor = true;
+            this.UpdateFoodItemBtn.Click += new System.EventHandler(this.UpdateFoodItemBtn_Click);
             // 
             // UpdateItemCodePanelBox
             // 
@@ -1894,6 +1971,7 @@
             // AddItemPanel
             // 
             this.FoodItemFormPicker.SetCardName(this.AddItemPanel, "Card4");
+            this.AddItemPanel.Controls.Add(this.AddFoodItemBtn);
             this.AddItemPanel.Controls.Add(this.AddItemCodePanelBox);
             this.AddItemPanel.Controls.Add(this.AddItemTypePanelBox);
             this.AddItemPanel.Controls.Add(this.AddItemTypeLbl);
@@ -1908,13 +1986,31 @@
             this.AddItemPanel.Controls.Add(this.AddItemPicBox);
             this.AddItemPanel.Controls.Add(this.AddItemPicBtn);
             this.AddItemPanel.Controls.Add(this.AddItemExitBtn);
-            this.AddItemPanel.Controls.Add(this.AddItemBtn);
             this.AddItemPanel.Location = new System.Drawing.Point(0, 0);
             this.FoodItemFormPicker.SetMinimumSize(this.AddItemPanel, new System.Drawing.Size(547, 385));
             this.AddItemPanel.Name = "AddItemPanel";
             this.FoodItemFormPicker.SetPreferredSize(this.AddItemPanel, new System.Drawing.Size(547, 385));
             this.AddItemPanel.Size = new System.Drawing.Size(535, 387);
             this.AddItemPanel.TabIndex = 20;
+            // 
+            // AddFoodItemBtn
+            // 
+            this.AddFoodItemBtn.FlatAppearance.BorderSize = 2;
+            this.AddFoodItemBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddFoodItemBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddFoodItemBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.AddFoodItemBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.AddFoodItemBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.AddFoodItemBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.AddFoodItemBtn.IconSize = 24;
+            this.AddFoodItemBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddFoodItemBtn.Location = new System.Drawing.Point(194, 285);
+            this.AddFoodItemBtn.Name = "AddFoodItemBtn";
+            this.AddFoodItemBtn.Size = new System.Drawing.Size(146, 40);
+            this.AddFoodItemBtn.TabIndex = 24;
+            this.AddFoodItemBtn.Text = "CREATE ITEM";
+            this.AddFoodItemBtn.UseVisualStyleBackColor = true;
+            this.AddFoodItemBtn.Click += new System.EventHandler(this.AddFoodItemBtn_Click);
             // 
             // AddItemCodePanelBox
             // 
@@ -2173,14 +2269,33 @@
             // FoodItemListPanel
             // 
             this.FoodItemListPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FoodItemListPanel.Controls.Add(this.EditFoodItemBtn);
             this.FoodItemListPanel.Controls.Add(this.FoodItemListLbl);
             this.FoodItemListPanel.Controls.Add(this.FoodItemListTable);
-            this.FoodItemListPanel.Controls.Add(this.FoodItemEditBtn);
             this.FoodItemListPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             this.FoodItemListPanel.Location = new System.Drawing.Point(19, 16);
             this.FoodItemListPanel.Name = "FoodItemListPanel";
             this.FoodItemListPanel.Size = new System.Drawing.Size(547, 388);
             this.FoodItemListPanel.TabIndex = 1;
+            // 
+            // EditFoodItemBtn
+            // 
+            this.EditFoodItemBtn.FlatAppearance.BorderSize = 2;
+            this.EditFoodItemBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditFoodItemBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditFoodItemBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.EditFoodItemBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.EditFoodItemBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.EditFoodItemBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.EditFoodItemBtn.IconSize = 24;
+            this.EditFoodItemBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.EditFoodItemBtn.Location = new System.Drawing.Point(445, 330);
+            this.EditFoodItemBtn.Name = "EditFoodItemBtn";
+            this.EditFoodItemBtn.Size = new System.Drawing.Size(82, 40);
+            this.EditFoodItemBtn.TabIndex = 23;
+            this.EditFoodItemBtn.Text = "EDIT";
+            this.EditFoodItemBtn.UseVisualStyleBackColor = true;
+            this.EditFoodItemBtn.Click += new System.EventHandler(this.EditFoodItemBtn_Click);
             // 
             // FoodItemListLbl
             // 
@@ -2312,7 +2427,7 @@
             // LoginPanel
             // 
             this.LoginPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MainFormPicker.SetCardName(this.LoginPanel, "Card1");
+            this.MainFormPicker.SetCardName(this.LoginPanel, "Card2");
             this.LoginPanel.Controls.Add(this.AdminLoginFormPanel);
             this.LoginPanel.Location = new System.Drawing.Point(0, 0);
             this.MainFormPicker.SetMinimumSize(this.LoginPanel, new System.Drawing.Size(200, 100));
@@ -2345,9 +2460,9 @@
             this.RmbrAccCheckbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             this.RmbrAccCheckbox.Location = new System.Drawing.Point(97, 400);
             this.RmbrAccCheckbox.Name = "RmbrAccCheckbox";
-            this.RmbrAccCheckbox.Size = new System.Drawing.Size(140, 19);
+            this.RmbrAccCheckbox.Size = new System.Drawing.Size(111, 19);
             this.RmbrAccCheckbox.TabIndex = 9;
-            this.RmbrAccCheckbox.Text = "Remember Account";
+            this.RmbrAccCheckbox.Text = "Stay Logged In";
             this.RmbrAccCheckbox.UseVisualStyleBackColor = true;
             // 
             // ENREmplPassLbl
@@ -2477,7 +2592,7 @@
             // ManagerPanel
             // 
             this.ManagerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MainFormPicker.SetCardName(this.ManagerPanel, "Card2");
+            this.MainFormPicker.SetCardName(this.ManagerPanel, "Card3");
             this.ManagerPanel.Controls.Add(this.MngrFormPanel);
             this.ManagerPanel.Controls.Add(this.MNGRHeaderPanel);
             this.ManagerPanel.Location = new System.Drawing.Point(0, 0);
@@ -3426,6 +3541,7 @@
             this.MNGRHeaderPanel.Controls.Add(this.MngrSessionNum);
             this.MNGRHeaderPanel.Controls.Add(this.ENRMngrHeaderLogo);
             this.MNGRHeaderPanel.Controls.Add(this.MngrDashboardLbl);
+            this.MNGRHeaderPanel.Controls.Add(this.MngrDateTimePicker);
             this.MNGRHeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.MNGRHeaderPanel.Location = new System.Drawing.Point(0, 0);
             this.MNGRHeaderPanel.Name = "MNGRHeaderPanel";
@@ -3469,7 +3585,7 @@
             this.MngrSessionNum.AutoSize = true;
             this.MngrSessionNum.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MngrSessionNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrSessionNum.Location = new System.Drawing.Point(754, 114);
+            this.MngrSessionNum.Location = new System.Drawing.Point(708, 117);
             this.MngrSessionNum.Name = "MngrSessionNum";
             this.MngrSessionNum.Size = new System.Drawing.Size(169, 23);
             this.MngrSessionNum.TabIndex = 19;
@@ -3491,15 +3607,27 @@
             this.MngrDashboardLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             this.MngrDashboardLbl.Location = new System.Drawing.Point(202, 39);
             this.MngrDashboardLbl.Name = "MngrDashboardLbl";
-            this.MngrDashboardLbl.Size = new System.Drawing.Size(602, 75);
+            this.MngrDashboardLbl.Size = new System.Drawing.Size(427, 75);
             this.MngrDashboardLbl.TabIndex = 18;
             this.MngrDashboardLbl.Text = "Manager Dashboard";
             this.MngrDashboardLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // MngrDateTimePicker
+            // 
+            this.MngrDateTimePicker.CustomFormat = "MM-dd-yyyy dddd hh:mm tt";
+            this.MngrDateTimePicker.Enabled = false;
+            this.MngrDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.MngrDateTimePicker.Location = new System.Drawing.Point(957, 117);
+            this.MngrDateTimePicker.Name = "MngrDateTimePicker";
+            this.MngrDateTimePicker.ShowUpDown = true;
+            this.MngrDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.MngrDateTimePicker.TabIndex = 20;
+            this.MngrDateTimePicker.ValueChanged += new System.EventHandler(this.MngrDateTimePicker_ValueChanged);
+            // 
             // CashierPanel
             // 
             this.CashierPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MainFormPicker.SetCardName(this.CashierPanel, "Card5");
+            this.MainFormPicker.SetCardName(this.CashierPanel, "Card1");
             this.CashierPanel.Controls.Add(this.panel2);
             this.CashierPanel.Controls.Add(this.panel16);
             this.CashierPanel.Location = new System.Drawing.Point(0, 0);
@@ -4214,19 +4342,19 @@
             // 
             this.AdminFormPicker.ContainerControl = this.AdminFormPanel;
             this.AdminFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.AdminFormPicker.SelectedCard = "Card3";
+            this.AdminFormPicker.SelectedCard = "Card2";
             // 
             // FoodItemFormPicker
             // 
             this.FoodItemFormPicker.ContainerControl = this.ItemFormPanel;
             this.FoodItemFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.FoodItemFormPicker.SelectedCard = "Card7";
+            this.FoodItemFormPicker.SelectedCard = "Card4";
             // 
             // AccountsFormPicker
             // 
             this.AccountsFormPicker.ContainerControl = this.AccountsFormPanel;
             this.AccountsFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.AccountsFormPicker.SelectedCard = "Card6";
+            this.AccountsFormPicker.SelectedCard = "Card5";
             // 
             // MngrFormPicker
             // 
@@ -4259,96 +4387,6 @@
             // 
             this.CashierViewFormPicker.ContainerControl = this.panel6;
             this.CashierViewFormPicker.SelectedCard = "Card1";
-            // 
-            // UpdateEmplUpdateBtn
-            // 
-            this.UpdateEmplUpdateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.UpdateEmplUpdateBtn.FlatAppearance.BorderSize = 0;
-            this.UpdateEmplUpdateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateEmplUpdateBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateEmplUpdateBtn.ForeColor = System.Drawing.Color.White;
-            this.UpdateEmplUpdateBtn.Location = new System.Drawing.Point(186, 321);
-            this.UpdateEmplUpdateBtn.Name = "UpdateEmplUpdateBtn";
-            this.UpdateEmplUpdateBtn.Size = new System.Drawing.Size(175, 40);
-            this.UpdateEmplUpdateBtn.TabIndex = 1;
-            this.UpdateEmplUpdateBtn.Text = "UPDATE ACCOUNT";
-            this.UpdateEmplUpdateBtn.UseVisualStyleBackColor = false;
-            this.UpdateEmplUpdateBtn.Click += new System.EventHandler(this.UpdateEmplUpdateBtn_Click);
-            // 
-            // AdddAccBtn
-            // 
-            this.AdddAccBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.AdddAccBtn.FlatAppearance.BorderSize = 0;
-            this.AdddAccBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AdddAccBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdddAccBtn.ForeColor = System.Drawing.Color.White;
-            this.AdddAccBtn.Location = new System.Drawing.Point(186, 321);
-            this.AdddAccBtn.Name = "AdddAccBtn";
-            this.AdddAccBtn.Size = new System.Drawing.Size(175, 40);
-            this.AdddAccBtn.TabIndex = 1;
-            this.AdddAccBtn.Text = "CREATE ACCOUNT";
-            this.AdddAccBtn.UseVisualStyleBackColor = false;
-            this.AdddAccBtn.Click += new System.EventHandler(this.NewAddAccBtn_Click);
-            // 
-            // AccEditBtn
-            // 
-            this.AccEditBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.AccEditBtn.FlatAppearance.BorderSize = 0;
-            this.AccEditBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AccEditBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccEditBtn.ForeColor = System.Drawing.Color.White;
-            this.AccEditBtn.Location = new System.Drawing.Point(438, 334);
-            this.AccEditBtn.Name = "AccEditBtn";
-            this.AccEditBtn.Size = new System.Drawing.Size(85, 40);
-            this.AccEditBtn.TabIndex = 0;
-            this.AccEditBtn.Text = "EDIT";
-            this.AccEditBtn.UseVisualStyleBackColor = false;
-            this.AccEditBtn.Click += new System.EventHandler(this.UpdateAccBtn_Click);
-            // 
-            // UpdateItemBtn
-            // 
-            this.UpdateItemBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.UpdateItemBtn.FlatAppearance.BorderSize = 0;
-            this.UpdateItemBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateItemBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateItemBtn.ForeColor = System.Drawing.Color.White;
-            this.UpdateItemBtn.Location = new System.Drawing.Point(196, 288);
-            this.UpdateItemBtn.Name = "UpdateItemBtn";
-            this.UpdateItemBtn.Size = new System.Drawing.Size(143, 40);
-            this.UpdateItemBtn.TabIndex = 1;
-            this.UpdateItemBtn.Text = "UPDATE ITEM";
-            this.UpdateItemBtn.UseVisualStyleBackColor = false;
-            this.UpdateItemBtn.Click += new System.EventHandler(this.UpdateItemBtn_Click);
-            // 
-            // AddItemBtn
-            // 
-            this.AddItemBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.AddItemBtn.FlatAppearance.BorderSize = 0;
-            this.AddItemBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddItemBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddItemBtn.ForeColor = System.Drawing.Color.White;
-            this.AddItemBtn.Location = new System.Drawing.Point(196, 288);
-            this.AddItemBtn.Name = "AddItemBtn";
-            this.AddItemBtn.Size = new System.Drawing.Size(143, 40);
-            this.AddItemBtn.TabIndex = 1;
-            this.AddItemBtn.Text = "CREATE ITEM";
-            this.AddItemBtn.UseVisualStyleBackColor = false;
-            this.AddItemBtn.Click += new System.EventHandler(this.AddItemBtn_Click);
-            // 
-            // FoodItemEditBtn
-            // 
-            this.FoodItemEditBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.FoodItemEditBtn.FlatAppearance.BorderSize = 0;
-            this.FoodItemEditBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FoodItemEditBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FoodItemEditBtn.ForeColor = System.Drawing.Color.White;
-            this.FoodItemEditBtn.Location = new System.Drawing.Point(442, 330);
-            this.FoodItemEditBtn.Name = "FoodItemEditBtn";
-            this.FoodItemEditBtn.Size = new System.Drawing.Size(85, 40);
-            this.FoodItemEditBtn.TabIndex = 0;
-            this.FoodItemEditBtn.Text = "EDIT";
-            this.FoodItemEditBtn.UseVisualStyleBackColor = false;
-            this.FoodItemEditBtn.Click += new System.EventHandler(this.FoodItemEditBtn_Click);
             // 
             // ENRMainForm
             // 
@@ -4559,12 +4597,10 @@
         private System.Windows.Forms.Panel FoodItemListPanel;
         private Syncfusion.Windows.Forms.Tools.CardLayout FoodItemFormPicker;
         private System.Windows.Forms.DataGridView FoodItemListTable;
-        private midterm.RoundBtn FoodItemEditBtn;
         private FontAwesome.Sharp.IconButton AdminSwitchBtn;
         private FontAwesome.Sharp.IconButton ManagerSwitchBtn;
         private System.Windows.Forms.Label AccountsListLbl;
         private System.Windows.Forms.Panel AccListPanel;
-        private midterm.RoundBtn AccEditBtn;
         private System.Windows.Forms.Label FoodItemListLbl;
         private Syncfusion.Windows.Forms.Tools.CardLayout AccountsFormPicker;
         private System.Windows.Forms.TextBox ENREmplPassBox;
@@ -4603,7 +4639,6 @@
         private System.Windows.Forms.Label UpdateEmplNameLbl;
         private FontAwesome.Sharp.IconButton UpdateEmplAccExitBtn;
         private System.Windows.Forms.Label UpdateEmplAccLbl;
-        private midterm.RoundBtn UpdateEmplUpdateBtn;
         private System.Windows.Forms.Panel NewAccPanel;
         private System.Windows.Forms.Panel AddEmplPositionPanelBox;
         private System.Windows.Forms.ComboBox AddEmplPositionComboBox;
@@ -4638,7 +4673,6 @@
         private System.Windows.Forms.Label AddEmplNameLbl;
         private FontAwesome.Sharp.IconButton NewAccExitBtn;
         private System.Windows.Forms.Label AddEmplAccLbl;
-        private midterm.RoundBtn AdddAccBtn;
         private System.Windows.Forms.Panel CreateAccBtnPanel;
         private FontAwesome.Sharp.IconButton CreateNewAccBtn;
         private System.Windows.Forms.DataGridView AccountListTable;
@@ -4667,7 +4701,6 @@
         private System.Windows.Forms.PictureBox UpdateItemPicBox;
         private FontAwesome.Sharp.IconButton UpdateItemPicBtn;
         private FontAwesome.Sharp.IconButton UpdateItemExitBtn;
-        private midterm.RoundBtn UpdateItemBtn;
         private System.Windows.Forms.Panel AddItemPanel;
         private System.Windows.Forms.Panel AddItemCodePanelBox;
         private System.Windows.Forms.TextBox AddItemCodeBox;
@@ -4688,7 +4721,6 @@
         private System.Windows.Forms.PictureBox AddItemPicBox;
         private FontAwesome.Sharp.IconButton AddItemPicBtn;
         private FontAwesome.Sharp.IconButton AddItemExitBtn;
-        private midterm.RoundBtn AddItemBtn;
         private System.Windows.Forms.Panel CreateNewFoodBtnPanel;
         private FontAwesome.Sharp.IconButton CreateNewFoodBtn;
         private System.Windows.Forms.Panel MNGRHeaderPanel;
@@ -4808,5 +4840,12 @@
         private System.Windows.Forms.ComboBox MngrVoidEmplIDBox;
         private FontAwesome.Sharp.IconButton MngrVoidOrderBtn;
         private FontAwesome.Sharp.IconButton MngrVoidExitBtn;
+        private System.Windows.Forms.DateTimePicker MngrDateTimePicker;
+        private FontAwesome.Sharp.IconButton AddEmplAccBtn;
+        private FontAwesome.Sharp.IconButton EditEmplAccBtn;
+        private FontAwesome.Sharp.IconButton UpdateEmplAccBtn;
+        private FontAwesome.Sharp.IconButton EditFoodItemBtn;
+        private FontAwesome.Sharp.IconButton UpdateFoodItemBtn;
+        private FontAwesome.Sharp.IconButton AddFoodItemBtn;
     }
 }
