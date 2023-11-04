@@ -249,6 +249,12 @@
             this.MngrVoidOrderBtn = new FontAwesome.Sharp.IconButton();
             this.MngrVoidLbl = new System.Windows.Forms.Label();
             this.MngrCheckoutViewPanel = new System.Windows.Forms.Panel();
+            this.MngrCashLbl = new System.Windows.Forms.Label();
+            this.MngrCashPanelBox = new System.Windows.Forms.Panel();
+            this.MngrCashBox = new System.Windows.Forms.TextBox();
+            this.MngrChangeLbl = new System.Windows.Forms.Label();
+            this.MngrChangePanelBox = new System.Windows.Forms.Panel();
+            this.MngrChangeBox = new System.Windows.Forms.TextBox();
             this.MngrDiscountPWD = new System.Windows.Forms.CheckBox();
             this.MngrDiscountSenior = new System.Windows.Forms.CheckBox();
             this.MngrDiscountLbl = new System.Windows.Forms.Label();
@@ -422,6 +428,8 @@
             this.MngrVoidEmplPassPanelBox.SuspendLayout();
             this.MngrVoidEmplIDPanelBox.SuspendLayout();
             this.MngrCheckoutViewPanel.SuspendLayout();
+            this.MngrCashPanelBox.SuspendLayout();
+            this.MngrChangePanelBox.SuspendLayout();
             this.MngrNetAmountPanelBox.SuspendLayout();
             this.MngrVATPanelBox.SuspendLayout();
             this.MngrGrossAmountPanelBox.SuspendLayout();
@@ -3004,6 +3012,10 @@
             // 
             this.MngrCheckoutViewPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MngrViewFormPicker.SetCardName(this.MngrCheckoutViewPanel, "Card1");
+            this.MngrCheckoutViewPanel.Controls.Add(this.MngrCashLbl);
+            this.MngrCheckoutViewPanel.Controls.Add(this.MngrCashPanelBox);
+            this.MngrCheckoutViewPanel.Controls.Add(this.MngrChangeLbl);
+            this.MngrCheckoutViewPanel.Controls.Add(this.MngrChangePanelBox);
             this.MngrCheckoutViewPanel.Controls.Add(this.MngrDiscountPWD);
             this.MngrCheckoutViewPanel.Controls.Add(this.MngrDiscountSenior);
             this.MngrCheckoutViewPanel.Controls.Add(this.MngrDiscountLbl);
@@ -3022,6 +3034,75 @@
             this.MngrViewFormPicker.SetPreferredSize(this.MngrCheckoutViewPanel, new System.Drawing.Size(450, 454));
             this.MngrCheckoutViewPanel.Size = new System.Drawing.Size(450, 454);
             this.MngrCheckoutViewPanel.TabIndex = 25;
+            // 
+            // MngrCashLbl
+            // 
+            this.MngrCashLbl.AutoSize = true;
+            this.MngrCashLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrCashLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrCashLbl.Location = new System.Drawing.Point(19, 287);
+            this.MngrCashLbl.Name = "MngrCashLbl";
+            this.MngrCashLbl.Size = new System.Drawing.Size(59, 23);
+            this.MngrCashLbl.TabIndex = 36;
+            this.MngrCashLbl.Text = "Cash:";
+            // 
+            // MngrCashPanelBox
+            // 
+            this.MngrCashPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MngrCashPanelBox.Controls.Add(this.MngrCashBox);
+            this.MngrCashPanelBox.ForeColor = System.Drawing.Color.Coral;
+            this.MngrCashPanelBox.Location = new System.Drawing.Point(23, 312);
+            this.MngrCashPanelBox.Name = "MngrCashPanelBox";
+            this.MngrCashPanelBox.Size = new System.Drawing.Size(198, 23);
+            this.MngrCashPanelBox.TabIndex = 37;
+            // 
+            // MngrCashBox
+            // 
+            this.MngrCashBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.MngrCashBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MngrCashBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MngrCashBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrCashBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrCashBox.Location = new System.Drawing.Point(0, 0);
+            this.MngrCashBox.MaxLength = 7;
+            this.MngrCashBox.Name = "MngrCashBox";
+            this.MngrCashBox.Size = new System.Drawing.Size(196, 23);
+            this.MngrCashBox.TabIndex = 8;
+            this.MngrCashBox.TextChanged += new System.EventHandler(this.MngrCashBox_TextChanged);
+            // 
+            // MngrChangeLbl
+            // 
+            this.MngrChangeLbl.AutoSize = true;
+            this.MngrChangeLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrChangeLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrChangeLbl.Location = new System.Drawing.Point(226, 287);
+            this.MngrChangeLbl.Name = "MngrChangeLbl";
+            this.MngrChangeLbl.Size = new System.Drawing.Size(121, 23);
+            this.MngrChangeLbl.TabIndex = 34;
+            this.MngrChangeLbl.Text = "Change Due:";
+            // 
+            // MngrChangePanelBox
+            // 
+            this.MngrChangePanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MngrChangePanelBox.Controls.Add(this.MngrChangeBox);
+            this.MngrChangePanelBox.ForeColor = System.Drawing.Color.Coral;
+            this.MngrChangePanelBox.Location = new System.Drawing.Point(230, 312);
+            this.MngrChangePanelBox.Name = "MngrChangePanelBox";
+            this.MngrChangePanelBox.Size = new System.Drawing.Size(198, 23);
+            this.MngrChangePanelBox.TabIndex = 35;
+            // 
+            // MngrChangeBox
+            // 
+            this.MngrChangeBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.MngrChangeBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MngrChangeBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MngrChangeBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrChangeBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.MngrChangeBox.Location = new System.Drawing.Point(0, 0);
+            this.MngrChangeBox.Name = "MngrChangeBox";
+            this.MngrChangeBox.ReadOnly = true;
+            this.MngrChangeBox.Size = new System.Drawing.Size(196, 23);
+            this.MngrChangeBox.TabIndex = 8;
             // 
             // MngrDiscountPWD
             // 
@@ -3082,7 +3163,7 @@
             this.MngrNetAmountPanelBox.ForeColor = System.Drawing.Color.Coral;
             this.MngrNetAmountPanelBox.Location = new System.Drawing.Point(22, 193);
             this.MngrNetAmountPanelBox.Name = "MngrNetAmountPanelBox";
-            this.MngrNetAmountPanelBox.Size = new System.Drawing.Size(409, 23);
+            this.MngrNetAmountPanelBox.Size = new System.Drawing.Size(200, 23);
             this.MngrNetAmountPanelBox.TabIndex = 30;
             // 
             // MngrNetAmountBox
@@ -3095,7 +3176,7 @@
             this.MngrNetAmountBox.Location = new System.Drawing.Point(0, 0);
             this.MngrNetAmountBox.Name = "MngrNetAmountBox";
             this.MngrNetAmountBox.ReadOnly = true;
-            this.MngrNetAmountBox.Size = new System.Drawing.Size(407, 23);
+            this.MngrNetAmountBox.Size = new System.Drawing.Size(198, 23);
             this.MngrNetAmountBox.TabIndex = 8;
             // 
             // MngrVATLbl
@@ -3103,7 +3184,7 @@
             this.MngrVATLbl.AutoSize = true;
             this.MngrVATLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MngrVATLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrVATLbl.Location = new System.Drawing.Point(17, 226);
+            this.MngrVATLbl.Location = new System.Drawing.Point(226, 167);
             this.MngrVATLbl.Name = "MngrVATLbl";
             this.MngrVATLbl.Size = new System.Drawing.Size(104, 23);
             this.MngrVATLbl.TabIndex = 27;
@@ -3114,9 +3195,9 @@
             this.MngrVATPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MngrVATPanelBox.Controls.Add(this.MngrVATBox);
             this.MngrVATPanelBox.ForeColor = System.Drawing.Color.Coral;
-            this.MngrVATPanelBox.Location = new System.Drawing.Point(21, 252);
+            this.MngrVATPanelBox.Location = new System.Drawing.Point(230, 193);
             this.MngrVATPanelBox.Name = "MngrVATPanelBox";
-            this.MngrVATPanelBox.Size = new System.Drawing.Size(409, 23);
+            this.MngrVATPanelBox.Size = new System.Drawing.Size(200, 23);
             this.MngrVATPanelBox.TabIndex = 28;
             // 
             // MngrVATBox
@@ -3129,7 +3210,7 @@
             this.MngrVATBox.Location = new System.Drawing.Point(0, 0);
             this.MngrVATBox.Name = "MngrVATBox";
             this.MngrVATBox.ReadOnly = true;
-            this.MngrVATBox.Size = new System.Drawing.Size(407, 23);
+            this.MngrVATBox.Size = new System.Drawing.Size(198, 23);
             this.MngrVATBox.TabIndex = 8;
             // 
             // MngrGrossAmountLbl
@@ -3137,7 +3218,7 @@
             this.MngrGrossAmountLbl.AutoSize = true;
             this.MngrGrossAmountLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MngrGrossAmountLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrGrossAmountLbl.Location = new System.Drawing.Point(17, 280);
+            this.MngrGrossAmountLbl.Location = new System.Drawing.Point(19, 231);
             this.MngrGrossAmountLbl.Name = "MngrGrossAmountLbl";
             this.MngrGrossAmountLbl.Size = new System.Drawing.Size(139, 23);
             this.MngrGrossAmountLbl.TabIndex = 23;
@@ -3165,9 +3246,9 @@
             this.MngrGrossAmountPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MngrGrossAmountPanelBox.Controls.Add(this.MngrGrossAmountBox);
             this.MngrGrossAmountPanelBox.ForeColor = System.Drawing.Color.Coral;
-            this.MngrGrossAmountPanelBox.Location = new System.Drawing.Point(21, 305);
+            this.MngrGrossAmountPanelBox.Location = new System.Drawing.Point(23, 256);
             this.MngrGrossAmountPanelBox.Name = "MngrGrossAmountPanelBox";
-            this.MngrGrossAmountPanelBox.Size = new System.Drawing.Size(409, 23);
+            this.MngrGrossAmountPanelBox.Size = new System.Drawing.Size(406, 23);
             this.MngrGrossAmountPanelBox.TabIndex = 24;
             // 
             // MngrGrossAmountBox
@@ -3180,7 +3261,7 @@
             this.MngrGrossAmountBox.Location = new System.Drawing.Point(0, 0);
             this.MngrGrossAmountBox.Name = "MngrGrossAmountBox";
             this.MngrGrossAmountBox.ReadOnly = true;
-            this.MngrGrossAmountBox.Size = new System.Drawing.Size(407, 23);
+            this.MngrGrossAmountBox.Size = new System.Drawing.Size(404, 23);
             this.MngrGrossAmountBox.TabIndex = 8;
             this.MngrGrossAmountBox.TextChanged += new System.EventHandler(this.MngrGrossAmountBox_TextChanged);
             // 
@@ -3195,7 +3276,7 @@
             this.MngrPlaceOrderBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.MngrPlaceOrderBtn.IconSize = 24;
             this.MngrPlaceOrderBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MngrPlaceOrderBtn.Location = new System.Drawing.Point(267, 344);
+            this.MngrPlaceOrderBtn.Location = new System.Drawing.Point(267, 354);
             this.MngrPlaceOrderBtn.Name = "MngrPlaceOrderBtn";
             this.MngrPlaceOrderBtn.Size = new System.Drawing.Size(162, 38);
             this.MngrPlaceOrderBtn.TabIndex = 14;
@@ -4553,7 +4634,7 @@
             // 
             this.AdminFormPicker.ContainerControl = this.AdminFormPanel;
             this.AdminFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.AdminFormPicker.SelectedCard = "Card2";
+            this.AdminFormPicker.SelectedCard = "Card1";
             // 
             // FoodItemFormPicker
             // 
@@ -4582,7 +4663,7 @@
             // MngrViewFormPicker
             // 
             this.MngrViewFormPicker.ContainerControl = this.MngrViewPanel;
-            this.MngrViewFormPicker.SelectedCard = "Card3";
+            this.MngrViewFormPicker.SelectedCard = "Card1";
             // 
             // CashierFormPicker
             // 
@@ -4722,6 +4803,10 @@
             this.MngrVoidEmplIDPanelBox.ResumeLayout(false);
             this.MngrCheckoutViewPanel.ResumeLayout(false);
             this.MngrCheckoutViewPanel.PerformLayout();
+            this.MngrCashPanelBox.ResumeLayout(false);
+            this.MngrCashPanelBox.PerformLayout();
+            this.MngrChangePanelBox.ResumeLayout(false);
+            this.MngrChangePanelBox.PerformLayout();
             this.MngrNetAmountPanelBox.ResumeLayout(false);
             this.MngrNetAmountPanelBox.PerformLayout();
             this.MngrVATPanelBox.ResumeLayout(false);
@@ -5084,5 +5169,11 @@
         private System.Windows.Forms.TextBox MngrNameBox;
         private System.Windows.Forms.TextBox MngrSessionNumBox;
         private System.Windows.Forms.TextBox MngrOrderNumBox;
+        private System.Windows.Forms.Label MngrChangeLbl;
+        private System.Windows.Forms.Panel MngrChangePanelBox;
+        private System.Windows.Forms.TextBox MngrChangeBox;
+        private System.Windows.Forms.Label MngrCashLbl;
+        private System.Windows.Forms.Panel MngrCashPanelBox;
+        private System.Windows.Forms.TextBox MngrCashBox;
     }
 }
