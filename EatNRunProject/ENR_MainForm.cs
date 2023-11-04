@@ -58,6 +58,9 @@ namespace EatNRunProject
         private decimal originalGrossAmount; // Store the original value
         private bool discountApplied = false; // Flag to track if the discount has been applied
 
+        ////
+        //private DataGridView MngrOrderView;
+
         public ENRMainForm()
         {
             InitializeComponent();
@@ -128,6 +131,8 @@ namespace EatNRunProject
 
 
 
+            //
+            MngrOrderView = MngrOrderViewTable; // Replace yourDataGridView with the actual DataGridView instance
 
 
             this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
@@ -136,15 +141,20 @@ namespace EatNRunProject
 
         private void ENR_MainForm_Load(object sender, EventArgs e)
         {
+            DBRefresher();
+
+            DateTimePickerTimer.Interval = 1000;
+            DateTimePickerTimer.Start();
+        }
+
+        private void DBRefresher()
+        {
             LoadEmployeeAcc();
             LoadItemMenu();
             LoadBurgerItemMenu();
             LoadSideItemMenu();
             LoadDrinksItemMenu();
             LoadSetItemMenu();
-
-            DateTimePickerTimer.Interval = 1000;
-            DateTimePickerTimer.Start();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -765,7 +775,7 @@ namespace EatNRunProject
                                         MessageBox.Show($"Welcome back, Manager {name}.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         MFpanelManager.MFShow(ManagerPanel);
                                         MngrPanelManager.MngrFormShow(MngrNewOrderBtnPanel);
-                                        MngrNameLbl.Text = "| Manager Name: " + name;
+                                        MngrNameBox.Text = name;
                                         MngrSessionNumRefresh();
                                         rememberAccount();
                                         logincredclear();
@@ -831,16 +841,16 @@ namespace EatNRunProject
 
         private void MngrSessionNumRefresh()
         {
-            MngrSessionNum.Text = "";
+            MngrSessionNumBox.Text = "";
             ID = RandomNumberGenerator.GenerateRandomNumber();
-            MngrSessionNum.Text = "| Session Number: " + ID;
+            MngrSessionNumBox.Text = ID;
         }
 
         private void MngrOrderNumRefresh()
         {
-            MngrOrderNumLbl.Text = "";
+            MngrOrderNumBox.Text = "";
             ID = RandomNumberGenerator.GenerateRandomNumber();
-            MngrOrderNumLbl.Text = "| Order Number: " + ID;
+            MngrOrderNumBox.Text = ID;
         }
 
         private void logincredclear()
@@ -2282,39 +2292,66 @@ namespace EatNRunProject
         private void MngrItemBurgerBtn_Click(object sender, EventArgs e)
         {
             MngrItemPanelManager.MngrItemFormShow(MngrItemBurgerPanel);
+            DBRefresher();
 
         }
 
         private void MngrItemSideBtn_Click(object sender, EventArgs e)
         {
             MngrItemPanelManager.MngrItemFormShow(MngrItemSidesPanel);
+            DBRefresher();
 
         }
 
         private void MngrItemDrinksBtn_Click(object sender, EventArgs e)
         {
             MngrItemPanelManager.MngrItemFormShow(MngrItemDrinksPanel);
+            DBRefresher();
 
         }
 
         private void MngrItemSetBtn_Click(object sender, EventArgs e)
         {
             MngrItemPanelManager.MngrItemFormShow(MngrItemSetMealsPanel);
+            DBRefresher();
 
         }
+
+        // Declare a field or property to hold the DataGridView
+        private DataGridView MngrOrderView;
+
+        // Constructor or initialization method
+
 
         private void MngrCheckoutBtn_Click(object sender, EventArgs e)
         {
-            MngrOrderPanelManager.MngrOrderFormShow(MngrCheckoutViewPanel);
-            CalculateTotalPrice();
-
+            if (MngrOrderView != null && MngrOrderView.Rows.Count == 0)
+            {
+                MessageBox.Show("Select an item first to proceed to checkout.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+            else
+            {
+                MngrOrderPanelManager.MngrOrderFormShow(MngrCheckoutViewPanel);
+                CalculateTotalPrice();
+            }
         }
+
+
+
         private void MngrVoidBtn_Click(object sender, EventArgs e)
         {
             // Perform login verification before deleting the entire DataGridView
 
-            MngrItemPanel.Enabled = true;
-            MngrOrderPanelManager.MngrOrderFormShow(MngrVoidViewPanel);
+            if (MngrOrderView != null && MngrOrderView.Rows.Count == 0)
+            {
+                MessageBox.Show("Select an item first to void ordered items.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+            else
+            {
+                MngrOrderPanelManager.MngrOrderFormShow(MngrVoidViewPanel);
+                MngrItemPanel.Enabled = false;
+            }
+
         }
 
         private void MngrCheckoutExitBtn_Click(object sender, EventArgs e)
@@ -2722,6 +2759,7 @@ namespace EatNRunProject
                                 {
                                     MessageBox.Show("Ordered items are voided.", "Item Void Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     MngrItemPanel.Enabled = true;
+                                    MngrVoidOrderHistoryDB(MngrOrderView);
                                     MngrOrderViewTable.Rows.Clear();
                                     MngrOrderPanelManager.MngrOrderFormShow(MngrOrderViewPanel);
 
@@ -2833,7 +2871,198 @@ namespace EatNRunProject
 
         private void MngrPaymentButton_Click(object sender, EventArgs e)
         {
+            MngrPlaceOrderHistoryDB(MngrOrderViewTable);
+            MngrPlaceOrderSalesDB();
 
+        }
+
+        private void MngrPlaceOrderSalesDB()
+        {
+            DateTime currentDate = MngrDateTimePicker.Value;
+
+            string orderNum = MngrOrderNumBox.Text;
+            string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
+            string mngrName = MngrNameBox.Text;
+            string netAmount = MngrNetAmountBox.Text;
+            string vat = MngrVATBox.Text;
+            string grossAmount = MngrGrossAmountBox.Text;
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    // Insert data into the accounts table, including the image (AccountPfp in the first position)
+                    string insertQuery = "INSERT INTO sales (OrderNumber, Date, OrderedBy, NetAmount, VAT, GrossAmount)" +
+                                        "VALUES (@OrderNum, @Date, @OrderedBy, @Net, @Vat, @Gross)";
+
+                    MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
+
+                    cmd.Parameters.AddWithValue("@OrderNum", orderNum);
+                    cmd.Parameters.AddWithValue("@Date", today);
+                    cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
+                    cmd.Parameters.AddWithValue("@Net", netAmount);
+                    cmd.Parameters.AddWithValue("@Vat", vat);
+                    cmd.Parameters.AddWithValue("@Gross", grossAmount);
+
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                // Successful insertion
+                MessageBox.Show("Order successfully placed.", "Hooray!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //EmplIDRefresher();
+                //AddNewAccBoxClear();
+                //LoadEmployeeAcc();
+                if (MngrCheckoutViewPanel.Visible)
+                {
+
+                    MngrCheckoutViewPanel.Visible = false;
+                    MngrOrderViewPanel.Visible = true;
+                    MngrOrderNumRefresh();
+                    MngrOrderViewTable.Rows.Clear();
+
+                }
+
+                else
+                {
+                    MngrCheckoutViewPanel.Visible = true;
+                    MngrOrderViewPanel.Visible = false;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                // Handle MySQL database exception
+                MessageBox.Show("MySQL Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Make sure to close the connection
+                connection.Close();
+            }
+        }
+        private void MngrPlaceOrderHistoryDB(DataGridView MngrOrderView)
+        {                            
+            // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
+            string orderNumber = MngrOrderNumBox.Text;
+            DateTime currentDate = MngrDateTimePicker.Value;
+            string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
+            string mngrName = MngrNameBox.Text;
+            string yes = "Yes";
+            string no = "No";
+
+            if (MngrOrderViewTable.Rows.Count > 0)
+            {
+                try
+                {
+                    using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                    {
+                        connection.Open();
+
+                        foreach (DataGridViewRow row in MngrOrderView.Rows)
+                        {
+                            if (row.Cells["Item Name"].Value != null)
+                            {
+                                string itemName = row.Cells["Item Name"].Value.ToString();
+                                int qty = Convert.ToInt32(row.Cells["Qty"].Value);
+                                decimal itemPrice = Convert.ToDecimal(row.Cells["Price"].Value);
+
+                                string query = "INSERT INTO orderhistory (OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, CheckedOut, Voided) " +
+                                               "VALUES (@OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @Yes, @No)";
+
+                                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                                {
+                                    cmd.Parameters.AddWithValue("@OrderNumber", orderNumber);
+                                    cmd.Parameters.AddWithValue("@Date", today);
+                                    cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
+                                    cmd.Parameters.AddWithValue("@ItemName", itemName);
+                                    cmd.Parameters.AddWithValue("@Qty", qty);
+                                    cmd.Parameters.AddWithValue("@ItemPrice", itemPrice);
+                                    cmd.Parameters.AddWithValue("@Yes", yes);
+                                    cmd.Parameters.AddWithValue("@No", no);
+
+                                    cmd.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No items to insert into the database.");
+            }
+        }
+
+        private void MngrVoidOrderHistoryDB(DataGridView MngrOrderView)
+        {
+            // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
+            string orderNumber = MngrOrderNumBox.Text;
+            DateTime currentDate = MngrDateTimePicker.Value;
+            string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
+            string mngrName = MngrNameBox.Text;
+
+            string yes = "Yes";
+            string no = "No";
+
+            if (MngrOrderViewTable.Rows.Count > 0)
+            {
+                try
+                {
+                    using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                    {
+                        connection.Open();
+
+                        foreach (DataGridViewRow row in MngrOrderView.Rows)
+                        {
+                            if (row.Cells["Item Name"].Value != null)
+                            {
+                                string itemName = row.Cells["Item Name"].Value.ToString();
+                                int qty = Convert.ToInt32(row.Cells["Qty"].Value);
+                                decimal itemPrice = Convert.ToDecimal(row.Cells["Price"].Value);
+
+                                string query = "INSERT INTO orderhistory (OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, CheckedOut, Voided) " +
+                                               "VALUES (@OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @Yes, @No)";
+
+                                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                                {
+                                    cmd.Parameters.AddWithValue("@OrderNumber", orderNumber);
+                                    cmd.Parameters.AddWithValue("@Date", today);
+                                    cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
+                                    cmd.Parameters.AddWithValue("@ItemName", itemName);
+                                    cmd.Parameters.AddWithValue("@Qty", qty);
+                                    cmd.Parameters.AddWithValue("@ItemPrice", itemPrice);
+                                    cmd.Parameters.AddWithValue("@Yes", no);
+                                    cmd.Parameters.AddWithValue("@No", yes);
+
+                                    cmd.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No items to insert into the database.");
+            }
         }
 
     }
