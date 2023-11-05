@@ -39,7 +39,9 @@ namespace EatNRunProject
         private MngrPanelCard MngrPanelManager;
         private MngrItemPanelCard MngrItemPanelManager;
         private MngrOrderPanelCard MngrOrderPanelManager;
-
+        private CashierPanelCard CashierPanelManager;
+        private CashierItemPanelCard CashierItemPanelManager;
+        private CashierOrderPanelCard CashierOrderPanelManager;
         //db connection
         public static string mysqlconn = "server=localhost;user=root;database=eatnrun;password=";
         public MySqlConnection connection = new MySqlConnection(mysqlconn);
@@ -91,8 +93,13 @@ namespace EatNRunProject
 
             //Mngr Form Manager
             MngrPanelManager = new MngrPanelCard(MngrNewOrderBtnPanel, MngrOrderDashboardPanel, MngrSalesPanel);
-            MngrItemPanelManager = new MngrItemPanelCard(MngrItemBurgerPanel, MngrItemSidesPanel, MngrItemSetMealsPanel, MngrItemDrinksPanel);
-            MngrOrderPanelManager = new MngrOrderPanelCard(MngrOrderViewPanel, MngrCheckoutViewPanel, MngrVoidViewPanel); 
+            MngrItemPanelManager = new MngrItemPanelCard(MngrItemBurgerPanel, MngrItemSidesPanel, MngrItemSetPanel, MngrItemDrinksPanel);
+            MngrOrderPanelManager = new MngrOrderPanelCard(MngrOrderViewPanel, MngrCheckoutViewPanel, MngrVoidViewPanel);
+
+            //Cashier Form Manager
+            CashierPanelManager = new CashierPanelCard(CashierNewOrderBtnPanel, CashierOrderDashboardPanel);
+            CashierItemPanelManager = new CashierItemPanelCard(CashierItemBurgerPanel, CashierItemSidesPanel, CashierItemSetPanel, CashierItemDrinksPanel);
+            CashierOrderPanelManager = new CashierOrderPanelCard(CashierOrderViewPanel, CashierCheckoutViewPanel, CashierVoidViewPanel);
 
             MFpanelManager.MFShow(LoginPanel);
 
@@ -2323,7 +2330,7 @@ namespace EatNRunProject
 
         private void MngrItemSetBtn_Click(object sender, EventArgs e)
         {
-            MngrItemPanelManager.MngrItemFormShow(MngrItemSetMealsPanel);
+            MngrItemPanelManager.MngrItemFormShow(MngrItemSetPanel);
             DBRefresher();
 
         }
@@ -2878,11 +2885,33 @@ namespace EatNRunProject
         private void MngrGrossAmountBox_TextChanged(object sender, EventArgs e)
         {
             CalculateVATAndNetAmount();
+            if (decimal.TryParse(MngrGrossAmountBox.Text, out decimal grossAmount))
+            {
+                // Get the Cash Amount from the TextBox (MngrCashBox)
+                if (decimal.TryParse(MngrCashBox.Text, out decimal cashAmount))
+                {
+                    // Calculate the Change
+                    decimal change = cashAmount - grossAmount;
+
+                    // Display the calculated change value in the MngrChangeBox
+                    MngrChangeBox.Text = change.ToString("0.00");
+                }
+                else
+                {
+                    // Handle invalid input in MngrCashBox, e.g., display an error message
+                    MngrChangeBox.Text = "Invalid Input";
+                }
+            }
+            else
+            {
+                // Handle invalid input in MngrGrossAmountBox, e.g., display an error message
+                MngrChangeBox.Text = "Invalid Input";
+            }
         }
 
         private void MngrPaymentButton_Click(object sender, EventArgs e)
         {
-            GenerateReceipt();
+            MngrGenerateReceipt();
             MngrPlaceOrderHistoryDB(MngrOrderViewTable);
             MngrPlaceOrderSalesDB();
 
@@ -2891,7 +2920,7 @@ namespace EatNRunProject
         private void MngrPlaceOrderHistoryDB(DataGridView MngrOrderView)
         {
             // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
-            string orderNumber = MngrOrderNumBox.Text;
+            string orderNum = MngrSessionNum.Text + "-" + MngrOrderNumBox.Text;
             DateTime currentDate = MngrDateTimePicker.Value;
             string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
             string mngrName = MngrNameBox.Text;
@@ -2919,7 +2948,7 @@ namespace EatNRunProject
 
                                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                                 {
-                                    cmd.Parameters.AddWithValue("@OrderNumber", orderNumber);
+                                    cmd.Parameters.AddWithValue("@OrderNumber", orderNum);
                                     cmd.Parameters.AddWithValue("@Date", today);
                                     cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
                                     cmd.Parameters.AddWithValue("@ItemName", itemName);
@@ -2953,7 +2982,7 @@ namespace EatNRunProject
         {
             DateTime currentDate = MngrDateTimePicker.Value;
 
-            string orderNum = MngrOrderNumBox.Text;
+            string orderNum = MngrSessionNum.Text + "-" + MngrOrderNumBox.Text;
             string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
             string mngrName = MngrNameBox.Text;
             string netAmount = MngrNetAmountBox.Text;
@@ -2992,6 +3021,7 @@ namespace EatNRunProject
                 {
 
                     MngrCheckoutViewPanel.Visible = false;
+                    MngrNewOrderBtnPanel.Visible = true;
                     MngrOrderViewPanel.Visible = true;
                     MngrOrderNumRefresh();
                     MngrOrderViewTable.Rows.Clear();
@@ -3002,6 +3032,7 @@ namespace EatNRunProject
                 {
                     MngrCheckoutViewPanel.Visible = true;
                     MngrOrderViewPanel.Visible = false;
+                    MngrNewOrderBtnPanel.Visible = false;
                 }
             }
             catch (MySqlException ex)
@@ -3020,7 +3051,7 @@ namespace EatNRunProject
         private void MngrVoidOrderHistoryDB(DataGridView MngrOrderView)
         {
             // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
-            string orderNumber = MngrOrderNumBox.Text;
+            string orderNum = MngrSessionNum.Text + "-" + MngrOrderNumBox.Text;
             DateTime currentDate = MngrDateTimePicker.Value;
             string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
             string mngrName = MngrNameBox.Text;
@@ -3049,7 +3080,7 @@ namespace EatNRunProject
 
                                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                                 {
-                                    cmd.Parameters.AddWithValue("@OrderNumber", orderNumber);
+                                    cmd.Parameters.AddWithValue("@OrderNumber", orderNum);
                                     cmd.Parameters.AddWithValue("@Date", today);
                                     cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
                                     cmd.Parameters.AddWithValue("@ItemName", itemName);
@@ -3080,12 +3111,15 @@ namespace EatNRunProject
         }
 
 
-        private void GenerateReceipt()
+        private void MngrGenerateReceipt()
         {
             DateTime currentDate = MngrDateTimePicker.Value;
             string today = currentDate.ToString("MM-dd-yyyy hh:mm tt");
             string orderNumber = MngrOrderNumBox.Text;
-
+            string staffName = MngrNameBox.Text;
+            string legal = "Thank you for dining in Eat N' Run Burger Diner.\n" +
+                "This receipt will serve as your proof of purchase of Eat N'Run food products, " +
+                "in order to raise concerns about your purchase, please keep this receipt.";
             // Increment the file name
 
             // Generate a unique filename for the PDF
@@ -3095,6 +3129,8 @@ namespace EatNRunProject
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "PDF Files|*.pdf";
             saveFileDialog.FileName = fileName;
+            BaseFont boldBaseFont = BaseFont.CreateFont(BaseFont.COURIER_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            iTextSharp.text.Font boldfont = new iTextSharp.text.Font(boldBaseFont, 6, iTextSharp.text.Font.BOLD);
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -3112,16 +3148,29 @@ namespace EatNRunProject
                     doc.Open();
 
                     // Create fonts for the content
+                    // Create fonts for the content
                     iTextSharp.text.Font headerFont = FontFactory.GetFont("Courier", 16, iTextSharp.text.Font.BOLD);
                     iTextSharp.text.Font font = FontFactory.GetFont("Courier", 10, iTextSharp.text.Font.NORMAL);
 
-                    // Generate the receipt content
-                    doc.Add(new Paragraph("Eat N'Run Burger Diner", headerFont));
-                    doc.Add(new Paragraph("123 Main St, Your City"));
-                    doc.Add(new Paragraph("Phone: (555) 555-5555"));
+                    // Create a centered alignment for text
+                    Paragraph centerAligned = new Paragraph();
+                    centerAligned.Alignment = Element.ALIGN_CENTER;
+
+                    // Add centered content to the centerAligned Paragraph
+                    centerAligned.Add(new Chunk("Eat N'Run Burger Diner", headerFont));
+                    centerAligned.Add(new Chunk("\n123 Main St, Your City", font));
+                    centerAligned.Add(new Chunk("\nPhone: (555) 555-5555", font));
+
+                    // Add the centered content to the document
+                    doc.Add(centerAligned);
+                    doc.Add(new Chunk("\n")); // New line
+
 
                     doc.Add(new Paragraph($"Order Number: {orderNumber}", font));
                     doc.Add(new Paragraph($"Order Date: {today}", font));
+                    doc.Add(new Paragraph($"Order Checked Out By: {staffName}", font));
+                    doc.Add(new Chunk("\n")); // New line
+
 
                     // Iterate through the rows of your 
                     foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
@@ -3138,7 +3187,7 @@ namespace EatNRunProject
                             string itemcost = row.Cells["Price"].Value?.ToString();
 
                             doc.Add(new Paragraph($"{qty} | {itemName} | Php {itemcost}", font));
-                            MessageBox.Show($"{qty} | {itemName} | Php {itemcost}", "Receipt Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //MessageBox.Show($"{qty} | {itemName} | Php {itemcost}", "Receipt Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         }
                         catch (Exception ex)
@@ -3163,7 +3212,9 @@ namespace EatNRunProject
                     doc.Add(new Paragraph($"Gross Amount: Php{grossAmount:F2}", font));
                     doc.Add(new Paragraph($"Cash: Php{cash:F2}", font));
                     doc.Add(new Paragraph($"Change Due: Php{change:F2}", font));
-
+                    Paragraph paragraph_footer = new Paragraph($"\n\n{legal}", boldfont);
+                    paragraph_footer.Alignment = Element.ALIGN_CENTER;
+                    doc.Add(paragraph_footer);
                 }
                 catch (DocumentException de)
                 {
@@ -3182,168 +3233,6 @@ namespace EatNRunProject
                 MessageBox.Show($"Receipt saved as {filePath}", "Receipt Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-
-
-        private void ReceiptPrint()
-        {
-            string thankyou = "Thank You for ordering at Eat N' Run";
-            string orderdate = DateTime.Now.ToString();
-            string name = MngrNameBox.Text;
-            string payment = MngrCashBox.Text;
-            string subtotalPDF = MngrNetAmountBox.Text;
-            string discountPDF = MngrVATBox.Text;
-            string change = MngrChangeBox.Text;
-            string totalPDF = MngrGrossAmountBox.Text;
-            string legal = "This receipt will serve as your proof of purchase of Eat More food products,\n" +
-                "In order to raise concerns about your purchase, please keep this receipt.";
-
-            Document document = new Document(new iTextSharp.text.Rectangle(216f, 792f));
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "PDF Files|*.pdf";
-            saveFileDialog1.Title = "Save PDF File";
-            saveFileDialog1.ShowDialog();
-            if (saveFileDialog1.FileName != "")
-            {
-                try
-                {
-                    PdfWriter.GetInstance(document, new FileStream(saveFileDialog1.FileName, FileMode.Create));
-
-                    // Open the document to write
-                    document.Open();
-
-                    //font
-                    BaseFont baseFont = BaseFont.CreateFont(BaseFont.COURIER, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                    iTextSharp.text.Font regularfont = new iTextSharp.text.Font(baseFont, 7, iTextSharp.text.Font.NORMAL);
-                    BaseFont boldBaseFont = BaseFont.CreateFont(BaseFont.COURIER_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                    iTextSharp.text.Font boldfont = new iTextSharp.text.Font(boldBaseFont, 6, iTextSharp.text.Font.BOLD);
-                    // Add content to the PDF
-                    Paragraph paragraph_header = new Paragraph($"{thankyou}\n\n", boldfont);
-                    paragraph_header.Alignment = Element.ALIGN_JUSTIFIED;
-                    document.Add(paragraph_header);
-                    document.Add(new Paragraph($"Order Date: {orderdate}", regularfont));
-                    document.Add(new Paragraph($"Served By: {name}", regularfont));
-                    foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
-                    {
-                        string itemName;
-                        if (row.Cells["Item Name"].Value != null)
-                        {
-                            itemName = row.Cells["Item Name"].Value.ToString();
-                        }
-                        else
-                        {
-                            continue;
-                        }
-
-                        string qty = row.Cells["Qty"].Value.ToString();
-                        string itemcost = row.Cells["Price"].Value.ToString();
-                        document.Add(new Paragraph($"{qty} | " + $"{itemName} | " + $"Php {itemcost}", regularfont));
-                    }
-
-                    document.Add(new Paragraph($"\n\nSubtotal: Php {subtotalPDF}", regularfont));
-                    document.Add(new Paragraph($"Discount: Php {discountPDF}", regularfont));
-                    document.Add(new Paragraph($"Total: Php {totalPDF}", regularfont));
-                    document.Add(new Paragraph($"Payment: Php {payment}", regularfont));
-                    document.Add(new Paragraph($"Change: Php {change}", regularfont));
-                    Paragraph paragraph_footer = new Paragraph($"\n\n{legal}", boldfont);
-                    paragraph_footer.Alignment = Element.ALIGN_CENTER;
-                    document.Add(paragraph_footer);
-
-                    // Close the document
-                    document.Close();
-
-                    MessageBox.Show("PDF created successfully!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error creating PDF: " + ex.Message);
-                }
-            }
-        }
-
-
-
-        //recent print pdf nila jambs at sword
-        private void ReceiptPrint1()
-        {
-            string thankyou = "Thank You for ordering at Eat More";
-            string orderdate = DateTime.Now.ToString();
-            string name = MngrNameBox.Text;
-            string payment = MngrCashBox.Text;
-            string subtotalPDF = MngrNetAmountBox.Text;
-            string discountPDF = MngrVATBox.Text;
-            string change = MngrChangeBox.Text;
-            string totalPDF = MngrGrossAmountBox.Text;
-            string legal = "This receipt will serve as your proof of purchase of Eat More food products,\n" +
-                "In order to raise concerns about your purchase, please keep this receipt.";
-
-            Document document = new Document(new iTextSharp.text.Rectangle(216f, 792f));
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "PDF Files|*.pdf";
-            saveFileDialog1.Title = "Save PDF File";
-            saveFileDialog1.ShowDialog();
-            if (saveFileDialog1.FileName != "")
-            {
-                try
-                {
-                    PdfWriter.GetInstance(document, new FileStream(saveFileDialog1.FileName, FileMode.Create));
-
-                    // Open the document to write
-                    document.Open();  // Open the document here
-
-                    //font
-                    BaseFont baseFont = BaseFont.CreateFont(BaseFont.COURIER, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                    iTextSharp.text.Font regularfont = new iTextSharp.text.Font(baseFont, 7, iTextSharp.text.Font.NORMAL);
-                    BaseFont boldBaseFont = BaseFont.CreateFont(BaseFont.COURIER_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                    iTextSharp.text.Font boldfont = new iTextSharp.text.Font(boldBaseFont, 6, iTextSharp.text.Font.BOLD);
-
-                    // Add content to the PDF
-                    Paragraph paragraph_header = new Paragraph($"{thankyou}\n\n", boldfont);
-                    paragraph_header.Alignment = Element.ALIGN_JUSTIFIED;
-                    document.Add(paragraph_header);
-                    document.Add(new Paragraph($"Order Date: {orderdate}", regularfont));
-                    document.Add(new Paragraph($"Served By: {name}", regularfont));
-                    foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
-                    {
-                        string itemName;
-                        if (row.Cells["Item Name"].Value != null)
-                        {
-                            itemName = row.Cells["Item Name"].Value.ToString();
-                        }
-                        else
-                        {
-                            continue;
-                        }
-
-                        string qty = (row.Cells["Qty"].Value.ToString());
-                        string itemcost = (row.Cells["Price"].Value.ToString());
-                        document.Add(new Paragraph($"{qty} | " + $"{itemName} | " + $"Php {itemcost}", regularfont));
-                    }
-
-                    document.Add(new Paragraph($"\n\nSubtotal: Php {subtotalPDF}", regularfont));
-                    document.Add(new Paragraph($"Discount: Php {discountPDF}", regularfont));
-                    document.Add(new Paragraph($"Total: Php {totalPDF}", regularfont));
-                    document.Add(new Paragraph($"Payment: Php {payment}", regularfont));
-                    document.Add(new Paragraph($"Change: Php {change}", regularfont));
-                    Paragraph paragraph_footer = new Paragraph($"\n\n{legal}", boldfont);
-                    paragraph_footer.Alignment = Element.ALIGN_CENTER;
-                    document.Add(paragraph_footer);
-
-                    // Close the document
-                    document.Close();
-
-                    MessageBox.Show("PDF created successfully!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error creating PDF: " + ex.Message);
-                }
-            }
-        }
-
-
-
-
 
 
         private void MngrCashBox_TextChanged(object sender, EventArgs e)
@@ -3373,7 +3262,37 @@ namespace EatNRunProject
             }
         }
 
+        private void CashierNewOrderBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to create a new order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                CashierPanelManager.CashierFormShow(CashierOrderDashboardPanel);
+                CashierItemPanelManager.CashierItemFormShow(CashierItemBurgerPanel);
+                CashierOrderPanelManager.CashierOrderFormShow(CashierOrderViewPanel);
+                MngrOrderNumRefresh();
+                MngrItemPanel.Enabled = true;
+            }
+        }
 
+        private void CashierItemBurgerBtn_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void CashierItemSidesBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CashierItemDrinksBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CashierItemSetBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -288,6 +288,9 @@
     <Compile Include="CardLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CashierItemPanelCard.cs" />
+    <Compile Include="CashierOrderPanelCard.cs" />
+    <Compile Include="CashierPanelCard.cs" />
     <Compile Include="MainFormCard.cs" />
     <Compile Include="MngrItemPanelCard.cs" />
     <Compile Include="MngrOrderPanelCard.cs" />
