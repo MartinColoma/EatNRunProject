@@ -812,7 +812,7 @@ namespace EatNRunProject
                                     {
                                         MessageBox.Show($"Welcome back, Cashier {name}.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         MFpanelManager.MFShow(CashierPanel);
-                                        CashierLbl.Text = "Cashier " + name;
+                                        CashierNameBox.Text = name;
                                         rememberAccount();
                                         logincredclear();
 
@@ -2883,11 +2883,70 @@ namespace EatNRunProject
         private void MngrPaymentButton_Click(object sender, EventArgs e)
         {
             GenerateReceipt();
-            ReceiptPrint();
-            ReceiptPrint1();
             MngrPlaceOrderHistoryDB(MngrOrderViewTable);
             MngrPlaceOrderSalesDB();
 
+        }
+
+        private void MngrPlaceOrderHistoryDB(DataGridView MngrOrderView)
+        {
+            // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
+            string orderNumber = MngrOrderNumBox.Text;
+            DateTime currentDate = MngrDateTimePicker.Value;
+            string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
+            string mngrName = MngrNameBox.Text;
+            string yes = "Yes";
+            string no = "No";
+
+            if (MngrOrderViewTable.Rows.Count > 0)
+            {
+                try
+                {
+                    using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                    {
+                        connection.Open();
+
+                        foreach (DataGridViewRow row in MngrOrderView.Rows)
+                        {
+                            if (row.Cells["Item Name"].Value != null)
+                            {
+                                string itemName = row.Cells["Item Name"].Value.ToString();
+                                int qty = Convert.ToInt32(row.Cells["Qty"].Value);
+                                decimal itemPrice = Convert.ToDecimal(row.Cells["Price"].Value);
+
+                                string query = "INSERT INTO orderhistory (OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, CheckedOut, Voided) " +
+                                               "VALUES (@OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @Yes, @No)";
+
+                                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                                {
+                                    cmd.Parameters.AddWithValue("@OrderNumber", orderNumber);
+                                    cmd.Parameters.AddWithValue("@Date", today);
+                                    cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
+                                    cmd.Parameters.AddWithValue("@ItemName", itemName);
+                                    cmd.Parameters.AddWithValue("@Qty", qty);
+                                    cmd.Parameters.AddWithValue("@ItemPrice", itemPrice);
+                                    cmd.Parameters.AddWithValue("@Yes", yes);
+                                    cmd.Parameters.AddWithValue("@No", no);
+
+                                    cmd.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No items to insert into the database.");
+            }
         }
 
         private void MngrPlaceOrderSalesDB()
@@ -2956,66 +3015,7 @@ namespace EatNRunProject
                 connection.Close();
             }
         }
-        private void MngrPlaceOrderHistoryDB(DataGridView MngrOrderView)
-        {                            
-            // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
-            string orderNumber = MngrOrderNumBox.Text;
-            DateTime currentDate = MngrDateTimePicker.Value;
-            string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
-            string mngrName = MngrNameBox.Text;
-            string yes = "Yes";
-            string no = "No";
 
-            if (MngrOrderViewTable.Rows.Count > 0)
-            {
-                try
-                {
-                    using (MySqlConnection connection = new MySqlConnection(mysqlconn))
-                    {
-                        connection.Open();
-
-                        foreach (DataGridViewRow row in MngrOrderView.Rows)
-                        {
-                            if (row.Cells["Item Name"].Value != null)
-                            {
-                                string itemName = row.Cells["Item Name"].Value.ToString();
-                                int qty = Convert.ToInt32(row.Cells["Qty"].Value);
-                                decimal itemPrice = Convert.ToDecimal(row.Cells["Price"].Value);
-
-                                string query = "INSERT INTO orderhistory (OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, CheckedOut, Voided) " +
-                                               "VALUES (@OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @Yes, @No)";
-
-                                using (MySqlCommand cmd = new MySqlCommand(query, connection))
-                                {
-                                    cmd.Parameters.AddWithValue("@OrderNumber", orderNumber);
-                                    cmd.Parameters.AddWithValue("@Date", today);
-                                    cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
-                                    cmd.Parameters.AddWithValue("@ItemName", itemName);
-                                    cmd.Parameters.AddWithValue("@Qty", qty);
-                                    cmd.Parameters.AddWithValue("@ItemPrice", itemPrice);
-                                    cmd.Parameters.AddWithValue("@Yes", yes);
-                                    cmd.Parameters.AddWithValue("@No", no);
-
-                                    cmd.ExecuteNonQuery();
-                                }
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-            else
-            {
-                MessageBox.Show("No items to insert into the database.");
-            }
-        }
 
         private void MngrVoidOrderHistoryDB(DataGridView MngrOrderView)
         {
