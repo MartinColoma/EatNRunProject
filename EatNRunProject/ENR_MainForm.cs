@@ -1014,6 +1014,7 @@ namespace EatNRunProject
             if (ENREmplIDBox.Text == "Admin" && ENREmplPassBox.Text == "Admin123")
             {
                 MessageBox.Show("Welcome back, Admin.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RmbrAccCheckbox.Checked = true;
                 MFpanelManager.MFShow(AdminPanel);
                 AdminPanelManager.AdminFormShow(FoodItemPanel);
                 AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
@@ -1025,8 +1026,10 @@ namespace EatNRunProject
             else if (ENREmplIDBox.Text == "Manager" && ENREmplPassBox.Text == "Manager123")
             {
                 MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RmbrAccCheckbox.Checked = true;
                 MFpanelManager.MFShow(ManagerPanel);
                 MngrPanelManager.MngrFormShow(MngrNewOrderBtnPanel);
+                MngrSessionNumRefresh();
                 rememberAccount();
                 logincredclear();
                 return;
@@ -1034,7 +1037,10 @@ namespace EatNRunProject
             else if (ENREmplIDBox.Text == "Cashier" && ENREmplPassBox.Text == "Cashier123")
             {
                 MessageBox.Show("Welcome back, Cashier.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RmbrAccCheckbox.Checked = true;
                 MFpanelManager.MFShow(CashierPanel);
+                CashierPanelManager.CashierFormShow(CashierNewOrderBtnPanel);
+                CashierSessionNumRefresh();
                 rememberAccount();
                 logincredclear();
                 return;
@@ -1107,6 +1113,7 @@ namespace EatNRunProject
                                     if (passwordMatches)
                                     {
                                         MessageBox.Show($"Welcome back, Manager {name}.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        RmbrAccCheckbox.Checked = true;
                                         MFpanelManager.MFShow(ManagerPanel);
                                         MngrPanelManager.MngrFormShow(MngrNewOrderBtnPanel);
                                         MngrNameBox.Text = name;
@@ -1135,7 +1142,9 @@ namespace EatNRunProject
                                     {
                                         MessageBox.Show($"Welcome back, Cashier {name}.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         MFpanelManager.MFShow(CashierPanel);
+                                        CashierPanelManager.CashierFormShow(CashierNewOrderBtnPanel);
                                         CashierNameBox.Text = name;
+                                        CashierSessionNumRefresh();
                                         rememberAccount();
                                         logincredclear();
 
@@ -1187,10 +1196,27 @@ namespace EatNRunProject
             MngrOrderNumBox.Text = ID;
         }
 
+        private void CashierSessionNumRefresh()
+        {
+            CashierSessionNumBox.Text = "";
+            ID = RandomNumberGenerator.GenerateRandomNumber();
+            CashierSessionNumBox.Text = ID;
+        }
+
+        private void CashierOrderNumRefresh()
+        {
+            CashierOrderNumBox.Text = "";
+            ID = RandomNumberGenerator.GenerateRandomNumber();
+            CashierOrderNumBox.Text = ID;
+        }
+
+
         private void logincredclear()
         {
             ENREmplIDBox.Text = "";
             ENREmplPassBox.Text = "";
+            RmbrAccCheckbox.Checked = false;
+            ENREmplShowPass.Checked = false;
         }
 
         private void rememberAccount()
@@ -1208,6 +1234,8 @@ namespace EatNRunProject
                 // Add the username to the combo box
                 ENREmplIDBox.Items.Add(newItem);
                 MngrVoidEmplIDBox.Items.Add(newItem); // Add to the new combo box
+                CashierVoidEmplIDBox.Items.Add(newItem); // Add to the new combo box
+
 
                 // Clear the textboxes
                 ENREmplIDBox.SelectedIndex = ENREmplIDBox.Items.IndexOf(newItem);
@@ -3151,6 +3179,7 @@ namespace EatNRunProject
         private void DateTimePickerTimer_Tick(object sender, EventArgs e)
         {
             MngrDateTimePicker.Value = DateTime.Now;
+            CashierDateTimePicker.Value = DateTime.Now;
 
         }
 
@@ -3237,7 +3266,7 @@ namespace EatNRunProject
         private void MngrPlaceOrderHistoryDB(DataGridView MngrOrderView)
         {
             // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
-            string orderNum = MngrSessionNum.Text + "-" + MngrOrderNumBox.Text;
+            string orderNum = MngrSessionNumBox.Text + "-" + MngrOrderNumBox.Text;
             DateTime currentDate = MngrDateTimePicker.Value;
             string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
             string mngrName = MngrNameBox.Text;
@@ -3299,7 +3328,7 @@ namespace EatNRunProject
         {
             DateTime currentDate = MngrDateTimePicker.Value;
 
-            string orderNum = MngrSessionNum.Text + "-" + MngrOrderNumBox.Text;
+            string orderNum = MngrSessionNumBox.Text + "-" + MngrOrderNumBox.Text;
             string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
             string mngrName = MngrNameBox.Text;
             string netAmount = MngrNetAmountBox.Text;
@@ -3368,7 +3397,7 @@ namespace EatNRunProject
         private void MngrVoidOrderHistoryDB(DataGridView MngrOrderView)
         {
             // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
-            string orderNum = MngrSessionNum.Text + "-" + MngrOrderNumBox.Text;
+            string orderNum = MngrSessionNumLbl.Text + "-" + MngrOrderNumBox.Text;
             DateTime currentDate = MngrDateTimePicker.Value;
             string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
             string mngrName = MngrNameBox.Text;
@@ -3587,8 +3616,8 @@ namespace EatNRunProject
                 CashierPanelManager.CashierFormShow(CashierOrderDashboardPanel);
                 CashierItemPanelManager.CashierItemFormShow(CashierItemBurgerPanel);
                 CashierOrderPanelManager.CashierOrderFormShow(CashierOrderViewPanel);
-                MngrOrderNumRefresh();
-                MngrItemPanel.Enabled = true;
+                CashierOrderNumRefresh();
+                CashierItemPanel.Enabled = true;
             }
         }
 
@@ -3813,9 +3842,9 @@ namespace EatNRunProject
             decimal total = 0;
 
             // Assuming the "Price" column is of decimal type
-            int priceColumnIndex = MngrOrderViewTable.Columns["Price"].Index;
+            int priceColumnIndex = CashierOrderViewTable.Columns["Price"].Index;
 
-            foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
+            foreach (DataGridViewRow row in CashierOrderViewTable.Rows)
             {
                 if (row.Cells[priceColumnIndex].Value != null)
                 {
@@ -3825,7 +3854,7 @@ namespace EatNRunProject
             }
 
             // Display the total price in the GrossAmountBox TextBox
-            MngrGrossAmountBox.Text = total.ToString("F2"); // Format to two decimal places
+            CashierGrossAmountBox.Text = total.ToString("F2"); // Format to two decimal places
             CashierCalculateVATAndNetAmount();
         }
 
@@ -3854,5 +3883,676 @@ namespace EatNRunProject
             }
         }
 
+        private void CashierCheckoutOrderBtn_Click(object sender, EventArgs e)
+        {
+            if (CashierOrderView != null && CashierOrderView.Rows.Count == 0)
+            {
+                MessageBox.Show("Select an item first to proceed to checkout.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+            else
+            {
+                CashierOrderPanelManager.CashierOrderFormShow(CashierCheckoutViewPanel);
+                CashierCalculateTotalPrice();
+            }
+        }
+
+        private void CashierVoidBtn_Click(object sender, EventArgs e)
+        {
+            if (CashierOrderView != null && CashierOrderView.Rows.Count == 0)
+            {
+                MessageBox.Show("Select an item first to void ordered items.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+            else
+            {
+                CashierOrderPanelManager.CashierOrderFormShow(CashierVoidViewPanel);
+                CashierItemPanel.Enabled = false;
+                //OrderVoider();
+            }
+        }
+
+        private void CashierVoidExitBtn_Click(object sender, EventArgs e)
+        {
+            if (CashierVoidViewPanel.Visible)
+            {
+
+                CashierVoidViewPanel.Visible = false;
+                CashierOrderViewPanel.Visible = true;
+                CashierItemPanel.Enabled = true;
+            }
+
+            else
+            {
+                CashierVoidViewPanel.Visible = true;
+                CashierOrderViewPanel.Visible = false;
+            }
+        }
+
+        private void CashierSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = CashierSearchBox.Text;
+            CashierSearchBurger(searchText);
+            CashierSearchDrinks(searchText);
+            CashierSearchSetMeals(searchText);
+            CashierSearchSides(searchText);
+        }
+
+        private void CashierSearchBoxBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CashierSearchFoodByFoodType(string searchText, string foodType)
+        {
+            connection.Open();
+            // Modify your MySQL query to search in specific columns of the table for the specified food type
+            string query = "SELECT * FROM `foodmenu` WHERE FoodType = @foodType AND " +
+                           "(FoodName LIKE @searchText OR " +
+                           "FoodCode LIKE @searchText OR " +
+                           "FoodType LIKE @searchText OR " +
+                           "FoodPrice LIKE @searchText OR " +
+                           "FoodDateCreated LIKE @searchText)";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@foodType", foodType);
+                cmd.Parameters.AddWithValue("@searchText", "%" + searchText + "%");
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    // Bind the DataGridView to the search results based on the food type
+                    switch (foodType)
+                    {
+                        case "Burger":
+                            CashierItemBurgerView.DataSource = dataTable;
+                            break;
+                        case "Sides":
+                            CashierItemSidesView.DataSource = dataTable;
+                            break;
+                        case "Set Meals":
+                            CashierItemSetView.DataSource = dataTable;
+                            break;
+                        case "Drinks":
+                            CashierItemDrinksView.DataSource = dataTable;
+                            break;
+                        default:
+                            // Handle an unknown food type or provide a default view
+                            break;
+                    }
+                }
+            }
+            connection.Close();
+        }
+
+        // Separate methods for each food type
+        private void CashierSearchBurger(string searchText)
+        {
+            CashierSearchFoodByFoodType(searchText, "Burger");
+        }
+
+        private void CashierSearchSides(string searchText)
+        {
+            CashierSearchFoodByFoodType(searchText, "Sides");
+        }
+
+        private void CashierSearchSetMeals(string searchText)
+        {
+            CashierSearchFoodByFoodType(searchText, "Set Meals");
+        }
+
+        private void CashierSearchDrinks(string searchText)
+        {
+            SearchFoodByFoodType(searchText, "Drinks");
+        }
+
+        private void CashierEmplIDBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedItem = CashierVoidEmplIDBox.SelectedItem as string;
+            if (selectedItem != null && accountData.ContainsKey(selectedItem))
+            {
+                CashierVoidEmplPassBox.Text = accountData[selectedItem];
+            }
+        }
+
+        private void CashierVoidOrderBtn_Click(object sender, EventArgs e)
+        {
+            CashierOrderVoider();
+        }
+
+        private void CashierOrderVoider()
+        {
+            string emplID = CashierVoidEmplIDBox.Text;
+            string emplPass = CashierVoidEmplPassBox.Text;
+            string passchecker = HashHelper.HashString(emplPass); // Assuming "enteredPassword" is supposed to be "emplPass"
+
+            MySqlConnection connection = null;
+
+            try
+            {
+                connection = new MySqlConnection(mysqlconn);
+                connection.Open();
+
+                // Query the database for the provided Employee ID in the accounts table
+                string queryApproved = "SELECT EmployeeName, EmployeeID, EmployeePosition, HashedPass FROM accounts WHERE EmployeeID = @EmplID";
+
+                using (MySqlCommand cmdApproved = new MySqlCommand(queryApproved, connection))
+                {
+                    cmdApproved.Parameters.AddWithValue("@EmplID", emplID);
+
+                    using (MySqlDataReader readerApproved = cmdApproved.ExecuteReader())
+                    {
+                        if (readerApproved.Read())
+                        {
+                            // Retrieve user information
+                            string name = readerApproved["EmployeeName"].ToString();
+                            string employeePosition = readerApproved["EmployeePosition"].ToString();
+
+                            // Check if the entered EmployeePosition matches the one in the database
+                            if (employeePosition == "Manager")
+                            {
+                                // Retrieve the HashedPass column
+                                string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
+
+                                // Check if the entered password matches
+                                bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
+
+                                if (passwordMatches)
+                                {
+                                    MessageBox.Show("Ordered items are voided.", "Item Void Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    CashierItemPanel.Enabled = true;
+                                    CashierVoidOrderHistoryDB(CashierOrderViewTable);
+                                    CashierOrderViewTable.Rows.Clear();
+                                    CashierOrderPanelManager.CashierOrderFormShow(CashierOrderViewPanel);
+
+                                    //Other
+
+                                    return;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else
+                            {
+                                // The entered Employee ID does not exist in the database
+                                MessageBox.Show("Account not found.", "Ooooops", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection?.Close();
+            }
+        }
+
+        private void CashierVoidOrderHistoryDB(DataGridView MngrOrderView)
+        {
+            // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
+            string orderNum = CashierSessionNumBox.Text + "-" + MngrOrderNumBox.Text;
+            DateTime currentDate = CashierDateTimePicker.Value;
+            string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
+            string mngrName = CashierNameBox.Text;
+
+            string yes = "Yes";
+            string no = "No";
+
+            if (CashierOrderViewTable.Rows.Count > 0)
+            {
+                try
+                {
+                    using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                    {
+                        connection.Open();
+
+                        foreach (DataGridViewRow row in CashierOrderView.Rows)
+                        {
+                            if (row.Cells["Item Name"].Value != null)
+                            {
+                                string itemName = row.Cells["Item Name"].Value.ToString();
+                                int qty = Convert.ToInt32(row.Cells["Qty"].Value);
+                                decimal itemPrice = Convert.ToDecimal(row.Cells["Price"].Value);
+
+                                string query = "INSERT INTO orderhistory (OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, CheckedOut, Voided) " +
+                                               "VALUES (@OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @Yes, @No)";
+
+                                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                                {
+                                    cmd.Parameters.AddWithValue("@OrderNumber", orderNum);
+                                    cmd.Parameters.AddWithValue("@Date", today);
+                                    cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
+                                    cmd.Parameters.AddWithValue("@ItemName", itemName);
+                                    cmd.Parameters.AddWithValue("@Qty", qty);
+                                    cmd.Parameters.AddWithValue("@ItemPrice", itemPrice);
+                                    cmd.Parameters.AddWithValue("@Yes", no);
+                                    cmd.Parameters.AddWithValue("@No", yes);
+
+                                    cmd.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No items to insert into the database.");
+            }
+        }
+
+        private void CashierDiscountSenior_CheckedChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(CashierGrossAmountBox.Text, out decimal grossAmount))
+            {
+                if (CashierDiscountSenior.Checked && !discountApplied)
+                {
+                    // Apply the 20% discount if the checkbox is checked and the discount hasn't been applied before
+                    originalGrossAmount = grossAmount; // Store the original value
+                    decimal discountedAmount = grossAmount * 0.8m; // 20% discount using decimal
+                    CashierGrossAmountBox.Text = discountedAmount.ToString("0.00"); // Format to display as currency
+                    discountApplied = true; // Set the flag to indicate that the discount has been applied
+                }
+                else if (!CashierDiscountSenior.Checked && discountApplied)
+                {
+                    // Unchecked, set MngrGrossAmount to the original value if the discount has been applied before
+                    CashierGrossAmountBox.Text = originalGrossAmount.ToString("0.00");
+                    discountApplied = false; // Reset the flag
+                }
+            }
+        }
+
+        private void CashierDiscountPWD_CheckedChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(CashierGrossAmountBox.Text, out decimal grossAmount))
+            {
+                if (CashierDiscountPWD.Checked && !discountApplied)
+                {
+                    // Apply the 20% discount if the checkbox is checked and the discount hasn't been applied before
+                    originalGrossAmount = grossAmount; // Store the original value
+                    decimal discountedAmount = grossAmount * 0.8m; // 20% discount using decimal
+                    CashierGrossAmountBox.Text = discountedAmount.ToString("0.00"); // Format to display as currency
+                    discountApplied = true; // Set the flag to indicate that the discount has been applied
+                }
+                else if (!CashierDiscountPWD.Checked && discountApplied)
+                {
+                    // Unchecked, set MngrGrossAmount to the original value if the discount has been applied before
+                    CashierGrossAmountBox.Text = originalGrossAmount.ToString("0.00");
+                    discountApplied = false; // Reset the flag
+                }
+            }
+        }
+
+        private void CashierGrossAmountBox_TextChanged(object sender, EventArgs e)
+        {
+            CashierCalculateVATAndNetAmount();
+            if (decimal.TryParse(CashierGrossAmountBox.Text, out decimal grossAmount))
+            {
+                // Get the Cash Amount from the TextBox (MngrCashBox)
+                if (decimal.TryParse(CashierCashBox.Text, out decimal cashAmount))
+                {
+                    // Calculate the Change
+                    decimal change = cashAmount - grossAmount;
+
+                    // Display the calculated change value in the MngrChangeBox
+                    CashierChangeBox.Text = change.ToString("0.00");
+                }
+                else
+                {
+                    // Handle invalid input in MngrCashBox, e.g., display an error message
+                    CashierChangeBox.Text = "Invalid Input";
+                }
+            }
+            else
+            {
+                // Handle invalid input in MngrGrossAmountBox, e.g., display an error message
+                CashierChangeBox.Text = "Invalid Input";
+            }
+        }
+
+        private void CashierCashBox_TextChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(CashierGrossAmountBox.Text, out decimal grossAmount))
+            {
+                // Get the Cash Amount from the TextBox (MngrCashBox)
+                if (decimal.TryParse(CashierCashBox.Text, out decimal cashAmount))
+                {
+                    // Calculate the Change
+                    decimal change = cashAmount - grossAmount;
+
+                    // Display the calculated change value in the MngrChangeBox
+                    CashierChangeBox.Text = change.ToString("0.00");
+                }
+                else
+                {
+                    // Handle invalid input in MngrCashBox, e.g., display an error message
+                    CashierChangeBox.Text = "Invalid Input";
+                }
+            }
+            else
+            {
+                // Handle invalid input in MngrGrossAmountBox, e.g., display an error message
+                CashierChangeBox.Text = "Invalid Input";
+            }
+        }
+
+        private void CashierPlaceOrderBtn_Click(object sender, EventArgs e)
+        {
+            CashierGenerateReceipt();
+            CashierPlaceOrderHistoryDB(MngrOrderViewTable);
+            CashierPlaceOrderSalesDB();
+        }
+
+
+        private void CashierGenerateReceipt()
+        {
+            DateTime currentDate = CashierDateTimePicker.Value;
+            string today = currentDate.ToString("MM-dd-yyyy hh:mm tt");
+            string orderNumber = CashierOrderNumBox.Text;
+            string staffName = CashierNameBox.Text;
+            string legal = "Thank you for dining in Eat N' Run Burger Diner.\n" +
+                "This receipt will serve as your proof of purchase of Eat N'Run food products, " +
+                "in order to raise concerns about your purchase, please keep this receipt.";
+            // Increment the file name
+
+            // Generate a unique filename for the PDF
+            string fileName = $"ENR_OrderReceipt_{orderNumber}.pdf";
+
+            // Create a SaveFileDialog to choose the save location
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "PDF Files|*.pdf";
+            saveFileDialog.FileName = fileName;
+            BaseFont boldBaseFont = BaseFont.CreateFont(BaseFont.COURIER_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            iTextSharp.text.Font boldfont = new iTextSharp.text.Font(boldBaseFont, 6, iTextSharp.text.Font.BOLD);
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                // Create a new document with custom page size (8.5"x4.25" in landscape mode)
+                Document doc = new Document(new iTextSharp.text.Rectangle(Utilities.MillimetersToPoints(108f), Utilities.MillimetersToPoints(216f)));
+
+                try
+                {
+                    // Create a PdfWriter instance
+                    PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(filePath, FileMode.Create));
+
+                    // Open the document for writing
+                    doc.Open();
+
+                    // Create fonts for the content
+                    // Create fonts for the content
+                    iTextSharp.text.Font headerFont = FontFactory.GetFont("Courier", 16, iTextSharp.text.Font.BOLD);
+                    iTextSharp.text.Font font = FontFactory.GetFont("Courier", 10, iTextSharp.text.Font.NORMAL);
+
+                    // Create a centered alignment for text
+                    Paragraph centerAligned = new Paragraph();
+                    centerAligned.Alignment = Element.ALIGN_CENTER;
+
+                    // Add centered content to the centerAligned Paragraph
+                    centerAligned.Add(new Chunk("Eat N'Run Burger Diner", headerFont));
+                    centerAligned.Add(new Chunk("\n123 Main St, Your City", font));
+                    centerAligned.Add(new Chunk("\nPhone: (555) 555-5555", font));
+
+                    // Add the centered content to the document
+                    doc.Add(centerAligned);
+                    doc.Add(new Chunk("\n")); // New line
+
+
+                    doc.Add(new Paragraph($"Order Number: {orderNumber}", font));
+                    doc.Add(new Paragraph($"Order Date: {today}", font));
+                    doc.Add(new Paragraph($"Order Checked Out By: {staffName}", font));
+                    doc.Add(new Chunk("\n")); // New line
+
+
+                    // Iterate through the rows of your 
+                    foreach (DataGridViewRow row in CashierOrderViewTable.Rows)
+                    {
+                        try
+                        {
+                            string itemName = row.Cells["Item Name"].Value?.ToString();
+                            if (string.IsNullOrEmpty(itemName))
+                            {
+                                continue; // Skip empty rows
+                            }
+
+                            string qty = row.Cells["Qty"].Value?.ToString();
+                            string itemcost = row.Cells["Price"].Value?.ToString();
+
+                            doc.Add(new Paragraph($"{qty} | {itemName} | Php {itemcost}", font));
+                            //MessageBox.Show($"{qty} | {itemName} | Php {itemcost}", "Receipt Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle or log any exceptions that occur while processing DataGridView data
+                            Console.WriteLine($"Error processing DataGridView row: {ex.Message}");
+                        }
+                    }
+
+
+                    doc.Add(new Chunk("\n")); // New line
+
+                    // Total from your textboxes as decimal
+                    decimal netAmount = decimal.Parse(CashierNetAmountBox.Text);
+                    decimal vat = decimal.Parse(CashierVATBox.Text);
+                    decimal grossAmount = decimal.Parse(CashierGrossAmountBox.Text);
+                    decimal cash = decimal.Parse(CashierCashBox.Text);
+                    decimal change = decimal.Parse(CashierChangeBox.Text);
+
+                    doc.Add(new Paragraph($"Net Amount: Php{netAmount:F2}", font));
+                    doc.Add(new Paragraph($"VAT (12%): Php{vat:F2}", font));
+                    doc.Add(new Paragraph($"Gross Amount: Php{grossAmount:F2}", font));
+                    doc.Add(new Paragraph($"Cash: Php{cash:F2}", font));
+                    doc.Add(new Paragraph($"Change Due: Php{change:F2}", font));
+                    Paragraph paragraph_footer = new Paragraph($"\n\n{legal}", boldfont);
+                    paragraph_footer.Alignment = Element.ALIGN_CENTER;
+                    doc.Add(paragraph_footer);
+                }
+                catch (DocumentException de)
+                {
+                    Console.Error.WriteLine(de.Message);
+                }
+                catch (IOException ioe)
+                {
+                    Console.Error.WriteLine(ioe.Message);
+                }
+                finally
+                {
+                    // Close the document
+                    doc.Close();
+                }
+
+                MessageBox.Show($"Receipt saved as {filePath}", "Receipt Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+
+
+        private void CashierPlaceOrderHistoryDB(DataGridView MngrOrderView)
+        {
+            // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
+            string orderNum = CashierSessionNumBox.Text + "-" + CashierOrderNumBox.Text;
+            DateTime currentDate = CashierDateTimePicker.Value;
+            string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
+            string mngrName = CashierNameBox.Text;
+            string yes = "Yes";
+            string no = "No";
+
+            if (CashierOrderViewTable.Rows.Count > 0)
+            {
+                try
+                {
+                    using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                    {
+                        connection.Open();
+
+                        foreach (DataGridViewRow row in CashierOrderViewTable.Rows)
+                        {
+                            if (row.Cells["Item Name"].Value != null)
+                            {
+                                string itemName = row.Cells["Item Name"].Value.ToString();
+                                int qty = Convert.ToInt32(row.Cells["Qty"].Value);
+                                decimal itemPrice = Convert.ToDecimal(row.Cells["Price"].Value);
+
+                                string query = "INSERT INTO orderhistory (OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, CheckedOut, Voided) " +
+                                               "VALUES (@OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @Yes, @No)";
+
+                                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                                {
+                                    cmd.Parameters.AddWithValue("@OrderNumber", orderNum);
+                                    cmd.Parameters.AddWithValue("@Date", today);
+                                    cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
+                                    cmd.Parameters.AddWithValue("@ItemName", itemName);
+                                    cmd.Parameters.AddWithValue("@Qty", qty);
+                                    cmd.Parameters.AddWithValue("@ItemPrice", itemPrice);
+                                    cmd.Parameters.AddWithValue("@Yes", yes);
+                                    cmd.Parameters.AddWithValue("@No", no);
+
+                                    cmd.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No items to insert into the database.");
+            }
+        }
+
+        private void CashierPlaceOrderSalesDB()
+        {
+            DateTime currentDate = CashierDateTimePicker.Value;
+
+            string orderNum = CashierSessionNumBox.Text + "-" + CashierOrderNumBox.Text;
+            string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
+            string mngrName = CashierNameBox.Text;
+            string netAmount = CashierNetAmountBox.Text;
+            string vat = CashierVATBox.Text;
+            string grossAmount = CashierGrossAmountBox.Text;
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    // Insert data into the accounts table, including the image (AccountPfp in the first position)
+                    string insertQuery = "INSERT INTO sales (OrderNumber, Date, OrderedBy, NetAmount, VAT, GrossAmount)" +
+                                        "VALUES (@OrderNum, @Date, @OrderedBy, @Net, @Vat, @Gross)";
+
+                    MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
+
+                    cmd.Parameters.AddWithValue("@OrderNum", orderNum);
+                    cmd.Parameters.AddWithValue("@Date", today);
+                    cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
+                    cmd.Parameters.AddWithValue("@Net", netAmount);
+                    cmd.Parameters.AddWithValue("@Vat", vat);
+                    cmd.Parameters.AddWithValue("@Gross", grossAmount);
+
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                // Successful insertion
+                MessageBox.Show("Order successfully placed.", "Hooray!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //EmplIDRefresher();
+                //AddNewAccBoxClear();
+                //LoadEmployeeAcc();
+                if (CashierCheckoutViewPanel.Visible)
+                {
+
+                    CashierCheckoutViewPanel.Visible = false;
+                    CashierNewOrderBtnPanel.Visible = true;
+                    CashierOrderViewPanel.Visible = true;
+                    CashierOrderNumRefresh();
+                    CashierOrderViewTable.Rows.Clear();
+
+                }
+
+                else
+                {
+                    CashierCheckoutViewPanel.Visible = true;
+                    CashierOrderViewPanel.Visible = false;
+                    CashierNewOrderBtnPanel.Visible = false;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                // Handle MySQL database exception
+                MessageBox.Show("MySQL Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Make sure to close the connection
+                connection.Close();
+            }
+        }
+
+        private void CashierCheckoutExitBtn_Click(object sender, EventArgs e)
+        {
+            if (CashierCheckoutViewPanel.Visible)
+            {
+
+                CashierCheckoutViewPanel.Visible = false;
+                CashierOrderViewPanel.Visible = true;
+
+            }
+
+            else
+            {
+                CashierCheckoutViewPanel.Visible = true;
+                CashierOrderViewPanel.Visible = false;
+            }
+        }
+
+        private void CashierOrderExitBtn_Click(object sender, EventArgs e)
+        {
+            if (CashierOrderDashboardPanel.Visible)
+            {
+                DialogResult result = MessageBox.Show("Do you want to cancel this order?", "Order Cancellation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    CashierOrderDashboardPanel.Visible = false;
+                    CashierNewOrderBtnPanel.Visible = true;
+                    CashierOrderViewTable.Rows.Clear();
+                    CashierItemPanel.Enabled = true;
+
+                }
+
+            }
+
+            else
+            {
+                CashierOrderDashboardPanel.Visible = true;
+                CashierNewOrderBtnPanel.Visible = false;
+            }
+        }
     }
 }
