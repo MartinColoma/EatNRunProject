@@ -69,19 +69,20 @@ namespace EatNRunProject
         private decimal originalGrossAmount; // Store the original value
         private bool discountApplied = false; // Flag to track if the discount has been applied
 
-        ////
-        //private DataGridView MngrOrderView;
+        
+        //dgv
+        private DataGridView CashierOrderView;
+        private DataGridView MngrOrderView;
 
         public ENRMainForm()
         {
             InitializeComponent();
 
             //Mngr Order View
-            InitializeDataGridView();
-
-            //Placeholder Text
-            //TxtPlaceholder.SetPlaceholder(ENREmplIDBox, "Enter Employee ID");
-            //TxtPlaceholder.SetPlaceholder(ENREmplPassBox, "Enter Employee Password");
+            MngrInitializeDataGridView();
+            
+            //Cashier Order View
+            CashierInitializeDataGridView();
 
             //Main Form Panel Manager
             MFpanelManager = new MainFormCard(LoginPanel, AdminPanel, ManagerPanel, CashierPanel);
@@ -144,11 +145,19 @@ namespace EatNRunProject
             MngrItemDrinkView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(FoodItemDrinkListTable_RowPostPaint);
 
             //DGV Error Handlers Cashier
-
+            CashierItemBurgerView.DataError += new DataGridViewDataErrorEventHandler(CashierFoodItemBurgerListTable_DataError);
+            CashierItemBurgerView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(CashierFoodItemBurgerListTable_RowPostPaint);
+            CashierItemSidesView.DataError += new DataGridViewDataErrorEventHandler(CashierFoodItemSideListTable_DataError);
+            CashierItemSidesView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(CashierFoodItemSideListTable_RowPostPaint);
+            CashierItemSetView.DataError += new DataGridViewDataErrorEventHandler(CashierFoodItemSetListTable_DataError);
+            CashierItemSetView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(CashierFoodItemSetListTable_RowPostPaint);
+            CashierItemDrinksView.DataError += new DataGridViewDataErrorEventHandler(CashierFoodItemDrinkListTable_DataError);
+            CashierItemDrinksView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(CashierFoodItemDrinkListTable_RowPostPaint);
 
 
             //
             MngrOrderView = MngrOrderViewTable; // Replace yourDataGridView with the actual DataGridView instance
+            CashierOrderView = CashierOrderViewTable; // Replace yourDataGridView with the actual DataGridView instance
 
 
             this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
@@ -171,6 +180,10 @@ namespace EatNRunProject
             LoadSideItemMenu();
             LoadDrinksItemMenu();
             LoadSetItemMenu();
+            CashierLoadBurgerItemMenu();
+            CashierLoadSideItemMenu();
+            CashierLoadDrinksItemMenu();
+            CashierLoadSetItemMenu();
         }
 
 
@@ -194,96 +207,167 @@ namespace EatNRunProject
             }
         }
 
-        //DGV Error Handlers Admin
+        // DGV Error Handlers
+        private void HandleDataError(DataGridView dgv, DataGridViewDataErrorEventArgs e)
+        {
+            if (e.ColumnIndex == 0) // Assuming column index for "AccountPfp" is 1
+            {
+                // Set the cell value to null to display an empty cell
+                e.ThrowException = false;
+                dgv[e.ColumnIndex, e.RowIndex].Value = null;
+            }
+        }
+
+        private void HandleRowPostPaint(DataGridView dgv, DataGridViewRowPostPaintEventArgs e)
+        {
+            dgv.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
+        }
+
+        // Account List Table
         private void AccountListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            if (e.ColumnIndex == 0) // Assuming column index for "AccountPfp" is 1
-            {
-                // Set the cell value to null to display an empty cell
-                e.ThrowException = false;
-                AccountListTable[e.ColumnIndex, e.RowIndex].Value = null;
-            }
+            HandleDataError(AccountListTable, e);
         }
+
         private void AccountListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            AccountListTable.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
+            HandleRowPostPaint(AccountListTable, e);
         }
 
+        // Food Item List Table
         private void FoodItemListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            if (e.ColumnIndex == 0) // Assuming column index for "AccountPfp" is 1
-            {
-                // Set the cell value to null to display an empty cell
-                e.ThrowException = false;
-                FoodItemListTable[e.ColumnIndex, e.RowIndex].Value = null;
-            }
-        }
-        private void FoodItemListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            FoodItemListTable.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
+            HandleDataError(FoodItemListTable, e);
         }
 
-        //Mngr DGV Error Handlers
-        //Burger
+        private void FoodItemListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            HandleRowPostPaint(FoodItemListTable, e);
+        }
+
+        // Mngr DGV Error Handlers (Burger, Side, Set, Drinks)
+        private void MngrDGVDataError(DataGridView dgv, DataGridViewDataErrorEventArgs e)
+        {
+            if (e.ColumnIndex == 0) // Assuming column index for "AccountPfp" is 1
+            {
+                // Set the cell value to null to display an empty cell
+                e.ThrowException = false;
+                dgv[e.ColumnIndex, e.RowIndex].Value = null;
+            }
+        }
+
+        private void MngrDGVRowPostPaint(DataGridView dgv, DataGridViewRowPostPaintEventArgs e)
+        {
+            dgv.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
+        }
+
+        // Burger List Table
         private void FoodItemBurgerListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            if (e.ColumnIndex == 0) // Assuming column index for "AccountPfp" is 1
-            {
-                // Set the cell value to null to display an empty cell
-                e.ThrowException = false;
-                MngrItemBurgerView[e.ColumnIndex, e.RowIndex].Value = null;
-            }
+            MngrDGVDataError(MngrItemBurgerView, e);
         }
+
         private void FoodItemBurgerListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            MngrItemBurgerView.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
+            MngrDGVRowPostPaint(MngrItemBurgerView, e);
         }
-        //Side
+
+        // Side List Table
         private void FoodItemSideListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            if (e.ColumnIndex == 0) // Assuming column index for "AccountPfp" is 1
-            {
-                // Set the cell value to null to display an empty cell
-                e.ThrowException = false;
-                MngrItemSidesView[e.ColumnIndex, e.RowIndex].Value = null;
-            }
+            MngrDGVDataError(MngrItemSidesView, e);
         }
+
         private void FoodItemSideListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            MngrItemSidesView.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
+            MngrDGVRowPostPaint(MngrItemSidesView, e);
         }
-        //Set
+
+        // Set List Table
         private void FoodItemSetListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            if (e.ColumnIndex == 0) // Assuming column index for "AccountPfp" is 1
-            {
-                // Set the cell value to null to display an empty cell
-                e.ThrowException = false;
-                MngrItemSetMealView[e.ColumnIndex, e.RowIndex].Value = null;
-            }
+            MngrDGVDataError(MngrItemSetMealView, e);
         }
+
         private void FoodItemSetListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            MngrItemSetMealView.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
+            MngrDGVRowPostPaint(MngrItemSetMealView, e);
         }
-        //Drinks
+
+        // Drinks List Table
         private void FoodItemDrinkListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MngrDGVDataError(MngrItemDrinkView, e);
+        }
+
+        private void FoodItemDrinkListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            MngrDGVRowPostPaint(MngrItemDrinkView, e);
+        }
+
+        private void CashierDGVDataError(DataGridView dgv, DataGridViewDataErrorEventArgs e)
         {
             if (e.ColumnIndex == 0) // Assuming column index for "AccountPfp" is 1
             {
                 // Set the cell value to null to display an empty cell
                 e.ThrowException = false;
-                MngrItemDrinkView[e.ColumnIndex, e.RowIndex].Value = null;
+                dgv[e.ColumnIndex, e.RowIndex].Value = null;
             }
         }
-        private void FoodItemDrinkListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+
+        private void CashierDGVRowPostPaint(DataGridView dgv, DataGridViewRowPostPaintEventArgs e)
         {
-            MngrItemDrinkView.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
+            dgv.AutoResizeRow(e.RowIndex, DataGridViewAutoSizeRowMode.AllCells);
         }
+
+        // Burger List Table
+        private void CashierFoodItemBurgerListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            CashierDGVDataError(MngrItemBurgerView, e);
+        }
+
+        private void CashierFoodItemBurgerListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            CashierDGVRowPostPaint(MngrItemBurgerView, e);
+        }
+
+        // Side List Table
+        private void CashierFoodItemSideListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            CashierDGVDataError(MngrItemSidesView, e);
+        }
+
+        private void CashierFoodItemSideListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            CashierDGVRowPostPaint(MngrItemSidesView, e);
+        }
+
+        // Set List Table
+        private void CashierFoodItemSetListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            CashierDGVDataError(MngrItemSetMealView, e);
+        }
+
+        private void CashierFoodItemSetListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            CashierDGVRowPostPaint(MngrItemSetMealView, e);
+        }
+
+        // Drinks List Table
+        private void CashierFoodItemDrinkListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            CashierDGVDataError(MngrItemDrinkView, e);
+        }
+
+        private void CashierFoodItemDrinkListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            CashierDGVRowPostPaint(MngrItemDrinkView, e);
+        }
+
 
 
         //Order View Table
-        private void InitializeDataGridView()
+        private void MngrInitializeDataGridView()
         {
             //DataGridViewButtonColumn trashColumn = new DataGridViewButtonColumn();
             //trashColumn.Name = "Void";
@@ -319,6 +403,46 @@ namespace EatNRunProject
             DataGridViewTextBoxColumn itemCostColumn = new DataGridViewTextBoxColumn();
             itemCostColumn.Name = "Price";
             MngrOrderViewTable.Columns.Add(itemCostColumn);
+
+        }
+
+        private void CashierInitializeDataGridView()
+        {
+            //DataGridViewButtonColumn trashColumn = new DataGridViewButtonColumn();
+            //trashColumn.Name = "Void";
+            //trashColumn.Text = "T";
+            //trashColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            //trashColumn.Width = 10;
+            //MngrOrderViewTable.Columns.Add(trashColumn);
+
+            DataGridViewTextBoxColumn itemNameColumn = new DataGridViewTextBoxColumn();
+            itemNameColumn.Name = "Item Name";
+            CashierOrderViewTable.Columns.Add(itemNameColumn);
+
+            DataGridViewButtonColumn minusColumn = new DataGridViewButtonColumn();
+            minusColumn.Name = "-";
+            minusColumn.Text = "-";
+            minusColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            minusColumn.Width = 10;
+            CashierOrderViewTable.Columns.Add(minusColumn);
+
+            DataGridViewTextBoxColumn quantityColumn = new DataGridViewTextBoxColumn();
+            quantityColumn.Name = "Qty";
+            quantityColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            quantityColumn.Width = 15;
+            CashierOrderViewTable.Columns.Add(quantityColumn);
+
+            DataGridViewButtonColumn plusColumn = new DataGridViewButtonColumn();
+            plusColumn.Name = "+";
+            plusColumn.Text = "+";
+            plusColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            plusColumn.Width = 10;
+            CashierOrderViewTable.Columns.Add(plusColumn);
+
+            DataGridViewTextBoxColumn itemCostColumn = new DataGridViewTextBoxColumn();
+            itemCostColumn.Name = "Price";
+            CashierOrderViewTable.Columns.Add(itemCostColumn);
+
         }
         public class HashHelper
         {
@@ -663,6 +787,198 @@ namespace EatNRunProject
                         MngrItemSetMealView.Columns[4].Visible = false;  // Assuming 3 is the index of "FoodType"
                         MngrItemSetMealView.Columns[6].Visible = false;  // Assuming 5 is the index of "FoodCreated"
                         MngrItemSetMealView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error occurred: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public void CashierLoadBurgerItemMenu()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    // Filter and sort the data by FoodType
+                    string sql = "SELECT * FROM `foodmenu` WHERE FoodType = 'Burger' ORDER BY FoodType";
+                    MySqlCommand cmd = new MySqlCommand(sql, connection);
+                    System.Data.DataTable dataTable = new System.Data.DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+
+                        // Create the "FoodPic" column with the specified settings
+                        DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
+                        imageColumn.HeaderText = "Item Picture";
+                        imageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+                        // Clear any existing columns to remove the extra "AccountPfp" column
+                        CashierItemBurgerView.Columns.Clear();
+
+                        // Add the image column to the DataGridView
+                        CashierItemBurgerView.Columns.Add(imageColumn);
+
+                        CashierItemBurgerView.DataSource = dataTable;
+
+                        CashierItemBurgerView.Columns[0].Visible = false;
+                        CashierItemBurgerView.Columns[4].Visible = false;
+                        CashierItemBurgerView.Columns[6].Visible = false;
+                        CashierItemBurgerView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error occurred: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public void CashierLoadSideItemMenu()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    // Filter and sort the data by FoodType
+                    string sql = "SELECT * FROM `foodmenu` WHERE FoodType = 'Sides' ORDER BY FoodType";
+                    MySqlCommand cmd = new MySqlCommand(sql, connection);
+                    System.Data.DataTable dataTable = new System.Data.DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+
+                        // Create the "FoodPic" column with the specified settings
+                        DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
+                        imageColumn.HeaderText = "Item Picture";
+                        imageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+                        // Clear any existing columns to remove the extra "AccountPfp" column
+                        CashierItemSidesView.Columns.Clear();
+
+                        // Add the image column to the DataGridView
+                        CashierItemSidesView.Columns.Add(imageColumn);
+
+                        CashierItemSidesView.DataSource = dataTable;
+
+                        CashierItemSidesView.Columns[0].Visible = false;
+                        CashierItemSidesView.Columns[4].Visible = false;
+                        CashierItemSidesView.Columns[6].Visible = false;
+                        CashierItemSidesView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error occurred: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public void CashierLoadDrinksItemMenu()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    // Filter and sort the data by FoodType
+                    string sql = "SELECT * FROM `foodmenu` WHERE FoodType = 'Drinks' ORDER BY FoodType";
+                    MySqlCommand cmd = new MySqlCommand(sql, connection);
+                    System.Data.DataTable dataTable = new System.Data.DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+
+                        // Create the "FoodPic" column with the specified settings
+                        DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
+                        imageColumn.HeaderText = "Item Picture";
+                        imageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+                        // Clear any existing columns to remove the extra "AccountPfp" column
+                        CashierItemDrinksView.Columns.Clear();
+
+                        // Add the image column to the DataGridView
+                        CashierItemDrinksView.Columns.Add(imageColumn);
+
+                        CashierItemDrinksView.DataSource = dataTable;
+
+                        CashierItemDrinksView.Columns[0].Visible = false;
+                        CashierItemDrinksView.Columns[4].Visible = false;
+                        CashierItemDrinksView.Columns[6].Visible = false;
+                        CashierItemDrinksView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error occurred: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public void CashierLoadSetItemMenu()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    // Filter and sort the data by FoodType
+                    string sql = "SELECT * FROM `foodmenu` WHERE FoodType = 'Set Meals' ORDER BY FoodType";
+                    MySqlCommand cmd = new MySqlCommand(sql, connection);
+                    System.Data.DataTable dataTable = new System.Data.DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+
+                        // Create the "FoodPic" column with the specified settings
+                        DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
+                        imageColumn.HeaderText = "Item Picture";
+                        imageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+
+                        // Clear any existing columns to remove the extra "AccountPfp" column
+                        CashierItemSetView.Columns.Clear();
+
+                        // Add the image column to the DataGridView
+                        CashierItemSetView.Columns.Add(imageColumn);
+
+                        CashierItemSetView.DataSource = dataTable;
+
+                        CashierItemSetView.Columns[0].Visible = false;
+                        CashierItemSetView.Columns[4].Visible = false;
+                        CashierItemSetView.Columns[6].Visible = false;
+                        CashierItemSetView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     }
                 }
             }
@@ -2336,7 +2652,7 @@ namespace EatNRunProject
         }
 
         // Declare a field or property to hold the DataGridView
-        private DataGridView MngrOrderView;
+
 
         // Constructor or initialization method
 
@@ -2368,6 +2684,7 @@ namespace EatNRunProject
             {
                 MngrOrderPanelManager.MngrOrderFormShow(MngrVoidViewPanel);
                 MngrItemPanel.Enabled = false;
+                //OrderVoider();
             }
 
         }
@@ -3277,22 +3594,265 @@ namespace EatNRunProject
 
         private void CashierItemBurgerBtn_Click(object sender, EventArgs e)
         {
-
+            CashierItemPanelManager.CashierItemFormShow(CashierItemBurgerPanel);
+            DBRefresher();
         }
 
         private void CashierItemSidesBtn_Click(object sender, EventArgs e)
         {
-
+            CashierItemPanelManager.CashierItemFormShow(CashierItemSidesPanel);
+            DBRefresher();
         }
 
         private void CashierItemDrinksBtn_Click(object sender, EventArgs e)
         {
-
+            CashierItemPanelManager.CashierItemFormShow(CashierItemDrinksPanel);
+            DBRefresher();
         }
 
         private void CashierItemSetBtn_Click(object sender, EventArgs e)
         {
-
+            CashierItemPanelManager.CashierItemFormShow(CashierItemSetPanel);
+            DBRefresher();
         }
+
+        private void CashierSwitchBtn_Click_1(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to switch user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                MFpanelManager.MFShow(LoginPanel);
+                CashierOrderViewTable.Rows.Clear();
+                MngrItemPanel.Enabled = true;
+
+            }
+            else
+            {
+
+            }
+        }
+
+        private void CashierOrderViewTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && CashierOrderViewTable.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                // Handle the Bin column
+                if (CashierOrderViewTable.Columns[e.ColumnIndex].Name == "Void")
+                {
+                    // Remove the entire row
+                    CashierOrderViewTable.Rows.RemoveAt(e.RowIndex);
+                }
+                else if (CashierOrderViewTable.Columns[e.ColumnIndex].Name == "-")
+                {
+                    string quantityString = CashierOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
+                    if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
+                    {
+                        decimal itemCost = decimal.Parse(CashierOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString());
+
+                        // Calculate the cost per item
+                        decimal costPerItem = itemCost / quantity;
+
+                        // Decrease quantity
+                        if (quantity > 1)
+                        {
+                            quantity--;
+
+                            // Calculate updated item cost (reset to original price)
+                            decimal updatedCost = costPerItem * quantity;
+
+                            // Update Qty and ItemCost in the DataGridView
+                            CashierOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity.ToString();
+                            CashierOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                        }
+                    }
+                    else
+                    {
+                        // Handle the case where quantityString is empty or not a valid integer
+                        // For example, show an error message or set a default value
+                    }
+                }
+                else if (CashierOrderViewTable.Columns[e.ColumnIndex].Name == "+")
+                {
+                    string quantityString = CashierOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
+                    if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
+                    {
+                        decimal itemCost = decimal.Parse(CashierOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString());
+
+                        // Calculate the cost per item
+                        decimal costPerItem = itemCost / quantity;
+
+                        // Increase quantity
+                        quantity++;
+
+                        // Calculate updated item cost
+                        decimal updatedCost = costPerItem * quantity;
+
+                        // Update Qty and ItemCost in the DataGridView
+                        CashierOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity.ToString();
+                        CashierOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                    }
+                    else
+                    {
+                        // Handle the case where quantityString is empty or not a valid integer
+                        // For example, show an error message or set a default value
+                    }
+                }
+            }
+        }
+
+        private void CashierItemSidesView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridView dgv = (DataGridView)sender;
+                DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
+
+                // Call the method to handle the click event
+                CashierHandleDataGridViewCellClick(dgv, selectedRow);
+            }
+        }
+
+        private void CashierItemBurgerView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridView dgv = (DataGridView)sender;
+                DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
+
+                // Call the method to handle the click event
+                CashierHandleDataGridViewCellClick(dgv, selectedRow);
+            }
+        }
+
+        private void CashierItemDrinksView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridView dgv = (DataGridView)sender;
+                DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
+
+                // Call the method to handle the click event
+                CashierHandleDataGridViewCellClick(dgv, selectedRow);
+            }
+        }
+
+        private void CashierItemSetView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridView dgv = (DataGridView)sender;
+                DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
+
+                // Call the method to handle the click event
+                CashierHandleDataGridViewCellClick(dgv, selectedRow);
+            }
+        }
+
+        private void CashierHandleDataGridViewCellClick(DataGridView dgv, DataGridViewRow selectedRow)
+        {
+            string cellValue1 = selectedRow.Cells[2].Value.ToString(); // Item Name
+
+            bool itemExists = false;
+            int existingRowIndex = -1;
+
+            // Check if the item already exists in the order
+            foreach (DataGridViewRow row in CashierOrderViewTable.Rows)
+            {
+                if (row.Cells["Item Name"].Value != null && row.Cells["Item Name"].Value.ToString() == cellValue1)
+                {
+                    itemExists = true;
+                    existingRowIndex = row.Index;
+                    break;
+                }
+            }
+
+            if (itemExists)
+            {
+                // The item already exists, increment quantity and update price
+                string quantityString = CashierOrderViewTable.Rows[existingRowIndex].Cells["Qty"].Value?.ToString();
+                if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
+                {
+                    decimal itemCost = decimal.Parse(CashierOrderViewTable.Rows[existingRowIndex].Cells["Price"].Value?.ToString());
+
+                    // Calculate the cost per item
+                    decimal costPerItem = itemCost / quantity;
+
+                    // Increase quantity
+                    quantity++;
+
+                    // Calculate updated item cost
+                    decimal updatedCost = costPerItem * quantity;
+
+                    // Update Qty and ItemCost in the DataGridView
+                    CashierOrderViewTable.Rows[existingRowIndex].Cells["Qty"].Value = quantity.ToString();
+                    CashierOrderViewTable.Rows[existingRowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                    CalculateTotalPrice();
+                }
+                else
+                {
+                    // Handle the case where quantityString is empty or not a valid integer
+                    // For example, show an error message or set a default value
+                }
+            }
+            else
+            {
+                // The item doesn't exist in the order, add it
+                DialogResult result = MessageBox.Show("Do you want to add this in the order?", "Add Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    string cellValue3 = selectedRow.Cells[5].Value.ToString(); // Item Price
+
+                    CashierOrderViewTable.Rows.Add(cellValue1, "-", "1", "+", cellValue3);
+                    CashierCalculateTotalPrice();
+                }
+            }
+        }
+
+        private void CashierCalculateTotalPrice()
+        {
+            decimal total = 0;
+
+            // Assuming the "Price" column is of decimal type
+            int priceColumnIndex = MngrOrderViewTable.Columns["Price"].Index;
+
+            foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
+            {
+                if (row.Cells[priceColumnIndex].Value != null)
+                {
+                    decimal price = decimal.Parse(row.Cells[priceColumnIndex].Value.ToString());
+                    total += price;
+                }
+            }
+
+            // Display the total price in the GrossAmountBox TextBox
+            MngrGrossAmountBox.Text = total.ToString("F2"); // Format to two decimal places
+            CashierCalculateVATAndNetAmount();
+        }
+
+        public void CashierCalculateVATAndNetAmount()
+        {
+            // Get the Gross Amount from the TextBox (MngrGrossAmountBox)
+            if (decimal.TryParse(CashierGrossAmountBox.Text, out decimal grossAmount))
+            {
+                // Fixed VAT rate of 12%
+                decimal rate = 12;
+
+                // Calculate the VAT Amount
+                decimal netAmount = grossAmount / ((rate / 100) + 1);
+
+                // Calculate the Net Amount
+                decimal vatAmount = grossAmount - netAmount;
+
+                // Display the calculated values in TextBoxes
+                CashierVATBox.Text = vatAmount.ToString("0.00");
+                CashierNetAmountBox.Text = netAmount.ToString("0.00");
+            }
+            else
+            {
+                // Handle invalid Gross Amount input
+                MessageBox.Show("Invalid Gross Amount. Please enter a valid number.");
+            }
+        }
+
     }
 }

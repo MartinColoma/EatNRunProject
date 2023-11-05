@@ -70,7 +70,7 @@
             this.SalesPanel = new System.Windows.Forms.Panel();
             this.AdminSalesEndDateLbl = new System.Windows.Forms.Label();
             this.AdminSalesEndDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.AdminSalesLbl = new System.Windows.Forms.Label();
             this.AdminSalesStartDateLbl = new System.Windows.Forms.Label();
             this.AdminSalesTable = new System.Windows.Forms.DataGridView();
             this.AdminSalesStartDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -313,58 +313,58 @@
             this.CashierSearchBox = new System.Windows.Forms.TextBox();
             this.CashierViewPanel = new System.Windows.Forms.Panel();
             this.CashierVoidViewPanel = new System.Windows.Forms.Panel();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
+            this.CashierVoidExitBtn = new FontAwesome.Sharp.IconButton();
+            this.CashierEmplPassLbl = new System.Windows.Forms.Label();
+            this.CashierEmplPassPanelBox = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.label7 = new System.Windows.Forms.Label();
+            this.CashierVoidEmplIDLbl = new System.Windows.Forms.Label();
+            this.CashierEmplIDPanelBox = new System.Windows.Forms.Panel();
+            this.CashierEmplIDBox = new System.Windows.Forms.ComboBox();
+            this.CashierVoidOrderBtn = new FontAwesome.Sharp.IconButton();
+            this.CashierMngrVoidLbl = new System.Windows.Forms.Label();
             this.CashierCheckoutViewPanel = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.iconButton7 = new FontAwesome.Sharp.IconButton();
-            this.label14 = new System.Windows.Forms.Label();
+            this.CashierCashLbl = new System.Windows.Forms.Label();
+            this.CashierCashPanelBox = new System.Windows.Forms.Panel();
+            this.CashierCashBox = new System.Windows.Forms.TextBox();
+            this.CashierChangeLbl = new System.Windows.Forms.Label();
+            this.CashierChangePanelBox = new System.Windows.Forms.Panel();
+            this.CashierChangeBox = new System.Windows.Forms.TextBox();
+            this.CashierDiscountPWD = new System.Windows.Forms.CheckBox();
+            this.CashierDiscountSenior = new System.Windows.Forms.CheckBox();
+            this.CashierDiscountLbl = new System.Windows.Forms.Label();
+            this.CashierNetAmountLbl = new System.Windows.Forms.Label();
+            this.CashierNetAmountPanelBox = new System.Windows.Forms.Panel();
+            this.CashierNetAmountBox = new System.Windows.Forms.TextBox();
+            this.CashierVATLbl = new System.Windows.Forms.Label();
+            this.CashierVATPanelBox = new System.Windows.Forms.Panel();
+            this.CashierVATBox = new System.Windows.Forms.TextBox();
+            this.CashierGrossAmountLbl = new System.Windows.Forms.Label();
+            this.CashierCheckoutExitBtn = new FontAwesome.Sharp.IconButton();
+            this.CashierGrossAmountPanelBox = new System.Windows.Forms.Panel();
+            this.CashierGrossAmountBox = new System.Windows.Forms.TextBox();
+            this.CashierPlaceOrderBtn = new FontAwesome.Sharp.IconButton();
+            this.CashierCheckoutLbl = new System.Windows.Forms.Label();
             this.CashierOrderViewPanel = new System.Windows.Forms.Panel();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.iconButton8 = new FontAwesome.Sharp.IconButton();
-            this.iconButton9 = new FontAwesome.Sharp.IconButton();
-            this.label15 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.CashierExitBtn = new FontAwesome.Sharp.IconButton();
+            this.CashierOrderNumBox = new System.Windows.Forms.TextBox();
+            this.CashierVoidBtn = new FontAwesome.Sharp.IconButton();
+            this.CashierCheckoutOrderBtn = new FontAwesome.Sharp.IconButton();
+            this.CashierOrderNumLbl = new System.Windows.Forms.Label();
+            this.CashierOrderViewTable = new System.Windows.Forms.DataGridView();
+            this.CashierOrderExitBtn = new FontAwesome.Sharp.IconButton();
             this.CashierItemPanel = new System.Windows.Forms.Panel();
             this.CashierItemSetPanel = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.CashierItemSetLbl = new System.Windows.Forms.Label();
+            this.CashierItemSetView = new System.Windows.Forms.DataGridView();
             this.CashierItemSidesPanel = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.CashierItemSidesLbl = new System.Windows.Forms.Label();
+            this.CashierItemSidesView = new System.Windows.Forms.DataGridView();
             this.CashierItemBurgerPanel = new System.Windows.Forms.Panel();
             this.CashierItemBurgerLbl = new System.Windows.Forms.Label();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.CashierItemBurgerView = new System.Windows.Forms.DataGridView();
             this.CashierItemDrinksPanel = new System.Windows.Forms.Panel();
-            this.label19 = new System.Windows.Forms.Label();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
-            this.iconButton11 = new FontAwesome.Sharp.IconButton();
+            this.CashierItemDrinksLbl = new System.Windows.Forms.Label();
+            this.CashierItemDrinksView = new System.Windows.Forms.DataGridView();
+            this.CashierSwitchBtn = new FontAwesome.Sharp.IconButton();
             this.CashieItemBtnPanel = new System.Windows.Forms.Panel();
             this.CashierItemSidesBtn = new FontAwesome.Sharp.IconButton();
             this.CashierItemDrinksBtn = new FontAwesome.Sharp.IconButton();
@@ -485,25 +485,25 @@
             this.CashierSearchPanelBox.SuspendLayout();
             this.CashierViewPanel.SuspendLayout();
             this.CashierVoidViewPanel.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
+            this.CashierEmplPassPanelBox.SuspendLayout();
+            this.CashierEmplIDPanelBox.SuspendLayout();
             this.CashierCheckoutViewPanel.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panel13.SuspendLayout();
-            this.panel14.SuspendLayout();
-            this.panel15.SuspendLayout();
-            this.panel16.SuspendLayout();
+            this.CashierCashPanelBox.SuspendLayout();
+            this.CashierChangePanelBox.SuspendLayout();
+            this.CashierNetAmountPanelBox.SuspendLayout();
+            this.CashierVATPanelBox.SuspendLayout();
+            this.CashierGrossAmountPanelBox.SuspendLayout();
             this.CashierOrderViewPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashierOrderViewTable)).BeginInit();
             this.CashierItemPanel.SuspendLayout();
             this.CashierItemSetPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashierItemSetView)).BeginInit();
             this.CashierItemSidesPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashierItemSidesView)).BeginInit();
             this.CashierItemBurgerPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashierItemBurgerView)).BeginInit();
             this.CashierItemDrinksPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashierItemDrinksView)).BeginInit();
             this.CashieItemBtnPanel.SuspendLayout();
             this.CashierHeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ENRCashierLogo)).BeginInit();
@@ -628,7 +628,7 @@
             this.AdminFormPicker.SetCardName(this.SalesPanel, "Card3");
             this.SalesPanel.Controls.Add(this.AdminSalesEndDateLbl);
             this.SalesPanel.Controls.Add(this.AdminSalesEndDatePicker);
-            this.SalesPanel.Controls.Add(this.label1);
+            this.SalesPanel.Controls.Add(this.AdminSalesLbl);
             this.SalesPanel.Controls.Add(this.AdminSalesStartDateLbl);
             this.SalesPanel.Controls.Add(this.AdminSalesTable);
             this.SalesPanel.Controls.Add(this.AdminSalesStartDatePicker);
@@ -668,16 +668,16 @@
             this.AdminSalesEndDatePicker.Size = new System.Drawing.Size(175, 23);
             this.AdminSalesEndDatePicker.TabIndex = 20;
             // 
-            // label1
+            // AdminSalesLbl
             // 
-            this.label1.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label1.Location = new System.Drawing.Point(320, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(490, 47);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Admin Sales";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AdminSalesLbl.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminSalesLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.AdminSalesLbl.Location = new System.Drawing.Point(320, 16);
+            this.AdminSalesLbl.Name = "AdminSalesLbl";
+            this.AdminSalesLbl.Size = new System.Drawing.Size(490, 47);
+            this.AdminSalesLbl.TabIndex = 19;
+            this.AdminSalesLbl.Text = "Admin Sales";
+            this.AdminSalesLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AdminSalesStartDateLbl
             // 
@@ -4014,9 +4014,9 @@
             this.CashierFormPicker.SetCardName(this.CashierOrderDashboardPanel, "Card3");
             this.CashierOrderDashboardPanel.Controls.Add(this.CashierSearchPanelBox);
             this.CashierOrderDashboardPanel.Controls.Add(this.CashierViewPanel);
-            this.CashierOrderDashboardPanel.Controls.Add(this.CashierExitBtn);
+            this.CashierOrderDashboardPanel.Controls.Add(this.CashierOrderExitBtn);
             this.CashierOrderDashboardPanel.Controls.Add(this.CashierItemPanel);
-            this.CashierOrderDashboardPanel.Controls.Add(this.iconButton11);
+            this.CashierOrderDashboardPanel.Controls.Add(this.CashierSwitchBtn);
             this.CashierOrderDashboardPanel.Controls.Add(this.CashieItemBtnPanel);
             this.CashierOrderDashboardPanel.Location = new System.Drawing.Point(0, 0);
             this.CashierFormPicker.SetMinimumSize(this.CashierOrderDashboardPanel, new System.Drawing.Size(1264, 532));
@@ -4077,13 +4077,13 @@
             // 
             this.CashierVoidViewPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CashierViewFormPicker.SetCardName(this.CashierVoidViewPanel, "Card1");
-            this.CashierVoidViewPanel.Controls.Add(this.iconButton4);
-            this.CashierVoidViewPanel.Controls.Add(this.label5);
-            this.CashierVoidViewPanel.Controls.Add(this.panel9);
-            this.CashierVoidViewPanel.Controls.Add(this.label6);
-            this.CashierVoidViewPanel.Controls.Add(this.panel10);
-            this.CashierVoidViewPanel.Controls.Add(this.iconButton5);
-            this.CashierVoidViewPanel.Controls.Add(this.label7);
+            this.CashierVoidViewPanel.Controls.Add(this.CashierVoidExitBtn);
+            this.CashierVoidViewPanel.Controls.Add(this.CashierEmplPassLbl);
+            this.CashierVoidViewPanel.Controls.Add(this.CashierEmplPassPanelBox);
+            this.CashierVoidViewPanel.Controls.Add(this.CashierVoidEmplIDLbl);
+            this.CashierVoidViewPanel.Controls.Add(this.CashierEmplIDPanelBox);
+            this.CashierVoidViewPanel.Controls.Add(this.CashierVoidOrderBtn);
+            this.CashierVoidViewPanel.Controls.Add(this.CashierMngrVoidLbl);
             this.CashierVoidViewPanel.Location = new System.Drawing.Point(0, 0);
             this.CashierViewFormPicker.SetMinimumSize(this.CashierVoidViewPanel, new System.Drawing.Size(450, 454));
             this.CashierVoidViewPanel.Name = "CashierVoidViewPanel";
@@ -4091,42 +4091,42 @@
             this.CashierVoidViewPanel.Size = new System.Drawing.Size(450, 454);
             this.CashierVoidViewPanel.TabIndex = 27;
             // 
-            // iconButton4
+            // CashierVoidExitBtn
             // 
-            this.iconButton4.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton4.FlatAppearance.BorderSize = 0;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton4.IconSize = 24;
-            this.iconButton4.Location = new System.Drawing.Point(420, 9);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Size = new System.Drawing.Size(24, 24);
-            this.iconButton4.TabIndex = 26;
-            this.iconButton4.UseVisualStyleBackColor = false;
+            this.CashierVoidExitBtn.BackColor = System.Drawing.Color.Transparent;
+            this.CashierVoidExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierVoidExitBtn.FlatAppearance.BorderSize = 0;
+            this.CashierVoidExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CashierVoidExitBtn.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            this.CashierVoidExitBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierVoidExitBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.CashierVoidExitBtn.IconSize = 24;
+            this.CashierVoidExitBtn.Location = new System.Drawing.Point(420, 9);
+            this.CashierVoidExitBtn.Name = "CashierVoidExitBtn";
+            this.CashierVoidExitBtn.Size = new System.Drawing.Size(24, 24);
+            this.CashierVoidExitBtn.TabIndex = 26;
+            this.CashierVoidExitBtn.UseVisualStyleBackColor = false;
             // 
-            // label5
+            // CashierEmplPassLbl
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label5.Location = new System.Drawing.Point(63, 215);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(156, 18);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Employee Password:";
+            this.CashierEmplPassLbl.AutoSize = true;
+            this.CashierEmplPassLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierEmplPassLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierEmplPassLbl.Location = new System.Drawing.Point(63, 215);
+            this.CashierEmplPassLbl.Name = "CashierEmplPassLbl";
+            this.CashierEmplPassLbl.Size = new System.Drawing.Size(156, 18);
+            this.CashierEmplPassLbl.TabIndex = 17;
+            this.CashierEmplPassLbl.Text = "Employee Password:";
             // 
-            // panel9
+            // CashierEmplPassPanelBox
             // 
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.textBox2);
-            this.panel9.ForeColor = System.Drawing.Color.Coral;
-            this.panel9.Location = new System.Drawing.Point(66, 246);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(320, 30);
-            this.panel9.TabIndex = 18;
+            this.CashierEmplPassPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CashierEmplPassPanelBox.Controls.Add(this.textBox2);
+            this.CashierEmplPassPanelBox.ForeColor = System.Drawing.Color.Coral;
+            this.CashierEmplPassPanelBox.Location = new System.Drawing.Point(66, 246);
+            this.CashierEmplPassPanelBox.Name = "CashierEmplPassPanelBox";
+            this.CashierEmplPassPanelBox.Size = new System.Drawing.Size(320, 30);
+            this.CashierEmplPassPanelBox.TabIndex = 18;
             // 
             // textBox2
             // 
@@ -4141,91 +4141,91 @@
             this.textBox2.TabIndex = 8;
             this.textBox2.UseSystemPasswordChar = true;
             // 
-            // label6
+            // CashierVoidEmplIDLbl
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label6.Location = new System.Drawing.Point(63, 151);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 18);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Employee ID:";
+            this.CashierVoidEmplIDLbl.AutoSize = true;
+            this.CashierVoidEmplIDLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierVoidEmplIDLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierVoidEmplIDLbl.Location = new System.Drawing.Point(63, 151);
+            this.CashierVoidEmplIDLbl.Name = "CashierVoidEmplIDLbl";
+            this.CashierVoidEmplIDLbl.Size = new System.Drawing.Size(101, 18);
+            this.CashierVoidEmplIDLbl.TabIndex = 15;
+            this.CashierVoidEmplIDLbl.Text = "Employee ID:";
             // 
-            // panel10
+            // CashierEmplIDPanelBox
             // 
-            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel10.Controls.Add(this.comboBox1);
-            this.panel10.ForeColor = System.Drawing.Color.Coral;
-            this.panel10.Location = new System.Drawing.Point(66, 182);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(320, 30);
-            this.panel10.TabIndex = 16;
+            this.CashierEmplIDPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CashierEmplIDPanelBox.Controls.Add(this.CashierEmplIDBox);
+            this.CashierEmplIDPanelBox.ForeColor = System.Drawing.Color.Coral;
+            this.CashierEmplIDPanelBox.Location = new System.Drawing.Point(66, 182);
+            this.CashierEmplIDPanelBox.Name = "CashierEmplIDPanelBox";
+            this.CashierEmplIDPanelBox.Size = new System.Drawing.Size(320, 30);
+            this.CashierEmplIDPanelBox.TabIndex = 16;
             // 
-            // comboBox1
+            // CashierEmplIDBox
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(0, 0);
-            this.comboBox1.MaxLength = 10;
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(318, 23);
-            this.comboBox1.TabIndex = 0;
+            this.CashierEmplIDBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierEmplIDBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CashierEmplIDBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CashierEmplIDBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierEmplIDBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierEmplIDBox.FormattingEnabled = true;
+            this.CashierEmplIDBox.Location = new System.Drawing.Point(0, 0);
+            this.CashierEmplIDBox.MaxLength = 10;
+            this.CashierEmplIDBox.Name = "CashierEmplIDBox";
+            this.CashierEmplIDBox.Size = new System.Drawing.Size(318, 23);
+            this.CashierEmplIDBox.TabIndex = 0;
             // 
-            // iconButton5
+            // CashierVoidOrderBtn
             // 
-            this.iconButton5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton5.FlatAppearance.BorderSize = 2;
-            this.iconButton5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(105)))), ((int)(((byte)(67)))));
-            this.iconButton5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(175)))), ((int)(((byte)(111)))));
-            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton5.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton5.IconColor = System.Drawing.Color.Black;
-            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton5.Location = new System.Drawing.Point(261, 300);
-            this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Size = new System.Drawing.Size(125, 38);
-            this.iconButton5.TabIndex = 14;
-            this.iconButton5.Text = "VOID ORDER";
-            this.iconButton5.UseVisualStyleBackColor = true;
+            this.CashierVoidOrderBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierVoidOrderBtn.FlatAppearance.BorderSize = 2;
+            this.CashierVoidOrderBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(105)))), ((int)(((byte)(67)))));
+            this.CashierVoidOrderBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(175)))), ((int)(((byte)(111)))));
+            this.CashierVoidOrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CashierVoidOrderBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierVoidOrderBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierVoidOrderBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.CashierVoidOrderBtn.IconColor = System.Drawing.Color.Black;
+            this.CashierVoidOrderBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.CashierVoidOrderBtn.Location = new System.Drawing.Point(261, 300);
+            this.CashierVoidOrderBtn.Name = "CashierVoidOrderBtn";
+            this.CashierVoidOrderBtn.Size = new System.Drawing.Size(125, 38);
+            this.CashierVoidOrderBtn.TabIndex = 14;
+            this.CashierVoidOrderBtn.Text = "VOID ORDER";
+            this.CashierVoidOrderBtn.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // CashierMngrVoidLbl
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label7.Location = new System.Drawing.Point(62, 112);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(307, 27);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "| Manager Void Confirmation";
+            this.CashierMngrVoidLbl.AutoSize = true;
+            this.CashierMngrVoidLbl.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierMngrVoidLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierMngrVoidLbl.Location = new System.Drawing.Point(62, 112);
+            this.CashierMngrVoidLbl.Name = "CashierMngrVoidLbl";
+            this.CashierMngrVoidLbl.Size = new System.Drawing.Size(307, 27);
+            this.CashierMngrVoidLbl.TabIndex = 13;
+            this.CashierMngrVoidLbl.Text = "| Manager Void Confirmation";
             // 
             // CashierCheckoutViewPanel
             // 
             this.CashierCheckoutViewPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CashierViewFormPicker.SetCardName(this.CashierCheckoutViewPanel, "Card2");
-            this.CashierCheckoutViewPanel.Controls.Add(this.label8);
-            this.CashierCheckoutViewPanel.Controls.Add(this.panel12);
-            this.CashierCheckoutViewPanel.Controls.Add(this.label9);
-            this.CashierCheckoutViewPanel.Controls.Add(this.panel13);
-            this.CashierCheckoutViewPanel.Controls.Add(this.checkBox1);
-            this.CashierCheckoutViewPanel.Controls.Add(this.checkBox2);
-            this.CashierCheckoutViewPanel.Controls.Add(this.label10);
-            this.CashierCheckoutViewPanel.Controls.Add(this.label11);
-            this.CashierCheckoutViewPanel.Controls.Add(this.panel14);
-            this.CashierCheckoutViewPanel.Controls.Add(this.label12);
-            this.CashierCheckoutViewPanel.Controls.Add(this.panel15);
-            this.CashierCheckoutViewPanel.Controls.Add(this.label13);
-            this.CashierCheckoutViewPanel.Controls.Add(this.iconButton6);
-            this.CashierCheckoutViewPanel.Controls.Add(this.panel16);
-            this.CashierCheckoutViewPanel.Controls.Add(this.iconButton7);
-            this.CashierCheckoutViewPanel.Controls.Add(this.label14);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierCashLbl);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierCashPanelBox);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierChangeLbl);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierChangePanelBox);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierDiscountPWD);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierDiscountSenior);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierDiscountLbl);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierNetAmountLbl);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierNetAmountPanelBox);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierVATLbl);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierVATPanelBox);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierGrossAmountLbl);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierCheckoutExitBtn);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierGrossAmountPanelBox);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierPlaceOrderBtn);
+            this.CashierCheckoutViewPanel.Controls.Add(this.CashierCheckoutLbl);
             this.CashierCheckoutViewPanel.Location = new System.Drawing.Point(0, 0);
             this.CashierViewFormPicker.SetMinimumSize(this.CashierCheckoutViewPanel, new System.Drawing.Size(450, 454));
             this.CashierCheckoutViewPanel.Name = "CashierCheckoutViewPanel";
@@ -4233,271 +4233,271 @@
             this.CashierCheckoutViewPanel.Size = new System.Drawing.Size(450, 454);
             this.CashierCheckoutViewPanel.TabIndex = 25;
             // 
-            // label8
+            // CashierCashLbl
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label8.Location = new System.Drawing.Point(19, 287);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 23);
-            this.label8.TabIndex = 36;
-            this.label8.Text = "Cash:";
+            this.CashierCashLbl.AutoSize = true;
+            this.CashierCashLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierCashLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierCashLbl.Location = new System.Drawing.Point(19, 287);
+            this.CashierCashLbl.Name = "CashierCashLbl";
+            this.CashierCashLbl.Size = new System.Drawing.Size(59, 23);
+            this.CashierCashLbl.TabIndex = 36;
+            this.CashierCashLbl.Text = "Cash:";
             // 
-            // panel12
+            // CashierCashPanelBox
             // 
-            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel12.Controls.Add(this.textBox3);
-            this.panel12.ForeColor = System.Drawing.Color.Coral;
-            this.panel12.Location = new System.Drawing.Point(23, 312);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(198, 23);
-            this.panel12.TabIndex = 37;
+            this.CashierCashPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CashierCashPanelBox.Controls.Add(this.CashierCashBox);
+            this.CashierCashPanelBox.ForeColor = System.Drawing.Color.Coral;
+            this.CashierCashPanelBox.Location = new System.Drawing.Point(23, 312);
+            this.CashierCashPanelBox.Name = "CashierCashPanelBox";
+            this.CashierCashPanelBox.Size = new System.Drawing.Size(198, 23);
+            this.CashierCashPanelBox.TabIndex = 37;
             // 
-            // textBox3
+            // CashierCashBox
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.textBox3.Location = new System.Drawing.Point(0, 0);
-            this.textBox3.MaxLength = 7;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(196, 23);
-            this.textBox3.TabIndex = 8;
+            this.CashierCashBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierCashBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CashierCashBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CashierCashBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierCashBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierCashBox.Location = new System.Drawing.Point(0, 0);
+            this.CashierCashBox.MaxLength = 7;
+            this.CashierCashBox.Name = "CashierCashBox";
+            this.CashierCashBox.Size = new System.Drawing.Size(196, 23);
+            this.CashierCashBox.TabIndex = 8;
             // 
-            // label9
+            // CashierChangeLbl
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label9.Location = new System.Drawing.Point(226, 287);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(121, 23);
-            this.label9.TabIndex = 34;
-            this.label9.Text = "Change Due:";
+            this.CashierChangeLbl.AutoSize = true;
+            this.CashierChangeLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierChangeLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierChangeLbl.Location = new System.Drawing.Point(226, 287);
+            this.CashierChangeLbl.Name = "CashierChangeLbl";
+            this.CashierChangeLbl.Size = new System.Drawing.Size(121, 23);
+            this.CashierChangeLbl.TabIndex = 34;
+            this.CashierChangeLbl.Text = "Change Due:";
             // 
-            // panel13
+            // CashierChangePanelBox
             // 
-            this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel13.Controls.Add(this.textBox4);
-            this.panel13.ForeColor = System.Drawing.Color.Coral;
-            this.panel13.Location = new System.Drawing.Point(230, 312);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(198, 23);
-            this.panel13.TabIndex = 35;
+            this.CashierChangePanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CashierChangePanelBox.Controls.Add(this.CashierChangeBox);
+            this.CashierChangePanelBox.ForeColor = System.Drawing.Color.Coral;
+            this.CashierChangePanelBox.Location = new System.Drawing.Point(230, 312);
+            this.CashierChangePanelBox.Name = "CashierChangePanelBox";
+            this.CashierChangePanelBox.Size = new System.Drawing.Size(198, 23);
+            this.CashierChangePanelBox.TabIndex = 35;
             // 
-            // textBox4
+            // CashierChangeBox
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox4.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.textBox4.Location = new System.Drawing.Point(0, 0);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(196, 23);
-            this.textBox4.TabIndex = 8;
+            this.CashierChangeBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierChangeBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CashierChangeBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CashierChangeBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierChangeBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierChangeBox.Location = new System.Drawing.Point(0, 0);
+            this.CashierChangeBox.Name = "CashierChangeBox";
+            this.CashierChangeBox.ReadOnly = true;
+            this.CashierChangeBox.Size = new System.Drawing.Size(196, 23);
+            this.CashierChangeBox.TabIndex = 8;
             // 
-            // checkBox1
+            // CashierDiscountPWD
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.FlatAppearance.BorderSize = 2;
-            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox1.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.checkBox1.Location = new System.Drawing.Point(218, 134);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(124, 22);
-            this.checkBox1.TabIndex = 33;
-            this.checkBox1.Text = "PWD Discount";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.CashierDiscountPWD.AutoSize = true;
+            this.CashierDiscountPWD.FlatAppearance.BorderSize = 2;
+            this.CashierDiscountPWD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CashierDiscountPWD.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierDiscountPWD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierDiscountPWD.Location = new System.Drawing.Point(218, 134);
+            this.CashierDiscountPWD.Name = "CashierDiscountPWD";
+            this.CashierDiscountPWD.Size = new System.Drawing.Size(124, 22);
+            this.CashierDiscountPWD.TabIndex = 33;
+            this.CashierDiscountPWD.Text = "PWD Discount";
+            this.CashierDiscountPWD.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // CashierDiscountSenior
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.FlatAppearance.BorderSize = 2;
-            this.checkBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox2.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.checkBox2.Location = new System.Drawing.Point(21, 134);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(191, 22);
-            this.checkBox2.TabIndex = 32;
-            this.checkBox2.Text = "Senior Citizen Discount";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.CashierDiscountSenior.AutoSize = true;
+            this.CashierDiscountSenior.FlatAppearance.BorderSize = 2;
+            this.CashierDiscountSenior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CashierDiscountSenior.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierDiscountSenior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierDiscountSenior.Location = new System.Drawing.Point(21, 134);
+            this.CashierDiscountSenior.Name = "CashierDiscountSenior";
+            this.CashierDiscountSenior.Size = new System.Drawing.Size(191, 22);
+            this.CashierDiscountSenior.TabIndex = 32;
+            this.CashierDiscountSenior.Text = "Senior Citizen Discount";
+            this.CashierDiscountSenior.UseVisualStyleBackColor = true;
             // 
-            // label10
+            // CashierDiscountLbl
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label10.Location = new System.Drawing.Point(18, 108);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 23);
-            this.label10.TabIndex = 31;
-            this.label10.Text = "Discount:";
+            this.CashierDiscountLbl.AutoSize = true;
+            this.CashierDiscountLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierDiscountLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierDiscountLbl.Location = new System.Drawing.Point(18, 108);
+            this.CashierDiscountLbl.Name = "CashierDiscountLbl";
+            this.CashierDiscountLbl.Size = new System.Drawing.Size(93, 23);
+            this.CashierDiscountLbl.TabIndex = 31;
+            this.CashierDiscountLbl.Text = "Discount:";
             // 
-            // label11
+            // CashierNetAmountLbl
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label11.Location = new System.Drawing.Point(18, 167);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(119, 23);
-            this.label11.TabIndex = 29;
-            this.label11.Text = "Net Amount:";
+            this.CashierNetAmountLbl.AutoSize = true;
+            this.CashierNetAmountLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierNetAmountLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierNetAmountLbl.Location = new System.Drawing.Point(18, 167);
+            this.CashierNetAmountLbl.Name = "CashierNetAmountLbl";
+            this.CashierNetAmountLbl.Size = new System.Drawing.Size(119, 23);
+            this.CashierNetAmountLbl.TabIndex = 29;
+            this.CashierNetAmountLbl.Text = "Net Amount:";
             // 
-            // panel14
+            // CashierNetAmountPanelBox
             // 
-            this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel14.Controls.Add(this.textBox5);
-            this.panel14.ForeColor = System.Drawing.Color.Coral;
-            this.panel14.Location = new System.Drawing.Point(22, 193);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(200, 23);
-            this.panel14.TabIndex = 30;
+            this.CashierNetAmountPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CashierNetAmountPanelBox.Controls.Add(this.CashierNetAmountBox);
+            this.CashierNetAmountPanelBox.ForeColor = System.Drawing.Color.Coral;
+            this.CashierNetAmountPanelBox.Location = new System.Drawing.Point(22, 193);
+            this.CashierNetAmountPanelBox.Name = "CashierNetAmountPanelBox";
+            this.CashierNetAmountPanelBox.Size = new System.Drawing.Size(200, 23);
+            this.CashierNetAmountPanelBox.TabIndex = 30;
             // 
-            // textBox5
+            // CashierNetAmountBox
             // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox5.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.textBox5.Location = new System.Drawing.Point(0, 0);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(198, 23);
-            this.textBox5.TabIndex = 8;
+            this.CashierNetAmountBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierNetAmountBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CashierNetAmountBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CashierNetAmountBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierNetAmountBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierNetAmountBox.Location = new System.Drawing.Point(0, 0);
+            this.CashierNetAmountBox.Name = "CashierNetAmountBox";
+            this.CashierNetAmountBox.ReadOnly = true;
+            this.CashierNetAmountBox.Size = new System.Drawing.Size(198, 23);
+            this.CashierNetAmountBox.TabIndex = 8;
             // 
-            // label12
+            // CashierVATLbl
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label12.Location = new System.Drawing.Point(226, 167);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(104, 23);
-            this.label12.TabIndex = 27;
-            this.label12.Text = "VAT (12%):";
+            this.CashierVATLbl.AutoSize = true;
+            this.CashierVATLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierVATLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierVATLbl.Location = new System.Drawing.Point(226, 167);
+            this.CashierVATLbl.Name = "CashierVATLbl";
+            this.CashierVATLbl.Size = new System.Drawing.Size(104, 23);
+            this.CashierVATLbl.TabIndex = 27;
+            this.CashierVATLbl.Text = "VAT (12%):";
             // 
-            // panel15
+            // CashierVATPanelBox
             // 
-            this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel15.Controls.Add(this.textBox6);
-            this.panel15.ForeColor = System.Drawing.Color.Coral;
-            this.panel15.Location = new System.Drawing.Point(230, 193);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(200, 23);
-            this.panel15.TabIndex = 28;
+            this.CashierVATPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CashierVATPanelBox.Controls.Add(this.CashierVATBox);
+            this.CashierVATPanelBox.ForeColor = System.Drawing.Color.Coral;
+            this.CashierVATPanelBox.Location = new System.Drawing.Point(230, 193);
+            this.CashierVATPanelBox.Name = "CashierVATPanelBox";
+            this.CashierVATPanelBox.Size = new System.Drawing.Size(200, 23);
+            this.CashierVATPanelBox.TabIndex = 28;
             // 
-            // textBox6
+            // CashierVATBox
             // 
-            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox6.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.textBox6.Location = new System.Drawing.Point(0, 0);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(198, 23);
-            this.textBox6.TabIndex = 8;
+            this.CashierVATBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierVATBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CashierVATBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CashierVATBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierVATBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierVATBox.Location = new System.Drawing.Point(0, 0);
+            this.CashierVATBox.Name = "CashierVATBox";
+            this.CashierVATBox.ReadOnly = true;
+            this.CashierVATBox.Size = new System.Drawing.Size(198, 23);
+            this.CashierVATBox.TabIndex = 8;
             // 
-            // label13
+            // CashierGrossAmountLbl
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label13.Location = new System.Drawing.Point(19, 231);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(139, 23);
-            this.label13.TabIndex = 23;
-            this.label13.Text = "Gross Amount:";
+            this.CashierGrossAmountLbl.AutoSize = true;
+            this.CashierGrossAmountLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierGrossAmountLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierGrossAmountLbl.Location = new System.Drawing.Point(19, 231);
+            this.CashierGrossAmountLbl.Name = "CashierGrossAmountLbl";
+            this.CashierGrossAmountLbl.Size = new System.Drawing.Size(139, 23);
+            this.CashierGrossAmountLbl.TabIndex = 23;
+            this.CashierGrossAmountLbl.Text = "Gross Amount:";
             // 
-            // iconButton6
+            // CashierCheckoutExitBtn
             // 
-            this.iconButton6.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton6.FlatAppearance.BorderSize = 0;
-            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.iconButton6.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton6.IconSize = 24;
-            this.iconButton6.Location = new System.Drawing.Point(424, 2);
-            this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Size = new System.Drawing.Size(24, 24);
-            this.iconButton6.TabIndex = 26;
-            this.iconButton6.UseVisualStyleBackColor = false;
+            this.CashierCheckoutExitBtn.BackColor = System.Drawing.Color.Transparent;
+            this.CashierCheckoutExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierCheckoutExitBtn.FlatAppearance.BorderSize = 0;
+            this.CashierCheckoutExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CashierCheckoutExitBtn.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            this.CashierCheckoutExitBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierCheckoutExitBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.CashierCheckoutExitBtn.IconSize = 24;
+            this.CashierCheckoutExitBtn.Location = new System.Drawing.Point(424, 2);
+            this.CashierCheckoutExitBtn.Name = "CashierCheckoutExitBtn";
+            this.CashierCheckoutExitBtn.Size = new System.Drawing.Size(24, 24);
+            this.CashierCheckoutExitBtn.TabIndex = 26;
+            this.CashierCheckoutExitBtn.UseVisualStyleBackColor = false;
             // 
-            // panel16
+            // CashierGrossAmountPanelBox
             // 
-            this.panel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel16.Controls.Add(this.textBox7);
-            this.panel16.ForeColor = System.Drawing.Color.Coral;
-            this.panel16.Location = new System.Drawing.Point(23, 256);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(406, 23);
-            this.panel16.TabIndex = 24;
+            this.CashierGrossAmountPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CashierGrossAmountPanelBox.Controls.Add(this.CashierGrossAmountBox);
+            this.CashierGrossAmountPanelBox.ForeColor = System.Drawing.Color.Coral;
+            this.CashierGrossAmountPanelBox.Location = new System.Drawing.Point(23, 256);
+            this.CashierGrossAmountPanelBox.Name = "CashierGrossAmountPanelBox";
+            this.CashierGrossAmountPanelBox.Size = new System.Drawing.Size(406, 23);
+            this.CashierGrossAmountPanelBox.TabIndex = 24;
             // 
-            // textBox7
+            // CashierGrossAmountBox
             // 
-            this.textBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox7.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.textBox7.Location = new System.Drawing.Point(0, 0);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(404, 23);
-            this.textBox7.TabIndex = 8;
+            this.CashierGrossAmountBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierGrossAmountBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CashierGrossAmountBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CashierGrossAmountBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierGrossAmountBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierGrossAmountBox.Location = new System.Drawing.Point(0, 0);
+            this.CashierGrossAmountBox.Name = "CashierGrossAmountBox";
+            this.CashierGrossAmountBox.ReadOnly = true;
+            this.CashierGrossAmountBox.Size = new System.Drawing.Size(404, 23);
+            this.CashierGrossAmountBox.TabIndex = 8;
             // 
-            // iconButton7
+            // CashierPlaceOrderBtn
             // 
-            this.iconButton7.FlatAppearance.BorderSize = 2;
-            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton7.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.CreditCardAlt;
-            this.iconButton7.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton7.IconSize = 24;
-            this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton7.Location = new System.Drawing.Point(267, 354);
-            this.iconButton7.Name = "iconButton7";
-            this.iconButton7.Size = new System.Drawing.Size(162, 38);
-            this.iconButton7.TabIndex = 14;
-            this.iconButton7.Text = "Place Order";
-            this.iconButton7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.iconButton7.UseVisualStyleBackColor = true;
+            this.CashierPlaceOrderBtn.FlatAppearance.BorderSize = 2;
+            this.CashierPlaceOrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CashierPlaceOrderBtn.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierPlaceOrderBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierPlaceOrderBtn.IconChar = FontAwesome.Sharp.IconChar.CreditCardAlt;
+            this.CashierPlaceOrderBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierPlaceOrderBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.CashierPlaceOrderBtn.IconSize = 24;
+            this.CashierPlaceOrderBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CashierPlaceOrderBtn.Location = new System.Drawing.Point(267, 354);
+            this.CashierPlaceOrderBtn.Name = "CashierPlaceOrderBtn";
+            this.CashierPlaceOrderBtn.Size = new System.Drawing.Size(162, 38);
+            this.CashierPlaceOrderBtn.TabIndex = 14;
+            this.CashierPlaceOrderBtn.Text = "Place Order";
+            this.CashierPlaceOrderBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CashierPlaceOrderBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.CashierPlaceOrderBtn.UseVisualStyleBackColor = true;
             // 
-            // label14
+            // CashierCheckoutLbl
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label14.Location = new System.Drawing.Point(18, 71);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(213, 27);
-            this.label14.TabIndex = 13;
-            this.label14.Text = "| Checkout Preview";
+            this.CashierCheckoutLbl.AutoSize = true;
+            this.CashierCheckoutLbl.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierCheckoutLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierCheckoutLbl.Location = new System.Drawing.Point(18, 71);
+            this.CashierCheckoutLbl.Name = "CashierCheckoutLbl";
+            this.CashierCheckoutLbl.Size = new System.Drawing.Size(213, 27);
+            this.CashierCheckoutLbl.TabIndex = 13;
+            this.CashierCheckoutLbl.Text = "| Checkout Preview";
             // 
             // CashierOrderViewPanel
             // 
             this.CashierOrderViewPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CashierViewFormPicker.SetCardName(this.CashierOrderViewPanel, "Card3");
-            this.CashierOrderViewPanel.Controls.Add(this.textBox8);
-            this.CashierOrderViewPanel.Controls.Add(this.iconButton8);
-            this.CashierOrderViewPanel.Controls.Add(this.iconButton9);
-            this.CashierOrderViewPanel.Controls.Add(this.label15);
-            this.CashierOrderViewPanel.Controls.Add(this.dataGridView2);
+            this.CashierOrderViewPanel.Controls.Add(this.CashierOrderNumBox);
+            this.CashierOrderViewPanel.Controls.Add(this.CashierVoidBtn);
+            this.CashierOrderViewPanel.Controls.Add(this.CashierCheckoutOrderBtn);
+            this.CashierOrderViewPanel.Controls.Add(this.CashierOrderNumLbl);
+            this.CashierOrderViewPanel.Controls.Add(this.CashierOrderViewTable);
             this.CashierOrderViewPanel.Location = new System.Drawing.Point(0, 0);
             this.CashierViewFormPicker.SetMinimumSize(this.CashierOrderViewPanel, new System.Drawing.Size(450, 454));
             this.CashierOrderViewPanel.Name = "CashierOrderViewPanel";
@@ -4505,77 +4505,77 @@
             this.CashierOrderViewPanel.Size = new System.Drawing.Size(450, 454);
             this.CashierOrderViewPanel.TabIndex = 24;
             // 
-            // textBox8
+            // CashierOrderNumBox
             // 
-            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.textBox8.Location = new System.Drawing.Point(176, 16);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(256, 23);
-            this.textBox8.TabIndex = 13;
+            this.CashierOrderNumBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierOrderNumBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CashierOrderNumBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierOrderNumBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierOrderNumBox.Location = new System.Drawing.Point(176, 16);
+            this.CashierOrderNumBox.Name = "CashierOrderNumBox";
+            this.CashierOrderNumBox.ReadOnly = true;
+            this.CashierOrderNumBox.Size = new System.Drawing.Size(256, 23);
+            this.CashierOrderNumBox.TabIndex = 13;
             // 
-            // iconButton8
+            // CashierVoidBtn
             // 
-            this.iconButton8.FlatAppearance.BorderSize = 0;
-            this.iconButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton8.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.TrashRestoreAlt;
-            this.iconButton8.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton8.IconSize = 24;
-            this.iconButton8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton8.Location = new System.Drawing.Point(97, 391);
-            this.iconButton8.Name = "iconButton8";
-            this.iconButton8.Size = new System.Drawing.Size(145, 43);
-            this.iconButton8.TabIndex = 15;
-            this.iconButton8.Text = "Void Order";
-            this.iconButton8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton8.UseVisualStyleBackColor = true;
+            this.CashierVoidBtn.FlatAppearance.BorderSize = 0;
+            this.CashierVoidBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CashierVoidBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierVoidBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierVoidBtn.IconChar = FontAwesome.Sharp.IconChar.TrashRestoreAlt;
+            this.CashierVoidBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierVoidBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.CashierVoidBtn.IconSize = 24;
+            this.CashierVoidBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CashierVoidBtn.Location = new System.Drawing.Point(97, 391);
+            this.CashierVoidBtn.Name = "CashierVoidBtn";
+            this.CashierVoidBtn.Size = new System.Drawing.Size(145, 43);
+            this.CashierVoidBtn.TabIndex = 15;
+            this.CashierVoidBtn.Text = "Void Order";
+            this.CashierVoidBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.CashierVoidBtn.UseVisualStyleBackColor = true;
             // 
-            // iconButton9
+            // CashierCheckoutOrderBtn
             // 
-            this.iconButton9.FlatAppearance.BorderSize = 2;
-            this.iconButton9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton9.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.ShoppingCart;
-            this.iconButton9.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton9.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton9.IconSize = 24;
-            this.iconButton9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton9.Location = new System.Drawing.Point(248, 391);
-            this.iconButton9.Name = "iconButton9";
-            this.iconButton9.Size = new System.Drawing.Size(184, 43);
-            this.iconButton9.TabIndex = 14;
-            this.iconButton9.Text = "Checkout Order";
-            this.iconButton9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton9.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.iconButton9.UseVisualStyleBackColor = true;
+            this.CashierCheckoutOrderBtn.FlatAppearance.BorderSize = 2;
+            this.CashierCheckoutOrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CashierCheckoutOrderBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierCheckoutOrderBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierCheckoutOrderBtn.IconChar = FontAwesome.Sharp.IconChar.ShoppingCart;
+            this.CashierCheckoutOrderBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierCheckoutOrderBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.CashierCheckoutOrderBtn.IconSize = 24;
+            this.CashierCheckoutOrderBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CashierCheckoutOrderBtn.Location = new System.Drawing.Point(248, 391);
+            this.CashierCheckoutOrderBtn.Name = "CashierCheckoutOrderBtn";
+            this.CashierCheckoutOrderBtn.Size = new System.Drawing.Size(184, 43);
+            this.CashierCheckoutOrderBtn.TabIndex = 14;
+            this.CashierCheckoutOrderBtn.Text = "Checkout Order";
+            this.CashierCheckoutOrderBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CashierCheckoutOrderBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.CashierCheckoutOrderBtn.UseVisualStyleBackColor = true;
             // 
-            // label15
+            // CashierOrderNumLbl
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label15.Location = new System.Drawing.Point(19, 16);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(151, 23);
-            this.label15.TabIndex = 13;
-            this.label15.Text = "| Order Number.:";
+            this.CashierOrderNumLbl.AutoSize = true;
+            this.CashierOrderNumLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierOrderNumLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierOrderNumLbl.Location = new System.Drawing.Point(19, 16);
+            this.CashierOrderNumLbl.Name = "CashierOrderNumLbl";
+            this.CashierOrderNumLbl.Size = new System.Drawing.Size(151, 23);
+            this.CashierOrderNumLbl.TabIndex = 13;
+            this.CashierOrderNumLbl.Text = "| Order Number.:";
             // 
-            // dataGridView2
+            // CashierOrderViewTable
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CashierOrderViewTable.AllowUserToAddRows = false;
+            this.CashierOrderViewTable.AllowUserToDeleteRows = false;
+            this.CashierOrderViewTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierOrderViewTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CashierOrderViewTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4583,8 +4583,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CashierOrderViewTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.CashierOrderViewTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4592,31 +4592,32 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.dataGridView2.Location = new System.Drawing.Point(23, 57);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(409, 319);
-            this.dataGridView2.TabIndex = 11;
+            this.CashierOrderViewTable.DefaultCellStyle = dataGridViewCellStyle2;
+            this.CashierOrderViewTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierOrderViewTable.Location = new System.Drawing.Point(23, 57);
+            this.CashierOrderViewTable.Name = "CashierOrderViewTable";
+            this.CashierOrderViewTable.ReadOnly = true;
+            this.CashierOrderViewTable.RowHeadersVisible = false;
+            this.CashierOrderViewTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CashierOrderViewTable.Size = new System.Drawing.Size(409, 319);
+            this.CashierOrderViewTable.TabIndex = 11;
+            this.CashierOrderViewTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CashierOrderViewTable_CellContentClick);
             // 
-            // CashierExitBtn
+            // CashierOrderExitBtn
             // 
-            this.CashierExitBtn.BackColor = System.Drawing.Color.Transparent;
-            this.CashierExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.CashierExitBtn.FlatAppearance.BorderSize = 0;
-            this.CashierExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CashierExitBtn.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.CashierExitBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.CashierExitBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.CashierExitBtn.IconSize = 24;
-            this.CashierExitBtn.Location = new System.Drawing.Point(1228, 5);
-            this.CashierExitBtn.Name = "CashierExitBtn";
-            this.CashierExitBtn.Size = new System.Drawing.Size(24, 24);
-            this.CashierExitBtn.TabIndex = 25;
-            this.CashierExitBtn.UseVisualStyleBackColor = false;
+            this.CashierOrderExitBtn.BackColor = System.Drawing.Color.Transparent;
+            this.CashierOrderExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierOrderExitBtn.FlatAppearance.BorderSize = 0;
+            this.CashierOrderExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CashierOrderExitBtn.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            this.CashierOrderExitBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierOrderExitBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.CashierOrderExitBtn.IconSize = 24;
+            this.CashierOrderExitBtn.Location = new System.Drawing.Point(1228, 5);
+            this.CashierOrderExitBtn.Name = "CashierOrderExitBtn";
+            this.CashierOrderExitBtn.Size = new System.Drawing.Size(24, 24);
+            this.CashierOrderExitBtn.TabIndex = 25;
+            this.CashierOrderExitBtn.UseVisualStyleBackColor = false;
             // 
             // CashierItemPanel
             // 
@@ -4633,8 +4634,8 @@
             // 
             this.CashierItemSetPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CashierItemFormPicker.SetCardName(this.CashierItemSetPanel, "Card1");
-            this.CashierItemSetPanel.Controls.Add(this.label16);
-            this.CashierItemSetPanel.Controls.Add(this.dataGridView3);
+            this.CashierItemSetPanel.Controls.Add(this.CashierItemSetLbl);
+            this.CashierItemSetPanel.Controls.Add(this.CashierItemSetView);
             this.CashierItemSetPanel.Location = new System.Drawing.Point(0, 0);
             this.CashierItemFormPicker.SetMinimumSize(this.CashierItemSetPanel, new System.Drawing.Size(533, 425));
             this.CashierItemSetPanel.Name = "CashierItemSetPanel";
@@ -4642,26 +4643,26 @@
             this.CashierItemSetPanel.Size = new System.Drawing.Size(533, 425);
             this.CashierItemSetPanel.TabIndex = 14;
             // 
-            // label16
+            // CashierItemSetLbl
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label16.Location = new System.Drawing.Point(12, 16);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(106, 23);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "| Set Meals";
+            this.CashierItemSetLbl.AutoSize = true;
+            this.CashierItemSetLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierItemSetLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierItemSetLbl.Location = new System.Drawing.Point(12, 16);
+            this.CashierItemSetLbl.Name = "CashierItemSetLbl";
+            this.CashierItemSetLbl.Size = new System.Drawing.Size(106, 23);
+            this.CashierItemSetLbl.TabIndex = 3;
+            this.CashierItemSetLbl.Text = "| Set Meals";
             // 
-            // dataGridView3
+            // CashierItemSetView
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CashierItemSetView.AllowUserToAddRows = false;
+            this.CashierItemSetView.AllowUserToDeleteRows = false;
+            this.CashierItemSetView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierItemSetView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CashierItemSetView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4669,8 +4670,8 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CashierItemSetView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.CashierItemSetView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4678,22 +4679,23 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView3.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.dataGridView3.Location = new System.Drawing.Point(16, 57);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.RowHeadersVisible = false;
-            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView3.Size = new System.Drawing.Size(499, 348);
-            this.dataGridView3.TabIndex = 12;
+            this.CashierItemSetView.DefaultCellStyle = dataGridViewCellStyle4;
+            this.CashierItemSetView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierItemSetView.Location = new System.Drawing.Point(16, 57);
+            this.CashierItemSetView.Name = "CashierItemSetView";
+            this.CashierItemSetView.ReadOnly = true;
+            this.CashierItemSetView.RowHeadersVisible = false;
+            this.CashierItemSetView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CashierItemSetView.Size = new System.Drawing.Size(499, 348);
+            this.CashierItemSetView.TabIndex = 12;
+            this.CashierItemSetView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CashierItemSetView_CellClick);
             // 
             // CashierItemSidesPanel
             // 
             this.CashierItemSidesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CashierItemFormPicker.SetCardName(this.CashierItemSidesPanel, "Card2");
-            this.CashierItemSidesPanel.Controls.Add(this.label17);
-            this.CashierItemSidesPanel.Controls.Add(this.dataGridView4);
+            this.CashierItemSidesPanel.Controls.Add(this.CashierItemSidesLbl);
+            this.CashierItemSidesPanel.Controls.Add(this.CashierItemSidesView);
             this.CashierItemSidesPanel.Location = new System.Drawing.Point(0, 0);
             this.CashierItemFormPicker.SetMinimumSize(this.CashierItemSidesPanel, new System.Drawing.Size(533, 425));
             this.CashierItemSidesPanel.Name = "CashierItemSidesPanel";
@@ -4701,26 +4703,26 @@
             this.CashierItemSidesPanel.Size = new System.Drawing.Size(533, 425);
             this.CashierItemSidesPanel.TabIndex = 15;
             // 
-            // label17
+            // CashierItemSidesLbl
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label17.Location = new System.Drawing.Point(12, 16);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 23);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "| Sides";
+            this.CashierItemSidesLbl.AutoSize = true;
+            this.CashierItemSidesLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierItemSidesLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierItemSidesLbl.Location = new System.Drawing.Point(12, 16);
+            this.CashierItemSidesLbl.Name = "CashierItemSidesLbl";
+            this.CashierItemSidesLbl.Size = new System.Drawing.Size(68, 23);
+            this.CashierItemSidesLbl.TabIndex = 3;
+            this.CashierItemSidesLbl.Text = "| Sides";
             // 
-            // dataGridView4
+            // CashierItemSidesView
             // 
-            this.dataGridView4.AllowUserToAddRows = false;
-            this.dataGridView4.AllowUserToDeleteRows = false;
-            this.dataGridView4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CashierItemSidesView.AllowUserToAddRows = false;
+            this.CashierItemSidesView.AllowUserToDeleteRows = false;
+            this.CashierItemSidesView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierItemSidesView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CashierItemSidesView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4728,8 +4730,8 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CashierItemSidesView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.CashierItemSidesView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4737,22 +4739,23 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView4.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView4.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.dataGridView4.Location = new System.Drawing.Point(16, 57);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.ReadOnly = true;
-            this.dataGridView4.RowHeadersVisible = false;
-            this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView4.Size = new System.Drawing.Size(499, 348);
-            this.dataGridView4.TabIndex = 12;
+            this.CashierItemSidesView.DefaultCellStyle = dataGridViewCellStyle6;
+            this.CashierItemSidesView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierItemSidesView.Location = new System.Drawing.Point(16, 57);
+            this.CashierItemSidesView.Name = "CashierItemSidesView";
+            this.CashierItemSidesView.ReadOnly = true;
+            this.CashierItemSidesView.RowHeadersVisible = false;
+            this.CashierItemSidesView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CashierItemSidesView.Size = new System.Drawing.Size(499, 348);
+            this.CashierItemSidesView.TabIndex = 12;
+            this.CashierItemSidesView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CashierItemSidesView_CellClick);
             // 
             // CashierItemBurgerPanel
             // 
             this.CashierItemBurgerPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CashierItemFormPicker.SetCardName(this.CashierItemBurgerPanel, "Card3");
             this.CashierItemBurgerPanel.Controls.Add(this.CashierItemBurgerLbl);
-            this.CashierItemBurgerPanel.Controls.Add(this.dataGridView5);
+            this.CashierItemBurgerPanel.Controls.Add(this.CashierItemBurgerView);
             this.CashierItemBurgerPanel.Location = new System.Drawing.Point(0, 0);
             this.CashierItemFormPicker.SetMinimumSize(this.CashierItemBurgerPanel, new System.Drawing.Size(533, 425));
             this.CashierItemBurgerPanel.Name = "CashierItemBurgerPanel";
@@ -4771,15 +4774,15 @@
             this.CashierItemBurgerLbl.TabIndex = 3;
             this.CashierItemBurgerLbl.Text = "| Burger";
             // 
-            // dataGridView5
+            // CashierItemBurgerView
             // 
-            this.dataGridView5.AllowUserToAddRows = false;
-            this.dataGridView5.AllowUserToDeleteRows = false;
-            this.dataGridView5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CashierItemBurgerView.AllowUserToAddRows = false;
+            this.CashierItemBurgerView.AllowUserToDeleteRows = false;
+            this.CashierItemBurgerView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView5.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierItemBurgerView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CashierItemBurgerView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4787,8 +4790,8 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView5.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CashierItemBurgerView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.CashierItemBurgerView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4796,22 +4799,23 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView5.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridView5.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.dataGridView5.Location = new System.Drawing.Point(16, 57);
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.ReadOnly = true;
-            this.dataGridView5.RowHeadersVisible = false;
-            this.dataGridView5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView5.Size = new System.Drawing.Size(499, 348);
-            this.dataGridView5.TabIndex = 12;
+            this.CashierItemBurgerView.DefaultCellStyle = dataGridViewCellStyle8;
+            this.CashierItemBurgerView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierItemBurgerView.Location = new System.Drawing.Point(16, 57);
+            this.CashierItemBurgerView.Name = "CashierItemBurgerView";
+            this.CashierItemBurgerView.ReadOnly = true;
+            this.CashierItemBurgerView.RowHeadersVisible = false;
+            this.CashierItemBurgerView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CashierItemBurgerView.Size = new System.Drawing.Size(499, 348);
+            this.CashierItemBurgerView.TabIndex = 12;
+            this.CashierItemBurgerView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CashierItemBurgerView_CellClick);
             // 
             // CashierItemDrinksPanel
             // 
             this.CashierItemDrinksPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CashierItemFormPicker.SetCardName(this.CashierItemDrinksPanel, "Card4");
-            this.CashierItemDrinksPanel.Controls.Add(this.label19);
-            this.CashierItemDrinksPanel.Controls.Add(this.dataGridView6);
+            this.CashierItemDrinksPanel.Controls.Add(this.CashierItemDrinksLbl);
+            this.CashierItemDrinksPanel.Controls.Add(this.CashierItemDrinksView);
             this.CashierItemDrinksPanel.Location = new System.Drawing.Point(0, 0);
             this.CashierItemFormPicker.SetMinimumSize(this.CashierItemDrinksPanel, new System.Drawing.Size(533, 425));
             this.CashierItemDrinksPanel.Name = "CashierItemDrinksPanel";
@@ -4819,26 +4823,26 @@
             this.CashierItemDrinksPanel.Size = new System.Drawing.Size(533, 425);
             this.CashierItemDrinksPanel.TabIndex = 2;
             // 
-            // label19
+            // CashierItemDrinksLbl
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label19.Location = new System.Drawing.Point(12, 16);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(75, 23);
-            this.label19.TabIndex = 3;
-            this.label19.Text = "| Drinks";
+            this.CashierItemDrinksLbl.AutoSize = true;
+            this.CashierItemDrinksLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierItemDrinksLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierItemDrinksLbl.Location = new System.Drawing.Point(12, 16);
+            this.CashierItemDrinksLbl.Name = "CashierItemDrinksLbl";
+            this.CashierItemDrinksLbl.Size = new System.Drawing.Size(75, 23);
+            this.CashierItemDrinksLbl.TabIndex = 3;
+            this.CashierItemDrinksLbl.Text = "| Drinks";
             // 
-            // dataGridView6
+            // CashierItemDrinksView
             // 
-            this.dataGridView6.AllowUserToAddRows = false;
-            this.dataGridView6.AllowUserToDeleteRows = false;
-            this.dataGridView6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CashierItemDrinksView.AllowUserToAddRows = false;
+            this.CashierItemDrinksView.AllowUserToDeleteRows = false;
+            this.CashierItemDrinksView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView6.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView6.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierItemDrinksView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CashierItemDrinksView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4846,8 +4850,8 @@
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView6.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CashierItemDrinksView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.CashierItemDrinksView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4855,36 +4859,38 @@
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView6.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridView6.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.dataGridView6.Location = new System.Drawing.Point(16, 57);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.ReadOnly = true;
-            this.dataGridView6.RowHeadersVisible = false;
-            this.dataGridView6.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView6.Size = new System.Drawing.Size(499, 348);
-            this.dataGridView6.TabIndex = 12;
+            this.CashierItemDrinksView.DefaultCellStyle = dataGridViewCellStyle10;
+            this.CashierItemDrinksView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierItemDrinksView.Location = new System.Drawing.Point(16, 57);
+            this.CashierItemDrinksView.Name = "CashierItemDrinksView";
+            this.CashierItemDrinksView.ReadOnly = true;
+            this.CashierItemDrinksView.RowHeadersVisible = false;
+            this.CashierItemDrinksView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CashierItemDrinksView.Size = new System.Drawing.Size(499, 348);
+            this.CashierItemDrinksView.TabIndex = 12;
+            this.CashierItemDrinksView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CashierItemDrinksView_CellClick);
             // 
-            // iconButton11
+            // CashierSwitchBtn
             // 
-            this.iconButton11.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton11.FlatAppearance.BorderSize = 0;
-            this.iconButton11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton11.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton11.IconChar = FontAwesome.Sharp.IconChar.Repeat;
-            this.iconButton11.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton11.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton11.IconSize = 24;
-            this.iconButton11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton11.Location = new System.Drawing.Point(1116, 486);
-            this.iconButton11.Name = "iconButton11";
-            this.iconButton11.Size = new System.Drawing.Size(148, 47);
-            this.iconButton11.TabIndex = 7;
-            this.iconButton11.Text = "SWITCH USER";
-            this.iconButton11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton11.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.iconButton11.UseVisualStyleBackColor = false;
+            this.CashierSwitchBtn.BackColor = System.Drawing.Color.Transparent;
+            this.CashierSwitchBtn.FlatAppearance.BorderSize = 0;
+            this.CashierSwitchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CashierSwitchBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierSwitchBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierSwitchBtn.IconChar = FontAwesome.Sharp.IconChar.Repeat;
+            this.CashierSwitchBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierSwitchBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.CashierSwitchBtn.IconSize = 24;
+            this.CashierSwitchBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CashierSwitchBtn.Location = new System.Drawing.Point(1116, 486);
+            this.CashierSwitchBtn.Name = "CashierSwitchBtn";
+            this.CashierSwitchBtn.Size = new System.Drawing.Size(148, 47);
+            this.CashierSwitchBtn.TabIndex = 7;
+            this.CashierSwitchBtn.Text = "SWITCH USER";
+            this.CashierSwitchBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CashierSwitchBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.CashierSwitchBtn.UseVisualStyleBackColor = false;
+            this.CashierSwitchBtn.Click += new System.EventHandler(this.CashierSwitchBtn_Click_1);
             // 
             // CashieItemBtnPanel
             // 
@@ -5123,12 +5129,12 @@
             // CashierItemFormPicker
             // 
             this.CashierItemFormPicker.ContainerControl = this.CashierItemPanel;
-            this.CashierItemFormPicker.SelectedCard = "Card3";
+            this.CashierItemFormPicker.SelectedCard = "Card1";
             // 
             // CashierViewFormPicker
             // 
             this.CashierViewFormPicker.ContainerControl = this.CashierViewPanel;
-            this.CashierViewFormPicker.SelectedCard = "Card1";
+            this.CashierViewFormPicker.SelectedCard = "Card3";
             // 
             // ENRMainForm
             // 
@@ -5288,37 +5294,37 @@
             this.CashierViewPanel.ResumeLayout(false);
             this.CashierVoidViewPanel.ResumeLayout(false);
             this.CashierVoidViewPanel.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            this.panel10.ResumeLayout(false);
+            this.CashierEmplPassPanelBox.ResumeLayout(false);
+            this.CashierEmplPassPanelBox.PerformLayout();
+            this.CashierEmplIDPanelBox.ResumeLayout(false);
             this.CashierCheckoutViewPanel.ResumeLayout(false);
             this.CashierCheckoutViewPanel.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
-            this.panel13.ResumeLayout(false);
-            this.panel13.PerformLayout();
-            this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
-            this.panel15.ResumeLayout(false);
-            this.panel15.PerformLayout();
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
+            this.CashierCashPanelBox.ResumeLayout(false);
+            this.CashierCashPanelBox.PerformLayout();
+            this.CashierChangePanelBox.ResumeLayout(false);
+            this.CashierChangePanelBox.PerformLayout();
+            this.CashierNetAmountPanelBox.ResumeLayout(false);
+            this.CashierNetAmountPanelBox.PerformLayout();
+            this.CashierVATPanelBox.ResumeLayout(false);
+            this.CashierVATPanelBox.PerformLayout();
+            this.CashierGrossAmountPanelBox.ResumeLayout(false);
+            this.CashierGrossAmountPanelBox.PerformLayout();
             this.CashierOrderViewPanel.ResumeLayout(false);
             this.CashierOrderViewPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashierOrderViewTable)).EndInit();
             this.CashierItemPanel.ResumeLayout(false);
             this.CashierItemSetPanel.ResumeLayout(false);
             this.CashierItemSetPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashierItemSetView)).EndInit();
             this.CashierItemSidesPanel.ResumeLayout(false);
             this.CashierItemSidesPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashierItemSidesView)).EndInit();
             this.CashierItemBurgerPanel.ResumeLayout(false);
             this.CashierItemBurgerPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashierItemBurgerView)).EndInit();
             this.CashierItemDrinksPanel.ResumeLayout(false);
             this.CashierItemDrinksPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashierItemDrinksView)).EndInit();
             this.CashieItemBtnPanel.ResumeLayout(false);
             this.CashierHeaderPanel.ResumeLayout(false);
             this.CashierHeaderPanel.PerformLayout();
@@ -5539,7 +5545,7 @@
         private System.Windows.Forms.Label AdminSalesStartDateLbl;
         private System.Windows.Forms.Label AdminSalesEndDateLbl;
         private System.Windows.Forms.DateTimePicker AdminSalesEndDatePicker;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label AdminSalesLbl;
         private System.Windows.Forms.Panel MngrSalesPanel;
         private System.Windows.Forms.Label MngrSalesEndLbl;
         private System.Windows.Forms.DateTimePicker MngrSalesEndDatePicker;
@@ -5600,58 +5606,58 @@
         private System.Windows.Forms.TextBox CashierSearchBox;
         private System.Windows.Forms.Panel CashierViewPanel;
         private System.Windows.Forms.Panel CashierVoidViewPanel;
-        private FontAwesome.Sharp.IconButton iconButton4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel9;
+        private FontAwesome.Sharp.IconButton CashierVoidExitBtn;
+        private System.Windows.Forms.Label CashierEmplPassLbl;
+        private System.Windows.Forms.Panel CashierEmplPassPanelBox;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private FontAwesome.Sharp.IconButton iconButton5;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label CashierVoidEmplIDLbl;
+        private System.Windows.Forms.Panel CashierEmplIDPanelBox;
+        private System.Windows.Forms.ComboBox CashierEmplIDBox;
+        private FontAwesome.Sharp.IconButton CashierVoidOrderBtn;
+        private System.Windows.Forms.Label CashierMngrVoidLbl;
         private System.Windows.Forms.Panel CashierCheckoutViewPanel;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label13;
-        private FontAwesome.Sharp.IconButton iconButton6;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.TextBox textBox7;
-        private FontAwesome.Sharp.IconButton iconButton7;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label CashierCashLbl;
+        private System.Windows.Forms.Panel CashierCashPanelBox;
+        private System.Windows.Forms.TextBox CashierCashBox;
+        private System.Windows.Forms.Label CashierChangeLbl;
+        private System.Windows.Forms.Panel CashierChangePanelBox;
+        private System.Windows.Forms.TextBox CashierChangeBox;
+        private System.Windows.Forms.CheckBox CashierDiscountPWD;
+        private System.Windows.Forms.CheckBox CashierDiscountSenior;
+        private System.Windows.Forms.Label CashierDiscountLbl;
+        private System.Windows.Forms.Label CashierNetAmountLbl;
+        private System.Windows.Forms.Panel CashierNetAmountPanelBox;
+        private System.Windows.Forms.TextBox CashierNetAmountBox;
+        private System.Windows.Forms.Label CashierVATLbl;
+        private System.Windows.Forms.Panel CashierVATPanelBox;
+        private System.Windows.Forms.TextBox CashierVATBox;
+        private System.Windows.Forms.Label CashierGrossAmountLbl;
+        private FontAwesome.Sharp.IconButton CashierCheckoutExitBtn;
+        private System.Windows.Forms.Panel CashierGrossAmountPanelBox;
+        private System.Windows.Forms.TextBox CashierGrossAmountBox;
+        private FontAwesome.Sharp.IconButton CashierPlaceOrderBtn;
+        private System.Windows.Forms.Label CashierCheckoutLbl;
         private System.Windows.Forms.Panel CashierOrderViewPanel;
-        private System.Windows.Forms.TextBox textBox8;
-        private FontAwesome.Sharp.IconButton iconButton8;
-        private FontAwesome.Sharp.IconButton iconButton9;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private FontAwesome.Sharp.IconButton CashierExitBtn;
+        private System.Windows.Forms.TextBox CashierOrderNumBox;
+        private FontAwesome.Sharp.IconButton CashierVoidBtn;
+        private FontAwesome.Sharp.IconButton CashierCheckoutOrderBtn;
+        private System.Windows.Forms.Label CashierOrderNumLbl;
+        private System.Windows.Forms.DataGridView CashierOrderViewTable;
+        private FontAwesome.Sharp.IconButton CashierOrderExitBtn;
         private System.Windows.Forms.Panel CashierItemPanel;
         private System.Windows.Forms.Panel CashierItemSetPanel;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Label CashierItemSetLbl;
+        private System.Windows.Forms.DataGridView CashierItemSetView;
         private System.Windows.Forms.Panel CashierItemSidesPanel;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.Label CashierItemSidesLbl;
+        private System.Windows.Forms.DataGridView CashierItemSidesView;
         private System.Windows.Forms.Panel CashierItemBurgerPanel;
         private System.Windows.Forms.Label CashierItemBurgerLbl;
-        private System.Windows.Forms.DataGridView dataGridView5;
+        private System.Windows.Forms.DataGridView CashierItemBurgerView;
         private System.Windows.Forms.Panel CashierItemDrinksPanel;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.DataGridView dataGridView6;
-        private FontAwesome.Sharp.IconButton iconButton11;
+        private System.Windows.Forms.Label CashierItemDrinksLbl;
+        private System.Windows.Forms.DataGridView CashierItemDrinksView;
+        private FontAwesome.Sharp.IconButton CashierSwitchBtn;
         private System.Windows.Forms.Panel CashieItemBtnPanel;
         private FontAwesome.Sharp.IconButton CashierItemSidesBtn;
         private FontAwesome.Sharp.IconButton CashierItemDrinksBtn;
