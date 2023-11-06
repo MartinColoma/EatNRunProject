@@ -236,16 +236,6 @@
             this.MngrSearchBoxBtn = new FontAwesome.Sharp.IconButton();
             this.MngrSearchBox = new System.Windows.Forms.TextBox();
             this.MngrViewPanel = new System.Windows.Forms.Panel();
-            this.MngrVoidViewPanel = new System.Windows.Forms.Panel();
-            this.MngrVoidExitBtn = new FontAwesome.Sharp.IconButton();
-            this.MngrVoidEmplPassLbl = new System.Windows.Forms.Label();
-            this.MngrVoidEmplPassPanelBox = new System.Windows.Forms.Panel();
-            this.MngrVoidEmplPassBox = new System.Windows.Forms.TextBox();
-            this.MngrVoidEmplIDLbl = new System.Windows.Forms.Label();
-            this.MngrVoidEmplIDPanelBox = new System.Windows.Forms.Panel();
-            this.MngrVoidEmplIDBox = new System.Windows.Forms.ComboBox();
-            this.MngrVoidOrderBtn = new FontAwesome.Sharp.IconButton();
-            this.MngrVoidLbl = new System.Windows.Forms.Label();
             this.MngrCheckoutViewPanel = new System.Windows.Forms.Panel();
             this.MngrCashLbl = new System.Windows.Forms.Label();
             this.MngrCashPanelBox = new System.Windows.Forms.Panel();
@@ -455,9 +445,6 @@
             this.MngrOrderDashboardPanel.SuspendLayout();
             this.MngrSearchPanelBox.SuspendLayout();
             this.MngrViewPanel.SuspendLayout();
-            this.MngrVoidViewPanel.SuspendLayout();
-            this.MngrVoidEmplPassPanelBox.SuspendLayout();
-            this.MngrVoidEmplIDPanelBox.SuspendLayout();
             this.MngrCheckoutViewPanel.SuspendLayout();
             this.MngrCashPanelBox.SuspendLayout();
             this.MngrChangePanelBox.SuspendLayout();
@@ -522,7 +509,7 @@
             // 
             this.MainFormPicker.ContainerControl = this;
             this.MainFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.MainFormPicker.SelectedCard = "Card3";
+            this.MainFormPicker.SelectedCard = "Card5";
             // 
             // AdminPanel
             // 
@@ -2902,149 +2889,12 @@
             // MngrViewPanel
             // 
             this.MngrViewPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MngrViewPanel.Controls.Add(this.MngrVoidViewPanel);
             this.MngrViewPanel.Controls.Add(this.MngrCheckoutViewPanel);
             this.MngrViewPanel.Controls.Add(this.MngrOrderViewPanel);
             this.MngrViewPanel.Location = new System.Drawing.Point(758, 25);
             this.MngrViewPanel.Name = "MngrViewPanel";
             this.MngrViewPanel.Size = new System.Drawing.Size(450, 454);
             this.MngrViewPanel.TabIndex = 26;
-            // 
-            // MngrVoidViewPanel
-            // 
-            this.MngrVoidViewPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MngrViewFormPicker.SetCardName(this.MngrVoidViewPanel, "Card3");
-            this.MngrVoidViewPanel.Controls.Add(this.MngrVoidExitBtn);
-            this.MngrVoidViewPanel.Controls.Add(this.MngrVoidEmplPassLbl);
-            this.MngrVoidViewPanel.Controls.Add(this.MngrVoidEmplPassPanelBox);
-            this.MngrVoidViewPanel.Controls.Add(this.MngrVoidEmplIDLbl);
-            this.MngrVoidViewPanel.Controls.Add(this.MngrVoidEmplIDPanelBox);
-            this.MngrVoidViewPanel.Controls.Add(this.MngrVoidOrderBtn);
-            this.MngrVoidViewPanel.Controls.Add(this.MngrVoidLbl);
-            this.MngrVoidViewPanel.Location = new System.Drawing.Point(0, 0);
-            this.MngrViewFormPicker.SetMinimumSize(this.MngrVoidViewPanel, new System.Drawing.Size(450, 454));
-            this.MngrVoidViewPanel.Name = "MngrVoidViewPanel";
-            this.MngrViewFormPicker.SetPreferredSize(this.MngrVoidViewPanel, new System.Drawing.Size(450, 454));
-            this.MngrVoidViewPanel.Size = new System.Drawing.Size(450, 454);
-            this.MngrVoidViewPanel.TabIndex = 27;
-            // 
-            // MngrVoidExitBtn
-            // 
-            this.MngrVoidExitBtn.BackColor = System.Drawing.Color.Transparent;
-            this.MngrVoidExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrVoidExitBtn.FlatAppearance.BorderSize = 0;
-            this.MngrVoidExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MngrVoidExitBtn.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.MngrVoidExitBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrVoidExitBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.MngrVoidExitBtn.IconSize = 24;
-            this.MngrVoidExitBtn.Location = new System.Drawing.Point(420, 9);
-            this.MngrVoidExitBtn.Name = "MngrVoidExitBtn";
-            this.MngrVoidExitBtn.Size = new System.Drawing.Size(24, 24);
-            this.MngrVoidExitBtn.TabIndex = 26;
-            this.MngrVoidExitBtn.UseVisualStyleBackColor = false;
-            this.MngrVoidExitBtn.Click += new System.EventHandler(this.MngrVoidExitBtn_Click);
-            // 
-            // MngrVoidEmplPassLbl
-            // 
-            this.MngrVoidEmplPassLbl.AutoSize = true;
-            this.MngrVoidEmplPassLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MngrVoidEmplPassLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrVoidEmplPassLbl.Location = new System.Drawing.Point(63, 215);
-            this.MngrVoidEmplPassLbl.Name = "MngrVoidEmplPassLbl";
-            this.MngrVoidEmplPassLbl.Size = new System.Drawing.Size(156, 18);
-            this.MngrVoidEmplPassLbl.TabIndex = 17;
-            this.MngrVoidEmplPassLbl.Text = "Employee Password:";
-            // 
-            // MngrVoidEmplPassPanelBox
-            // 
-            this.MngrVoidEmplPassPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MngrVoidEmplPassPanelBox.Controls.Add(this.MngrVoidEmplPassBox);
-            this.MngrVoidEmplPassPanelBox.ForeColor = System.Drawing.Color.Coral;
-            this.MngrVoidEmplPassPanelBox.Location = new System.Drawing.Point(66, 246);
-            this.MngrVoidEmplPassPanelBox.Name = "MngrVoidEmplPassPanelBox";
-            this.MngrVoidEmplPassPanelBox.Size = new System.Drawing.Size(320, 30);
-            this.MngrVoidEmplPassPanelBox.TabIndex = 18;
-            // 
-            // MngrVoidEmplPassBox
-            // 
-            this.MngrVoidEmplPassBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrVoidEmplPassBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.MngrVoidEmplPassBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MngrVoidEmplPassBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrVoidEmplPassBox.Location = new System.Drawing.Point(3, 5);
-            this.MngrVoidEmplPassBox.Name = "MngrVoidEmplPassBox";
-            this.MngrVoidEmplPassBox.ReadOnly = true;
-            this.MngrVoidEmplPassBox.Size = new System.Drawing.Size(312, 16);
-            this.MngrVoidEmplPassBox.TabIndex = 8;
-            this.MngrVoidEmplPassBox.UseSystemPasswordChar = true;
-            // 
-            // MngrVoidEmplIDLbl
-            // 
-            this.MngrVoidEmplIDLbl.AutoSize = true;
-            this.MngrVoidEmplIDLbl.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MngrVoidEmplIDLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrVoidEmplIDLbl.Location = new System.Drawing.Point(63, 151);
-            this.MngrVoidEmplIDLbl.Name = "MngrVoidEmplIDLbl";
-            this.MngrVoidEmplIDLbl.Size = new System.Drawing.Size(101, 18);
-            this.MngrVoidEmplIDLbl.TabIndex = 15;
-            this.MngrVoidEmplIDLbl.Text = "Employee ID:";
-            // 
-            // MngrVoidEmplIDPanelBox
-            // 
-            this.MngrVoidEmplIDPanelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MngrVoidEmplIDPanelBox.Controls.Add(this.MngrVoidEmplIDBox);
-            this.MngrVoidEmplIDPanelBox.ForeColor = System.Drawing.Color.Coral;
-            this.MngrVoidEmplIDPanelBox.Location = new System.Drawing.Point(66, 182);
-            this.MngrVoidEmplIDPanelBox.Name = "MngrVoidEmplIDPanelBox";
-            this.MngrVoidEmplIDPanelBox.Size = new System.Drawing.Size(320, 30);
-            this.MngrVoidEmplIDPanelBox.TabIndex = 16;
-            // 
-            // MngrVoidEmplIDBox
-            // 
-            this.MngrVoidEmplIDBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrVoidEmplIDBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MngrVoidEmplIDBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MngrVoidEmplIDBox.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MngrVoidEmplIDBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrVoidEmplIDBox.FormattingEnabled = true;
-            this.MngrVoidEmplIDBox.Location = new System.Drawing.Point(0, 0);
-            this.MngrVoidEmplIDBox.MaxLength = 10;
-            this.MngrVoidEmplIDBox.Name = "MngrVoidEmplIDBox";
-            this.MngrVoidEmplIDBox.Size = new System.Drawing.Size(318, 23);
-            this.MngrVoidEmplIDBox.TabIndex = 0;
-            this.MngrVoidEmplIDBox.SelectedIndexChanged += new System.EventHandler(this.MngrVoidEmplIDBox_SelectedIndexChanged);
-            // 
-            // MngrVoidOrderBtn
-            // 
-            this.MngrVoidOrderBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrVoidOrderBtn.FlatAppearance.BorderSize = 2;
-            this.MngrVoidOrderBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(105)))), ((int)(((byte)(67)))));
-            this.MngrVoidOrderBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(175)))), ((int)(((byte)(111)))));
-            this.MngrVoidOrderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MngrVoidOrderBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MngrVoidOrderBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrVoidOrderBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.MngrVoidOrderBtn.IconColor = System.Drawing.Color.Black;
-            this.MngrVoidOrderBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.MngrVoidOrderBtn.Location = new System.Drawing.Point(261, 300);
-            this.MngrVoidOrderBtn.Name = "MngrVoidOrderBtn";
-            this.MngrVoidOrderBtn.Size = new System.Drawing.Size(125, 38);
-            this.MngrVoidOrderBtn.TabIndex = 14;
-            this.MngrVoidOrderBtn.Text = "VOID ORDER";
-            this.MngrVoidOrderBtn.UseVisualStyleBackColor = true;
-            this.MngrVoidOrderBtn.Click += new System.EventHandler(this.MngrVoidOrderBtn_Click);
-            // 
-            // MngrVoidLbl
-            // 
-            this.MngrVoidLbl.AutoSize = true;
-            this.MngrVoidLbl.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MngrVoidLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrVoidLbl.Location = new System.Drawing.Point(62, 112);
-            this.MngrVoidLbl.Name = "MngrVoidLbl";
-            this.MngrVoidLbl.Size = new System.Drawing.Size(307, 27);
-            this.MngrVoidLbl.TabIndex = 13;
-            this.MngrVoidLbl.Text = "| Manager Void Confirmation";
             // 
             // MngrCheckoutViewPanel
             // 
@@ -5143,7 +4993,7 @@
             // CashierItemFormPicker
             // 
             this.CashierItemFormPicker.ContainerControl = this.CashierItemPanel;
-            this.CashierItemFormPicker.SelectedCard = "Card1";
+            this.CashierItemFormPicker.SelectedCard = "Card2";
             // 
             // CashierViewFormPicker
             // 
@@ -5262,11 +5112,6 @@
             this.MngrSearchPanelBox.ResumeLayout(false);
             this.MngrSearchPanelBox.PerformLayout();
             this.MngrViewPanel.ResumeLayout(false);
-            this.MngrVoidViewPanel.ResumeLayout(false);
-            this.MngrVoidViewPanel.PerformLayout();
-            this.MngrVoidEmplPassPanelBox.ResumeLayout(false);
-            this.MngrVoidEmplPassPanelBox.PerformLayout();
-            this.MngrVoidEmplIDPanelBox.ResumeLayout(false);
             this.MngrCheckoutViewPanel.ResumeLayout(false);
             this.MngrCheckoutViewPanel.PerformLayout();
             this.MngrCashPanelBox.ResumeLayout(false);
@@ -5546,8 +5391,6 @@
         private System.Windows.Forms.Label MngrCheckoutLbl;
         private System.Windows.Forms.Panel MngrViewPanel;
         private Syncfusion.Windows.Forms.Tools.CardLayout MngrViewFormPicker;
-        private System.Windows.Forms.Panel MngrVoidViewPanel;
-        private System.Windows.Forms.Label MngrVoidLbl;
         private FontAwesome.Sharp.IconButton MngrItemBurgerBtn;
         private FontAwesome.Sharp.IconButton MngrItemSidesBtn;
         private FontAwesome.Sharp.IconButton MngrItemDrinksBtn;
@@ -5573,14 +5416,6 @@
         private System.Windows.Forms.Panel MngrSearchPanelBox;
         private FontAwesome.Sharp.IconButton MngrSearchBoxBtn;
         private System.Windows.Forms.TextBox MngrSearchBox;
-        private System.Windows.Forms.Label MngrVoidEmplPassLbl;
-        private System.Windows.Forms.Panel MngrVoidEmplPassPanelBox;
-        private System.Windows.Forms.TextBox MngrVoidEmplPassBox;
-        private System.Windows.Forms.Label MngrVoidEmplIDLbl;
-        private System.Windows.Forms.Panel MngrVoidEmplIDPanelBox;
-        private System.Windows.Forms.ComboBox MngrVoidEmplIDBox;
-        private FontAwesome.Sharp.IconButton MngrVoidOrderBtn;
-        private FontAwesome.Sharp.IconButton MngrVoidExitBtn;
         private System.Windows.Forms.DateTimePicker MngrDateTimePicker;
         private FontAwesome.Sharp.IconButton AddEmplAccBtn;
         private FontAwesome.Sharp.IconButton EditEmplAccBtn;

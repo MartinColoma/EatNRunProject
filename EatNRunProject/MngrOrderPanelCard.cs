@@ -8,14 +8,12 @@ namespace EatNRunProject
 
         private Panel MngrOrder;
         private Panel MngrCheckout;
-        private Panel MngrVoid;
 
-        public MngrOrderPanelCard(Panel Order, Panel Checkout, Panel Void)
+        public MngrOrderPanelCard(Panel Order, Panel Checkout)
         {
 
             MngrOrder = Order;
             MngrCheckout = Checkout;
-            MngrVoid = Void;
 
         }
 
@@ -23,7 +21,6 @@ namespace EatNRunProject
         {
             MngrOrder.Hide();
             MngrCheckout.Hide();
-            MngrVoid.Hide();
             panelToShow.Show();
         }
     }

@@ -95,7 +95,7 @@ namespace EatNRunProject
             //Mngr Form Manager
             MngrPanelManager = new MngrPanelCard(MngrNewOrderBtnPanel, MngrOrderDashboardPanel, MngrSalesPanel);
             MngrItemPanelManager = new MngrItemPanelCard(MngrItemBurgerPanel, MngrItemSidesPanel, MngrItemSetPanel, MngrItemDrinksPanel);
-            MngrOrderPanelManager = new MngrOrderPanelCard(MngrOrderViewPanel, MngrCheckoutViewPanel, MngrVoidViewPanel);
+            MngrOrderPanelManager = new MngrOrderPanelCard(MngrOrderViewPanel, MngrCheckoutViewPanel);
 
             //Cashier Form Manager
             CashierPanelManager = new CashierPanelCard(CashierNewOrderBtnPanel, CashierOrderDashboardPanel);
@@ -323,45 +323,45 @@ namespace EatNRunProject
         // Burger List Table
         private void CashierFoodItemBurgerListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            CashierDGVDataError(MngrItemBurgerView, e);
+            CashierDGVDataError(CashierItemBurgerView, e);
         }
 
         private void CashierFoodItemBurgerListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            CashierDGVRowPostPaint(MngrItemBurgerView, e);
+            CashierDGVRowPostPaint(CashierItemBurgerView, e);
         }
 
         // Side List Table
         private void CashierFoodItemSideListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            CashierDGVDataError(MngrItemSidesView, e);
+            CashierDGVDataError(CashierItemSidesView, e);
         }
 
         private void CashierFoodItemSideListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            CashierDGVRowPostPaint(MngrItemSidesView, e);
+            CashierDGVRowPostPaint(CashierItemSidesView, e);
         }
 
         // Set List Table
         private void CashierFoodItemSetListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            CashierDGVDataError(MngrItemSetMealView, e);
+            CashierDGVDataError(CashierItemSetView, e);
         }
 
         private void CashierFoodItemSetListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            CashierDGVRowPostPaint(MngrItemSetMealView, e);
+            CashierDGVRowPostPaint(CashierItemSetView, e);
         }
 
         // Drinks List Table
         private void CashierFoodItemDrinkListTable_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            CashierDGVDataError(MngrItemDrinkView, e);
+            CashierDGVDataError(CashierItemDrinksView, e);
         }
 
         private void CashierFoodItemDrinkListTable_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            CashierDGVRowPostPaint(MngrItemDrinkView, e);
+            CashierDGVRowPostPaint(CashierItemDrinksView, e);
         }
 
 
@@ -1233,7 +1233,6 @@ namespace EatNRunProject
 
                 // Add the username to the combo box
                 ENREmplIDBox.Items.Add(newItem);
-                MngrVoidEmplIDBox.Items.Add(newItem); // Add to the new combo box
                 CashierVoidEmplIDBox.Items.Add(newItem); // Add to the new combo box
 
 
@@ -2710,9 +2709,16 @@ namespace EatNRunProject
             }
             else
             {
-                MngrOrderPanelManager.MngrOrderFormShow(MngrVoidViewPanel);
-                MngrItemPanel.Enabled = false;
-                //OrderVoider();
+                DialogResult result = MessageBox.Show("Do you want to void the item(s) in the order?", "Item Void Order Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    MngrItemPanel.Enabled = false;
+                    MngrVoidOrderHistoryDB(MngrOrderView);
+                    MngrOrderViewTable.Rows.Clear();
+                    MessageBox.Show("Ordered items are voided.", "Item Void Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MngrItemPanel.Enabled = true;
+                }
+
             }
 
         }
@@ -3063,114 +3069,6 @@ namespace EatNRunProject
             SearchFoodByFoodType(searchText, "Drinks");
         }
 
-        private void MngrVoidEmplIDBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedItem = MngrVoidEmplIDBox.SelectedItem as string;
-            if (selectedItem != null && accountData.ContainsKey(selectedItem))
-            {
-                MngrVoidEmplPassBox.Text = accountData[selectedItem];
-            }
-        }
-
-        // MngrVoidOrderBtn click event
-        private void MngrVoidOrderBtn_Click(object sender, EventArgs e)
-        {
-            OrderVoider();
-        }
-
-
-
-
-        private void OrderVoider()
-        {
-            string emplID = MngrVoidEmplIDBox.Text;
-            string emplPass = MngrVoidEmplPassBox.Text;
-            string passchecker = HashHelper.HashString(emplPass); // Assuming "enteredPassword" is supposed to be "emplPass"
-
-            MySqlConnection connection = null;
-
-            try
-            {
-                connection = new MySqlConnection(mysqlconn);
-                connection.Open();
-
-                // Query the database for the provided Employee ID in the accounts table
-                string queryApproved = "SELECT EmployeeName, EmployeeID, EmployeePosition, HashedPass FROM accounts WHERE EmployeeID = @EmplID";
-
-                using (MySqlCommand cmdApproved = new MySqlCommand(queryApproved, connection))
-                {
-                    cmdApproved.Parameters.AddWithValue("@EmplID", emplID);
-
-                    using (MySqlDataReader readerApproved = cmdApproved.ExecuteReader())
-                    {
-                        if (readerApproved.Read())
-                        {
-                            // Retrieve user information
-                            string name = readerApproved["EmployeeName"].ToString();
-                            string employeePosition = readerApproved["EmployeePosition"].ToString();
-
-                            // Check if the entered EmployeePosition matches the one in the database
-                            if (employeePosition == "Manager")
-                            {
-                                // Retrieve the HashedPass column
-                                string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
-
-                                // Check if the entered password matches
-                                bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
-
-                                if (passwordMatches)
-                                {
-                                    MessageBox.Show("Ordered items are voided.", "Item Void Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    MngrItemPanel.Enabled = true;
-                                    MngrVoidOrderHistoryDB(MngrOrderView);
-                                    MngrOrderViewTable.Rows.Clear();
-                                    MngrOrderPanelManager.MngrOrderFormShow(MngrOrderViewPanel);
-
-                                    //Other
-
-                                    return;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                            else
-                            {
-                                // The entered Employee ID does not exist in the database
-                                MessageBox.Show("Account not found.", "Ooooops", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                connection?.Close();
-            }
-        }
-
-        private void MngrVoidExitBtn_Click(object sender, EventArgs e)
-        {
-            if (MngrVoidViewPanel.Visible)
-            {
-
-                MngrVoidViewPanel.Visible = false;
-                MngrOrderViewPanel.Visible = true;
-                MngrItemPanel.Enabled = true;
-            }
-
-            else
-            {
-                MngrVoidViewPanel.Visible = true;
-                MngrOrderViewPanel.Visible = false;
-            }
-        }
-
         private void MngrDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
 
@@ -3257,11 +3155,22 @@ namespace EatNRunProject
 
         private void MngrPaymentButton_Click(object sender, EventArgs e)
         {
-            MngrGenerateReceipt();
-            MngrPlaceOrderHistoryDB(MngrOrderViewTable);
-            MngrPlaceOrderSalesDB();
-
+            if (string.IsNullOrWhiteSpace(MngrCashBox.Text))
+            {
+                MessageBox.Show("Please add a valid amount of cash.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (decimal.TryParse(MngrChangeBox.Text, out decimal cash) && cash < 0)
+            {
+                MessageBox.Show("Please add a valid amount of cash.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MngrGenerateReceipt();
+                MngrPlaceOrderHistoryDB(MngrOrderViewTable);
+                MngrPlaceOrderSalesDB();
+            }
         }
+
 
         private void MngrPlaceOrderHistoryDB(DataGridView MngrOrderView)
         {
@@ -3397,7 +3306,7 @@ namespace EatNRunProject
         private void MngrVoidOrderHistoryDB(DataGridView MngrOrderView)
         {
             // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
-            string orderNum = MngrSessionNumLbl.Text + "-" + MngrOrderNumBox.Text;
+            string orderNum = MngrSessionNumBox.Text + "-" + MngrOrderNumBox.Text;
             DateTime currentDate = MngrDateTimePicker.Value;
             string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
             string mngrName = MngrNameBox.Text;
@@ -3906,7 +3815,6 @@ namespace EatNRunProject
             {
                 CashierOrderPanelManager.CashierOrderFormShow(CashierVoidViewPanel);
                 CashierItemPanel.Enabled = false;
-                //OrderVoider();
             }
         }
 
@@ -4004,7 +3912,7 @@ namespace EatNRunProject
 
         private void CashierSearchDrinks(string searchText)
         {
-            SearchFoodByFoodType(searchText, "Drinks");
+            CashierSearchFoodByFoodType(searchText, "Drinks");
         }
 
         private void CashierEmplIDBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -4060,14 +3968,15 @@ namespace EatNRunProject
 
                                 if (passwordMatches)
                                 {
-                                    MessageBox.Show("Ordered items are voided.", "Item Void Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    CashierItemPanel.Enabled = true;
-                                    CashierVoidOrderHistoryDB(CashierOrderViewTable);
-                                    CashierOrderViewTable.Rows.Clear();
-                                    CashierOrderPanelManager.CashierOrderFormShow(CashierOrderViewPanel);
-
-                                    //Other
-
+                                    DialogResult result = MessageBox.Show("Do you want to void the item(s) in the order?", "Item Void Order Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                    if (result == DialogResult.Yes)
+                                    {
+                                        MessageBox.Show("Ordered items are voided.", "Item Void Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        CashierItemPanel.Enabled = true;
+                                        CashierVoidOrderHistoryDB(CashierOrderViewTable);
+                                        CashierOrderViewTable.Rows.Clear();
+                                        CashierOrderPanelManager.CashierOrderFormShow(CashierOrderViewPanel);
+                                    }
                                     return;
                                 }
                                 else
@@ -4253,10 +4162,22 @@ namespace EatNRunProject
 
         private void CashierPlaceOrderBtn_Click(object sender, EventArgs e)
         {
-            CashierGenerateReceipt();
-            CashierPlaceOrderHistoryDB(MngrOrderViewTable);
-            CashierPlaceOrderSalesDB();
+            if (string.IsNullOrEmpty(CashierCashBox.Text))
+            {
+                MessageBox.Show("Please add a valid amount of cash.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (decimal.TryParse(CashierChangeBox.Text, out decimal cash) && cash < 0)
+            {
+                MessageBox.Show("Please add a valid amount of cash.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                CashierGenerateReceipt();
+                CashierPlaceOrderHistoryDB(MngrOrderViewTable);
+                CashierPlaceOrderSalesDB();
+            }
         }
+
 
 
         private void CashierGenerateReceipt()
