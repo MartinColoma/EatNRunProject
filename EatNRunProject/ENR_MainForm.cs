@@ -59,8 +59,10 @@ namespace EatNRunProject
         string ID;
         private int minTextLength = 5; // Minimum required text length
 
-        //basta image
-        System.Drawing.Image selectedImage;
+        //Image Stored
+        System.Drawing.Image ItemSelectedImage;
+        System.Drawing.Image EmplSelectedImage;
+
 
         //Remember Account dictionary
         private Dictionary<string, string> accountData = new Dictionary<string, string>();
@@ -1874,14 +1876,14 @@ namespace EatNRunProject
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     // Load the selected image into the PictureBox
-                    System.Drawing.Image selectedImage = System.Drawing.Image.FromFile(openFileDialog.FileName);
+                    EmplSelectedImage = System.Drawing.Image.FromFile(openFileDialog.FileName);
 
                     // Check if the image dimensions are 64x64 pixels
-                    if (selectedImage.Width == 128 && selectedImage.Height == 128)
+                    if (EmplSelectedImage.Width == 128 && EmplSelectedImage.Height == 128)
                     {
-                        UpdateEmplPicBox.Image = selectedImage;
+                        UpdateEmplPicBox.Image = EmplSelectedImage;
                     }
-                    else if (selectedImage.Width != 128 && selectedImage.Height != 128)
+                    else if (EmplSelectedImage.Width != 128 && EmplSelectedImage.Height != 128)
                     {
                         MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -2022,11 +2024,11 @@ namespace EatNRunProject
                 byte[] imageData = null;
 
                 // Check if the image in the PictureBox has been modified
-                if (selectedImage != null)
+                if (EmplSelectedImage != null)
                 {
                     using (MemoryStream ms = new MemoryStream())
                     {
-                        selectedImage.Save(ms, ImageFormat.Jpeg); // Replace with the correct image format
+                        EmplSelectedImage.Save(ms, ImageFormat.Jpeg); // Replace with the correct image format
                         imageData = ms.ToArray();
                     }
                 }
@@ -2071,7 +2073,7 @@ namespace EatNRunProject
                             updateWithImageCmd.Parameters.AddWithValue("@FixedSalt", fixedSalt);
                             updateWithImageCmd.Parameters.AddWithValue("@PerUserSalt", perUserSalt);
                             updateWithImageCmd.ExecuteNonQuery();
-                            selectedImage = null;
+                            EmplSelectedImage = null;
                         }
                         else
                         {
@@ -2359,15 +2361,15 @@ namespace EatNRunProject
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     // Load the selected image into the PictureBox
-                    selectedImage = System.Drawing.Image.FromFile(openFileDialog.FileName);
+                    ItemSelectedImage = System.Drawing.Image.FromFile(openFileDialog.FileName);
 
                     // Check if the image dimensions are 64x64 pixels
-                    if (selectedImage.Width == 128 && selectedImage.Height == 128)
+                    if (ItemSelectedImage.Width == 128 && ItemSelectedImage.Height == 128)
                     {
-                        UpdateItemPicBox.Image = selectedImage;
+                        UpdateItemPicBox.Image = ItemSelectedImage;
                         return;
                     }
-                    else if (selectedImage.Width != 128 && selectedImage.Height != 128)
+                    else if (ItemSelectedImage.Width != 128 && ItemSelectedImage.Height != 128)
                     {
                         MessageBox.Show("Please select an image with dimensions of 128x128 pixels.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -2421,11 +2423,11 @@ namespace EatNRunProject
                 byte[] imageData = null;
 
                 // Check if the image in the PictureBox has been modified
-                if (selectedImage != null)
+                if (ItemSelectedImage != null)
                 {
                     using (MemoryStream ms = new MemoryStream())
                     {
-                        selectedImage.Save(ms, ImageFormat.Jpeg); // Replace with the correct image format
+                        ItemSelectedImage.Save(ms, ImageFormat.Jpeg); // Replace with the correct image format
                         imageData = ms.ToArray();
                     }
                 }
@@ -2460,7 +2462,7 @@ namespace EatNRunProject
                             updateWithImageCmd.Parameters.AddWithValue("@itemPrice", itemPrice);
                             updateWithImageCmd.Parameters.AddWithValue("@imageData", imageData);
                             updateWithImageCmd.ExecuteNonQuery();
-                            selectedImage = null;
+                            ItemSelectedImage = null;
                         }
                         else
                         {
