@@ -86,6 +86,7 @@ namespace EatNRunProject
             //Cashier Order View
             CashierInitializeDataGridView();
 
+
             //Main Form Panel Manager
             MFpanelManager = new MainFormCard(LoginPanel, AdminPanel, ManagerPanel, CashierPanel);
 
@@ -157,9 +158,12 @@ namespace EatNRunProject
             CashierItemDrinksView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(CashierFoodItemDrinkListTable_RowPostPaint);
 
 
-            //
+            //DGVs
             MngrOrderView = MngrOrderViewTable; // Replace yourDataGridView with the actual DataGridView instance
             CashierOrderView = CashierOrderViewTable; // Replace yourDataGridView with the actual DataGridView instance
+
+            MngrSalesStartDatePicker.ValueChanged += MngrSalesStartDatePicker_ValueChanged;
+            MngrSalesEndDatePicker.ValueChanged += MngrSalesEndDatePicker_ValueChanged;
 
 
             this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
@@ -999,23 +1003,24 @@ namespace EatNRunProject
             }
         }
 
+        private DataTable salesData = new DataTable(); // Declare a class-level variable
+
         public void MngrLoadSalesDB()
         {
             try
             {
+
                 using (MySqlConnection connection = new MySqlConnection(mysqlconn))
                 {
                     connection.Open();
                     string sql = "SELECT * FROM `sales`";
                     MySqlCommand cmd = new MySqlCommand(sql, connection);
-                    System.Data.DataTable dataTable = new System.Data.DataTable();
 
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                     {
-                        adapter.Fill(dataTable);
+                        adapter.Fill(salesData);
 
-                        MngrSalesTable.DataSource = dataTable;
-
+                        MngrSalesTable.DataSource = salesData;
                         MngrSalesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                     }
                 }
@@ -1033,6 +1038,7 @@ namespace EatNRunProject
                 }
             }
         }
+
 
         public void MngrLoadOrderHistoryDB()
         {
@@ -4595,5 +4601,55 @@ namespace EatNRunProject
                 CashierNewOrderBtnPanel.Visible = false;
             }
         }
+
+        private void MngrSalesStartDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            FilterAndSortDataGridView();
+        }
+
+        private void MngrSalesEndDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            FilterAndSortDataGridView();
+        }
+
+        private void FilterAndSortDataGridView()
+        {
+            DateTime startDate = MngrSalesStartDatePicker.Value.Date; // Get only the date part
+            DateTime endDate = MngrSalesEndDatePicker.Value.Date;     // Get only the date part
+
+            DataView dv = new DataView(salesData);
+
+            if (startDate == endDate)
+            {
+                // If both date pickers have the same date, filter for that specific date
+                dv.RowFilter = $"Date >= '{startDate:MM-dd-yyyy dddd hh:mm tt}' " +
+                               $"AND Date <= '{startDate.AddDays(1):MM-dd-yyyy dddd hh:mm tt}'";
+            }
+            else
+            {
+                // If the dates are different, filter for the date range
+                dv.RowFilter = $"Date >= '{startDate:MM-dd-yyyy dddd hh:mm tt}' " +
+                               $"AND Date <= '{endDate.AddDays(1):MM-dd-yyyy dddd hh:mm tt}'";
+            }
+
+            // Sort the DataView by Date
+            dv.Sort = "Date ASC";
+
+            MngrSalesTable.DataSource = dv.ToTable();
+
+            decimal totalSales = 0;
+            foreach (DataRow row in dv.ToTable().Rows)
+            {
+                decimal grossAmount = Convert.ToDecimal(row["GrossAmount"]);
+                totalSales += grossAmount;
+            }
+
+            MngrTotalSalesBox.Text = totalSales.ToString("0.00");
+        }
+
+
+
+
+
     }
 }
