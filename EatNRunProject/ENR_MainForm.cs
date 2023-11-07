@@ -86,6 +86,7 @@ namespace EatNRunProject
             //Cashier Order View
             CashierInitializeDataGridView();
 
+
             //Main Form Panel Manager
             MFpanelManager = new MainFormCard(LoginPanel, AdminPanel, ManagerPanel, CashierPanel);
 
@@ -157,9 +158,12 @@ namespace EatNRunProject
             CashierItemDrinksView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(CashierFoodItemDrinkListTable_RowPostPaint);
 
 
-            //
+            //DGVs
             MngrOrderView = MngrOrderViewTable; // Replace yourDataGridView with the actual DataGridView instance
             CashierOrderView = CashierOrderViewTable; // Replace yourDataGridView with the actual DataGridView instance
+
+            MngrSalesStartDatePicker.ValueChanged += MngrSalesStartDatePicker_ValueChanged;
+            MngrSalesEndDatePicker.ValueChanged += MngrSalesEndDatePicker_ValueChanged;
 
 
             this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
@@ -186,7 +190,12 @@ namespace EatNRunProject
             CashierLoadSideItemMenu();
             CashierLoadDrinksItemMenu();
             CashierLoadSetItemMenu();
-        }
+            MngrLoadSalesDB();
+            MngrLoadOrderHistoryDB();
+            string bestSellerName = GetBestSellingItemForToday();
+            MngrBestSellerBox.Text = bestSellerName;
+        
+    }
 
 
 
@@ -994,6 +1003,119 @@ namespace EatNRunProject
             }
         }
 
+        private DataTable salesData = new DataTable(); // Declare a class-level variable
+
+        public void MngrLoadSalesDB()
+        {
+            try
+            {
+
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+                    string sql = "SELECT * FROM `sales`";
+                    MySqlCommand cmd = new MySqlCommand(sql, connection);
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(salesData);
+
+                        MngrSalesTable.DataSource = salesData;
+                        MngrSalesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error occurred: " + e.Message);
+            }
+            finally
+            {
+                // Make sure to close the connection (if it's open)
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+
+        public void MngrLoadOrderHistoryDB()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+                    string sql = "SELECT * FROM `orderhistory`";
+                    MySqlCommand cmd = new MySqlCommand(sql, connection);
+                    System.Data.DataTable dataTable = new System.Data.DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+
+                        MngrOrderHistoryTable.DataSource = dataTable;
+
+                        MngrOrderHistoryTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error occurred: " + e.Message);
+            }
+            finally
+            {
+                // Make sure to close the connection (if it's open)
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+
+        private string GetBestSellingItemForToday()
+        {
+            string bestSellerName = "No best-selling item found for today";
+            string currentDate = DateTime.Now.ToString("MM-dd-yyyy");
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    string query = "SELECT ItemName, SUM(Qty) AS TotalQty " +
+                                   "FROM orderhistory " +
+                                   "WHERE DATE(Date) = @CurrentDate AND CheckedOut = 'Yes' AND Voided = 'No' " +
+                                   "GROUP BY ItemName " +
+                                   "ORDER BY TotalQty DESC " +
+                                   "LIMIT 1;";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@CurrentDate", currentDate);
+                        MySqlDataReader reader = command.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            bestSellerName = reader["ItemName"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that may occur during the database operation.
+                // Example: MessageBox.Show("An error occurred: " + ex.Message);
+            }
+
+            return bestSellerName;
+        }
+
+
 
         private void ENREmplPassBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1029,6 +1151,7 @@ namespace EatNRunProject
             {
                 MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RmbrAccCheckbox.Checked = true;
+                MngrNameBox.Text = "Test Manager";
                 MFpanelManager.MFShow(ManagerPanel);
                 MngrPanelManager.MngrFormShow(MngrNewOrderBtnPanel);
                 MngrSessionNumRefresh();
@@ -1040,6 +1163,7 @@ namespace EatNRunProject
             {
                 MessageBox.Show("Welcome back, Cashier.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RmbrAccCheckbox.Checked = true;
+                CashierNameBox.Text = "Test Cashier";
                 MFpanelManager.MFShow(CashierPanel);
                 CashierPanelManager.CashierFormShow(CashierNewOrderBtnPanel);
                 CashierSessionNumRefresh();
@@ -2969,7 +3093,7 @@ namespace EatNRunProject
         private void MngrSalesBtn_Click(object sender, EventArgs e)
         {
             MngrPanelManager.MngrFormShow(MngrSalesPanel);
-
+            DBRefresher();
         }
 
         private void MngrSalesExitBtn_Click(object sender, EventArgs e)
@@ -4477,5 +4601,55 @@ namespace EatNRunProject
                 CashierNewOrderBtnPanel.Visible = false;
             }
         }
+
+        private void MngrSalesStartDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            FilterAndSortDataGridView();
+        }
+
+        private void MngrSalesEndDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            FilterAndSortDataGridView();
+        }
+
+        private void FilterAndSortDataGridView()
+        {
+            DateTime startDate = MngrSalesStartDatePicker.Value.Date; // Get only the date part
+            DateTime endDate = MngrSalesEndDatePicker.Value.Date;     // Get only the date part
+
+            DataView dv = new DataView(salesData);
+
+            if (startDate == endDate)
+            {
+                // If both date pickers have the same date, filter for that specific date
+                dv.RowFilter = $"Date >= '{startDate:MM-dd-yyyy dddd hh:mm tt}' " +
+                               $"AND Date <= '{startDate.AddDays(1):MM-dd-yyyy dddd hh:mm tt}'";
+            }
+            else
+            {
+                // If the dates are different, filter for the date range
+                dv.RowFilter = $"Date >= '{startDate:MM-dd-yyyy dddd hh:mm tt}' " +
+                               $"AND Date <= '{endDate.AddDays(1):MM-dd-yyyy dddd hh:mm tt}'";
+            }
+
+            // Sort the DataView by Date
+            dv.Sort = "Date ASC";
+
+            MngrSalesTable.DataSource = dv.ToTable();
+
+            decimal totalSales = 0;
+            foreach (DataRow row in dv.ToTable().Rows)
+            {
+                decimal grossAmount = Convert.ToDecimal(row["GrossAmount"]);
+                totalSales += grossAmount;
+            }
+
+            MngrTotalSalesBox.Text = totalSales.ToString("0.00");
+        }
+
+
+
+
+
     }
 }
