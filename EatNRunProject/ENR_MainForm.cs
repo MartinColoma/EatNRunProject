@@ -186,7 +186,12 @@ namespace EatNRunProject
             CashierLoadSideItemMenu();
             CashierLoadDrinksItemMenu();
             CashierLoadSetItemMenu();
-        }
+            MngrLoadSalesDB();
+            MngrLoadOrderHistoryDB();
+            string bestSellerName = GetBestSellingItemForToday();
+            MngrBestSellerBox.Text = bestSellerName;
+        
+    }
 
 
 
@@ -994,6 +999,117 @@ namespace EatNRunProject
             }
         }
 
+        public void MngrLoadSalesDB()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+                    string sql = "SELECT * FROM `sales`";
+                    MySqlCommand cmd = new MySqlCommand(sql, connection);
+                    System.Data.DataTable dataTable = new System.Data.DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+
+                        MngrSalesTable.DataSource = dataTable;
+
+                        MngrSalesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error occurred: " + e.Message);
+            }
+            finally
+            {
+                // Make sure to close the connection (if it's open)
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public void MngrLoadOrderHistoryDB()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+                    string sql = "SELECT * FROM `orderhistory`";
+                    MySqlCommand cmd = new MySqlCommand(sql, connection);
+                    System.Data.DataTable dataTable = new System.Data.DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+
+                        MngrOrderHistoryTable.DataSource = dataTable;
+
+                        MngrOrderHistoryTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error occurred: " + e.Message);
+            }
+            finally
+            {
+                // Make sure to close the connection (if it's open)
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+
+        private string GetBestSellingItemForToday()
+        {
+            string bestSellerName = "No best-selling item found for today";
+            string currentDate = DateTime.Now.ToString("MM-dd-yyyy");
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+
+                    string query = "SELECT ItemName, SUM(Qty) AS TotalQty " +
+                                   "FROM orderhistory " +
+                                   "WHERE DATE(Date) = @CurrentDate AND CheckedOut = 'Yes' AND Voided = 'No' " +
+                                   "GROUP BY ItemName " +
+                                   "ORDER BY TotalQty DESC " +
+                                   "LIMIT 1;";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@CurrentDate", currentDate);
+                        MySqlDataReader reader = command.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            bestSellerName = reader["ItemName"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that may occur during the database operation.
+                // Example: MessageBox.Show("An error occurred: " + ex.Message);
+            }
+
+            return bestSellerName;
+        }
+
+
 
         private void ENREmplPassBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1029,6 +1145,7 @@ namespace EatNRunProject
             {
                 MessageBox.Show("Welcome back, Manager.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RmbrAccCheckbox.Checked = true;
+                MngrNameBox.Text = "Test Manager";
                 MFpanelManager.MFShow(ManagerPanel);
                 MngrPanelManager.MngrFormShow(MngrNewOrderBtnPanel);
                 MngrSessionNumRefresh();
@@ -1040,6 +1157,7 @@ namespace EatNRunProject
             {
                 MessageBox.Show("Welcome back, Cashier.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RmbrAccCheckbox.Checked = true;
+                CashierNameBox.Text = "Test Cashier";
                 MFpanelManager.MFShow(CashierPanel);
                 CashierPanelManager.CashierFormShow(CashierNewOrderBtnPanel);
                 CashierSessionNumRefresh();
@@ -2969,7 +3087,7 @@ namespace EatNRunProject
         private void MngrSalesBtn_Click(object sender, EventArgs e)
         {
             MngrPanelManager.MngrFormShow(MngrSalesPanel);
-
+            DBRefresher();
         }
 
         private void MngrSalesExitBtn_Click(object sender, EventArgs e)
