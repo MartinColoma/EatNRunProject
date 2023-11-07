@@ -14,9 +14,12 @@ namespace EatNRunProject
         [STAThread]
         static void Main()
         {
+            // Syncfusion Licensing
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NHaF5cXmVCf1JpR2pGfV5yd0VHYVZSQ3xdRE0DNHVRdkdgWH9dcHZWRWdeVkBxXUE=");
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ENR_MainForm());
+            Application.Run(new ENRMainForm());
         }
     }
 }
