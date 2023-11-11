@@ -171,6 +171,8 @@ namespace EatNRunProject
 
         private void ENR_MainForm_Load(object sender, EventArgs e)
         {
+            this.Size = new System.Drawing.Size(517, 545);
+            
             DBRefresher();
 
             DateTimePickerTimer.Interval = 1000;
@@ -409,6 +411,10 @@ namespace EatNRunProject
             plusColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             plusColumn.Width = 10;
             MngrOrderViewTable.Columns.Add(plusColumn);
+
+            DataGridViewTextBoxColumn itemUnitCostColumn = new DataGridViewTextBoxColumn();
+            itemUnitCostColumn.Name = "Unit Price";
+            MngrOrderViewTable.Columns.Add(itemUnitCostColumn);
 
             DataGridViewTextBoxColumn itemCostColumn = new DataGridViewTextBoxColumn();
             itemCostColumn.Name = "Price";
@@ -1144,6 +1150,7 @@ namespace EatNRunProject
                 rememberAccount();
                 logincredclear();
                 AdminSalesStartDatePicker.Visible = false;
+                this.Size = new System.Drawing.Size(1280, 720);
                 return;
             }
             else if (ENREmplIDBox.Text == "Manager" && ENREmplPassBox.Text == "Manager123")
@@ -1156,6 +1163,8 @@ namespace EatNRunProject
                 MngrSessionNumRefresh();
                 rememberAccount();
                 logincredclear();
+                this.Size = new System.Drawing.Size(1280, 720);
+
                 return;
             }
             else if (ENREmplIDBox.Text == "Cashier" && ENREmplPassBox.Text == "Cashier123")
@@ -1168,6 +1177,8 @@ namespace EatNRunProject
                 CashierSessionNumRefresh();
                 rememberAccount();
                 logincredclear();
+                this.Size = new System.Drawing.Size(1280, 720);
+
                 return;
             }
             else if (string.IsNullOrEmpty(ENREmplIDBox.Text) || string.IsNullOrEmpty(ENREmplPassBox.Text))
@@ -1220,6 +1231,8 @@ namespace EatNRunProject
                                         rememberAccount();
                                         logincredclear();
                                         AdminSalesStartDatePicker.Visible = false;
+                                        this.Size = new System.Drawing.Size(1280, 720);
+
                                     }
                                     else
                                     {
@@ -1245,6 +1258,7 @@ namespace EatNRunProject
                                         MngrSessionNumRefresh();
                                         rememberAccount();
                                         logincredclear();
+                                        this.Size = new System.Drawing.Size(1280, 720);
 
                                         return;
                                     }
@@ -1272,6 +1286,8 @@ namespace EatNRunProject
                                         CashierSessionNumRefresh();
                                         rememberAccount();
                                         logincredclear();
+                                        this.Size = new System.Drawing.Size(1280, 720);
+                                        return;
 
 
                                     }
@@ -1279,7 +1295,6 @@ namespace EatNRunProject
                                     {
                                         MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
-                                    return;
                                 }
                                 else
                                 {
@@ -1490,7 +1505,10 @@ namespace EatNRunProject
             DialogResult result = MessageBox.Show("Do you want to switch user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                this.Size = new System.Drawing.Size(517, 545);
+
                 MFpanelManager.MFShow(LoginPanel);
+
             }
         }
 
@@ -1500,6 +1518,7 @@ namespace EatNRunProject
             DialogResult result = MessageBox.Show("Do you want to switch user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                this.Size = new System.Drawing.Size(517, 545);
                 MFpanelManager.MFShow(LoginPanel);
                 MngrOrderViewTable.Rows.Clear();
                 MngrItemPanel.Enabled = true;
@@ -1511,13 +1530,20 @@ namespace EatNRunProject
             }
         }
 
-        private void CashierSwitchBtn_Click(object sender, EventArgs e)
+        private void CashierSwitchBtn_Click_1(object sender, EventArgs e)
         {
-
             DialogResult result = MessageBox.Show("Do you want to switch user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                this.Size = new System.Drawing.Size(517, 545);
                 MFpanelManager.MFShow(LoginPanel);
+                CashierOrderViewTable.Rows.Clear();
+                CashierItemPanel.Enabled = true;
+
+            }
+            else
+            {
+
             }
         }
 
@@ -2818,7 +2844,7 @@ namespace EatNRunProject
             else
             {
                 MngrOrderPanelManager.MngrOrderFormShow(MngrCheckoutViewPanel);
-                CalculateTotalPrice();
+                MngrCalculateTotalPrice();
             }
         }
 
@@ -2873,7 +2899,7 @@ namespace EatNRunProject
                 DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
                 // Call the method to handle the click event
-                HandleDataGridViewCellClick(dgv, selectedRow);
+                MngrDGVCellClick(dgv, selectedRow);
             }
         }
 
@@ -2885,7 +2911,7 @@ namespace EatNRunProject
                 DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
                 // Call the method to handle the click event
-                HandleDataGridViewCellClick(dgv, selectedRow);
+                MngrDGVCellClick(dgv, selectedRow);
             }
         }
 
@@ -2897,7 +2923,7 @@ namespace EatNRunProject
                 DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
                 // Call the method to handle the click event
-                HandleDataGridViewCellClick(dgv, selectedRow);
+                MngrDGVCellClick(dgv, selectedRow);
             }
         }
 
@@ -2909,13 +2935,13 @@ namespace EatNRunProject
                 DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
                 // Call the method to handle the click event
-                HandleDataGridViewCellClick(dgv, selectedRow);
+                MngrDGVCellClick(dgv, selectedRow);
             }
         }
 
-        private void HandleDataGridViewCellClick(DataGridView dgv, DataGridViewRow selectedRow)
+        private void MngrDGVCellClick(DataGridView dgv, DataGridViewRow selectedRow)
         {
-            string cellValue1 = selectedRow.Cells[2].Value.ToString(); // Item Name
+            string itemName = selectedRow.Cells[2].Value.ToString(); // Item Name
 
             bool itemExists = false;
             int existingRowIndex = -1;
@@ -2923,7 +2949,7 @@ namespace EatNRunProject
             // Check if the item already exists in the order
             foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
             {
-                if (row.Cells["Item Name"].Value != null && row.Cells["Item Name"].Value.ToString() == cellValue1)
+                if (row.Cells["Item Name"].Value != null && row.Cells["Item Name"].Value.ToString() == itemName)
                 {
                     itemExists = true;
                     existingRowIndex = row.Index;
@@ -2951,7 +2977,7 @@ namespace EatNRunProject
                     // Update Qty and ItemCost in the DataGridView
                     MngrOrderViewTable.Rows[existingRowIndex].Cells["Qty"].Value = quantity.ToString();
                     MngrOrderViewTable.Rows[existingRowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
-                    CalculateTotalPrice();
+                    MngrCalculateTotalPrice();
                 }
                 else
                 {
@@ -2962,17 +2988,14 @@ namespace EatNRunProject
             else
             {
                 // The item doesn't exist in the order, add it
-                DialogResult result = MessageBox.Show("Do you want to add this in the order?", "Add Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    string cellValue3 = selectedRow.Cells[5].Value.ToString(); // Item Price
+                string itemPrice = selectedRow.Cells[5].Value.ToString(); // Item Price
 
-                    MngrOrderViewTable.Rows.Add(cellValue1, "-", "1", "+", cellValue3);
-                    CalculateTotalPrice();
-                }
+                MngrOrderViewTable.Rows.Add(itemName, "-", "1", "+", itemPrice, itemPrice);
+                MngrCalculateTotalPrice();
+
             }
         }
-        private void CalculateTotalPrice()
+        private void MngrCalculateTotalPrice()
         {
             decimal total = 0;
 
@@ -2990,10 +3013,10 @@ namespace EatNRunProject
 
             // Display the total price in the GrossAmountBox TextBox
             MngrGrossAmountBox.Text = total.ToString("F2"); // Format to two decimal places
-            CalculateVATAndNetAmount();
+            MngrCalculateVATAndNetAmount();
         }
 
-        public void CalculateVATAndNetAmount()
+        public void MngrCalculateVATAndNetAmount()
         {
             // Get the Gross Amount from the TextBox (MngrGrossAmountBox)
             if (decimal.TryParse(MngrGrossAmountBox.Text, out decimal grossAmount))
@@ -3214,37 +3237,60 @@ namespace EatNRunProject
                 {
                     // Apply the 20% discount if the checkbox is checked and the discount hasn't been applied before
                     originalGrossAmount = grossAmount; // Store the original value
-                    decimal discountedAmount = grossAmount * 0.8m; // 20% discount using decimal
+                    decimal discountPercentage = 20m;
+                    decimal discountAmount = grossAmount * (discountPercentage / 100); // Calculate the discount amount
+                    decimal discountedAmount = grossAmount - discountAmount; // Subtract the discount amount
                     MngrGrossAmountBox.Text = discountedAmount.ToString("0.00"); // Format to display as currency
                     discountApplied = true; // Set the flag to indicate that the discount has been applied
+                    MngrDiscountBox.Text = discountAmount.ToString("0.00"); // Display the discount amount
                 }
                 else if (!MngrDiscountSenior.Checked && discountApplied)
                 {
                     // Unchecked, set MngrGrossAmount to the original value if the discount has been applied before
                     MngrGrossAmountBox.Text = originalGrossAmount.ToString("0.00");
                     discountApplied = false; // Reset the flag
+                    MngrDiscountBox.Text = "0.00"; // Reset the discount amount display
+                }
+                else
+                {
+                    // If the checkbox is checked but the discount has already been applied, update the discount amount display
+                    decimal discountPercentage = 20m;
+                    decimal discountAmount = originalGrossAmount * (discountPercentage / 100);
+                    MngrDiscountBox.Text = discountAmount.ToString("0.00");
                 }
             }
         }
+
 
 
         private void MngrDiscountPWD_CheckedChanged(object sender, EventArgs e)
         {
             if (decimal.TryParse(MngrGrossAmountBox.Text, out decimal grossAmount))
             {
-                if (MngrDiscountPWD.Checked && !discountApplied)
+                if (MngrDiscountSenior.Checked && !discountApplied)
                 {
                     // Apply the 20% discount if the checkbox is checked and the discount hasn't been applied before
                     originalGrossAmount = grossAmount; // Store the original value
-                    decimal discountedAmount = grossAmount * 0.8m; // 20% discount using decimal
+                    decimal discountPercentage = 20m;
+                    decimal discountAmount = grossAmount * (discountPercentage / 100); // Calculate the discount amount
+                    decimal discountedAmount = grossAmount - discountAmount; // Subtract the discount amount
                     MngrGrossAmountBox.Text = discountedAmount.ToString("0.00"); // Format to display as currency
                     discountApplied = true; // Set the flag to indicate that the discount has been applied
+                    MngrDiscountBox.Text = discountAmount.ToString("0.00"); // Display the discount amount
                 }
-                else if (!MngrDiscountPWD.Checked && discountApplied)
+                else if (!MngrDiscountSenior.Checked && discountApplied)
                 {
                     // Unchecked, set MngrGrossAmount to the original value if the discount has been applied before
                     MngrGrossAmountBox.Text = originalGrossAmount.ToString("0.00");
                     discountApplied = false; // Reset the flag
+                    MngrDiscountBox.Text = "0.00"; // Reset the discount amount display
+                }
+                else
+                {
+                    // If the checkbox is checked but the discount has already been applied, update the discount amount display
+                    decimal discountPercentage = 20m;
+                    decimal discountAmount = originalGrossAmount * (discountPercentage / 100);
+                    MngrDiscountBox.Text = discountAmount.ToString("0.00");
                 }
             }
         }
@@ -3253,7 +3299,7 @@ namespace EatNRunProject
 
         private void MngrGrossAmountBox_TextChanged(object sender, EventArgs e)
         {
-            CalculateVATAndNetAmount();
+            MngrCalculateVATAndNetAmount();
             if (decimal.TryParse(MngrGrossAmountBox.Text, out decimal grossAmount))
             {
                 // Get the Cash Amount from the TextBox (MngrCashBox)
@@ -3642,6 +3688,10 @@ namespace EatNRunProject
             }
         }
 
+        /*
+         Cashier Start
+        */
+
         private void CashierNewOrderBtn_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Do you want to create a new order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -3677,22 +3727,6 @@ namespace EatNRunProject
         {
             CashierItemPanelManager.CashierItemFormShow(CashierItemSetPanel);
             DBRefresher();
-        }
-
-        private void CashierSwitchBtn_Click_1(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Do you want to switch user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                MFpanelManager.MFShow(LoginPanel);
-                CashierOrderViewTable.Rows.Clear();
-                MngrItemPanel.Enabled = true;
-
-            }
-            else
-            {
-
-            }
         }
 
         private void CashierOrderViewTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -3771,7 +3805,7 @@ namespace EatNRunProject
                 DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
                 // Call the method to handle the click event
-                CashierHandleDataGridViewCellClick(dgv, selectedRow);
+                CashierDGVCellClick(dgv, selectedRow);
             }
         }
 
@@ -3783,7 +3817,7 @@ namespace EatNRunProject
                 DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
                 // Call the method to handle the click event
-                CashierHandleDataGridViewCellClick(dgv, selectedRow);
+                CashierDGVCellClick(dgv, selectedRow);
             }
         }
 
@@ -3795,7 +3829,7 @@ namespace EatNRunProject
                 DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
                 // Call the method to handle the click event
-                CashierHandleDataGridViewCellClick(dgv, selectedRow);
+                CashierDGVCellClick(dgv, selectedRow);
             }
         }
 
@@ -3807,11 +3841,11 @@ namespace EatNRunProject
                 DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
                 // Call the method to handle the click event
-                CashierHandleDataGridViewCellClick(dgv, selectedRow);
+                CashierDGVCellClick(dgv, selectedRow);
             }
         }
 
-        private void CashierHandleDataGridViewCellClick(DataGridView dgv, DataGridViewRow selectedRow)
+        private void CashierDGVCellClick(DataGridView dgv, DataGridViewRow selectedRow)
         {
             string cellValue1 = selectedRow.Cells[2].Value.ToString(); // Item Name
 
@@ -3849,7 +3883,7 @@ namespace EatNRunProject
                     // Update Qty and ItemCost in the DataGridView
                     CashierOrderViewTable.Rows[existingRowIndex].Cells["Qty"].Value = quantity.ToString();
                     CashierOrderViewTable.Rows[existingRowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
-                    CalculateTotalPrice();
+                    CashierCalculateTotalPrice();
                 }
                 else
                 {
