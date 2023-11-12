@@ -376,11 +376,13 @@
             this.CashierItemSetBtn = new FontAwesome.Sharp.IconButton();
             this.CashierItemBurgerBtn = new FontAwesome.Sharp.IconButton();
             this.CashierHeaderPanel = new System.Windows.Forms.Panel();
+            this.CashierDateTimePickerBox = new System.Windows.Forms.TextBox();
             this.CashierSessionNumBox = new System.Windows.Forms.TextBox();
             this.CashierNameBox = new System.Windows.Forms.TextBox();
             this.CashierNameLbl = new System.Windows.Forms.Label();
             this.CashierSessionNumLbl = new System.Windows.Forms.Label();
             this.ENRCashierLogo = new System.Windows.Forms.PictureBox();
+            this.CashierDashboardLbl = new System.Windows.Forms.Label();
             this.CashierDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.AdminFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.FoodItemFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
@@ -392,8 +394,6 @@
             this.CashierFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.CashierItemFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.CashierViewFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
-            this.CashierDateTimePickerBox = new System.Windows.Forms.TextBox();
-            this.CashierDashboardLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MainFormPicker)).BeginInit();
             this.AdminPanel.SuspendLayout();
             this.AdminFoodItemSearchPanelBox.SuspendLayout();
@@ -5108,6 +5108,18 @@
             this.CashierHeaderPanel.Size = new System.Drawing.Size(1264, 176);
             this.CashierHeaderPanel.TabIndex = 20;
             // 
+            // CashierDateTimePickerBox
+            // 
+            this.CashierDateTimePickerBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CashierDateTimePickerBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CashierDateTimePickerBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierDateTimePickerBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierDateTimePickerBox.Location = new System.Drawing.Point(989, 113);
+            this.CashierDateTimePickerBox.Name = "CashierDateTimePickerBox";
+            this.CashierDateTimePickerBox.ReadOnly = true;
+            this.CashierDateTimePickerBox.Size = new System.Drawing.Size(263, 23);
+            this.CashierDateTimePickerBox.TabIndex = 36;
+            // 
             // CashierSessionNumBox
             // 
             this.CashierSessionNumBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
@@ -5164,6 +5176,20 @@
             this.ENRCashierLogo.TabIndex = 1;
             this.ENRCashierLogo.TabStop = false;
             // 
+            // CashierDashboardLbl
+            // 
+            this.CashierDashboardLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CashierDashboardLbl.Font = new System.Drawing.Font("Arial Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierDashboardLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierDashboardLbl.Location = new System.Drawing.Point(202, 39);
+            this.CashierDashboardLbl.Name = "CashierDashboardLbl";
+            this.CashierDashboardLbl.Size = new System.Drawing.Size(980, 75);
+            this.CashierDashboardLbl.TabIndex = 18;
+            this.CashierDashboardLbl.Text = "Cashier Dashboard";
+            this.CashierDashboardLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // CashierDateTimePicker
             // 
             this.CashierDateTimePicker.AccessibleRole = System.Windows.Forms.AccessibleRole.Clock;
@@ -5180,7 +5206,7 @@
             this.CashierDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.CashierDateTimePicker.Location = new System.Drawing.Point(989, 12);
             this.CashierDateTimePicker.Name = "CashierDateTimePicker";
-            this.CashierDateTimePicker.Size = new System.Drawing.Size(263, 26);
+            this.CashierDateTimePicker.Size = new System.Drawing.Size(980, 26);
             this.CashierDateTimePicker.TabIndex = 20;
             this.CashierDateTimePicker.Visible = false;
             // 
@@ -5231,38 +5257,12 @@
             // CashierItemFormPicker
             // 
             this.CashierItemFormPicker.ContainerControl = this.CashierItemPanel;
-            this.CashierItemFormPicker.SelectedCard = "Card2";
+            this.CashierItemFormPicker.SelectedCard = "Card1";
             // 
             // CashierViewFormPicker
             // 
             this.CashierViewFormPicker.ContainerControl = this.CashierViewPanel;
             this.CashierViewFormPicker.SelectedCard = "Card1";
-            // 
-            // CashierDateTimePickerBox
-            // 
-            this.CashierDateTimePickerBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.CashierDateTimePickerBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CashierDateTimePickerBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CashierDateTimePickerBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierDateTimePickerBox.Location = new System.Drawing.Point(989, 113);
-            this.CashierDateTimePickerBox.Name = "CashierDateTimePickerBox";
-            this.CashierDateTimePickerBox.ReadOnly = true;
-            this.CashierDateTimePickerBox.Size = new System.Drawing.Size(263, 23);
-            this.CashierDateTimePickerBox.TabIndex = 36;
-            // 
-            // CashierDashboardLbl
-            // 
-            this.CashierDashboardLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CashierDashboardLbl.Font = new System.Drawing.Font("Arial Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CashierDashboardLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierDashboardLbl.Location = new System.Drawing.Point(202, 39);
-            this.CashierDashboardLbl.Name = "CashierDashboardLbl";
-            this.CashierDashboardLbl.Size = new System.Drawing.Size(597, 75);
-            this.CashierDashboardLbl.TabIndex = 18;
-            this.CashierDashboardLbl.Text = "Cashier Dashboard";
-            this.CashierDashboardLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ENRMainForm
             // 

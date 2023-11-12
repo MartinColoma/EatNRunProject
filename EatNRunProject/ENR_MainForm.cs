@@ -4459,8 +4459,7 @@ namespace EatNRunProject
         {
             // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
             string orderNum = CashierSessionNumBox.Text + "-" + CashierOrderNumBox.Text;
-            DateTime currentDate = CashierDateTimePicker.Value;
-            string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
+            string today = CashierDateTimePickerBox.Text;
             string mngrName = CashierNameBox.Text;
             string yes = "Yes";
             string no = "No";
@@ -4518,10 +4517,8 @@ namespace EatNRunProject
 
         private void CashierPlaceOrderSalesDB()
         {
-            DateTime currentDate = CashierDateTimePicker.Value;
-
             string orderNum = CashierSessionNumBox.Text + "-" + CashierOrderNumBox.Text;
-            string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
+            string today = CashierDateTimePickerBox.Text;
             string mngrName = CashierNameBox.Text;
             string netAmount = CashierNetAmountBox.Text;
             string vat = CashierVATBox.Text;
