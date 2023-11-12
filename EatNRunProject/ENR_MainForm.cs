@@ -390,6 +390,7 @@ namespace EatNRunProject
 
             DataGridViewTextBoxColumn itemNameColumn = new DataGridViewTextBoxColumn();
             itemNameColumn.Name = "Item Name";
+            //itemNameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             MngrOrderViewTable.Columns.Add(itemNameColumn);
 
             DataGridViewButtonColumn minusColumn = new DataGridViewButtonColumn();
@@ -417,7 +418,7 @@ namespace EatNRunProject
             MngrOrderViewTable.Columns.Add(itemUnitCostColumn);
 
             DataGridViewTextBoxColumn itemCostColumn = new DataGridViewTextBoxColumn();
-            itemCostColumn.Name = "Price";
+            itemCostColumn.Name = "Total Price";
             MngrOrderViewTable.Columns.Add(itemCostColumn);
 
         }
@@ -1373,7 +1374,6 @@ namespace EatNRunProject
 
                 // Add the username to the combo box
                 ENREmplIDBox.Items.Add(newItem);
-                CashierVoidEmplIDBox.Items.Add(newItem); // Add to the new combo box
 
 
                 // Clear the textboxes
@@ -2900,6 +2900,7 @@ namespace EatNRunProject
 
                 // Call the method to handle the click event
                 MngrDGVCellClick(dgv, selectedRow);
+                MngrCalculateTotalPrice();
             }
         }
 
@@ -2912,6 +2913,8 @@ namespace EatNRunProject
 
                 // Call the method to handle the click event
                 MngrDGVCellClick(dgv, selectedRow);
+                MngrCalculateTotalPrice();
+
             }
         }
 
@@ -2924,6 +2927,8 @@ namespace EatNRunProject
 
                 // Call the method to handle the click event
                 MngrDGVCellClick(dgv, selectedRow);
+                MngrCalculateTotalPrice();
+
             }
         }
 
@@ -2936,6 +2941,8 @@ namespace EatNRunProject
 
                 // Call the method to handle the click event
                 MngrDGVCellClick(dgv, selectedRow);
+                MngrCalculateTotalPrice();
+
             }
         }
 
@@ -2963,7 +2970,7 @@ namespace EatNRunProject
                 string quantityString = MngrOrderViewTable.Rows[existingRowIndex].Cells["Qty"].Value?.ToString();
                 if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
                 {
-                    decimal itemCost = decimal.Parse(MngrOrderViewTable.Rows[existingRowIndex].Cells["Price"].Value?.ToString());
+                    decimal itemCost = decimal.Parse(MngrOrderViewTable.Rows[existingRowIndex].Cells["Total Price"].Value?.ToString());
 
                     // Calculate the cost per item
                     decimal costPerItem = itemCost / quantity;
@@ -2976,7 +2983,7 @@ namespace EatNRunProject
 
                     // Update Qty and ItemCost in the DataGridView
                     MngrOrderViewTable.Rows[existingRowIndex].Cells["Qty"].Value = quantity.ToString();
-                    MngrOrderViewTable.Rows[existingRowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                    MngrOrderViewTable.Rows[existingRowIndex].Cells["Total Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
                     MngrCalculateTotalPrice();
                 }
                 else
@@ -3000,7 +3007,7 @@ namespace EatNRunProject
             decimal total = 0;
 
             // Assuming the "Price" column is of decimal type
-            int priceColumnIndex = MngrOrderViewTable.Columns["Price"].Index;
+            int priceColumnIndex = MngrOrderViewTable.Columns["Total Price"].Index;
 
             foreach (DataGridViewRow row in MngrOrderViewTable.Rows)
             {
@@ -3012,14 +3019,16 @@ namespace EatNRunProject
             }
 
             // Display the total price in the GrossAmountBox TextBox
+            MngrCOGrossAmountBox.Text = total.ToString("F2"); // Format to two decimal places
             MngrGrossAmountBox.Text = total.ToString("F2"); // Format to two decimal places
+
             MngrCalculateVATAndNetAmount();
         }
 
         public void MngrCalculateVATAndNetAmount()
         {
             // Get the Gross Amount from the TextBox (MngrGrossAmountBox)
-            if (decimal.TryParse(MngrGrossAmountBox.Text, out decimal grossAmount))
+            if (decimal.TryParse(MngrCOGrossAmountBox.Text, out decimal grossAmount))
             {
                 // Fixed VAT rate of 12%
                 decimal rate = 12;
@@ -3031,6 +3040,8 @@ namespace EatNRunProject
                 decimal vatAmount = grossAmount - netAmount;
 
                 // Display the calculated values in TextBoxes
+                MngrCOVATBox.Text = vatAmount.ToString("0.00");
+                MngrCONetAmountBox.Text = netAmount.ToString("0.00");
                 MngrVATBox.Text = vatAmount.ToString("0.00");
                 MngrNetAmountBox.Text = netAmount.ToString("0.00");
             }
@@ -3057,7 +3068,7 @@ namespace EatNRunProject
                     string quantityString = MngrOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
                     if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
                     {
-                        decimal itemCost = decimal.Parse(MngrOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString());
+                        decimal itemCost = decimal.Parse(MngrOrderViewTable.Rows[e.RowIndex].Cells["Total Price"].Value?.ToString());
 
                         // Calculate the cost per item
                         decimal costPerItem = itemCost / quantity;
@@ -3072,7 +3083,7 @@ namespace EatNRunProject
 
                             // Update Qty and ItemCost in the DataGridView
                             MngrOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity.ToString();
-                            MngrOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                            MngrOrderViewTable.Rows[e.RowIndex].Cells["Total Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
                         }
                     }
                     else
@@ -3086,7 +3097,7 @@ namespace EatNRunProject
                     string quantityString = MngrOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
                     if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
                     {
-                        decimal itemCost = decimal.Parse(MngrOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString());
+                        decimal itemCost = decimal.Parse(MngrOrderViewTable.Rows[e.RowIndex].Cells["Total Price"].Value?.ToString());
 
                         // Calculate the cost per item
                         decimal costPerItem = itemCost / quantity;
@@ -3099,7 +3110,7 @@ namespace EatNRunProject
 
                         // Update Qty and ItemCost in the DataGridView
                         MngrOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity.ToString();
-                        MngrOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                        MngrOrderViewTable.Rows[e.RowIndex].Cells["Total Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
                     }
                     else
                     {
@@ -3225,13 +3236,20 @@ namespace EatNRunProject
         private void DateTimePickerTimer_Tick(object sender, EventArgs e)
         {
             MngrDateTimePicker.Value = DateTime.Now;
+            DateTime mngrcurrentDate = MngrDateTimePicker.Value;
+            string mngrtoday = mngrcurrentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
+            
             CashierDateTimePicker.Value = DateTime.Now;
+            DateTime cashierrcurrentDate = CashierDateTimePicker.Value;
+            string Cashiertoday = cashierrcurrentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
+            CashierDateTimePickerBox.Text = Cashiertoday;
+
 
         }
 
         private void MngrDiscountSenior_CheckedChanged(object sender, EventArgs e)
         {
-            if (decimal.TryParse(MngrGrossAmountBox.Text, out decimal grossAmount))
+            if (decimal.TryParse(MngrCOGrossAmountBox.Text, out decimal grossAmount))
             {
                 if (MngrDiscountSenior.Checked && !discountApplied)
                 {
@@ -3240,14 +3258,14 @@ namespace EatNRunProject
                     decimal discountPercentage = 20m;
                     decimal discountAmount = grossAmount * (discountPercentage / 100); // Calculate the discount amount
                     decimal discountedAmount = grossAmount - discountAmount; // Subtract the discount amount
-                    MngrGrossAmountBox.Text = discountedAmount.ToString("0.00"); // Format to display as currency
+                    MngrCOGrossAmountBox.Text = discountedAmount.ToString("0.00"); // Format to display as currency
                     discountApplied = true; // Set the flag to indicate that the discount has been applied
                     MngrDiscountBox.Text = discountAmount.ToString("0.00"); // Display the discount amount
                 }
                 else if (!MngrDiscountSenior.Checked && discountApplied)
                 {
                     // Unchecked, set MngrGrossAmount to the original value if the discount has been applied before
-                    MngrGrossAmountBox.Text = originalGrossAmount.ToString("0.00");
+                    MngrCOGrossAmountBox.Text = originalGrossAmount.ToString("0.00");
                     discountApplied = false; // Reset the flag
                     MngrDiscountBox.Text = "0.00"; // Reset the discount amount display
                 }
@@ -3265,7 +3283,7 @@ namespace EatNRunProject
 
         private void MngrDiscountPWD_CheckedChanged(object sender, EventArgs e)
         {
-            if (decimal.TryParse(MngrGrossAmountBox.Text, out decimal grossAmount))
+            if (decimal.TryParse(MngrCOGrossAmountBox.Text, out decimal grossAmount))
             {
                 if (MngrDiscountSenior.Checked && !discountApplied)
                 {
@@ -3274,14 +3292,14 @@ namespace EatNRunProject
                     decimal discountPercentage = 20m;
                     decimal discountAmount = grossAmount * (discountPercentage / 100); // Calculate the discount amount
                     decimal discountedAmount = grossAmount - discountAmount; // Subtract the discount amount
-                    MngrGrossAmountBox.Text = discountedAmount.ToString("0.00"); // Format to display as currency
+                    MngrCOGrossAmountBox.Text = discountedAmount.ToString("0.00"); // Format to display as currency
                     discountApplied = true; // Set the flag to indicate that the discount has been applied
                     MngrDiscountBox.Text = discountAmount.ToString("0.00"); // Display the discount amount
                 }
                 else if (!MngrDiscountSenior.Checked && discountApplied)
                 {
                     // Unchecked, set MngrGrossAmount to the original value if the discount has been applied before
-                    MngrGrossAmountBox.Text = originalGrossAmount.ToString("0.00");
+                    MngrCOGrossAmountBox.Text = originalGrossAmount.ToString("0.00");
                     discountApplied = false; // Reset the flag
                     MngrDiscountBox.Text = "0.00"; // Reset the discount amount display
                 }
@@ -3300,7 +3318,7 @@ namespace EatNRunProject
         private void MngrGrossAmountBox_TextChanged(object sender, EventArgs e)
         {
             MngrCalculateVATAndNetAmount();
-            if (decimal.TryParse(MngrGrossAmountBox.Text, out decimal grossAmount))
+            if (decimal.TryParse(MngrCOGrossAmountBox.Text, out decimal grossAmount))
             {
                 // Get the Cash Amount from the TextBox (MngrCashBox)
                 if (decimal.TryParse(MngrCashBox.Text, out decimal cashAmount))
@@ -3411,9 +3429,9 @@ namespace EatNRunProject
             string orderNum = MngrSessionNumBox.Text + "-" + MngrOrderNumBox.Text;
             string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
             string mngrName = MngrNameBox.Text;
-            string netAmount = MngrNetAmountBox.Text;
-            string vat = MngrVATBox.Text;
-            string grossAmount = MngrGrossAmountBox.Text;
+            string netAmount = MngrCONetAmountBox.Text;
+            string vat = MngrCOVATBox.Text;
+            string grossAmount = MngrCOGrossAmountBox.Text;
 
             try
             {
@@ -3627,9 +3645,9 @@ namespace EatNRunProject
                     doc.Add(new Chunk("\n")); // New line
 
                     // Total from your textboxes as decimal
-                    decimal netAmount = decimal.Parse(MngrNetAmountBox.Text);
-                    decimal vat = decimal.Parse(MngrVATBox.Text);
-                    decimal grossAmount = decimal.Parse(MngrGrossAmountBox.Text);
+                    decimal netAmount = decimal.Parse(MngrCONetAmountBox.Text);
+                    decimal vat = decimal.Parse(MngrCOVATBox.Text);
+                    decimal grossAmount = decimal.Parse(MngrCOGrossAmountBox.Text);
                     decimal cash = decimal.Parse(MngrCashBox.Text);
                     decimal change = decimal.Parse(MngrChangeBox.Text);
 
@@ -3664,7 +3682,7 @@ namespace EatNRunProject
         private void MngrCashBox_TextChanged(object sender, EventArgs e)
         {
             // Get the Gross Amount from the TextBox (MngrGrossAmountBox)
-            if (decimal.TryParse(MngrGrossAmountBox.Text, out decimal grossAmount))
+            if (decimal.TryParse(MngrCOGrossAmountBox.Text, out decimal grossAmount))
             {
                 // Get the Cash Amount from the TextBox (MngrCashBox)
                 if (decimal.TryParse(MngrCashBox.Text, out decimal cashAmount))
@@ -4074,14 +4092,6 @@ namespace EatNRunProject
             CashierSearchFoodByFoodType(searchText, "Drinks");
         }
 
-        private void CashierEmplIDBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedItem = CashierVoidEmplIDBox.SelectedItem as string;
-            if (selectedItem != null && accountData.ContainsKey(selectedItem))
-            {
-                CashierVoidEmplPassBox.Text = accountData[selectedItem];
-            }
-        }
 
         private void CashierVoidOrderBtn_Click(object sender, EventArgs e)
         {
@@ -4090,9 +4100,8 @@ namespace EatNRunProject
 
         private void CashierOrderVoider()
         {
-            string emplID = CashierVoidEmplIDBox.Text;
             string emplPass = CashierVoidEmplPassBox.Text;
-            string passchecker = HashHelper.HashString(emplPass); // Assuming "enteredPassword" is supposed to be "emplPass"
+            string passchecker = HashHelper.HashString(emplPass);
 
             MySqlConnection connection = null;
 
@@ -4101,53 +4110,33 @@ namespace EatNRunProject
                 connection = new MySqlConnection(mysqlconn);
                 connection.Open();
 
-                // Query the database for the provided Employee ID in the accounts table
-                string queryApproved = "SELECT EmployeeName, EmployeeID, EmployeePosition, HashedPass FROM accounts WHERE EmployeeID = @EmplID";
+                // Query the database for any Manager with matching password
+                string queryApproved = "SELECT EmployeeName FROM accounts WHERE EmployeePosition = 'Manager' AND HashedPass = @HashedPass";
 
                 using (MySqlCommand cmdApproved = new MySqlCommand(queryApproved, connection))
                 {
-                    cmdApproved.Parameters.AddWithValue("@EmplID", emplID);
+                    cmdApproved.Parameters.AddWithValue("@HashedPass", passchecker);
 
                     using (MySqlDataReader readerApproved = cmdApproved.ExecuteReader())
                     {
                         if (readerApproved.Read())
                         {
-                            // Retrieve user information
+                            // Manager with matching password found
                             string name = readerApproved["EmployeeName"].ToString();
-                            string employeePosition = readerApproved["EmployeePosition"].ToString();
 
-                            // Check if the entered EmployeePosition matches the one in the database
-                            if (employeePosition == "Manager")
+                            DialogResult result = MessageBox.Show("Do you want to void the item(s) in the order?", "Item Void Order Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (result == DialogResult.Yes)
                             {
-                                // Retrieve the HashedPass column
-                                string hashedPasswordFromDB = readerApproved["HashedPass"].ToString();
-
-                                // Check if the entered password matches
-                                bool passwordMatches = hashedPasswordFromDB.Equals(passchecker);
-
-                                if (passwordMatches)
-                                {
-                                    DialogResult result = MessageBox.Show("Do you want to void the item(s) in the order?", "Item Void Order Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                                    if (result == DialogResult.Yes)
-                                    {
-                                        MessageBox.Show("Ordered items are voided.", "Item Void Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        CashierItemPanel.Enabled = true;
-                                        CashierVoidOrderHistoryDB(CashierOrderViewTable);
-                                        CashierOrderViewTable.Rows.Clear();
-                                        CashierOrderPanelManager.CashierOrderFormShow(CashierOrderViewPanel);
-                                    }
-                                    return;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Incorrect Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
+                                MessageBox.Show("Ordered items are voided.", "Item Void Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                CashierItemPanel.Enabled = true;
+                                CashierVoidOrderHistoryDB(CashierOrderViewTable);
+                                CashierOrderViewTable.Rows.Clear();
+                                CashierOrderPanelManager.CashierOrderFormShow(CashierOrderViewPanel);
                             }
-                            else
-                            {
-                                // The entered Employee ID does not exist in the database
-                                MessageBox.Show("Account not found.", "Ooooops", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Incorrect Password or Account not found.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -4162,10 +4151,11 @@ namespace EatNRunProject
             }
         }
 
+
         private void CashierVoidOrderHistoryDB(DataGridView MngrOrderView)
         {
             // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
-            string orderNum = CashierSessionNumBox.Text + "-" + MngrOrderNumBox.Text;
+            string orderNum = CashierSessionNumBox.Text + "-" + CashierOrderNumBox.Text;
             DateTime currentDate = CashierDateTimePicker.Value;
             string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
             string mngrName = CashierNameBox.Text;
