@@ -529,7 +529,7 @@
             // 
             this.MainFormPicker.ContainerControl = this;
             this.MainFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.MainFormPicker.SelectedCard = "Card5";
+            this.MainFormPicker.SelectedCard = "Card3";
             // 
             // AdminPanel
             // 
@@ -3864,16 +3864,15 @@
             this.MngrItemBtnPanel.Controls.Add(this.MngrItemSetBtn);
             this.MngrItemBtnPanel.Controls.Add(this.MngrItemBurgerBtn);
             this.MngrItemBtnPanel.Controls.Add(this.MngrItemDrinksBtn);
-            this.MngrItemBtnPanel.Location = new System.Drawing.Point(36, -19);
+            this.MngrItemBtnPanel.Location = new System.Drawing.Point(36, -6);
             this.MngrItemBtnPanel.Name = "MngrItemBtnPanel";
-            this.MngrItemBtnPanel.Size = new System.Drawing.Size(980, 92);
+            this.MngrItemBtnPanel.Size = new System.Drawing.Size(703, 50);
             this.MngrItemBtnPanel.TabIndex = 21;
             // 
             // MngrItemSidesBtn
             // 
-            this.MngrItemSidesBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MngrItemSidesBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.MngrItemSidesBtn.FlatAppearance.BorderSize = 0;
             this.MngrItemSidesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MngrItemSidesBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3883,9 +3882,9 @@
             this.MngrItemSidesBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.MngrItemSidesBtn.IconSize = 24;
             this.MngrItemSidesBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MngrItemSidesBtn.Location = new System.Drawing.Point(185, 9);
+            this.MngrItemSidesBtn.Location = new System.Drawing.Point(191, 12);
             this.MngrItemSidesBtn.Name = "MngrItemSidesBtn";
-            this.MngrItemSidesBtn.Size = new System.Drawing.Size(980, 74);
+            this.MngrItemSidesBtn.Size = new System.Drawing.Size(158, 35);
             this.MngrItemSidesBtn.TabIndex = 18;
             this.MngrItemSidesBtn.Text = "SIDE";
             this.MngrItemSidesBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3895,9 +3894,8 @@
             // 
             // MngrItemSetBtn
             // 
-            this.MngrItemSetBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MngrItemSetBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.MngrItemSetBtn.FlatAppearance.BorderSize = 0;
             this.MngrItemSetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MngrItemSetBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3907,9 +3905,9 @@
             this.MngrItemSetBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.MngrItemSetBtn.IconSize = 24;
             this.MngrItemSetBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MngrItemSetBtn.Location = new System.Drawing.Point(523, 9);
+            this.MngrItemSetBtn.Location = new System.Drawing.Point(541, 10);
             this.MngrItemSetBtn.Name = "MngrItemSetBtn";
-            this.MngrItemSetBtn.Size = new System.Drawing.Size(980, 74);
+            this.MngrItemSetBtn.Size = new System.Drawing.Size(145, 36);
             this.MngrItemSetBtn.TabIndex = 16;
             this.MngrItemSetBtn.Text = "SET MEALS";
             this.MngrItemSetBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3919,9 +3917,8 @@
             // 
             // MngrItemBurgerBtn
             // 
-            this.MngrItemBurgerBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MngrItemBurgerBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.MngrItemBurgerBtn.FlatAppearance.BorderSize = 0;
             this.MngrItemBurgerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MngrItemBurgerBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3931,9 +3928,9 @@
             this.MngrItemBurgerBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.MngrItemBurgerBtn.IconSize = 24;
             this.MngrItemBurgerBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MngrItemBurgerBtn.Location = new System.Drawing.Point(13, 9);
+            this.MngrItemBurgerBtn.Location = new System.Drawing.Point(3, 9);
             this.MngrItemBurgerBtn.Name = "MngrItemBurgerBtn";
-            this.MngrItemBurgerBtn.Size = new System.Drawing.Size(980, 74);
+            this.MngrItemBurgerBtn.Size = new System.Drawing.Size(177, 38);
             this.MngrItemBurgerBtn.TabIndex = 15;
             this.MngrItemBurgerBtn.Text = "BURGER";
             this.MngrItemBurgerBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3943,9 +3940,8 @@
             // 
             // MngrItemDrinksBtn
             // 
-            this.MngrItemDrinksBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MngrItemDrinksBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.MngrItemDrinksBtn.FlatAppearance.BorderSize = 0;
             this.MngrItemDrinksBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MngrItemDrinksBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3955,9 +3951,9 @@
             this.MngrItemDrinksBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.MngrItemDrinksBtn.IconSize = 24;
             this.MngrItemDrinksBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MngrItemDrinksBtn.Location = new System.Drawing.Point(349, 9);
+            this.MngrItemDrinksBtn.Location = new System.Drawing.Point(355, 12);
             this.MngrItemDrinksBtn.Name = "MngrItemDrinksBtn";
-            this.MngrItemDrinksBtn.Size = new System.Drawing.Size(980, 74);
+            this.MngrItemDrinksBtn.Size = new System.Drawing.Size(180, 35);
             this.MngrItemDrinksBtn.TabIndex = 17;
             this.MngrItemDrinksBtn.Text = "DRINKS";
             this.MngrItemDrinksBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
