@@ -296,7 +296,6 @@
             this.MngrItemDrinksPanel = new System.Windows.Forms.Panel();
             this.MngrItemDrinksLbl = new System.Windows.Forms.Label();
             this.MngrItemDrinkView = new System.Windows.Forms.DataGridView();
-            this.MngrSwitchBtn = new FontAwesome.Sharp.IconButton();
             this.MngrItemBtnPanel = new System.Windows.Forms.Panel();
             this.MngrItemSidesBtn = new FontAwesome.Sharp.IconButton();
             this.MngrItemSetBtn = new FontAwesome.Sharp.IconButton();
@@ -307,6 +306,7 @@
             this.MngrNameBox = new System.Windows.Forms.TextBox();
             this.MngrSalesBtn = new FontAwesome.Sharp.IconButton();
             this.MngrNameLbl = new System.Windows.Forms.Label();
+            this.MngrSwitchBtn = new FontAwesome.Sharp.IconButton();
             this.MngrSessionNumLbl = new System.Windows.Forms.Label();
             this.ENRMngrHeaderLogo = new System.Windows.Forms.PictureBox();
             this.MngrDashboardLbl = new System.Windows.Forms.Label();
@@ -369,7 +369,6 @@
             this.CashierItemDrinksPanel = new System.Windows.Forms.Panel();
             this.CashierItemDrinksLbl = new System.Windows.Forms.Label();
             this.CashierItemDrinksView = new System.Windows.Forms.DataGridView();
-            this.CashierSwitchBtn = new FontAwesome.Sharp.IconButton();
             this.CashieItemBtnPanel = new System.Windows.Forms.Panel();
             this.CashierItemSidesBtn = new FontAwesome.Sharp.IconButton();
             this.CashierItemDrinksBtn = new FontAwesome.Sharp.IconButton();
@@ -380,6 +379,7 @@
             this.CashierSessionNumBox = new System.Windows.Forms.TextBox();
             this.CashierNameBox = new System.Windows.Forms.TextBox();
             this.CashierNameLbl = new System.Windows.Forms.Label();
+            this.CashierSwitchBtn = new FontAwesome.Sharp.IconButton();
             this.CashierSessionNumLbl = new System.Windows.Forms.Label();
             this.ENRCashierLogo = new System.Windows.Forms.PictureBox();
             this.CashierDashboardLbl = new System.Windows.Forms.Label();
@@ -529,7 +529,7 @@
             // 
             this.MainFormPicker.ContainerControl = this;
             this.MainFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.MainFormPicker.SelectedCard = "Card3";
+            this.MainFormPicker.SelectedCard = "Card5";
             // 
             // AdminPanel
             // 
@@ -2970,7 +2970,6 @@
             this.MngrOrderDashboardPanel.Controls.Add(this.MngrViewPanel);
             this.MngrOrderDashboardPanel.Controls.Add(this.MngrOrderExitBtn);
             this.MngrOrderDashboardPanel.Controls.Add(this.MngrItemPanel);
-            this.MngrOrderDashboardPanel.Controls.Add(this.MngrSwitchBtn);
             this.MngrOrderDashboardPanel.Controls.Add(this.MngrItemBtnPanel);
             this.MngrOrderDashboardPanel.Location = new System.Drawing.Point(0, 0);
             this.MngrFormPicker.SetMinimumSize(this.MngrOrderDashboardPanel, new System.Drawing.Size(200, 100));
@@ -3833,28 +3832,6 @@
             this.MngrItemDrinkView.TabIndex = 12;
             this.MngrItemDrinkView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MngrItemDrinkView_CellClick);
             // 
-            // MngrSwitchBtn
-            // 
-            this.MngrSwitchBtn.BackColor = System.Drawing.Color.Transparent;
-            this.MngrSwitchBtn.FlatAppearance.BorderSize = 0;
-            this.MngrSwitchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MngrSwitchBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MngrSwitchBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrSwitchBtn.IconChar = FontAwesome.Sharp.IconChar.Repeat;
-            this.MngrSwitchBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrSwitchBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.MngrSwitchBtn.IconSize = 24;
-            this.MngrSwitchBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MngrSwitchBtn.Location = new System.Drawing.Point(1116, 486);
-            this.MngrSwitchBtn.Name = "MngrSwitchBtn";
-            this.MngrSwitchBtn.Size = new System.Drawing.Size(148, 47);
-            this.MngrSwitchBtn.TabIndex = 7;
-            this.MngrSwitchBtn.Text = "SWITCH USER";
-            this.MngrSwitchBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.MngrSwitchBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.MngrSwitchBtn.UseVisualStyleBackColor = false;
-            this.MngrSwitchBtn.Click += new System.EventHandler(this.ManagerSwitchBtn_Click);
-            // 
             // MngrItemBtnPanel
             // 
             this.MngrItemBtnPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -3866,7 +3843,7 @@
             this.MngrItemBtnPanel.Controls.Add(this.MngrItemDrinksBtn);
             this.MngrItemBtnPanel.Location = new System.Drawing.Point(36, -6);
             this.MngrItemBtnPanel.Name = "MngrItemBtnPanel";
-            this.MngrItemBtnPanel.Size = new System.Drawing.Size(703, 50);
+            this.MngrItemBtnPanel.Size = new System.Drawing.Size(980, 50);
             this.MngrItemBtnPanel.TabIndex = 21;
             // 
             // MngrItemSidesBtn
@@ -3968,6 +3945,7 @@
             this.MngrHeaderPanel.Controls.Add(this.MngrNameBox);
             this.MngrHeaderPanel.Controls.Add(this.MngrSalesBtn);
             this.MngrHeaderPanel.Controls.Add(this.MngrNameLbl);
+            this.MngrHeaderPanel.Controls.Add(this.MngrSwitchBtn);
             this.MngrHeaderPanel.Controls.Add(this.MngrSessionNumLbl);
             this.MngrHeaderPanel.Controls.Add(this.ENRMngrHeaderLogo);
             this.MngrHeaderPanel.Controls.Add(this.MngrDashboardLbl);
@@ -3984,7 +3962,7 @@
             this.MngrSessionNumBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.MngrSessionNumBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MngrSessionNumBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrSessionNumBox.Location = new System.Drawing.Point(875, 113);
+            this.MngrSessionNumBox.Location = new System.Drawing.Point(782, 101);
             this.MngrSessionNumBox.Name = "MngrSessionNumBox";
             this.MngrSessionNumBox.ReadOnly = true;
             this.MngrSessionNumBox.Size = new System.Drawing.Size(76, 23);
@@ -3996,10 +3974,10 @@
             this.MngrNameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.MngrNameBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MngrNameBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrNameBox.Location = new System.Drawing.Point(369, 114);
+            this.MngrNameBox.Location = new System.Drawing.Point(320, 101);
             this.MngrNameBox.Name = "MngrNameBox";
             this.MngrNameBox.ReadOnly = true;
-            this.MngrNameBox.Size = new System.Drawing.Size(333, 23);
+            this.MngrNameBox.Size = new System.Drawing.Size(281, 23);
             this.MngrNameBox.TabIndex = 34;
             // 
             // MngrSalesBtn
@@ -4013,7 +3991,7 @@
             this.MngrSalesBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.MngrSalesBtn.IconSize = 24;
             this.MngrSalesBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MngrSalesBtn.Location = new System.Drawing.Point(1163, 104);
+            this.MngrSalesBtn.Location = new System.Drawing.Point(1008, 91);
             this.MngrSalesBtn.Name = "MngrSalesBtn";
             this.MngrSalesBtn.Size = new System.Drawing.Size(101, 43);
             this.MngrSalesBtn.TabIndex = 19;
@@ -4028,18 +4006,38 @@
             this.MngrNameLbl.AutoSize = true;
             this.MngrNameLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MngrNameLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrNameLbl.Location = new System.Drawing.Point(210, 114);
+            this.MngrNameLbl.Location = new System.Drawing.Point(161, 101);
             this.MngrNameLbl.Name = "MngrNameLbl";
             this.MngrNameLbl.Size = new System.Drawing.Size(157, 23);
             this.MngrNameLbl.TabIndex = 13;
             this.MngrNameLbl.Text = "| Manager Name:";
+            // 
+            // MngrSwitchBtn
+            // 
+            this.MngrSwitchBtn.BackColor = System.Drawing.Color.Transparent;
+            this.MngrSwitchBtn.FlatAppearance.BorderSize = 0;
+            this.MngrSwitchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MngrSwitchBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MngrSwitchBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.MngrSwitchBtn.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
+            this.MngrSwitchBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.MngrSwitchBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.MngrSwitchBtn.IconSize = 24;
+            this.MngrSwitchBtn.Location = new System.Drawing.Point(1115, 91);
+            this.MngrSwitchBtn.Name = "MngrSwitchBtn";
+            this.MngrSwitchBtn.Size = new System.Drawing.Size(133, 43);
+            this.MngrSwitchBtn.TabIndex = 7;
+            this.MngrSwitchBtn.Text = "SIGN OUT";
+            this.MngrSwitchBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.MngrSwitchBtn.UseVisualStyleBackColor = false;
+            this.MngrSwitchBtn.Click += new System.EventHandler(this.ManagerSwitchBtn_Click);
             // 
             // MngrSessionNumLbl
             // 
             this.MngrSessionNumLbl.AutoSize = true;
             this.MngrSessionNumLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MngrSessionNumLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrSessionNumLbl.Location = new System.Drawing.Point(708, 114);
+            this.MngrSessionNumLbl.Location = new System.Drawing.Point(607, 101);
             this.MngrSessionNumLbl.Name = "MngrSessionNumLbl";
             this.MngrSessionNumLbl.Size = new System.Drawing.Size(169, 23);
             this.MngrSessionNumLbl.TabIndex = 19;
@@ -4048,7 +4046,7 @@
             // ENRMngrHeaderLogo
             // 
             this.ENRMngrHeaderLogo.Image = global::EatNRunProject.Properties.Resources.AP_Logo_128x128;
-            this.ENRMngrHeaderLogo.Location = new System.Drawing.Point(68, 12);
+            this.ENRMngrHeaderLogo.Location = new System.Drawing.Point(19, 12);
             this.ENRMngrHeaderLogo.Name = "ENRMngrHeaderLogo";
             this.ENRMngrHeaderLogo.Size = new System.Drawing.Size(128, 128);
             this.ENRMngrHeaderLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -4059,7 +4057,7 @@
             // 
             this.MngrDashboardLbl.Font = new System.Drawing.Font("Arial Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MngrDashboardLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.MngrDashboardLbl.Location = new System.Drawing.Point(202, 39);
+            this.MngrDashboardLbl.Location = new System.Drawing.Point(153, 26);
             this.MngrDashboardLbl.Name = "MngrDashboardLbl";
             this.MngrDashboardLbl.Size = new System.Drawing.Size(598, 75);
             this.MngrDashboardLbl.TabIndex = 18;
@@ -4070,7 +4068,7 @@
             // 
             this.MngrDateTimePicker.CustomFormat = "MM-dd-yyyy dddd hh:mm tt";
             this.MngrDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.MngrDateTimePicker.Location = new System.Drawing.Point(957, 114);
+            this.MngrDateTimePicker.Location = new System.Drawing.Point(1052, 12);
             this.MngrDateTimePicker.Name = "MngrDateTimePicker";
             this.MngrDateTimePicker.ShowUpDown = true;
             this.MngrDateTimePicker.Size = new System.Drawing.Size(200, 20);
@@ -4139,7 +4137,6 @@
             this.CashierOrderDashboardPanel.Controls.Add(this.CashierViewPanel);
             this.CashierOrderDashboardPanel.Controls.Add(this.CashierOrderExitBtn);
             this.CashierOrderDashboardPanel.Controls.Add(this.CashierItemPanel);
-            this.CashierOrderDashboardPanel.Controls.Add(this.CashierSwitchBtn);
             this.CashierOrderDashboardPanel.Controls.Add(this.CashieItemBtnPanel);
             this.CashierOrderDashboardPanel.Location = new System.Drawing.Point(0, 0);
             this.CashierFormPicker.SetMinimumSize(this.CashierOrderDashboardPanel, new System.Drawing.Size(1264, 532));
@@ -4968,28 +4965,6 @@
             this.CashierItemDrinksView.TabIndex = 12;
             this.CashierItemDrinksView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CashierItemDrinksView_CellClick);
             // 
-            // CashierSwitchBtn
-            // 
-            this.CashierSwitchBtn.BackColor = System.Drawing.Color.Transparent;
-            this.CashierSwitchBtn.FlatAppearance.BorderSize = 0;
-            this.CashierSwitchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CashierSwitchBtn.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CashierSwitchBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.CashierSwitchBtn.IconChar = FontAwesome.Sharp.IconChar.Repeat;
-            this.CashierSwitchBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.CashierSwitchBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.CashierSwitchBtn.IconSize = 24;
-            this.CashierSwitchBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CashierSwitchBtn.Location = new System.Drawing.Point(1116, 486);
-            this.CashierSwitchBtn.Name = "CashierSwitchBtn";
-            this.CashierSwitchBtn.Size = new System.Drawing.Size(148, 47);
-            this.CashierSwitchBtn.TabIndex = 7;
-            this.CashierSwitchBtn.Text = "SWITCH USER";
-            this.CashierSwitchBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CashierSwitchBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.CashierSwitchBtn.UseVisualStyleBackColor = false;
-            this.CashierSwitchBtn.Click += new System.EventHandler(this.CashierSwitchBtn_Click_1);
-            // 
             // CashieItemBtnPanel
             // 
             this.CashieItemBtnPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -5094,6 +5069,7 @@
             this.CashierHeaderPanel.Controls.Add(this.CashierSessionNumBox);
             this.CashierHeaderPanel.Controls.Add(this.CashierNameBox);
             this.CashierHeaderPanel.Controls.Add(this.CashierNameLbl);
+            this.CashierHeaderPanel.Controls.Add(this.CashierSwitchBtn);
             this.CashierHeaderPanel.Controls.Add(this.CashierSessionNumLbl);
             this.CashierHeaderPanel.Controls.Add(this.ENRCashierLogo);
             this.CashierHeaderPanel.Controls.Add(this.CashierDashboardLbl);
@@ -5110,7 +5086,7 @@
             this.CashierDateTimePickerBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CashierDateTimePickerBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashierDateTimePickerBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierDateTimePickerBox.Location = new System.Drawing.Point(989, 113);
+            this.CashierDateTimePickerBox.Location = new System.Drawing.Point(989, 89);
             this.CashierDateTimePickerBox.Name = "CashierDateTimePickerBox";
             this.CashierDateTimePickerBox.ReadOnly = true;
             this.CashierDateTimePickerBox.Size = new System.Drawing.Size(263, 23);
@@ -5122,7 +5098,7 @@
             this.CashierSessionNumBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CashierSessionNumBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashierSessionNumBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierSessionNumBox.Location = new System.Drawing.Point(875, 113);
+            this.CashierSessionNumBox.Location = new System.Drawing.Point(821, 89);
             this.CashierSessionNumBox.Name = "CashierSessionNumBox";
             this.CashierSessionNumBox.ReadOnly = true;
             this.CashierSessionNumBox.Size = new System.Drawing.Size(104, 23);
@@ -5134,7 +5110,7 @@
             this.CashierNameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CashierNameBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashierNameBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierNameBox.Location = new System.Drawing.Point(369, 114);
+            this.CashierNameBox.Location = new System.Drawing.Point(315, 90);
             this.CashierNameBox.Name = "CashierNameBox";
             this.CashierNameBox.ReadOnly = true;
             this.CashierNameBox.Size = new System.Drawing.Size(333, 23);
@@ -5145,18 +5121,40 @@
             this.CashierNameLbl.AutoSize = true;
             this.CashierNameLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashierNameLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierNameLbl.Location = new System.Drawing.Point(210, 114);
+            this.CashierNameLbl.Location = new System.Drawing.Point(156, 90);
             this.CashierNameLbl.Name = "CashierNameLbl";
             this.CashierNameLbl.Size = new System.Drawing.Size(147, 23);
             this.CashierNameLbl.TabIndex = 13;
             this.CashierNameLbl.Text = "| Cashier Name:";
+            // 
+            // CashierSwitchBtn
+            // 
+            this.CashierSwitchBtn.BackColor = System.Drawing.Color.Transparent;
+            this.CashierSwitchBtn.FlatAppearance.BorderSize = 0;
+            this.CashierSwitchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CashierSwitchBtn.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CashierSwitchBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierSwitchBtn.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
+            this.CashierSwitchBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
+            this.CashierSwitchBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.CashierSwitchBtn.IconSize = 24;
+            this.CashierSwitchBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CashierSwitchBtn.Location = new System.Drawing.Point(1133, 0);
+            this.CashierSwitchBtn.Name = "CashierSwitchBtn";
+            this.CashierSwitchBtn.Size = new System.Drawing.Size(131, 47);
+            this.CashierSwitchBtn.TabIndex = 7;
+            this.CashierSwitchBtn.Text = "SIGN OUT";
+            this.CashierSwitchBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CashierSwitchBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.CashierSwitchBtn.UseVisualStyleBackColor = false;
+            this.CashierSwitchBtn.Click += new System.EventHandler(this.CashierSwitchBtn_Click_1);
             // 
             // CashierSessionNumLbl
             // 
             this.CashierSessionNumLbl.AutoSize = true;
             this.CashierSessionNumLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashierSessionNumLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierSessionNumLbl.Location = new System.Drawing.Point(708, 114);
+            this.CashierSessionNumLbl.Location = new System.Drawing.Point(654, 90);
             this.CashierSessionNumLbl.Name = "CashierSessionNumLbl";
             this.CashierSessionNumLbl.Size = new System.Drawing.Size(169, 23);
             this.CashierSessionNumLbl.TabIndex = 19;
@@ -5165,7 +5163,7 @@
             // ENRCashierLogo
             // 
             this.ENRCashierLogo.Image = global::EatNRunProject.Properties.Resources.AP_Logo_128x128;
-            this.ENRCashierLogo.Location = new System.Drawing.Point(68, 12);
+            this.ENRCashierLogo.Location = new System.Drawing.Point(14, 11);
             this.ENRCashierLogo.Name = "ENRCashierLogo";
             this.ENRCashierLogo.Size = new System.Drawing.Size(128, 128);
             this.ENRCashierLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -5179,9 +5177,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CashierDashboardLbl.Font = new System.Drawing.Font("Arial Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashierDashboardLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.CashierDashboardLbl.Location = new System.Drawing.Point(202, 39);
+            this.CashierDashboardLbl.Location = new System.Drawing.Point(148, 15);
             this.CashierDashboardLbl.Name = "CashierDashboardLbl";
-            this.CashierDashboardLbl.Size = new System.Drawing.Size(980, 75);
+            this.CashierDashboardLbl.Size = new System.Drawing.Size(752, 75);
             this.CashierDashboardLbl.TabIndex = 18;
             this.CashierDashboardLbl.Text = "Cashier Dashboard";
             this.CashierDashboardLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -5239,7 +5237,7 @@
             // MngrViewFormPicker
             // 
             this.MngrViewFormPicker.ContainerControl = this.MngrViewPanel;
-            this.MngrViewFormPicker.SelectedCard = "Card2";
+            this.MngrViewFormPicker.SelectedCard = "Card1";
             // 
             // DateTimePickerTimer
             // 

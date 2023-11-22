@@ -455,11 +455,14 @@ namespace EatNRunProject
             plusColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             plusColumn.Width = 10;
             CashierOrderViewTable.Columns.Add(plusColumn);
+          
+            DataGridViewTextBoxColumn itemUnitCostColumn = new DataGridViewTextBoxColumn();
+            itemUnitCostColumn.Name = "Unit Price";
+            CashierOrderViewTable.Columns.Add(itemUnitCostColumn);
 
             DataGridViewTextBoxColumn itemCostColumn = new DataGridViewTextBoxColumn();
-            itemCostColumn.Name = "Price";
+            itemCostColumn.Name = "Total Price";
             CashierOrderViewTable.Columns.Add(itemCostColumn);
-
         }
         public class HashHelper
         {
@@ -2774,6 +2777,9 @@ namespace EatNRunProject
                 MngrOrderPanelManager.MngrOrderFormShow(MngrOrderViewPanel);
                 MngrOrderNumRefresh();
                 MngrItemPanel.Enabled = true;
+                MngrNetAmountBox.Text = "";
+                MngrGrossAmountBox.Text = "";
+                MngrVATBox.Text = "";
             }
         }
 
@@ -2788,6 +2794,9 @@ namespace EatNRunProject
                     MngrNewOrderBtnPanel.Visible = true;
                     MngrOrderViewTable.Rows.Clear();
                     MngrItemPanel.Enabled = true;
+                    MngrNetAmountBox.Text = "";
+                    MngrGrossAmountBox.Text = "";
+                    MngrVATBox.Text = "";
 
                 }
 
@@ -3385,10 +3394,12 @@ namespace EatNRunProject
                             {
                                 string itemName = row.Cells["Item Name"].Value.ToString();
                                 int qty = Convert.ToInt32(row.Cells["Qty"].Value);
-                                decimal itemPrice = Convert.ToDecimal(row.Cells["Price"].Value);
+                                decimal itemPrice = Convert.ToDecimal(row.Cells["Unit Price"].Value);
+                                decimal itemTotalPrice = Convert.ToDecimal(row.Cells["Total Price"].Value);
 
-                                string query = "INSERT INTO orderhistory (OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, CheckedOut, Voided) " +
-                                               "VALUES (@OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @Yes, @No)";
+
+                                string query = "INSERT INTO orderhistory (OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, ItemTotalPrice, CheckedOut, Voided) " +
+                                               "VALUES (@OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @ItemTotalPrice, @Yes, @No)";
 
                                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                                 {
@@ -3398,6 +3409,7 @@ namespace EatNRunProject
                                     cmd.Parameters.AddWithValue("@ItemName", itemName);
                                     cmd.Parameters.AddWithValue("@Qty", qty);
                                     cmd.Parameters.AddWithValue("@ItemPrice", itemPrice);
+                                    cmd.Parameters.AddWithValue("@ItemTotalPrice", itemTotalPrice);
                                     cmd.Parameters.AddWithValue("@Yes", yes);
                                     cmd.Parameters.AddWithValue("@No", no);
 
@@ -3865,7 +3877,7 @@ namespace EatNRunProject
 
         private void CashierDGVCellClick(DataGridView dgv, DataGridViewRow selectedRow)
         {
-            string cellValue1 = selectedRow.Cells[2].Value.ToString(); // Item Name
+            string itemName = selectedRow.Cells[2].Value.ToString(); // Item Name
 
             bool itemExists = false;
             int existingRowIndex = -1;
@@ -3873,7 +3885,7 @@ namespace EatNRunProject
             // Check if the item already exists in the order
             foreach (DataGridViewRow row in CashierOrderViewTable.Rows)
             {
-                if (row.Cells["Item Name"].Value != null && row.Cells["Item Name"].Value.ToString() == cellValue1)
+                if (row.Cells["Item Name"].Value != null && row.Cells["Item Name"].Value.ToString() == itemName)
                 {
                     itemExists = true;
                     existingRowIndex = row.Index;
@@ -3887,7 +3899,7 @@ namespace EatNRunProject
                 string quantityString = CashierOrderViewTable.Rows[existingRowIndex].Cells["Qty"].Value?.ToString();
                 if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
                 {
-                    decimal itemCost = decimal.Parse(CashierOrderViewTable.Rows[existingRowIndex].Cells["Price"].Value?.ToString());
+                    decimal itemCost = decimal.Parse(CashierOrderViewTable.Rows[existingRowIndex].Cells["Total Price"].Value?.ToString());
 
                     // Calculate the cost per item
                     decimal costPerItem = itemCost / quantity;
@@ -3900,7 +3912,7 @@ namespace EatNRunProject
 
                     // Update Qty and ItemCost in the DataGridView
                     CashierOrderViewTable.Rows[existingRowIndex].Cells["Qty"].Value = quantity.ToString();
-                    CashierOrderViewTable.Rows[existingRowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                    CashierOrderViewTable.Rows[existingRowIndex].Cells["Total Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
                     CashierCalculateTotalPrice();
                 }
                 else
@@ -3915,9 +3927,9 @@ namespace EatNRunProject
                 DialogResult result = MessageBox.Show("Do you want to add this in the order?", "Add Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    string cellValue3 = selectedRow.Cells[5].Value.ToString(); // Item Price
+                    string itemPrice = selectedRow.Cells[5].Value.ToString(); // Item Price
 
-                    CashierOrderViewTable.Rows.Add(cellValue1, "-", "1", "+", cellValue3);
+                    CashierOrderViewTable.Rows.Add(itemName, "-", "1", "+", itemPrice, itemPrice);
                     CashierCalculateTotalPrice();
                 }
             }
@@ -3928,7 +3940,7 @@ namespace EatNRunProject
             decimal total = 0;
 
             // Assuming the "Price" column is of decimal type
-            int priceColumnIndex = CashierOrderViewTable.Columns["Price"].Index;
+            int priceColumnIndex = CashierOrderViewTable.Columns["Total Price"].Index;
 
             foreach (DataGridViewRow row in CashierOrderViewTable.Rows)
             {
@@ -4478,10 +4490,12 @@ namespace EatNRunProject
                             {
                                 string itemName = row.Cells["Item Name"].Value.ToString();
                                 int qty = Convert.ToInt32(row.Cells["Qty"].Value);
-                                decimal itemPrice = Convert.ToDecimal(row.Cells["Price"].Value);
+                                decimal itemPrice = Convert.ToDecimal(row.Cells["Unit Price"].Value);
+                                decimal itemTotalPrice = Convert.ToDecimal(row.Cells["Total Price"].Value);
 
-                                string query = "INSERT INTO orderhistory (OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, CheckedOut, Voided) " +
-                                               "VALUES (@OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @Yes, @No)";
+
+                                string query = "INSERT INTO orderhistory (OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, ItemTotalPrice, CheckedOut, Voided) " +
+                                               "VALUES (@OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @ItemTotalPrice, @Yes, @No)";
 
                                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                                 {
@@ -4491,6 +4505,7 @@ namespace EatNRunProject
                                     cmd.Parameters.AddWithValue("@ItemName", itemName);
                                     cmd.Parameters.AddWithValue("@Qty", qty);
                                     cmd.Parameters.AddWithValue("@ItemPrice", itemPrice);
+                                    cmd.Parameters.AddWithValue("@ItemTotalPrice", itemTotalPrice);
                                     cmd.Parameters.AddWithValue("@Yes", yes);
                                     cmd.Parameters.AddWithValue("@No", no);
 
