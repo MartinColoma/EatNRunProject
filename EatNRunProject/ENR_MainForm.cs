@@ -23,6 +23,7 @@ using PdfSharp.Drawing;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.draw;
+using System.Security.Policy;
 
 
 
@@ -2884,6 +2885,8 @@ namespace EatNRunProject
             }
         }
 
+        // Mngr Code starts here
+
         private void MngrCreateNewOrderBtn_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Do you want to create a new order?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -2912,7 +2915,8 @@ namespace EatNRunProject
             MngrCOVATBox.Text = "";
             MngrCashBox.Text = "";
             MngrChangeBox.Text = "";
-
+            MngrDiscountPWD.Checked = false;
+            MngrDiscountSenior.Checked = false;
         }
 
         private void MngrItemValues()
@@ -3021,6 +3025,7 @@ namespace EatNRunProject
                     MngrVoidOrderHistoryDB(MngrOrderView);
                     MngrOrderViewTable.Rows.Clear();
                     MngrItemValuesClear();
+                    MngrItemValues();
                     MessageBox.Show("Ordered items are voided.", "Item Void Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MngrItemPanel.Enabled = true;
                 }
@@ -3579,7 +3584,7 @@ namespace EatNRunProject
                     doc.Add(new Paragraph($"Transaction No.: {transactNum}", font));
                     doc.Add(new Paragraph($"Order No.: {orderNum}", font));
                     //doc.Add(new Paragraph($"Order Date: {today}", font));
-                    doc.Add(new Paragraph($"Order Checked Out By: {staffName}", font));
+                    doc.Add(new Paragraph($"Order Served By: {staffName}", font));
                     doc.Add(new Chunk("\n")); // New line
 
 
@@ -3635,6 +3640,10 @@ namespace EatNRunProject
                     // Add cells to the "Total" table
                     totalTable.AddCell(new Phrase($"Total ({MngrOrderViewTable.Rows.Count} items)", font));
                     totalTable.AddCell(new Phrase($"Php {grossAmount:F2}", font));
+                    totalTable.AddCell(new Phrase($"Cash Given", font));
+                    totalTable.AddCell(new Phrase($"Php {cash:F2}", font));
+                    totalTable.AddCell(new Phrase($"Change", font));
+                    totalTable.AddCell(new Phrase($"Php {change:F2}", font));
 
                     // Add the "Total" table to the document
                     doc.Add(totalTable);
@@ -3936,10 +3945,38 @@ namespace EatNRunProject
                 CashierItemPanelManager.CashierItemFormShow(CashierItemBurgerPanel);
                 CashierOrderPanelManager.CashierOrderFormShow(CashierOrderViewPanel);
                 CashierOrderNumRefresh();
+                CashierItemValuesClear();
+                CashierItemValues();
                 CashierItemPanel.Enabled = true;
             }
         }
+        private void CashierItemValuesClear()
+        {
+            CashierNetAmountBox.Text = "";
+            CashierGrossAmountBox.Text = "";
+            CashierVATBox.Text = "";
+            CashierDiscountBox.Text = "";
+            CashierCOGrossAmountBox.Text = "";
+            CashierCONetAmountBox.Text = "";
+            CashierCOVATBox.Text = "";
+            CashierCashBox.Text = "";
+            CashierChangeBox.Text = "";
+            CashierDiscountPWD.Checked = false;
+            CashierDiscountSenior.Checked = false;
+        }
 
+        private void CashierItemValues()
+        {
+            CashierNetAmountBox.Text = "0.00";
+            CashierGrossAmountBox.Text = "0.00";
+            CashierVATBox.Text = "0.00";
+            CashierDiscountBox.Text = "0.00";
+            CashierCOGrossAmountBox.Text = "0.00";
+            CashierCONetAmountBox.Text = "0.00";
+            CashierCashBox.Text = "";
+            CashierChangeBox.Text = "0.00";
+
+        }
         private void CashierItemBurgerBtn_Click(object sender, EventArgs e)
         {
             CashierItemPanelManager.CashierItemFormShow(CashierItemBurgerPanel);
@@ -4044,6 +4081,8 @@ namespace EatNRunProject
 
                 // Call the method to handle the click event
                 CashierDGVCellClick(dgv, selectedRow);
+                CashierCalculateTotalPrice();
+
             }
         }
 
@@ -4056,6 +4095,8 @@ namespace EatNRunProject
 
                 // Call the method to handle the click event
                 CashierDGVCellClick(dgv, selectedRow);
+                CashierCalculateTotalPrice();
+
             }
         }
 
@@ -4068,6 +4109,8 @@ namespace EatNRunProject
 
                 // Call the method to handle the click event
                 CashierDGVCellClick(dgv, selectedRow);
+                CashierCalculateTotalPrice();
+
             }
         }
 
@@ -4080,6 +4123,8 @@ namespace EatNRunProject
 
                 // Call the method to handle the click event
                 CashierDGVCellClick(dgv, selectedRow);
+                CashierCalculateTotalPrice();
+
             }
         }
 
@@ -4131,15 +4176,11 @@ namespace EatNRunProject
             }
             else
             {
-                // The item doesn't exist in the order, add it
-                DialogResult result = MessageBox.Show("Do you want to add this in the order?", "Add Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    string itemPrice = selectedRow.Cells[5].Value.ToString(); // Item Price
 
-                    CashierOrderViewTable.Rows.Add(itemName, "-", "1", "+", itemPrice, itemPrice);
-                    CashierCalculateTotalPrice();
-                }
+                string itemPrice = selectedRow.Cells[5].Value.ToString(); // Item Price
+
+                CashierOrderViewTable.Rows.Add(itemName, "-", "1", "+", itemPrice, itemPrice);
+                CashierCalculateTotalPrice();
             }
         }
 
@@ -4160,14 +4201,16 @@ namespace EatNRunProject
             }
 
             // Display the total price in the GrossAmountBox TextBox
+            CashierCOGrossAmountBox.Text = total.ToString("F2"); // Format to two decimal places
             CashierGrossAmountBox.Text = total.ToString("F2"); // Format to two decimal places
+
             CashierCalculateVATAndNetAmount();
         }
 
         public void CashierCalculateVATAndNetAmount()
         {
             // Get the Gross Amount from the TextBox (MngrGrossAmountBox)
-            if (decimal.TryParse(CashierGrossAmountBox.Text, out decimal grossAmount))
+            if (decimal.TryParse(CashierCOGrossAmountBox.Text, out decimal grossAmount))
             {
                 // Fixed VAT rate of 12%
                 decimal rate = 12;
@@ -4179,14 +4222,12 @@ namespace EatNRunProject
                 decimal vatAmount = grossAmount - netAmount;
 
                 // Display the calculated values in TextBoxes
+                CashierCOVATBox.Text = vatAmount.ToString("0.00");
+                CashierCONetAmountBox.Text = netAmount.ToString("0.00");
                 CashierVATBox.Text = vatAmount.ToString("0.00");
                 CashierNetAmountBox.Text = netAmount.ToString("0.00");
             }
-            else
-            {
-                // Handle invalid Gross Amount input
-                MessageBox.Show("Invalid Gross Amount. Please enter a valid number.");
-            }
+
         }
 
         private void CashierCheckoutOrderBtn_Click(object sender, EventArgs e)
@@ -4199,6 +4240,7 @@ namespace EatNRunProject
             {
                 CashierOrderPanelManager.CashierOrderFormShow(CashierCheckoutViewPanel);
                 CashierCalculateTotalPrice();
+
             }
         }
 
@@ -4312,13 +4354,12 @@ namespace EatNRunProject
             CashierSearchFoodByFoodType(searchText, "Drinks");
         }
 
-
         private void CashierVoidOrderBtn_Click(object sender, EventArgs e)
         {
-            CashierOrderVoider();
+            CashierVoidOrder();
         }
 
-        private void CashierOrderVoider()
+        private void CashierVoidOrder()
         {
             string emplPass = CashierVoidEmplPassBox.Text;
             string passchecker = HashHelper.HashString(emplPass);
@@ -4351,6 +4392,8 @@ namespace EatNRunProject
                                 CashierItemPanel.Enabled = true;
                                 CashierVoidOrderHistoryDB(CashierOrderViewTable);
                                 CashierOrderViewTable.Rows.Clear();
+                                CashierItemValuesClear();
+                                CashierItemValues();
                                 CashierOrderPanelManager.CashierOrderFormShow(CashierOrderViewPanel);
                             }
                         }
@@ -4375,7 +4418,8 @@ namespace EatNRunProject
         private void CashierVoidOrderHistoryDB(DataGridView MngrOrderView)
         {
             // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
-            string orderNum = CashierSessionNumBox.Text + "-" + CashierOrderNumBox.Text;
+            string orderNum = CashierOrderNumBox.Text;
+            string transactNum = CashierSessionNumBox.Text + "-" + orderNum;
             DateTime currentDate = CashierDateTimePicker.Value;
             string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
             string mngrName = CashierNameBox.Text;
@@ -4397,19 +4441,22 @@ namespace EatNRunProject
                             {
                                 string itemName = row.Cells["Item Name"].Value.ToString();
                                 int qty = Convert.ToInt32(row.Cells["Qty"].Value);
-                                decimal itemPrice = Convert.ToDecimal(row.Cells["Price"].Value);
+                                decimal itemPrice = Convert.ToDecimal(row.Cells["Unit Price"].Value);
+                                decimal itemTotalPrice = Convert.ToDecimal(row.Cells["Total Price"].Value);
 
-                                string query = "INSERT INTO orderhistory (OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, CheckedOut, Voided) " +
-                                               "VALUES (@OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @Yes, @No)";
+                                string query = "INSERT INTO orderhistory (TransactNumber, OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, ItemTotalPrice, CheckedOut, Voided) " +
+                                               "VALUES (@Transact, @OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @ItemTotalPrice, @Yes, @No)";
 
                                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                                 {
+                                    cmd.Parameters.AddWithValue("@Transact", transactNum);
                                     cmd.Parameters.AddWithValue("@OrderNumber", orderNum);
                                     cmd.Parameters.AddWithValue("@Date", today);
                                     cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
                                     cmd.Parameters.AddWithValue("@ItemName", itemName);
                                     cmd.Parameters.AddWithValue("@Qty", qty);
                                     cmd.Parameters.AddWithValue("@ItemPrice", itemPrice);
+                                    cmd.Parameters.AddWithValue("@ItemTotalPrice", itemTotalPrice);
                                     cmd.Parameters.AddWithValue("@Yes", no);
                                     cmd.Parameters.AddWithValue("@No", yes);
 
@@ -4436,42 +4483,64 @@ namespace EatNRunProject
 
         private void CashierDiscountSenior_CheckedChanged(object sender, EventArgs e)
         {
-            if (decimal.TryParse(CashierGrossAmountBox.Text, out decimal grossAmount))
+            if (decimal.TryParse(CashierCOGrossAmountBox.Text, out decimal grossAmount))
             {
                 if (CashierDiscountSenior.Checked && !discountApplied)
                 {
                     // Apply the 20% discount if the checkbox is checked and the discount hasn't been applied before
                     originalGrossAmount = grossAmount; // Store the original value
-                    decimal discountedAmount = grossAmount * 0.8m; // 20% discount using decimal
-                    CashierGrossAmountBox.Text = discountedAmount.ToString("0.00"); // Format to display as currency
+                    decimal discountPercentage = 20m;
+                    decimal discountAmount = grossAmount * (discountPercentage / 100); // Calculate the discount amount
+                    decimal discountedAmount = grossAmount - discountAmount; // Subtract the discount amount
+                    CashierCOGrossAmountBox.Text = discountedAmount.ToString("0.00"); // Format to display as currency
                     discountApplied = true; // Set the flag to indicate that the discount has been applied
+                    CashierDiscountBox.Text = discountAmount.ToString("0.00"); // Display the discount amount
                 }
                 else if (!CashierDiscountSenior.Checked && discountApplied)
                 {
                     // Unchecked, set MngrGrossAmount to the original value if the discount has been applied before
-                    CashierGrossAmountBox.Text = originalGrossAmount.ToString("0.00");
+                    CashierCOGrossAmountBox.Text = originalGrossAmount.ToString("0.00");
                     discountApplied = false; // Reset the flag
+                    CashierDiscountBox.Text = "0.00"; // Reset the discount amount display
+                }
+                else
+                {
+                    // If the checkbox is checked but the discount has already been applied, update the discount amount display
+                    decimal discountPercentage = 20m;
+                    decimal discountAmount = originalGrossAmount * (discountPercentage / 100);
+                    CashierDiscountBox.Text = discountAmount.ToString("0.00");
                 }
             }
         }
 
         private void CashierDiscountPWD_CheckedChanged(object sender, EventArgs e)
         {
-            if (decimal.TryParse(CashierGrossAmountBox.Text, out decimal grossAmount))
+            if (decimal.TryParse(CashierCOGrossAmountBox.Text, out decimal grossAmount))
             {
                 if (CashierDiscountPWD.Checked && !discountApplied)
                 {
                     // Apply the 20% discount if the checkbox is checked and the discount hasn't been applied before
                     originalGrossAmount = grossAmount; // Store the original value
-                    decimal discountedAmount = grossAmount * 0.8m; // 20% discount using decimal
-                    CashierGrossAmountBox.Text = discountedAmount.ToString("0.00"); // Format to display as currency
+                    decimal discountPercentage = 20m;
+                    decimal discountAmount = grossAmount * (discountPercentage / 100); // Calculate the discount amount
+                    decimal discountedAmount = grossAmount - discountAmount; // Subtract the discount amount
+                    CashierCOGrossAmountBox.Text = discountedAmount.ToString("0.00"); // Format to display as currency
                     discountApplied = true; // Set the flag to indicate that the discount has been applied
+                    CashierDiscountBox.Text = discountAmount.ToString("0.00"); // Display the discount amount
                 }
                 else if (!CashierDiscountPWD.Checked && discountApplied)
                 {
                     // Unchecked, set MngrGrossAmount to the original value if the discount has been applied before
-                    CashierGrossAmountBox.Text = originalGrossAmount.ToString("0.00");
+                    CashierCOGrossAmountBox.Text = originalGrossAmount.ToString("0.00");
                     discountApplied = false; // Reset the flag
+                    CashierDiscountBox.Text = "0.00"; // Reset the discount amount display
+                }
+                else
+                {
+                    // If the checkbox is checked but the discount has already been applied, update the discount amount display
+                    decimal discountPercentage = 20m;
+                    decimal discountAmount = originalGrossAmount * (discountPercentage / 100);
+                    CashierDiscountBox.Text = discountAmount.ToString("0.00");
                 }
             }
         }
@@ -4479,7 +4548,7 @@ namespace EatNRunProject
         private void CashierGrossAmountBox_TextChanged(object sender, EventArgs e)
         {
             CashierCalculateVATAndNetAmount();
-            if (decimal.TryParse(CashierGrossAmountBox.Text, out decimal grossAmount))
+            if (decimal.TryParse(CashierCOGrossAmountBox.Text, out decimal grossAmount))
             {
                 // Get the Cash Amount from the TextBox (MngrCashBox)
                 if (decimal.TryParse(CashierCashBox.Text, out decimal cashAmount))
@@ -4505,7 +4574,7 @@ namespace EatNRunProject
 
         private void CashierCashBox_TextChanged(object sender, EventArgs e)
         {
-            if (decimal.TryParse(CashierGrossAmountBox.Text, out decimal grossAmount))
+            if (decimal.TryParse(CashierCOGrossAmountBox.Text, out decimal grossAmount))
             {
                 // Get the Cash Amount from the TextBox (MngrCashBox)
                 if (decimal.TryParse(CashierCashBox.Text, out decimal cashAmount))
@@ -4544,6 +4613,7 @@ namespace EatNRunProject
                 CashierGenerateReceipt();
                 CashierPlaceOrderHistoryDB(MngrOrderViewTable);
                 CashierPlaceOrderSalesDB();
+                CashierItemValuesClear();
             }
         }
 
@@ -4553,15 +4623,16 @@ namespace EatNRunProject
         {
             DateTime currentDate = CashierDateTimePicker.Value;
             string today = currentDate.ToString("MM-dd-yyyy hh:mm tt");
-            string orderNumber = CashierOrderNumBox.Text;
+            string orderNum = CashierOrderNumBox.Text;
+            string transactNum = CashierSessionNumBox.Text + "-" + orderNum;
             string staffName = CashierNameBox.Text;
-            string legal = "Thank you for dining in Eat N' Run Burger Diner.\n" +
-                "This receipt will serve as your proof of purchase of Eat N'Run food products, " +
-                "in order to raise concerns about your purchase, please keep this receipt.";
+            string legal = "Thank you for dining in Eat N' Run Burger Diner." +
+                "\nThis receipt will serve as your sales invoice of any purchase in Eat N'Run Burger Diner." +
+                "\nAny concerns about your purchase please ask and show this receipt to any Eat N' Run Burger Diner Personnel.";
             // Increment the file name
 
             // Generate a unique filename for the PDF
-            string fileName = $"ENR_OrderReceipt_{orderNumber}.pdf";
+            string fileName = $"ENR_OrderReceipt_{transactNum}.pdf";
 
             // Create a SaveFileDialog to choose the save location
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -4596,17 +4667,18 @@ namespace EatNRunProject
 
                     // Add centered content to the centerAligned Paragraph
                     centerAligned.Add(new Chunk("Eat N'Run Burger Diner", headerFont));
-                    centerAligned.Add(new Chunk("\n123 Main St, Your City", font));
-                    centerAligned.Add(new Chunk("\nPhone: (555) 555-5555", font));
+                    centerAligned.Add(new Chunk("\n123 Main St, Pasig City", font));
+                    centerAligned.Add(new Chunk("\nTel. #: (1101) 111-1010", font));
+                    centerAligned.Add(new Chunk($"\n{today}", font));
 
                     // Add the centered content to the document
                     doc.Add(centerAligned);
                     doc.Add(new Chunk("\n")); // New line
 
-
-                    doc.Add(new Paragraph($"Order Number: {orderNumber}", font));
-                    doc.Add(new Paragraph($"Order Date: {today}", font));
-                    doc.Add(new Paragraph($"Order Checked Out By: {staffName}", font));
+                    doc.Add(new Paragraph($"Transaction No.: {transactNum}", font));
+                    doc.Add(new Paragraph($"Order No.: {orderNum}", font));
+                    //doc.Add(new Paragraph($"Order Date: {today}", font));
+                    doc.Add(new Paragraph($"Order Served By: {staffName}", font));
                     doc.Add(new Chunk("\n")); // New line
 
 
@@ -4622,11 +4694,20 @@ namespace EatNRunProject
                             }
 
                             string qty = row.Cells["Qty"].Value?.ToString();
-                            string itemcost = row.Cells["Price"].Value?.ToString();
+                            string itemcost = row.Cells["Unit Price"].Value?.ToString();
+                            string itemTotalcost = row.Cells["Total Price"].Value?.ToString();
 
-                            doc.Add(new Paragraph($"{qty} | {itemName} | Php {itemcost}", font));
-                            //MessageBox.Show($"{qty} | {itemName} | Php {itemcost}", "Receipt Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            PdfPTable itemTable = new PdfPTable(4); // 4 columns for the item table
+                            itemTable.SetWidths(new float[] { 2f, 1f, 1f, 1f }); // Column widths
+                            itemTable.DefaultCell.Border = PdfPCell.NO_BORDER;
+                            // Add cells to the item table
+                            itemTable.AddCell(new Phrase(itemName, font));
+                            itemTable.AddCell(new Phrase(qty, font));
+                            itemTable.AddCell(new Phrase($"Php {itemcost}", font));
+                            itemTable.AddCell(new Phrase($"Php {itemTotalcost}", font));
 
+                            // Add the item table to the document
+                            doc.Add(itemTable);
                         }
                         catch (Exception ex)
                         {
@@ -4635,21 +4716,56 @@ namespace EatNRunProject
                         }
                     }
 
-
-                    doc.Add(new Chunk("\n")); // New line
+                    doc.Add(new LineSeparator()); // Dotted line
 
                     // Total from your textboxes as decimal
-                    decimal netAmount = decimal.Parse(CashierNetAmountBox.Text);
-                    decimal vat = decimal.Parse(CashierVATBox.Text);
-                    decimal grossAmount = decimal.Parse(CashierGrossAmountBox.Text);
+                    decimal netAmount = decimal.Parse(CashierCONetAmountBox.Text);
+                    decimal discount = decimal.Parse(CashierDiscountBox.Text);
+                    decimal vat = decimal.Parse(CashierCOVATBox.Text);
+                    decimal grossAmount = decimal.Parse(CashierCOGrossAmountBox.Text);
                     decimal cash = decimal.Parse(CashierCashBox.Text);
                     decimal change = decimal.Parse(CashierChangeBox.Text);
 
-                    doc.Add(new Paragraph($"Net Amount: Php{netAmount:F2}", font));
-                    doc.Add(new Paragraph($"VAT (12%): Php{vat:F2}", font));
-                    doc.Add(new Paragraph($"Gross Amount: Php{grossAmount:F2}", font));
-                    doc.Add(new Paragraph($"Cash: Php{cash:F2}", font));
-                    doc.Add(new Paragraph($"Change Due: Php{change:F2}", font));
+                    // Create a new table for the "Total" section
+                    PdfPTable totalTable = new PdfPTable(2); // 2 columns for the "Total" table
+                    totalTable.SetWidths(new float[] { 1f, 1f }); // Column widths
+                    totalTable.DefaultCell.Border = PdfPCell.NO_BORDER;
+
+                    // Add cells to the "Total" table
+                    totalTable.AddCell(new Phrase($"Total ({CashierOrderViewTable.Rows.Count} items)", font));
+                    totalTable.AddCell(new Phrase($"Php {grossAmount:F2}", font));
+                    totalTable.AddCell(new Phrase($"Cash Given", font));
+                    totalTable.AddCell(new Phrase($"Php {cash:F2}", font));
+                    totalTable.AddCell(new Phrase($"Change", font));
+                    totalTable.AddCell(new Phrase($"Php {change:F2}", font));
+
+                    // Add the "Total" table to the document
+                    doc.Add(totalTable);
+                    doc.Add(new Chunk("\n")); // New line
+
+                    // Create a new table for the "VATable" section
+                    PdfPTable vatTable = new PdfPTable(2); // 2 columns for the "VATable" table
+                    vatTable.SetWidths(new float[] { 1f, 1f }); // Column widths
+                    vatTable.DefaultCell.Border = PdfPCell.NO_BORDER;
+
+                    // Add cells to the "VATable" table
+                    vatTable.AddCell(new Phrase("VATable ", font));
+                    vatTable.AddCell(new Phrase($"Php {netAmount:F2}", font));
+                    vatTable.AddCell(new Phrase("VAT Tax (12%)", font));
+                    vatTable.AddCell(new Phrase($"Php {vat:F2}", font));
+                    vatTable.AddCell(new Phrase("Discount (20%)", font));
+                    vatTable.AddCell(new Phrase($"Php {discount:F2}", font));
+
+                    // Add the "VATable" table to the document
+                    doc.Add(vatTable);
+
+                    // Add the "Served To" section
+                    doc.Add(new Chunk("\n")); // New line
+                    doc.Add(new Paragraph("Served To:______________________________", font));
+                    doc.Add(new Paragraph("Address:_______________________________", font));
+                    doc.Add(new Paragraph("TIN No.:_______________________________", font));
+
+                    // Add the legal string with center alignment
                     Paragraph paragraph_footer = new Paragraph($"\n\n{legal}", boldfont);
                     paragraph_footer.Alignment = Element.ALIGN_CENTER;
                     doc.Add(paragraph_footer);
@@ -4675,10 +4791,11 @@ namespace EatNRunProject
 
 
 
-        private void CashierPlaceOrderHistoryDB(DataGridView MngrOrderView)
+        private void CashierPlaceOrderHistoryDB(DataGridView CashierOrderView)
         {
             // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
-            string orderNum = CashierSessionNumBox.Text + "-" + CashierOrderNumBox.Text;
+            string orderNum = CashierOrderNumBox.Text;
+            string transactNum = CashierSessionNumBox.Text + "-" + orderNum;
             string today = CashierDateTimePickerBox.Text;
             string mngrName = CashierNameBox.Text;
             string yes = "Yes";
@@ -4702,11 +4819,12 @@ namespace EatNRunProject
                                 decimal itemTotalPrice = Convert.ToDecimal(row.Cells["Total Price"].Value);
 
 
-                                string query = "INSERT INTO orderhistory (OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, ItemTotalPrice, CheckedOut, Voided) " +
-                                               "VALUES (@OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @ItemTotalPrice, @Yes, @No)";
+                                string query = "INSERT INTO orderhistory (TransactNumber, OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, ItemTotalPrice, CheckedOut, Voided) " +
+                                               "VALUES (@Transact, @OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @ItemTotalPrice, @Yes, @No)";
 
                                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                                 {
+                                    cmd.Parameters.AddWithValue("@Transact", transactNum);
                                     cmd.Parameters.AddWithValue("@OrderNumber", orderNum);
                                     cmd.Parameters.AddWithValue("@Date", today);
                                     cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
@@ -4740,12 +4858,15 @@ namespace EatNRunProject
 
         private void CashierPlaceOrderSalesDB()
         {
-            string orderNum = CashierSessionNumBox.Text + "-" + CashierOrderNumBox.Text;
+            string orderNum = CashierOrderNumBox.Text;
+            string transactNum = CashierSessionNumBox.Text + "-" + orderNum;
             string today = CashierDateTimePickerBox.Text;
             string mngrName = CashierNameBox.Text;
-            string netAmount = CashierNetAmountBox.Text;
-            string vat = CashierVATBox.Text;
-            string grossAmount = CashierGrossAmountBox.Text;
+            string netAmount = CashierCONetAmountBox.Text;
+            string vat = CashierCOVATBox.Text;
+            string grossAmount = CashierCOGrossAmountBox.Text;
+            string cash = CashierCashBox.Text;
+            string change = CashierChangeBox.Text;
 
             try
             {
@@ -4754,17 +4875,19 @@ namespace EatNRunProject
                     connection.Open();
 
                     // Insert data into the accounts table, including the image (AccountPfp in the first position)
-                    string insertQuery = "INSERT INTO sales (OrderNumber, Date, OrderedBy, NetAmount, VAT, GrossAmount)" +
-                                        "VALUES (@OrderNum, @Date, @OrderedBy, @Net, @Vat, @Gross)";
+                    string insertQuery = "INSERT INTO sales (TransactNumber, OrderNumber, Date, OrderedBy, NetAmount, VAT, GrossAmount, CashGiven, DueChange)" +
+                                        "VALUES (@Transact, @OrderNum, @Date, @OrderedBy, @Net, @Vat, @Gross, @Cash, @Change)";
 
                     MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
-
+                    cmd.Parameters.AddWithValue("@Transact", transactNum);
                     cmd.Parameters.AddWithValue("@OrderNum", orderNum);
                     cmd.Parameters.AddWithValue("@Date", today);
                     cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
                     cmd.Parameters.AddWithValue("@Net", netAmount);
                     cmd.Parameters.AddWithValue("@Vat", vat);
                     cmd.Parameters.AddWithValue("@Gross", grossAmount);
+                    cmd.Parameters.AddWithValue("@Cash", cash);
+                    cmd.Parameters.AddWithValue("@Change", change);
 
 
                     cmd.ExecuteNonQuery();
@@ -4782,6 +4905,7 @@ namespace EatNRunProject
                     CashierNewOrderBtnPanel.Visible = true;
                     CashierOrderViewPanel.Visible = true;
                     CashierOrderNumRefresh();
+                    CashierItemValuesClear();
                     CashierOrderViewTable.Rows.Clear();
 
                 }
@@ -4989,5 +5113,7 @@ namespace EatNRunProject
         {
 
         }
+
+
     }
 }
