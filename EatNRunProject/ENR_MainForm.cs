@@ -22,6 +22,7 @@ using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.draw;
 
 
 
@@ -41,9 +42,20 @@ namespace EatNRunProject
         private CashierPanelCard CashierPanelManager;
         private CashierItemPanelCard CashierItemPanelManager;
         private CashierOrderPanelCard CashierOrderPanelManager;
+
         //db connection
-        public static string mysqlconn = "server=localhost;user=root;database=eatnrun;password=";
+        public static string mysqlconn = "Server=sql.freedb.tech;" +
+                                        "Port=3306;" +
+                                        "Database=freedb_eatnrun;" +
+                                        "User=freedb_mrtncolumns;" +
+                                        "Password=$5R%ngcR$Qcsee!;";
         public MySqlConnection connection = new MySqlConnection(mysqlconn);
+
+        //db connection for InfinityFree
+        //public static string mysqlconn = "server=185.27.134.202; user=if0_35535274;database=if0_35535274_eatnrundb;password=nzMCjNuetX;";
+        //public MySqlConnection connection = new MySqlConnection(mysqlconn);
+
+        //string connectionString = "Server=bc7dffskgfkmmc0s8xaa-mysql.services.clever-cloud.com;Port=3306;Database=bc7dffskgfkmmc0s8xaa;User=ucpubg50c8c4gojc;Password=sSDknFYHPfLwhrLhUS9V;";
 
         //gender combo box
         private string[] genders = { "Male", "Female", "Prefer Not to Say" };
@@ -167,6 +179,20 @@ namespace EatNRunProject
 
             this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
 
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+                {
+                    connection.Open();
+                    MessageBox.Show("Welcome to Eat N' Run. Let's get cooking!", "Eat N' Run");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+                MessageBox.Show("Unable to connect to the database. Please check your internet connection and try again.", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void ENR_MainForm_Load(object sender, EventArgs e)
@@ -186,12 +212,12 @@ namespace EatNRunProject
 
         private void DBRefresher()
         {
-            LoadEmployeeAcc();
-            LoadItemMenu();
-            LoadBurgerItemMenu();
-            LoadSideItemMenu();
-            LoadDrinksItemMenu();
-            LoadSetItemMenu();
+            AdminLoadEmployeeAcc();
+            AdminLoadItemMenu();
+            MngrLoadBurgerItemMenu();
+            MngrLoadSideItemMenu();
+            MngrLoadDrinksItemMenu();
+            MngrLoadSetItemMenu();
             CashierLoadBurgerItemMenu();
             CashierLoadSideItemMenu();
             CashierLoadDrinksItemMenu();
@@ -529,7 +555,7 @@ namespace EatNRunProject
             }
         }
 
-        public void LoadEmployeeAcc()
+        public void AdminLoadEmployeeAcc()
         {
             try
             {
@@ -582,7 +608,7 @@ namespace EatNRunProject
         }
 
 
-        public void LoadItemMenu()
+        public void AdminLoadItemMenu()
         {
             try
             {
@@ -632,7 +658,7 @@ namespace EatNRunProject
         }
 
 
-        public void LoadBurgerItemMenu()
+        public void MngrLoadBurgerItemMenu()
         {
             try
             {
@@ -681,7 +707,7 @@ namespace EatNRunProject
         }
 
 
-        public void LoadSideItemMenu()
+        public void MngrLoadSideItemMenu()
         {
             try
             {
@@ -729,7 +755,7 @@ namespace EatNRunProject
             }
         }
 
-        public void LoadDrinksItemMenu()
+        public void MngrLoadDrinksItemMenu()
         {
             try
             {
@@ -777,7 +803,7 @@ namespace EatNRunProject
             }
         }
 
-        public void LoadSetItemMenu()
+        public void MngrLoadSetItemMenu()
         {
             try
             {
@@ -1348,13 +1374,14 @@ namespace EatNRunProject
                 int uid = GetUidFromDatabase(employeeID);
 
                 // Use the current date (MM-dd) and the order number
+                string datePart = DateTime.Now.ToString("MMddhhmm");
                 string orderPart = seshNumber.ToString("D3");
 
                 // Increment the order number for the next login
                 seshNumber++;
 
                 // Combine the parts to create the session number
-                string sessionNumber = $"{uid}-{orderPart}";
+                string sessionNumber = $"{uid}-{orderPart}-{datePart}";
 
                 return sessionNumber;
             }
@@ -1405,7 +1432,7 @@ namespace EatNRunProject
 
                 // Increment the order number for the next order
                 orderNumber++;
-                string ordersessionNumber = $"{datePart}-{orderPart}";
+                string ordersessionNumber = $"{orderPart}";
 
                 return ordersessionNumber;
             }
@@ -1427,20 +1454,21 @@ namespace EatNRunProject
             MngrOrderNumBox.Text = SessionOrderNumberGenerator.GenerateOrderNumber();
         }
 
-
-
         private void CashierSessionNumRefresh()
         {
-            CashierSessionNumBox.Text = "";
-            ID = RandomNumberGenerator.GenerateRandomNumber();
-            CashierSessionNumBox.Text = ID;
+            string emplID = ENREmplIDBox.Text;
+
+            // Assuming you have retrieved the employeeID variable from user input
+            string sessionNumber = SessionOrderNumberGenerator.GenerateSessionNumber(emplID);
+
+            // Display the generated session number in the TextBox
+            CashierSessionNumBox.Text = sessionNumber;
         }
 
         private void CashierOrderNumRefresh()
         {
-            CashierOrderNumBox.Text = "";
-            ID = RandomNumberGenerator.GenerateRandomNumber();
-            CashierOrderNumBox.Text = ID;
+            CashierOrderNumBox.Text = SessionOrderNumberGenerator.GenerateOrderNumber();
+
         }
 
 
@@ -1569,7 +1597,7 @@ namespace EatNRunProject
         {
             AdminPanelManager.AdminFormShow(FoodItemPanel);
             AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
-            LoadItemMenu();
+            AdminLoadItemMenu();
             AdminSalesStartDatePicker.Visible = false;
 
 
@@ -1580,7 +1608,7 @@ namespace EatNRunProject
             AdminPanelManager.AdminFormShow(AccountsPanel);
             AdminAccPanelManager.AdminAccFormShow(CreateAccBtnPanel);
             AdminSalesStartDatePicker.Visible = false;
-            LoadEmployeeAcc();
+            AdminLoadEmployeeAcc();
 
         }
 
@@ -1993,7 +2021,7 @@ namespace EatNRunProject
                     MessageBox.Show("Welcome to Eat N' Run. \n Employee Account successfully created.", "Hooray!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     EmplIDRefresher();
                     AddNewAccBoxClear();
-                    LoadEmployeeAcc();
+                    AdminLoadEmployeeAcc();
                 }
                 catch (MySqlException ex)
                 {
@@ -2342,7 +2370,7 @@ namespace EatNRunProject
                     // Successful update
                     MessageBox.Show("Employee account has been successfully updated.", "Update Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateAccBoxClear();
-                    LoadEmployeeAcc();
+                    AdminLoadEmployeeAcc();
                 }
                 catch (MySqlException ex)
                 {
@@ -2534,7 +2562,7 @@ namespace EatNRunProject
                     MessageBox.Show("Food item successfully created.", "Hooray!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ItemIDRefresher();
                     AddItemBoxClear();
-                    LoadItemMenu();
+                    AdminLoadItemMenu();
                 }
                 catch (MySqlException ex)
                 {
@@ -2721,7 +2749,7 @@ namespace EatNRunProject
                     // Successful update
                     MessageBox.Show("Item has been successfully updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateItemBoxClear();
-                    LoadItemMenu();
+                    AdminLoadItemMenu();
                 }
                 catch (MySqlException ex)
                 {
@@ -2866,13 +2894,14 @@ namespace EatNRunProject
                 MngrOrderPanelManager.MngrOrderFormShow(MngrOrderViewPanel);
                 MngrOrderNumRefresh();
                 MngrItemPanel.Enabled = true;
-                MngrItemBoxValues();
+                MngrItemValuesClear();
+                MngrItemValues();
                 MngrMenuPanelHider();
 
             }
         }
 
-        private void MngrItemBoxValues()
+        private void MngrItemValuesClear()
         {
             MngrNetAmountBox.Text = "";
             MngrGrossAmountBox.Text = "";
@@ -2880,10 +2909,25 @@ namespace EatNRunProject
             MngrDiscountBox.Text = "";
             MngrCOGrossAmountBox.Text = "";
             MngrCONetAmountBox.Text = "";
+            MngrCOVATBox.Text = "";
             MngrCashBox.Text = "";
             MngrChangeBox.Text = "";
 
         }
+
+        private void MngrItemValues()
+        {
+            MngrNetAmountBox.Text = "0.00";
+            MngrGrossAmountBox.Text = "0.00";
+            MngrVATBox.Text = "0.00";
+            MngrDiscountBox.Text = "0.00";
+            MngrCOGrossAmountBox.Text = "0.00";
+            MngrCONetAmountBox.Text = "0.00";
+            MngrCashBox.Text = "";
+            MngrChangeBox.Text = "0.00";
+
+        }
+
 
         private void MngrOrderExitBtn_Click(object sender, EventArgs e)
         {
@@ -2915,28 +2959,27 @@ namespace EatNRunProject
         private void MngrItemBurgerBtn_Click(object sender, EventArgs e)
         {
             MngrItemPanelManager.MngrItemFormShow(MngrItemBurgerPanel);
-            DBRefresher();
+            MngrLoadBurgerItemMenu();
 
         }
 
         private void MngrItemSideBtn_Click(object sender, EventArgs e)
         {
             MngrItemPanelManager.MngrItemFormShow(MngrItemSidesPanel);
-            DBRefresher();
+            MngrLoadSideItemMenu();
 
         }
 
         private void MngrItemDrinksBtn_Click(object sender, EventArgs e)
         {
             MngrItemPanelManager.MngrItemFormShow(MngrItemDrinksPanel);
-            DBRefresher();
-
+            MngrLoadDrinksItemMenu();
         }
 
         private void MngrItemSetBtn_Click(object sender, EventArgs e)
         {
             MngrItemPanelManager.MngrItemFormShow(MngrItemSetPanel);
-            DBRefresher();
+            MngrLoadSetItemMenu();
 
         }
 
@@ -2977,6 +3020,7 @@ namespace EatNRunProject
                     MngrItemPanel.Enabled = false;
                     MngrVoidOrderHistoryDB(MngrOrderView);
                     MngrOrderViewTable.Rows.Clear();
+                    MngrItemValuesClear();
                     MessageBox.Show("Ordered items are voided.", "Item Void Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MngrItemPanel.Enabled = true;
                 }
@@ -3157,6 +3201,7 @@ namespace EatNRunProject
                 MngrCONetAmountBox.Text = netAmount.ToString("0.00");
                 MngrVATBox.Text = vatAmount.ToString("0.00");
                 MngrNetAmountBox.Text = netAmount.ToString("0.00");
+
             }
 
         }
@@ -3236,7 +3281,7 @@ namespace EatNRunProject
         private void MngrSalesBtn_Click(object sender, EventArgs e)
         {
             MngrPanelManager.MngrFormShow(MngrSalesPanel);
-            DBRefresher();
+            MngrLoadSalesDB();
             MngrMenuPanelHider();
 
         }
@@ -3470,6 +3515,7 @@ namespace EatNRunProject
                 MngrGenerateReceipt();
                 MngrPlaceOrderHistoryDB(MngrOrderViewTable);
                 MngrPlaceOrderSalesDB();
+                MngrItemValuesClear();
 
             }
         }
@@ -3478,15 +3524,16 @@ namespace EatNRunProject
         {
             DateTime currentDate = MngrDateTimePicker.Value;
             string today = currentDate.ToString("MM-dd-yyyy hh:mm tt");
-            string orderNumber = MngrOrderNumBox.Text;
+            string orderNum = MngrOrderNumBox.Text;
+            string transactNum = MngrSessionNumBox.Text + "-" + orderNum;
             string staffName = MngrNameBox.Text;
-            string legal = "Thank you for dining in Eat N' Run Burger Diner.\n" +
-                "This receipt will serve as your proof of purchase of Eat N'Run food products, " +
-                "in order to raise concerns about your purchase, please keep this receipt.";
+            string legal = "Thank you for dining in Eat N' Run Burger Diner." +
+                "\nThis receipt will serve as your sales invoice of any purchase in Eat N'Run Burger Diner." +
+                "\nAny concerns about your purchase please ask and show this receipt to any Eat N' Run Burger Diner Personnel.";
             // Increment the file name
 
             // Generate a unique filename for the PDF
-            string fileName = $"ENR_OrderReceipt_{orderNumber}.pdf";
+            string fileName = $"ENR_OrderReceipt_{transactNum}.pdf";
 
             // Create a SaveFileDialog to choose the save location
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -3521,16 +3568,17 @@ namespace EatNRunProject
 
                     // Add centered content to the centerAligned Paragraph
                     centerAligned.Add(new Chunk("Eat N'Run Burger Diner", headerFont));
-                    centerAligned.Add(new Chunk("\n123 Main St, Your City", font));
-                    centerAligned.Add(new Chunk("\nPhone: (555) 555-5555", font));
+                    centerAligned.Add(new Chunk("\n123 Main St, Pasig City", font));
+                    centerAligned.Add(new Chunk("\nTel. #: (1101) 111-1010", font));
+                    centerAligned.Add(new Chunk($"\n{today}", font));
 
                     // Add the centered content to the document
                     doc.Add(centerAligned);
                     doc.Add(new Chunk("\n")); // New line
 
-
-                    doc.Add(new Paragraph($"Order Number: {orderNumber}", font));
-                    doc.Add(new Paragraph($"Order Date: {today}", font));
+                    doc.Add(new Paragraph($"Transaction No.: {transactNum}", font));
+                    doc.Add(new Paragraph($"Order No.: {orderNum}", font));
+                    //doc.Add(new Paragraph($"Order Date: {today}", font));
                     doc.Add(new Paragraph($"Order Checked Out By: {staffName}", font));
                     doc.Add(new Chunk("\n")); // New line
 
@@ -3549,10 +3597,18 @@ namespace EatNRunProject
                             string qty = row.Cells["Qty"].Value?.ToString();
                             string itemcost = row.Cells["Unit Price"].Value?.ToString();
                             string itemTotalcost = row.Cells["Total Price"].Value?.ToString();
+                            
+                            PdfPTable itemTable = new PdfPTable(4); // 4 columns for the item table
+                            itemTable.SetWidths(new float[] { 2f, 1f, 1f, 1f }); // Column widths
+                            itemTable.DefaultCell.Border = PdfPCell.NO_BORDER;
+                            // Add cells to the item table
+                            itemTable.AddCell(new Phrase(itemName, font));
+                            itemTable.AddCell(new Phrase(qty, font));
+                            itemTable.AddCell(new Phrase($"Php {itemcost}", font));
+                            itemTable.AddCell(new Phrase($"Php {itemTotalcost}", font));
 
-                            doc.Add(new Paragraph($"{itemName} {qty}  x Php {itemcost} | Php {itemTotalcost}", font));
-                            //MessageBox.Show($"{qty} | {itemName} | Php {itemcost}", "Receipt Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                            // Add the item table to the document
+                            doc.Add(itemTable);
                         }
                         catch (Exception ex)
                         {
@@ -3561,24 +3617,52 @@ namespace EatNRunProject
                         }
                     }
 
-
-                    doc.Add(new Chunk("\n")); // New line
+                    doc.Add(new LineSeparator()); // Dotted line
 
                     // Total from your textboxes as decimal
                     decimal netAmount = decimal.Parse(MngrCONetAmountBox.Text);
+                    decimal discount = decimal.Parse(MngrDiscountBox.Text);
                     decimal vat = decimal.Parse(MngrCOVATBox.Text);
                     decimal grossAmount = decimal.Parse(MngrCOGrossAmountBox.Text);
                     decimal cash = decimal.Parse(MngrCashBox.Text);
                     decimal change = decimal.Parse(MngrChangeBox.Text);
-                    decimal discount = decimal.Parse(MngrDiscountBox.Text);
+                    
+                    // Create a new table for the "Total" section
+                    PdfPTable totalTable = new PdfPTable(2); // 2 columns for the "Total" table
+                    totalTable.SetWidths(new float[] { 1f, 1f }); // Column widths
+                    totalTable.DefaultCell.Border = PdfPCell.NO_BORDER;
 
+                    // Add cells to the "Total" table
+                    totalTable.AddCell(new Phrase($"Total ({MngrOrderViewTable.Rows.Count} items)", font));
+                    totalTable.AddCell(new Phrase($"Php {grossAmount:F2}", font));
 
-                    doc.Add(new Paragraph($"Net Amount: Php {netAmount:F2}", font));
-                    doc.Add(new Paragraph($"VAT (12%): Php {vat:F2}", font));
-                    doc.Add(new Paragraph($"Discount (20%): Php {discount:F2}", font));
-                    doc.Add(new Paragraph($"Gross Amount: Php {grossAmount:F2}", font));
-                    doc.Add(new Paragraph($"Cash: Php {cash:F2}", font));
-                    doc.Add(new Paragraph($"Change Due: Php {change:F2}", font));
+                    // Add the "Total" table to the document
+                    doc.Add(totalTable);
+                    doc.Add(new Chunk("\n")); // New line
+
+                    // Create a new table for the "VATable" section
+                    PdfPTable vatTable = new PdfPTable(2); // 2 columns for the "VATable" table
+                    vatTable.SetWidths(new float[] { 1f, 1f }); // Column widths
+                    vatTable.DefaultCell.Border = PdfPCell.NO_BORDER;
+
+                    // Add cells to the "VATable" table
+                    vatTable.AddCell(new Phrase("VATable ", font));
+                    vatTable.AddCell(new Phrase($"Php {netAmount:F2}", font));
+                    vatTable.AddCell(new Phrase("VAT Tax (12%)", font));
+                    vatTable.AddCell(new Phrase($"Php {vat:F2}", font));
+                    vatTable.AddCell(new Phrase("Discount (20%)", font));
+                    vatTable.AddCell(new Phrase($"Php {discount:F2}", font));
+
+                    // Add the "VATable" table to the document
+                    doc.Add(vatTable);
+                    
+                    // Add the "Served To" section
+                    doc.Add(new Chunk("\n")); // New line
+                    doc.Add(new Paragraph("Served To:______________________________", font));
+                    doc.Add(new Paragraph("Address:_______________________________", font));
+                    doc.Add(new Paragraph("TIN No.:_______________________________", font));
+
+                    // Add the legal string with center alignment
                     Paragraph paragraph_footer = new Paragraph($"\n\n{legal}", boldfont);
                     paragraph_footer.Alignment = Element.ALIGN_CENTER;
                     doc.Add(paragraph_footer);
@@ -3604,7 +3688,8 @@ namespace EatNRunProject
         private void MngrPlaceOrderHistoryDB(DataGridView MngrOrderView)
         {
             // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
-            string orderNum = MngrSessionNumBox.Text + "-" + MngrOrderNumBox.Text;
+            string orderNum = MngrOrderNumBox.Text;
+            string transactNum = MngrSessionNumBox.Text + "-" + orderNum;
             DateTime currentDate = MngrDateTimePicker.Value;
             string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
             string mngrName = MngrNameBox.Text;
@@ -3629,11 +3714,12 @@ namespace EatNRunProject
                                 decimal itemTotalPrice = Convert.ToDecimal(row.Cells["Total Price"].Value);
 
 
-                                string query = "INSERT INTO orderhistory (OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, ItemTotalPrice, CheckedOut, Voided) " +
-                                               "VALUES (@OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @ItemTotalPrice, @Yes, @No)";
+                                string query = "INSERT INTO orderhistory (TransactNumber, OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, ItemTotalPrice, CheckedOut, Voided) " +
+                                               "VALUES (@Transact, @OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @ItemTotalPrice, @Yes, @No)";
 
                                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                                 {
+                                    cmd.Parameters.AddWithValue("@Transact", transactNum);
                                     cmd.Parameters.AddWithValue("@OrderNumber", orderNum);
                                     cmd.Parameters.AddWithValue("@Date", today);
                                     cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
@@ -3669,7 +3755,8 @@ namespace EatNRunProject
         {
             DateTime currentDate = MngrDateTimePicker.Value;
 
-            string orderNum = MngrSessionNumBox.Text + "-" + MngrOrderNumBox.Text;
+            string orderNum = MngrOrderNumBox.Text;
+            string transactNum = MngrSessionNumBox.Text + "-" + orderNum;
             string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
             string mngrName = MngrNameBox.Text;
             string netAmount = MngrCONetAmountBox.Text;
@@ -3685,11 +3772,11 @@ namespace EatNRunProject
                     connection.Open();
 
                     // Insert data into the accounts table, including the image (AccountPfp in the first position)
-                    string insertQuery = "INSERT INTO sales (OrderNumber, Date, OrderedBy, NetAmount, VAT, GrossAmount, CashGiven, DueChange)" +
-                                        "VALUES (@OrderNum, @Date, @OrderedBy, @Net, @Vat, @Gross, @Cash, @Change)";
+                    string insertQuery = "INSERT INTO sales (TransactNumber, OrderNumber, Date, OrderedBy, NetAmount, VAT, GrossAmount, CashGiven, DueChange)" +
+                                        "VALUES (@Transact, @OrderNum, @Date, @OrderedBy, @Net, @Vat, @Gross, @Cash, @Change)";
 
                     MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
-
+                    cmd.Parameters.AddWithValue("@Transact", transactNum);
                     cmd.Parameters.AddWithValue("@OrderNum", orderNum);
                     cmd.Parameters.AddWithValue("@Date", today);
                     cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
@@ -3715,7 +3802,7 @@ namespace EatNRunProject
                     MngrOrderViewPanel.Visible = true;
                     MngrOrderNumRefresh();
                     MngrOrderViewTable.Rows.Clear();
-                    MngrItemBoxValues();
+                    MngrItemValuesClear();
 
                 }
 
@@ -3742,7 +3829,8 @@ namespace EatNRunProject
         private void MngrVoidOrderHistoryDB(DataGridView MngrOrderView)
         {
             // Assuming you have "MngrOrderNumBox" for OrderNumber and "MngrDateTimePicker" for Date
-            string orderNum = MngrSessionNumBox.Text + "-" + MngrOrderNumBox.Text;
+            string orderNum = MngrOrderNumBox.Text;
+            string transactNum = MngrSessionNumBox.Text + "-" + orderNum;
             DateTime currentDate = MngrDateTimePicker.Value;
             string today = currentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
             string mngrName = MngrNameBox.Text;
@@ -3764,19 +3852,22 @@ namespace EatNRunProject
                             {
                                 string itemName = row.Cells["Item Name"].Value.ToString();
                                 int qty = Convert.ToInt32(row.Cells["Qty"].Value);
-                                decimal itemPrice = Convert.ToDecimal(row.Cells["Price"].Value);
+                                decimal itemPrice = Convert.ToDecimal(row.Cells["Unit Price"].Value);
+                                decimal itemTotalPrice = Convert.ToDecimal(row.Cells["Total Price"].Value);
 
-                                string query = "INSERT INTO orderhistory (OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, CheckedOut, Voided) " +
-                                               "VALUES (@OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @Yes, @No)";
+                                string query = "INSERT INTO orderhistory (TransactNumber, OrderNumber, Date, OrderedBy, ItemName, Qty, ItemPrice, ItemTotalPrice, CheckedOut, Voided) " +
+                                               "VALUES (@Transact, @OrderNumber, @Date, @OrderedBy, @ItemName, @Qty, @ItemPrice, @ItemTotalPrice, @Yes, @No)";
 
                                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                                 {
+                                    cmd.Parameters.AddWithValue("@Transact", transactNum);
                                     cmd.Parameters.AddWithValue("@OrderNumber", orderNum);
                                     cmd.Parameters.AddWithValue("@Date", today);
                                     cmd.Parameters.AddWithValue("@OrderedBy", mngrName);
                                     cmd.Parameters.AddWithValue("@ItemName", itemName);
                                     cmd.Parameters.AddWithValue("@Qty", qty);
                                     cmd.Parameters.AddWithValue("@ItemPrice", itemPrice);
+                                    cmd.Parameters.AddWithValue("@ItemTotalPrice", itemTotalPrice);
                                     cmd.Parameters.AddWithValue("@Yes", no);
                                     cmd.Parameters.AddWithValue("@No", yes);
 
@@ -3852,25 +3943,28 @@ namespace EatNRunProject
         private void CashierItemBurgerBtn_Click(object sender, EventArgs e)
         {
             CashierItemPanelManager.CashierItemFormShow(CashierItemBurgerPanel);
-            DBRefresher();
+            CashierLoadBurgerItemMenu();
+
         }
 
         private void CashierItemSidesBtn_Click(object sender, EventArgs e)
         {
             CashierItemPanelManager.CashierItemFormShow(CashierItemSidesPanel);
-            DBRefresher();
+            CashierLoadSideItemMenu();
+
         }
 
         private void CashierItemDrinksBtn_Click(object sender, EventArgs e)
         {
             CashierItemPanelManager.CashierItemFormShow(CashierItemDrinksPanel);
-            DBRefresher();
+            CashierLoadDrinksItemMenu();
+
         }
 
         private void CashierItemSetBtn_Click(object sender, EventArgs e)
         {
             CashierItemPanelManager.CashierItemFormShow(CashierItemSetPanel);
-            DBRefresher();
+            CashierLoadSetItemMenu();
         }
 
         private void CashierOrderViewTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -4834,7 +4928,7 @@ namespace EatNRunProject
         private void MngrSales3Btn_Click(object sender, EventArgs e)
         {
             MngrPanelManager.MngrFormShow(MngrSalesPanel);
-            DBRefresher();
+            MngrLoadSalesDB();
             MngrMenuPanelHider();
 
         }
@@ -4864,7 +4958,7 @@ namespace EatNRunProject
         private void MngrSales1Panel_Click(object sender, EventArgs e)
         {
             MngrPanelManager.MngrFormShow(MngrSalesPanel);
-            DBRefresher();
+            MngrLoadSalesDB();
             MngrMenuPanelHider();
 
         }
