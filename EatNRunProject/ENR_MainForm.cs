@@ -44,17 +44,17 @@ namespace EatNRunProject
         private CashierItemPanelCard CashierItemPanelManager;
         private CashierOrderPanelCard CashierOrderPanelManager;
 
-        //db connection
-        public static string mysqlconn = "Server=sql.freedb.tech;" +
+        //online db connection
+        public static string mysqlconn = "Server=154.41.240.153;" +
                                         "Port=3306;" +
-                                        "Database=freedb_eatnrun;" +
-                                        "User=freedb_mrtncolumns;" +
-                                        "Password=$5R%ngcR$Qcsee!;";
+                                        "Database=u322177170_ColomaBiezmo;" +
+                                        "User=u322177170_eatnrun;" +
+                                        "Password=Sb!k=Jr/akt6;";
+
+        //local db connection [for offline testing]
+        //public static string mysqlconn = "server=localhost;user=root;database=freedb_eatnrun;password=";
         public MySqlConnection connection = new MySqlConnection(mysqlconn);
 
-        //db connection for InfinityFree
-        //public static string mysqlconn = "server=185.27.134.202; user=if0_35535274;database=if0_35535274_eatnrundb;password=nzMCjNuetX;";
-        //public MySqlConnection connection = new MySqlConnection(mysqlconn);
 
         //string connectionString = "Server=bc7dffskgfkmmc0s8xaa-mysql.services.clever-cloud.com;Port=3306;Database=bc7dffskgfkmmc0s8xaa;User=ucpubg50c8c4gojc;Password=sSDknFYHPfLwhrLhUS9V;";
 
@@ -190,7 +190,7 @@ namespace EatNRunProject
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                MessageBox.Show($"Error: {ex.Message}", "Database Error");
                 MessageBox.Show("Unable to connect to the database. Please check your internet connection and try again.", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -228,7 +228,7 @@ namespace EatNRunProject
             string bestSellerName = GetBestSellingItemForToday();
             MngrBestSellerBox.Text = bestSellerName;
         
-    }
+        }
 
 
 
@@ -594,7 +594,7 @@ namespace EatNRunProject
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occurred: " + e.Message);
+                MessageBox.Show("An error occurred: " + e.Message, "Admin Employee Account List");
             }
             finally
             {
@@ -644,7 +644,7 @@ namespace EatNRunProject
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occurred: " + e.Message);
+                MessageBox.Show("An error occurred: " + e.Message, "Admin Food Item List");
             }
             finally
             {
@@ -699,7 +699,7 @@ namespace EatNRunProject
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occurred: " + e.Message);
+                MessageBox.Show("An error occurred: " + e.Message, "Manager Burger Item List");
             }
             finally
             {
@@ -748,7 +748,7 @@ namespace EatNRunProject
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occurred: " + e.Message);
+                MessageBox.Show("An error occurred: " + e.Message, "Manager Side Item List");
             }
             finally
             {
@@ -796,7 +796,7 @@ namespace EatNRunProject
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occurred: " + e.Message);
+                MessageBox.Show("An error occurred: " + e.Message, "Manager Drinks Item List");
             }
             finally
             {
@@ -844,7 +844,7 @@ namespace EatNRunProject
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occurred: " + e.Message);
+                MessageBox.Show("An error occurred: " + e.Message, "Manager Set Meal Item List");
             }
             finally
             {
@@ -892,7 +892,7 @@ namespace EatNRunProject
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occurred: " + e.Message);
+                MessageBox.Show("An error occurred: " + e.Message, "Cashier Burger Item List");
             }
             finally
             {
@@ -940,7 +940,7 @@ namespace EatNRunProject
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occurred: " + e.Message);
+                MessageBox.Show("An error occurred: " + e.Message, "Cashier Side Item List");
             }
             finally
             {
@@ -988,7 +988,7 @@ namespace EatNRunProject
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occurred: " + e.Message);
+                MessageBox.Show("An error occurred: " + e.Message, "Cashier Drinks Item List");
             }
             finally
             {
@@ -1036,7 +1036,7 @@ namespace EatNRunProject
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occurred: " + e.Message);
+                MessageBox.Show("An error occurred: " + e.Message, "Cashier Set Meal Item List");
             }
             finally
             {
@@ -1068,7 +1068,7 @@ namespace EatNRunProject
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occurred: " + e.Message);
+                MessageBox.Show("An error occurred: " + e.Message, "Manager Sales List");
             }
             finally
             {
@@ -1104,7 +1104,7 @@ namespace EatNRunProject
             }
             catch (Exception e)
             {
-                MessageBox.Show("An error occurred: " + e.Message);
+                MessageBox.Show("An error occurred: " + e.Message, "Manager Order History List");
             }
             finally
             {
@@ -1151,6 +1151,8 @@ namespace EatNRunProject
             {
                 // Handle any exceptions that may occur during the database operation.
                 // Example: MessageBox.Show("An error occurred: " + ex.Message);
+                MessageBox.Show("An error occurred: " + ex.Message, "Manager Best Seller");
+
             }
 
             return bestSellerName;
@@ -1353,13 +1355,12 @@ namespace EatNRunProject
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occurred: " + ex.Message, "Login Verifier", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
                     connection?.Close();
                 }
-                MngrSessionNumBox.Text = SessionOrderNumberGenerator.GenerateSessionNumber(emplID);
             }
 
 
@@ -1413,7 +1414,7 @@ namespace EatNRunProject
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred while retrieving UID: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occurred while retrieving UID: " + ex.Message, "Session Order UID", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -1825,7 +1826,7 @@ namespace EatNRunProject
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, "Retrieve Employee Data Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             finally
@@ -1868,7 +1869,7 @@ namespace EatNRunProject
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, "Retrieve Employee Image Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -2027,7 +2028,7 @@ namespace EatNRunProject
                 catch (MySqlException ex)
                 {
                     // Handle MySQL database exception
-                    MessageBox.Show("MySQL Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("MySQL Error: " + ex.Message, "Create Employee Account Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -2376,7 +2377,7 @@ namespace EatNRunProject
                 catch (MySqlException ex)
                 {
                     // Handle MySQL database exception
-                    MessageBox.Show("MySQL Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("MySQL Error: " + ex.Message, "Updating Employee Account Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -2487,7 +2488,7 @@ namespace EatNRunProject
 
         private void AddFoodItemBtn_Click(object sender, EventArgs e)
         {
-            //Create Acc Btn
+            //Create Food Item Btn
             DateTime selectedDate = AddItemCreatedDatePicker.Value;
 
             string itemName = AddItemNameBox.Text;
@@ -2568,7 +2569,7 @@ namespace EatNRunProject
                 catch (MySqlException ex)
                 {
                     // Handle MySQL database exception
-                    MessageBox.Show("MySQL Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("MySQL Error: " + ex.Message, "Creating New Item Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -2755,7 +2756,7 @@ namespace EatNRunProject
                 catch (MySqlException ex)
                 {
                     // Handle MySQL database exception
-                    MessageBox.Show("MySQL Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("MySQL Error: " + ex.Message, "Updating Food Item Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -2833,7 +2834,7 @@ namespace EatNRunProject
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, "Retrieving Food Item Data Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             finally
@@ -2876,7 +2877,7 @@ namespace EatNRunProject
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, "Retrieving Item Image Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -3618,7 +3619,7 @@ namespace EatNRunProject
                         catch (Exception ex)
                         {
                             // Handle or log any exceptions that occur while processing DataGridView data
-                            Console.WriteLine($"Error processing DataGridView row: {ex.Message}");
+                            MessageBox.Show("An error occurred: " + ex.Message, "Manager Receipt Generator Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
 
@@ -3678,11 +3679,11 @@ namespace EatNRunProject
                 }
                 catch (DocumentException de)
                 {
-                    Console.Error.WriteLine(de.Message);
+                    MessageBox.Show("An error occurred: " + de.Message, "Manager Receipt Generator Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (IOException ioe)
                 {
-                    Console.Error.WriteLine(ioe.Message);
+                    MessageBox.Show("An error occurred: " + ioe.Message, "Manager Receipt Generator Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -3747,7 +3748,7 @@ namespace EatNRunProject
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("An error occurred: " + ex.Message, "Manager Place Order History Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -3825,7 +3826,7 @@ namespace EatNRunProject
             catch (MySqlException ex)
             {
                 // Handle MySQL database exception
-                MessageBox.Show("MySQL Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred: " + ex.Message, "Manager Place Order Sales Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -3888,7 +3889,7 @@ namespace EatNRunProject
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("An error occurred: " + ex.Message, "Manager Void Order Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -4406,7 +4407,7 @@ namespace EatNRunProject
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred: " + ex.Message, "Void Order Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -4468,7 +4469,7 @@ namespace EatNRunProject
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("An error occurred: " + ex.Message, "Cashier Void Order Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -4712,7 +4713,7 @@ namespace EatNRunProject
                         catch (Exception ex)
                         {
                             // Handle or log any exceptions that occur while processing DataGridView data
-                            Console.WriteLine($"Error processing DataGridView row: {ex.Message}");
+                            MessageBox.Show("An error occurred: " + ex.Message, "Cashier Receipt Generator Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
 
@@ -4772,11 +4773,11 @@ namespace EatNRunProject
                 }
                 catch (DocumentException de)
                 {
-                    Console.Error.WriteLine(de.Message);
+                    MessageBox.Show("An error occurred: " + de.Message, "Cashier Receipt Generator Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (IOException ioe)
                 {
-                    Console.Error.WriteLine(ioe.Message);
+                    MessageBox.Show("An error occurred: " + ioe.Message, "Cashier Receipt Generator Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -4843,7 +4844,7 @@ namespace EatNRunProject
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("An error occurred: " + ex.Message, "Cashier Place Order History Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -4920,7 +4921,7 @@ namespace EatNRunProject
             catch (MySqlException ex)
             {
                 // Handle MySQL database exception
-                MessageBox.Show("MySQL Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred: " + ex.Message, "Cashier Place Order Sales Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -4968,6 +4969,8 @@ namespace EatNRunProject
                 CashierNewOrderBtnPanel.Visible = false;
             }
         }
+
+        //Manager Sales Continuation Part
 
         private void MngrSalesStartDatePicker_ValueChanged(object sender, EventArgs e)
         {
@@ -5114,6 +5117,9 @@ namespace EatNRunProject
 
         }
 
+        private void MngrSalesTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }
