@@ -224,7 +224,7 @@ namespace EatNRunProject
             CashierLoadDrinksItemMenu();
             CashierLoadSetItemMenu();
             MngrLoadSalesDB();
-            MngrLoadOrderHistoryDB();
+            
             string bestSellerName = GetBestSellingItemForToday();
             MngrBestSellerBox.Text = bestSellerName;
         
@@ -1044,23 +1044,31 @@ namespace EatNRunProject
             }
         }
 
-        private DataTable salesData = new DataTable(); // Declare a class-level variable
-
         public void MngrLoadSalesDB()
         {
             try
             {
-
                 using (MySqlConnection connection = new MySqlConnection(mysqlconn))
                 {
                     connection.Open();
-                    string sql = "SELECT * FROM `sales`";
+
+                    // Get the current date in the format 'MM-dd-yyyy'
+                    string currentDate = DateTime.Now.ToString("MM-dd-yyyy");
+
+                    // Modify the SQL query to only fetch rows with the current date
+                    string sql = $"SELECT * FROM `sales` WHERE DATE(`Date`) = '{currentDate}'";
                     MySqlCommand cmd = new MySqlCommand(sql, connection);
 
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                     {
+                        System.Data.DataTable salesData = new System.Data.DataTable();
+
                         adapter.Fill(salesData);
 
+                        // Clear the existing data in the DataGridView
+                        MngrSalesTable.DataSource = null;
+
+                        // Set the new data to the DataGridView
                         MngrSalesTable.DataSource = salesData;
                         MngrSalesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                     }
@@ -1081,15 +1089,30 @@ namespace EatNRunProject
         }
 
 
-        public void MngrLoadOrderHistoryDB()
+
+
+
+
+
+
+
+
+        public void MngrLoadOrderHistoryDB(string transactNumber, string orderNumber)
         {
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(mysqlconn))
                 {
                     connection.Open();
-                    string sql = "SELECT * FROM `orderhistory`";
+
+                    // Modify the SQL query to filter based on TransactNumber and OrderNumber
+                    string sql = "SELECT * FROM `orderhistory` WHERE TransactNumber = @TransactNumber AND OrderNumber = @OrderNumber";
                     MySqlCommand cmd = new MySqlCommand(sql, connection);
+
+                    // Add parameters to the query
+                    cmd.Parameters.AddWithValue("@TransactNumber", transactNumber);
+                    cmd.Parameters.AddWithValue("@OrderNumber", orderNumber);
+
                     System.Data.DataTable dataTable = new System.Data.DataTable();
 
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
@@ -1099,12 +1122,17 @@ namespace EatNRunProject
                         MngrOrderHistoryTable.DataSource = dataTable;
 
                         MngrOrderHistoryTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                        MngrOrderHistoryTable.Columns[0].Visible = false;
+                        MngrOrderHistoryTable.Columns[1].Visible = false;
+                        MngrOrderHistoryTable.Columns[3].Visible = false;
+                        MngrOrderHistoryTable.Columns[8].Visible = false;
+                        MngrOrderHistoryTable.Columns[9].Visible = false;
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + e.Message, "Manager Order History List");
+                MessageBox.Show("An error occurred: " + ex.Message, "Manager Order History List");
             }
             finally
             {
@@ -1115,6 +1143,7 @@ namespace EatNRunProject
                 }
             }
         }
+
 
 
         private string GetBestSellingItemForToday()
@@ -3289,7 +3318,8 @@ namespace EatNRunProject
             MngrPanelManager.MngrFormShow(MngrSalesPanel);
             MngrLoadSalesDB();
             MngrMenuPanelHider();
-
+            MngrSalesWeekNumComboPanelBox.Visible = false;
+            MngrSalesMonthListComboPanelBox.Visible = false;
         }
 
         private void MngrSalesExitBtn_Click(object sender, EventArgs e)
@@ -4974,48 +5004,41 @@ namespace EatNRunProject
 
         private void MngrSalesStartDatePicker_ValueChanged(object sender, EventArgs e)
         {
-            FilterAndSortDataGridView();
+            //FilterAndSortDataGridView();
+            MngrLoadSalesDB();
         }
 
         private void MngrSalesEndDatePicker_ValueChanged(object sender, EventArgs e)
         {
-            FilterAndSortDataGridView();
+            //FilterAndSortDataGridView();
         }
 
-        private void FilterAndSortDataGridView()
-        {
-            DateTime startDate = MngrSalesStartDatePicker.Value.Date; // Get only the date part
-            DateTime endDate = MngrSalesEndDatePicker.Value.Date;     // Get only the date part
+        //private void FilterAndSortDataGridView()
+        //{
+        //    DateTime selectedDate = MngrSalesStartDatePicker.Value.Date; // Get only the date part
+        //    System.Data.DataTable salesData = new System.Data.DataTable();
 
-            DataView dv = new DataView(salesData);
+        //    DataView dv = new DataView(salesData);
 
-            if (startDate == endDate)
-            {
-                // If both date pickers have the same date, filter for that specific date
-                dv.RowFilter = $"Date >= '{startDate:MM-dd-yyyy dddd hh:mm tt}' " +
-                               $"AND Date <= '{startDate.AddDays(1):MM-dd-yyyy dddd hh:mm tt}'";
-            }
-            else
-            {
-                // If the dates are different, filter for the date range
-                dv.RowFilter = $"Date >= '{startDate:MM-dd-yyyy dddd hh:mm tt}' " +
-                               $"AND Date <= '{endDate.AddDays(1):MM-dd-yyyy dddd hh:mm tt}'";
-            }
+        //    // Filter for the specific date
+        //    dv.RowFilter = $"Date >= '{selectedDate:MM-dd-yyyy dddd hh:mm tt}' " +
+        //                   $"AND Date <= '{selectedDate.AddDays(1):MM-dd-yyyy dddd hh:mm tt}'";
 
-            // Sort the DataView by Date
-            dv.Sort = "Date ASC";
+        //    // Sort the DataView by Date
+        //    dv.Sort = "Date ASC";
 
-            MngrSalesTable.DataSource = dv.ToTable();
+        //    MngrSalesTable.DataSource = dv.ToTable();
 
-            decimal totalSales = 0;
-            foreach (DataRow row in dv.ToTable().Rows)
-            {
-                decimal grossAmount = Convert.ToDecimal(row["GrossAmount"]);
-                totalSales += grossAmount;
-            }
+        //    decimal totalSales = 0;
+        //    foreach (DataRow row in dv.ToTable().Rows)
+        //    {
+        //        decimal grossAmount = Convert.ToDecimal(row["GrossAmount"]);
+        //        totalSales += grossAmount;
+        //    }
 
-            MngrTotalSalesBox.Text = totalSales.ToString("0.00");
-        }
+        //    MngrTotalSalesBox.Text = totalSales.ToString("0.00");
+        //}
+
 
         private void MngrMenuBtn_Click(object sender, EventArgs e)
         {
@@ -5057,7 +5080,8 @@ namespace EatNRunProject
             MngrPanelManager.MngrFormShow(MngrSalesPanel);
             MngrLoadSalesDB();
             MngrMenuPanelHider();
-
+            MngrSalesWeekNumComboPanelBox.Visible = false;
+            MngrSalesMonthListComboPanelBox.Visible = false;
         }
 
         private void MngrSwitch3Btn_Click(object sender, EventArgs e)
@@ -5087,7 +5111,8 @@ namespace EatNRunProject
             MngrPanelManager.MngrFormShow(MngrSalesPanel);
             MngrLoadSalesDB();
             MngrMenuPanelHider();
-
+            MngrSalesWeekNumComboPanelBox.Visible = false;
+            MngrSalesMonthListComboPanelBox.Visible = false;
         }
 
         private void MngrInventory1Panel_Click(object sender, EventArgs e)
@@ -5119,7 +5144,87 @@ namespace EatNRunProject
 
         private void MngrSalesTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            MngrOrderHistoryPanel.Visible = false;
+            MngrOrderHistoryPanel.Visible = true;
 
+            // Check if a valid cell is clicked
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Get TransactNumber and OrderNumber from the clicked cell in MngrSalesTable
+                string transactNumber = MngrSalesTable.Rows[e.RowIndex].Cells["TransactNumber"].Value.ToString();
+                string orderNumber = MngrSalesTable.Rows[e.RowIndex].Cells["OrderNumber"].Value.ToString();
+
+                // Update TextBox controls with TransactNumber and OrderNumber
+                MngrSalesTRNumBox.Text = transactNumber;
+                MngrSalesORNumBox.Text = orderNumber;
+
+                // Load order history based on TransactNumber and OrderNumber
+                MngrLoadOrderHistoryDB(transactNumber, orderNumber);
+            }
+        }
+
+        private void MngrOrderHistoryExitBtn_Click(object sender, EventArgs e)
+        {
+            if (MngrOrderHistoryPanel.Visible)
+            {
+                MngrSalesPanel.Visible = true;
+                MngrOrderHistoryPanel.Visible = false;
+
+            }
+
+            else
+            {
+                MngrSalesPanel.Visible = true;
+                MngrOrderHistoryPanel.Visible = true;
+            }
+        }
+
+        private void MngrSalesWtoDBtn_Click(object sender, EventArgs e)
+        {
+            MngrSalesLbl.Text = "Daily Sales";
+            MngrSalesDtoWBtn.Visible = true;
+            
+            MngrSalesWeekNumComboPanelBox.Visible = false;
+            MngrSalesMonthListComboPanelBox.Visible = false;
+            MngrSalesWtoDBtn.Visible = false; 
+            MngrSalesWtoMBtn.Visible = false;
+            MngrSalesMtoWBtn.Visible = false;
+        }
+
+        private void MngrSalesMtoWBtn_Click(object sender, EventArgs e)
+        {
+            MngrSalesLbl.Text = "Weekly Sales";
+            MngrSalesWtoDBtn.Visible = true; 
+            MngrSalesWtoMBtn.Visible = true;
+            MngrSalesWeekNumComboPanelBox.Visible = true;
+            MngrSalesMonthListComboPanelBox.Visible = true;
+
+            MngrSalesDtoWBtn.Visible = false;
+            MngrSalesMtoWBtn.Visible = false;
+        }
+
+        private void MngrSalesDtoWBtn_Click(object sender, EventArgs e)
+        {
+            MngrSalesLbl.Text = "Weekly Sales";
+            MngrSalesWtoDBtn.Visible = true;
+            MngrSalesWtoMBtn.Visible = true;
+            MngrSalesWeekNumComboPanelBox.Visible = true;
+            MngrSalesMonthListComboPanelBox.Visible = true;
+
+            MngrSalesDtoWBtn.Visible = false;
+            MngrSalesMtoWBtn.Visible = false;
+        }
+
+        private void MngrSalesWtoMBtn_Click(object sender, EventArgs e)
+        {
+            MngrSalesLbl.Text = "Monthly Sales";
+            MngrSalesMtoWBtn.Visible = true;
+            MngrSalesMonthListComboPanelBox.Visible = true;
+
+            MngrSalesWeekNumComboPanelBox.Visible = false;
+            MngrSalesWtoDBtn.Visible = false; 
+            MngrSalesWtoMBtn.Visible = false;
+            MngrSalesDtoWBtn.Visible = false;
         }
     }
 }
