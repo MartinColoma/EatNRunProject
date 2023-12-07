@@ -8,21 +8,25 @@ namespace EatNRunProject
 
         private Panel AccNewItemForm;
         private Panel AccUpdateItemForm;
-        private Panel CreateAccItemForm;
+        private Panel CreateAccItem1Form;
+        private Panel CreateAccItem2Form;
 
-        public AdminAccPanelCard(Panel AccNewItemFormPanel, Panel AccUpdateItemFormPanel, Panel AccItemFormPanel)
+        public AdminAccPanelCard(Panel AccNewItemFormPanel, Panel AccUpdateItemFormPanel, Panel AccItem1FormPanel, Panel AccItem2FormPanel)
         {
 
             AccNewItemForm = AccNewItemFormPanel;
             AccUpdateItemForm = AccUpdateItemFormPanel;
-            CreateAccItemForm = AccItemFormPanel;
+            CreateAccItem1Form = AccItem1FormPanel;
+            CreateAccItem2Form = AccItem2FormPanel;
+
         }
 
         public void AdminAccFormShow(Panel panelToShow)
         {
             AccNewItemForm.Hide();
             AccUpdateItemForm.Hide();
-            CreateAccItemForm.Hide();
+            CreateAccItem1Form.Hide();
+            CreateAccItem2Form.Hide();
             panelToShow.Show();
         }
     }
