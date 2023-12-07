@@ -69,7 +69,8 @@ namespace EatNRunProject
 
         //per user salt and employee id generator
         string ID;
-        private int minTextLength = 5; // Minimum required text length
+        string ID1;
+        private int minTextLength = 10; // Minimum required text length
 
         //Image Stored
         System.Drawing.Image ItemSelectedImage;
@@ -83,7 +84,7 @@ namespace EatNRunProject
         private decimal originalGrossAmount; // Store the original value
         private bool discountApplied = false; // Flag to track if the discount has been applied
 
-        
+
         //dgv
         private DataGridView CashierOrderView;
         private DataGridView MngrOrderView;
@@ -92,9 +93,15 @@ namespace EatNRunProject
         {
             InitializeComponent();
 
+            //Admin Food Item Edit View
+            AdminFoodEditInitializedDGV();
+            
+            //Admin Employee Acc Edit View
+            AdminEmplAccEditInitializedDGV();
+
             //Mngr Order View
             MngrInitializeDataGridView();
-            
+
             //Cashier Order View
             CashierInitializeDataGridView();
 
@@ -103,9 +110,9 @@ namespace EatNRunProject
             MFpanelManager = new MainFormCard(LoginPanel, AdminPanel, ManagerPanel, CashierPanel);
 
             //Admin Form Manager
-            AdminPanelManager = new AdminPanelCard(FoodItemPanel, SalesPanel, AccountsPanel);
+            AdminPanelManager = new AdminPanelCard(AdminFoodItemPanel, AdminLoginHistoryPanel, AdminEmplAccPanel);
             AdminFoodPanelManager = new AdminFoodPanelCard(AddItemPanel, UpdateItemPanel, CreateNewFoodBtnPanel);
-            AdminAccPanelManager = new AdminAccPanelCard(NewAccPanel, UpdateEmplAccPanel, CreateAccBtnPanel);
+            AdminAccPanelManager = new AdminAccPanelCard(NewAccPanel, UpdateEmplAccPanel, CreateAccBtnPanel, CreateAccountPanel);
 
             //Mngr Form Manager
             MngrPanelManager = new MngrPanelCard(MngrNewOrderBtnPanel, MngrOrderDashboardPanel, MngrSalesPanel);
@@ -199,7 +206,7 @@ namespace EatNRunProject
         private void ENR_MainForm_Load(object sender, EventArgs e)
         {
             this.Size = new System.Drawing.Size(517, 545);
-            
+
             DBRefresher();
 
             DateTimePickerTimer.Interval = 1000;
@@ -224,10 +231,10 @@ namespace EatNRunProject
             CashierLoadDrinksItemMenu();
             CashierLoadSetItemMenu();
             MngrLoadSalesDB();
-            
+
             string bestSellerName = GetBestSellingItemForToday();
             MngrBestSellerBox.Text = bestSellerName;
-        
+
         }
 
 
@@ -408,7 +415,27 @@ namespace EatNRunProject
             CashierDGVRowPostPaint(CashierItemDrinksView, e);
         }
 
+        //Admin Food Item Table
 
+        private void AdminFoodEditInitializedDGV()
+        {
+            DataGridViewButtonColumn EditColumn = new DataGridViewButtonColumn();
+            EditColumn.Name = "EDIT";
+            EditColumn.Text = "✏️";
+            EditColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            EditColumn.Width = 10;
+            FoodItemListTable.Columns.Add(EditColumn);
+        }
+
+        private void AdminEmplAccEditInitializedDGV()
+        {
+            DataGridViewButtonColumn EditColumn = new DataGridViewButtonColumn();
+            EditColumn.Name = "EDIT";
+            EditColumn.Text = "✏️";
+            EditColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            EditColumn.Width = 10;
+            AccountListTable.Columns.Add(EditColumn);
+        }
 
         //Order View Table
         private void MngrInitializeDataGridView()
@@ -487,7 +514,7 @@ namespace EatNRunProject
             plusColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             plusColumn.Width = 10;
             CashierOrderViewTable.Columns.Add(plusColumn);
-          
+
             DataGridViewTextBoxColumn itemUnitCostColumn = new DataGridViewTextBoxColumn();
             itemUnitCostColumn.Name = "Unit Price";
             CashierOrderViewTable.Columns.Add(itemUnitCostColumn);
@@ -584,7 +611,7 @@ namespace EatNRunProject
                         AccountListTable.Columns.Add(imageColumn);
 
                         AccountListTable.DataSource = dataTable;
-                        AccountListTable.Columns[0].Visible = false; 
+                        AccountListTable.Columns[0].Visible = false;
                         AccountListTable.Columns[11].Visible = false; // hashedpass
                         AccountListTable.Columns[12].Visible = false; // fixedsalt
                         AccountListTable.Columns[13].Visible = false; // perusersalt
@@ -635,7 +662,7 @@ namespace EatNRunProject
 
                         // Add the image column to the DataGridView
                         FoodItemListTable.Columns.Add(imageColumn);
-                        FoodItemListTable.Columns[0].Visible = false; 
+                        FoodItemListTable.Columns[0].Visible = false;
                         FoodItemListTable.DataSource = dataTable;
 
                         FoodItemListTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -1087,14 +1114,78 @@ namespace EatNRunProject
                 }
             }
         }
+        //private void DisplaySalesAmountForThisDay()
+        //{
+        //    DateTime selectedDate = MngrSalesStartDatePicker.Value.Date;
+        //    DateTime startOfDay = GetStartOfDay(selectedDate);
+        //    DateTime endOfDay = startOfDay.AddDays(1).AddSeconds(-1);
+        //    decimal salesAmount = GetSalesTotalForDateRange(startOfDay, endOfDay);
+        //    MngrTotalSalesBox.Text = $"{salesAmount:C}";
+        //}
+
+        //private void DisplaySalesAmountForThisMonth()
+        //{
+        //    DateTime today = DateTime.Today;
+        //    DateTime startOfMonth = GetStartOfMonth(today);
+        //    DateTime endOfMonth = startOfMonth.AddMonths(1).AddSeconds(-1);
+        //    decimal salesAmount = GetSalesTotalForDateRange(startOfMonth, endOfMonth);
+        //    MngrTotalSalesBox.Text = $"{salesAmount:C}";
+        //}
 
 
+        //private void DisplaySalesAmountForThisWeek()
+        //{
+        //    DateTime startOfWeek = GetStartOfWeek(DateTime.Today);
+        //    DateTime endOfWeek = startOfWeek.AddDays(7).AddSeconds(-1);
+        //    decimal salesAmount = GetSalesTotalForDateRange(startOfWeek, endOfWeek);
+        //    MngrTotalSalesBox.Text = $"{salesAmount:C}";
+        //}
 
 
+        //private DateTime GetStartOfWeek(DateTime date)
+        //{
+        //    int diff = (7 + (date.DayOfWeek - DayOfWeek.Monday)) % 7;
+        //    return date.AddDays(-1 * diff).Date;
+        //}
+
+        //private DateTime GetStartOfDay(DateTime date)
+        //{
+        //    return date.Date;  // Resets the time portion to midnight
+        //}
+
+        //private DateTime GetStartOfMonth(DateTime date)
+        //{
+        //    return new DateTime(date.Year, date.Month, 1);
+        //}
 
 
+        //public decimal GetSalesTotalForDateRange(DateTime startDate, DateTime endDate)
+        //{
+        //    decimal totalSales = 0;
 
+        //    using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+        //    {
+        //        string startFormattedDate = startDate.ToString("MM-dd-yyyy");
+        //        string endFormattedDate = endDate.ToString("MM-dd-yyyy");
 
+        //        string query = "SELECT SUM(GrossAmount) FROM sales WHERE DATE(Date) BETWEEN @startDate AND @endDate";
+
+        //        using (MySqlCommand command = new MySqlCommand(query, connection))
+        //        {
+        //            command.Parameters.AddWithValue("@startDate", startFormattedDate);
+        //            command.Parameters.AddWithValue("@endDate", endFormattedDate);
+        //            connection.Open();
+
+        //            object result = command.ExecuteScalar();
+        //            if (result != null && result != DBNull.Value)
+        //            {
+        //                totalSales = Convert.ToDecimal(result);
+        //            }
+        //        }
+        //    }
+
+        //    return totalSales;
+        //}
 
 
         public void MngrLoadOrderHistoryDB(string transactNumber, string orderNumber)
@@ -1124,6 +1215,7 @@ namespace EatNRunProject
                         MngrOrderHistoryTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                         MngrOrderHistoryTable.Columns[0].Visible = false;
                         MngrOrderHistoryTable.Columns[1].Visible = false;
+                        MngrOrderHistoryTable.Columns[2].Visible = false;
                         MngrOrderHistoryTable.Columns[3].Visible = false;
                         MngrOrderHistoryTable.Columns[8].Visible = false;
                         MngrOrderHistoryTable.Columns[9].Visible = false;
@@ -1213,12 +1305,12 @@ namespace EatNRunProject
             {
                 MessageBox.Show("Welcome back, Admin.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RmbrAccCheckbox.Checked = true;
+                AdminNameBox.Text = "Test Admin";
                 MFpanelManager.MFShow(AdminPanel);
-                AdminPanelManager.AdminFormShow(FoodItemPanel);
+                AdminPanelManager.AdminFormShow(AdminFoodItemPanel);
                 AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
                 rememberAccount();
                 logincredclear();
-                AdminSalesStartDatePicker.Visible = false;
                 this.Size = new System.Drawing.Size(1280, 720);
                 return;
             }
@@ -1294,14 +1386,14 @@ namespace EatNRunProject
 
                                     if (passwordMatches)
                                     {
-                                        MessageBox.Show("Welcome back, Admin.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MessageBox.Show($"Welcome back, Admin {name}.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        this.Size = new System.Drawing.Size(1280, 720);
                                         MFpanelManager.MFShow(AdminPanel);
-                                        AdminPanelManager.AdminFormShow(FoodItemPanel);
+                                        AdminNameBox.Text = name;
+                                        AdminPanelManager.AdminFormShow(AdminFoodItemPanel);
                                         AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
                                         rememberAccount();
                                         logincredclear();
-                                        AdminSalesStartDatePicker.Visible = false;
-                                        this.Size = new System.Drawing.Size(1280, 720);
 
                                     }
                                     else
@@ -1322,13 +1414,13 @@ namespace EatNRunProject
                                     {
                                         MessageBox.Show($"Welcome back, Manager {name}.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         RmbrAccCheckbox.Checked = true;
+                                        this.Size = new System.Drawing.Size(1280, 720);
                                         MFpanelManager.MFShow(ManagerPanel);
                                         MngrPanelManager.MngrFormShow(MngrNewOrderBtnPanel);
                                         MngrNameBox.Text = name;
                                         MngrSessionNumRefresh();
                                         rememberAccount();
                                         logincredclear();
-                                        this.Size = new System.Drawing.Size(1280, 720);
                                         MngrMenuPanelHider();
 
                                         return;
@@ -1351,13 +1443,13 @@ namespace EatNRunProject
                                     if (passwordMatches)
                                     {
                                         MessageBox.Show($"Welcome back, Cashier {name}.", "Login Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        this.Size = new System.Drawing.Size(1280, 720);
                                         MFpanelManager.MFShow(CashierPanel);
                                         CashierPanelManager.CashierFormShow(CashierNewOrderBtnPanel);
                                         CashierNameBox.Text = name;
                                         CashierSessionNumRefresh();
                                         rememberAccount();
                                         logincredclear();
-                                        this.Size = new System.Drawing.Size(1280, 720);
                                         return;
 
 
@@ -1626,27 +1718,24 @@ namespace EatNRunProject
 
         private void ADFoodItemBtn_Click(object sender, EventArgs e)
         {
-            AdminPanelManager.AdminFormShow(FoodItemPanel);
+            AdminPanelManager.AdminFormShow(AdminFoodItemPanel);
             AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
             AdminLoadItemMenu();
-            AdminSalesStartDatePicker.Visible = false;
 
 
         }
 
         private void ADAccountsBtn_Click(object sender, EventArgs e)
         {
-            AdminPanelManager.AdminFormShow(AccountsPanel);
+            AdminPanelManager.AdminFormShow(AdminEmplAccPanel);
             AdminAccPanelManager.AdminAccFormShow(CreateAccBtnPanel);
-            AdminSalesStartDatePicker.Visible = false;
             AdminLoadEmployeeAcc();
 
         }
 
         private void ADSalesBtn_Click(object sender, EventArgs e)
         {
-            AdminPanelManager.AdminFormShow(SalesPanel);
-            AdminSalesStartDatePicker.Visible = true;
+            AdminPanelManager.AdminFormShow(AdminLoginHistoryPanel);
 
         }
 
@@ -1923,11 +2012,92 @@ namespace EatNRunProject
                 NewAccPanel.Visible = true;
             }
         }
+        private void AddEmplContinueBtn_Click(object sender, EventArgs e)
+        {
+            //Create Acc Btn
+            DateTime selectedDate = AddEmplBdayPicker.Value;
+
+            string emplName = AddEmplNameBox.Text;
+            string emplGender = AddEmplGenderComboBox.Text;
+            string emplBday = selectedDate.ToString("MM-dd-yyyy dddd");
+            string emplAge = AddEmplAgeBox.Text;
+            string emplAdd = AddEmplAddressBox.Text;
+            string emplEmail = AddEmplEmailBox.Text;
+            string emplPosition = AddEmplPositionComboBox.Text;
+            string emplID = AddEmplIDBox.Text;
+            string emplPass = AddEmplPassBox.Text;
+
+            Regex nameRegex = new Regex("^[A-Z][a-zA-Z]+(?: [a-zA-Z]+)*$");
+            Regex courseRegex = new Regex("^[A-Za-z]+(?: [A-Za-z]+)*$");
+            Regex passwordRegex = new Regex("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?])[A-Za-z\\d!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]{8,}$");
+            Regex gmailRegex = new Regex(@"^[A-Za-z0-9._%+-]*\d*@gmail\.com$");
+
+
+            string hashedPassword = HashHelper.HashString(emplPass);    // Password hashed
+            string fixedSalt = HashHelper_Salt.HashString_Salt("EatNRun" + emplPass + "2023");    //Fixed Salt
+            string perUserSalt = HashHelper_SaltperUser.HashString_SaltperUser(emplPass + ID);    //Per User salt
+
+
+
+            int age = DateTime.Now.Year - selectedDate.Year;
+            if (DateTime.Now < selectedDate.AddYears(age))
+            {
+                age--; // Subtract 1 if the birthday hasn't occurred yet this year
+            }
+
+
+            if (string.IsNullOrEmpty(emplName) || string.IsNullOrEmpty(emplGender) || string.IsNullOrEmpty(emplBday) ||
+            string.IsNullOrEmpty(emplAge) || string.IsNullOrEmpty(emplAdd) || string.IsNullOrEmpty(emplEmail) || string.IsNullOrEmpty(emplPosition))
+            {
+                MessageBox.Show("Missing text in required fields.", "Ooooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Exit the method since there's an error
+            }
+            else if (emplName.Contains("Admin") || emplID.Contains("Admin") || emplPass.Contains("Admin123"))
+            {
+                MessageBox.Show("Admin cant be used as a name to create an account.");
+                return;
+            }
+            else if (age < 18)
+            {
+                MessageBox.Show("Employee must be at least 18 years old to create an account.", "Age Verification Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            // Validate fields using regex patterns
+            else if (!nameRegex.IsMatch(emplName))
+            {
+                MessageBox.Show("Name must start with a capital letter and only contain alphabetic values.");
+                return;
+            }
+            else if (!int.TryParse(emplAge, out _))
+            {
+                MessageBox.Show("Age must only contain numeric values.");
+                return;
+            }
+            //else if (!int.TryParse(BtnSN, out _))
+            //{
+            //    MessageBox.Show("Incorrect Student Number.");
+            //    return;
+            //}
+            else if (!gmailRegex.IsMatch(emplEmail))
+            {
+                MessageBox.Show("Invalid Gmail address format.");
+                return;
+            }
+            else if (AddEmplPicBox.Image == null)
+            {
+                // Check if an image has been selected
+                MessageBox.Show("Please select an image for the employee.", "Image Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                AdminAccPanelManager.AdminAccFormShow(CreateAccountPanel);
+
+            }
+
+        }
 
         private void AddEmplAccBtn_Click(object sender, EventArgs e)
         {
-
-            //Create Acc Btn
             //Create Acc Btn
             DateTime selectedDate = AddEmplBdayPicker.Value;
 
@@ -1969,44 +2139,12 @@ namespace EatNRunProject
             }
             else if (emplName.Contains("Admin") || emplID.Contains("Admin") || emplPass.Contains("Admin123"))
             {
-                MessageBox.Show("This student already has an account.");
-                return;
-            }
-            else if (age < 18)
-            {
-                MessageBox.Show("Employee must be at least 18 years old to create an account.", "Age Verification Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            // Validate fields using regex patterns
-            else if (!nameRegex.IsMatch(emplName))
-            {
-                MessageBox.Show("Name must start with a capital letter and only contain alphabetic values.");
-                return;
-            }
-            else if (!int.TryParse(emplAge, out _))
-            {
-                MessageBox.Show("Age must only contain numeric values.");
-                return;
-            }
-            //else if (!int.TryParse(BtnSN, out _))
-            //{
-            //    MessageBox.Show("Incorrect Student Number.");
-            //    return;
-            //}
-            else if (!gmailRegex.IsMatch(emplEmail))
-            {
-                MessageBox.Show("Invalid Gmail address format.");
+                MessageBox.Show("Admin cant be used as a name to create an account.");
                 return;
             }
             else if (!passwordRegex.IsMatch(emplPass))
             {
                 MessageBox.Show("Password must be at least 8 characters long and contain a combination of alphabetic characters, numeric digits, and special characters like (!, @, #, $, %, ^, &, *).");
-                return;
-            }
-
-            // Check if an image has been selected
-            else if (AddEmplPicBox.Image == null)
-            {
-                MessageBox.Show("Please select an image for the employee.", "Image Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
@@ -2050,9 +2188,11 @@ namespace EatNRunProject
 
                     // Successful insertion
                     MessageBox.Show("Welcome to Eat N' Run. \n Employee Account successfully created.", "Hooray!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    EmplIDRefresher();
                     AddNewAccBoxClear();
+                    EmplIDRefresher();
                     AdminLoadEmployeeAcc();
+                    AdminAccPanelManager.AdminAccFormShow(CreateAccBtnPanel);
+
                 }
                 catch (MySqlException ex)
                 {
@@ -2088,8 +2228,10 @@ namespace EatNRunProject
         {
             AddEmplIDBox.Text = "";
             ID = RandomNumberGenerator.GenerateRandomNumber();
+            ID1 = RandomNumberGenerator.GenerateRandomNumber();
+
             string BtnSN = AddEmplIDBox.Text;
-            AddEmplIDBox.Text = ID + "-" + BtnSN;
+            AddEmplIDBox.Text = ID + "-" + ID1;
         }
 
 
@@ -2402,6 +2544,7 @@ namespace EatNRunProject
                     MessageBox.Show("Employee account has been successfully updated.", "Update Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateAccBoxClear();
                     AdminLoadEmployeeAcc();
+                    AdminAccPanelManager.AdminAccFormShow(CreateAccBtnPanel);
                 }
                 catch (MySqlException ex)
                 {
@@ -2594,6 +2737,7 @@ namespace EatNRunProject
                     ItemIDRefresher();
                     AddItemBoxClear();
                     AdminLoadItemMenu();
+                    AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
                 }
                 catch (MySqlException ex)
                 {
@@ -2781,6 +2925,8 @@ namespace EatNRunProject
                     MessageBox.Show("Item has been successfully updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateItemBoxClear();
                     AdminLoadItemMenu();
+                    AdminFoodPanelManager.AdminFoodFormShow(CreateNewFoodBtnPanel);
+
                 }
                 catch (MySqlException ex)
                 {
@@ -2989,7 +3135,7 @@ namespace EatNRunProject
             }
         }
 
- 
+
         private void MngrItemBurgerBtn_Click(object sender, EventArgs e)
         {
             MngrItemPanelManager.MngrItemFormShow(MngrItemBurgerPanel);
@@ -3437,6 +3583,7 @@ namespace EatNRunProject
             DateTime cashierrcurrentDate = CashierDateTimePicker.Value;
             string Cashiertoday = cashierrcurrentDate.ToString("MM-dd-yyyy dddd hh:mm tt");
             CashierDateTimePickerBox.Text = Cashiertoday;
+            AdminDateTimePickerBox.Text = Cashiertoday;
 
 
         }
@@ -3633,7 +3780,7 @@ namespace EatNRunProject
                             string qty = row.Cells["Qty"].Value?.ToString();
                             string itemcost = row.Cells["Unit Price"].Value?.ToString();
                             string itemTotalcost = row.Cells["Total Price"].Value?.ToString();
-                            
+
                             PdfPTable itemTable = new PdfPTable(4); // 4 columns for the item table
                             itemTable.SetWidths(new float[] { 2f, 1f, 1f, 1f }); // Column widths
                             itemTable.DefaultCell.Border = PdfPCell.NO_BORDER;
@@ -3662,7 +3809,7 @@ namespace EatNRunProject
                     decimal grossAmount = decimal.Parse(MngrCOGrossAmountBox.Text);
                     decimal cash = decimal.Parse(MngrCashBox.Text);
                     decimal change = decimal.Parse(MngrChangeBox.Text);
-                    
+
                     // Create a new table for the "Total" section
                     PdfPTable totalTable = new PdfPTable(2); // 2 columns for the "Total" table
                     totalTable.SetWidths(new float[] { 1f, 1f }); // Column widths
@@ -3695,7 +3842,7 @@ namespace EatNRunProject
 
                     // Add the "VATable" table to the document
                     doc.Add(vatTable);
-                    
+
                     // Add the "Served To" section
                     doc.Add(new Chunk("\n")); // New line
                     doc.Add(new Paragraph("Served To:______________________________", font));
@@ -5005,7 +5152,10 @@ namespace EatNRunProject
         private void MngrSalesStartDatePicker_ValueChanged(object sender, EventArgs e)
         {
             //FilterAndSortDataGridView();
-            MngrLoadSalesDB();
+            //MngrLoadSalesDB();
+            //DisplaySalesAmountForThisWeek();
+
+            //DisplaySalesAmountForThisDay();
         }
 
         private void MngrSalesEndDatePicker_ValueChanged(object sender, EventArgs e)
@@ -5013,16 +5163,27 @@ namespace EatNRunProject
             //FilterAndSortDataGridView();
         }
 
+
+        System.Data.DataTable salesData = new System.Data.DataTable();
         //private void FilterAndSortDataGridView()
         //{
-        //    DateTime selectedDate = MngrSalesStartDatePicker.Value.Date; // Get only the date part
-        //    System.Data.DataTable salesData = new System.Data.DataTable();
+        //    DateTime startDate = MngrSalesStartDatePicker.Value.Date; // Get only the date part
+        //    DateTime endDate = MngrSalesEndDatePicker.Value.Date;     // Get only the date part
 
         //    DataView dv = new DataView(salesData);
 
-        //    // Filter for the specific date
-        //    dv.RowFilter = $"Date >= '{selectedDate:MM-dd-yyyy dddd hh:mm tt}' " +
-        //                   $"AND Date <= '{selectedDate.AddDays(1):MM-dd-yyyy dddd hh:mm tt}'";
+        //    if (startDate == endDate)
+        //    {
+        //        // If both date pickers have the same date, filter for that specific date
+        //        dv.RowFilter = $"Date >= '{startDate:MM-dd-yyyy dddd hh:mm tt}' " +
+        //                       $"AND Date <= '{startDate.AddDays(1):MM-dd-yyyy dddd hh:mm tt}'";
+        //    }
+        //    else
+        //    {
+        //        // If the dates are different, filter for the date range
+        //        dv.RowFilter = $"Date >= '{startDate:MM-dd-yyyy dddd hh:mm tt}' " +
+        //                       $"AND Date <= '{endDate.AddDays(1):MM-dd-yyyy dddd hh:mm tt}'";
+        //    }
 
         //    // Sort the DataView by Date
         //    dv.Sort = "Date ASC";
@@ -5038,6 +5199,7 @@ namespace EatNRunProject
 
         //    MngrTotalSalesBox.Text = totalSales.ToString("0.00");
         //}
+
 
 
         private void MngrMenuBtn_Click(object sender, EventArgs e)
@@ -5182,11 +5344,12 @@ namespace EatNRunProject
         private void MngrSalesWtoDBtn_Click(object sender, EventArgs e)
         {
             MngrSalesLbl.Text = "Daily Sales";
+            //DisplaySalesAmountForThisDay();
             MngrSalesDtoWBtn.Visible = true;
-            
+
             MngrSalesWeekNumComboPanelBox.Visible = false;
             MngrSalesMonthListComboPanelBox.Visible = false;
-            MngrSalesWtoDBtn.Visible = false; 
+            MngrSalesWtoDBtn.Visible = false;
             MngrSalesWtoMBtn.Visible = false;
             MngrSalesMtoWBtn.Visible = false;
         }
@@ -5194,7 +5357,8 @@ namespace EatNRunProject
         private void MngrSalesMtoWBtn_Click(object sender, EventArgs e)
         {
             MngrSalesLbl.Text = "Weekly Sales";
-            MngrSalesWtoDBtn.Visible = true; 
+            //DisplaySalesAmountForThisWeek();
+            MngrSalesWtoDBtn.Visible = true;
             MngrSalesWtoMBtn.Visible = true;
             MngrSalesWeekNumComboPanelBox.Visible = true;
             MngrSalesMonthListComboPanelBox.Visible = true;
@@ -5206,6 +5370,7 @@ namespace EatNRunProject
         private void MngrSalesDtoWBtn_Click(object sender, EventArgs e)
         {
             MngrSalesLbl.Text = "Weekly Sales";
+            //DisplaySalesAmountForThisWeek();
             MngrSalesWtoDBtn.Visible = true;
             MngrSalesWtoMBtn.Visible = true;
             MngrSalesWeekNumComboPanelBox.Visible = true;
@@ -5218,13 +5383,116 @@ namespace EatNRunProject
         private void MngrSalesWtoMBtn_Click(object sender, EventArgs e)
         {
             MngrSalesLbl.Text = "Monthly Sales";
+            //DisplaySalesAmountForThisMonth();
             MngrSalesMtoWBtn.Visible = true;
             MngrSalesMonthListComboPanelBox.Visible = true;
 
             MngrSalesWeekNumComboPanelBox.Visible = false;
-            MngrSalesWtoDBtn.Visible = false; 
+            MngrSalesWtoDBtn.Visible = false;
             MngrSalesWtoMBtn.Visible = false;
             MngrSalesDtoWBtn.Visible = false;
         }
+
+        private void MngrSalesGenReportBtn_Click(object sender, EventArgs e)
+        {
+            sales();
+        }
+
+        private void sales()
+        {
+            using (MySqlConnection connection = new MySqlConnection(mysqlconn))
+            {
+                connection.Open();
+
+                // Check the date range based on the selected dates from DateTimePickers
+                DateTime startDate = MngrSalesStartDatePicker.Value;
+                DateTime endDate = MngrSalesEndDatePicker.Value;
+
+                // Calculate the total OrderTotal based on the date range
+                decimal totalOrderTotal = 0;
+
+                string query = $"SELECT GrossAmount " +
+                               "FROM sales " +
+                               "WHERE Date BETWEEN @StartDate AND @EndDate";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@StartDate", startDate);
+                    command.Parameters.AddWithValue("@EndDate", endDate);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            // Convert varchar to decimal before adding to the total
+                            if (decimal.TryParse(reader["OrderTotal"].ToString(), out decimal orderTotalValue))
+                            {
+                                totalOrderTotal += orderTotalValue;
+                            }
+                        }
+                    }
+                }
+
+                // Output debugging information
+                Console.WriteLine($"Total OrderTotal: {totalOrderTotal}");
+
+                // Update the TextBox with the total sales
+                MngrTotalSalesBox.Text = totalOrderTotal.ToString("C"); // Format as currency, adjust format as needed
+
+                // Display the table data in the DataGridView
+                string displayQuery = $"SELECT * " +
+                                      "FROM sales " +
+                                      "WHERE Date BETWEEN @StartDate AND @EndDate";
+
+                using (MySqlCommand displayCommand = new MySqlCommand(displayQuery, connection))
+                {
+                    displayCommand.Parameters.AddWithValue("@StartDate", startDate);
+                    displayCommand.Parameters.AddWithValue("@EndDate", endDate);
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(displayCommand))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        MngrSalesTable.DataSource = dataTable;
+                    }
+                }
+            }
+        }
+
+        //Admin Continuation Updates
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            if (CreateAccountPanel.Visible)
+            {
+                NewAccPanel.Visible = true;
+                CreateAccountPanel.Visible = false;
+            }
+            else
+            {
+                NewAccPanel.Visible = false;
+                CreateAccountPanel.Visible = true;
+            }
+        }
+
+        private void AdminFormPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void AdminFoodItemSearchPanelBox_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
+//public static class DateTimeExtensions
+//{
+//    //Do not remove
+//    public static DateTime StartOfWeek(this DateTime dt, DayOfWeek startOfWeek)
+//    {
+//        int diff = (7 + (dt.DayOfWeek - startOfWeek)) % 7;
+//        return dt.AddDays(-1 * diff).Date;
+//    }
+//}
