@@ -4643,7 +4643,7 @@ namespace EatNRunProject
                         {
                             // Manager with matching password found
                             string name = readerApproved["EmployeeName"].ToString();
-
+                            //
                             DialogResult result = MessageBox.Show("Do you want to void the item(s) in the order?", "Item Void Order Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (result == DialogResult.Yes)
                             {
@@ -5567,12 +5567,3 @@ namespace EatNRunProject
         }
     }
 }
-//public static class DateTimeExtensions
-//{
-//    //Do not remove
-//    public static DateTime StartOfWeek(this DateTime dt, DayOfWeek startOfWeek)
-//    {
-//        int diff = (7 + (dt.DayOfWeek - startOfWeek)) % 7;
-//        return dt.AddDays(-1 * diff).Date;
-//    }
-//}
