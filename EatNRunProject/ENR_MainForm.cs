@@ -197,8 +197,8 @@ namespace EatNRunProject
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "Database Error");
                 MessageBox.Show("Unable to connect to the database. Please check your internet connection and try again.", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "Database Error");
             }
 
         }
@@ -1487,7 +1487,81 @@ namespace EatNRunProject
 
         }
 
-        public class SessionOrderNumberGenerator
+        public class MngrSessionOrderNumberGenerator
+        {
+            private static int orderNumber = 1; // Starting order number
+            private static int seshNumber = 1; // Starting order number
+
+            public static string GenerateSessionNumber(string employeeID)
+            {
+                int uid = GetUidFromDatabase(employeeID);
+
+                // Use the current date (MM-dd) and the order number
+                string datePart = DateTime.Now.ToString("MMddhhmm");
+                string orderPart = seshNumber.ToString("D3");
+
+                // Increment the order number for the next login
+                seshNumber++;
+
+                // Combine the parts to create the session number
+                string sessionNumber = $"{uid}-{orderPart}-{datePart}";
+
+                return sessionNumber;
+            }
+
+            private static int GetUidFromDatabase(string employeeID)
+            {
+                MySqlConnection connection = null;
+
+                try
+                {
+                    connection = new MySqlConnection(mysqlconn);
+                    connection.Open();
+
+                    // Query the database for the UID of the provided Employee ID in the accounts table
+                    string queryUid = "SELECT UID FROM accounts WHERE EmployeeID = @EmplID";
+
+                    using (MySqlCommand cmdUid = new MySqlCommand(queryUid, connection))
+                    {
+                        cmdUid.Parameters.AddWithValue("@EmplID", employeeID);
+
+                        object uidObject = cmdUid.ExecuteScalar();
+
+                        if (uidObject != null && int.TryParse(uidObject.ToString(), out int uid))
+                        {
+                            return uid;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while retrieving UID: " + ex.Message, "Session Order UID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    connection?.Close();
+                }
+
+                // Default to 0 if UID retrieval fails
+                return 0;
+            }
+
+            public static string GenerateOrderNumber()
+            {
+                string datePart = DateTime.Now.ToString("MMddhhmm");
+
+                // Use only the order number
+                string orderPart = orderNumber.ToString("D3");
+
+                // Increment the order number for the next order
+                orderNumber++;
+                string ordersessionNumber = $"{orderPart}";
+
+                return ordersessionNumber;
+            }
+        }
+
+        public class CashierSessionOrderNumberGenerator
         {
             private static int orderNumber = 1; // Starting order number
             private static int seshNumber = 1; // Starting order number
@@ -1566,7 +1640,7 @@ namespace EatNRunProject
             string emplID = ENREmplIDBox.Text;
 
             // Assuming you have retrieved the employeeID variable from user input
-            string sessionNumber = SessionOrderNumberGenerator.GenerateSessionNumber(emplID);
+            string sessionNumber = MngrSessionOrderNumberGenerator.GenerateSessionNumber(emplID);
 
             // Display the generated session number in the TextBox
             MngrSessionNumBox.Text = sessionNumber;
@@ -1574,7 +1648,7 @@ namespace EatNRunProject
 
         private void MngrOrderNumRefresh()
         {
-            MngrOrderNumBox.Text = SessionOrderNumberGenerator.GenerateOrderNumber();
+            MngrOrderNumBox.Text = MngrSessionOrderNumberGenerator.GenerateOrderNumber();
         }
 
         private void CashierSessionNumRefresh()
@@ -1582,7 +1656,7 @@ namespace EatNRunProject
             string emplID = ENREmplIDBox.Text;
 
             // Assuming you have retrieved the employeeID variable from user input
-            string sessionNumber = SessionOrderNumberGenerator.GenerateSessionNumber(emplID);
+            string sessionNumber = CashierSessionOrderNumberGenerator.GenerateSessionNumber(emplID);
 
             // Display the generated session number in the TextBox
             CashierSessionNumBox.Text = sessionNumber;
@@ -1590,7 +1664,7 @@ namespace EatNRunProject
 
         private void CashierOrderNumRefresh()
         {
-            CashierOrderNumBox.Text = SessionOrderNumberGenerator.GenerateOrderNumber();
+            CashierOrderNumBox.Text = CashierSessionOrderNumberGenerator.GenerateOrderNumber();
 
         }
 
@@ -1742,7 +1816,7 @@ namespace EatNRunProject
         private void AdminSwitchBtn_Click(object sender, EventArgs e)
         {
 
-            DialogResult result = MessageBox.Show("Do you want to switch user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Do you want to sign out user?", "Sign Out Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 this.Size = new System.Drawing.Size(517, 545);
@@ -1755,7 +1829,7 @@ namespace EatNRunProject
         private void ManagerSwitchBtn_Click(object sender, EventArgs e)
         {
 
-            DialogResult result = MessageBox.Show("Do you want to switch user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Do you want to sign out user?", "Sign Out Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 this.Size = new System.Drawing.Size(517, 545);
@@ -1772,7 +1846,7 @@ namespace EatNRunProject
 
         private void CashierSwitchBtn_Click_1(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Do you want to switch user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Do you want to sign out user?", "Sign Out Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 this.Size = new System.Drawing.Size(517, 545);
@@ -3420,6 +3494,8 @@ namespace EatNRunProject
                             // Update Qty and ItemCost in the DataGridView
                             MngrOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity.ToString();
                             MngrOrderViewTable.Rows[e.RowIndex].Cells["Total Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                            MngrCalculateTotalPrice();
+
                         }
                     }
                     else
@@ -3447,6 +3523,8 @@ namespace EatNRunProject
                         // Update Qty and ItemCost in the DataGridView
                         MngrOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity.ToString();
                         MngrOrderViewTable.Rows[e.RowIndex].Cells["Total Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                        MngrCalculateTotalPrice();
+
                     }
                     else
                     {
@@ -3987,7 +4065,6 @@ namespace EatNRunProject
                     MngrCheckoutViewPanel.Visible = false;
                     MngrNewOrderBtnPanel.Visible = true;
                     MngrOrderViewPanel.Visible = true;
-                    MngrOrderNumRefresh();
                     MngrOrderViewTable.Rows.Clear();
                     MngrItemValuesClear();
 
@@ -4197,7 +4274,7 @@ namespace EatNRunProject
                     string quantityString = CashierOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
                     if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
                     {
-                        decimal itemCost = decimal.Parse(CashierOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString());
+                        decimal itemCost = decimal.Parse(CashierOrderViewTable.Rows[e.RowIndex].Cells["Total Price"].Value?.ToString());
 
                         // Calculate the cost per item
                         decimal costPerItem = itemCost / quantity;
@@ -4212,7 +4289,9 @@ namespace EatNRunProject
 
                             // Update Qty and ItemCost in the DataGridView
                             CashierOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity.ToString();
-                            CashierOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                            CashierOrderViewTable.Rows[e.RowIndex].Cells["Total Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                            CashierCalculateTotalPrice();
+
                         }
                     }
                     else
@@ -4226,7 +4305,7 @@ namespace EatNRunProject
                     string quantityString = CashierOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
                     if (!string.IsNullOrEmpty(quantityString) && int.TryParse(quantityString, out int quantity))
                     {
-                        decimal itemCost = decimal.Parse(CashierOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString());
+                        decimal itemCost = decimal.Parse(CashierOrderViewTable.Rows[e.RowIndex].Cells["Total Price"].Value?.ToString());
 
                         // Calculate the cost per item
                         decimal costPerItem = itemCost / quantity;
@@ -4239,7 +4318,9 @@ namespace EatNRunProject
 
                         // Update Qty and ItemCost in the DataGridView
                         CashierOrderViewTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity.ToString();
-                        CashierOrderViewTable.Rows[e.RowIndex].Cells["Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                        CashierOrderViewTable.Rows[e.RowIndex].Cells["Total Price"].Value = updatedCost.ToString("F2"); // Format to two decimal places
+                        CashierCalculateTotalPrice();
+
                     }
                     else
                     {
@@ -4562,7 +4643,7 @@ namespace EatNRunProject
                         {
                             // Manager with matching password found
                             string name = readerApproved["EmployeeName"].ToString();
-
+                            //
                             DialogResult result = MessageBox.Show("Do you want to void the item(s) in the order?", "Item Void Order Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (result == DialogResult.Yes)
                             {
@@ -5082,7 +5163,6 @@ namespace EatNRunProject
                     CashierCheckoutViewPanel.Visible = false;
                     CashierNewOrderBtnPanel.Visible = true;
                     CashierOrderViewPanel.Visible = true;
-                    CashierOrderNumRefresh();
                     CashierItemValuesClear();
                     CashierOrderViewTable.Rows.Clear();
 
@@ -5248,7 +5328,7 @@ namespace EatNRunProject
 
         private void MngrSwitch3Btn_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Do you want to switch user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Do you want to sign out user?", "Sign Out Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 this.Size = new System.Drawing.Size(517, 545);
@@ -5284,7 +5364,7 @@ namespace EatNRunProject
 
         private void MngrSwitch1Btn_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Do you want to switch user?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Do you want to sign out user?", "Sign Out Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 this.Size = new System.Drawing.Size(517, 545);
@@ -5343,6 +5423,8 @@ namespace EatNRunProject
 
         private void MngrSalesWtoDBtn_Click(object sender, EventArgs e)
         {
+            MngrLoadSalesDB();
+
             MngrSalesLbl.Text = "Daily Sales";
             //DisplaySalesAmountForThisDay();
             MngrSalesDtoWBtn.Visible = true;
@@ -5356,12 +5438,14 @@ namespace EatNRunProject
 
         private void MngrSalesMtoWBtn_Click(object sender, EventArgs e)
         {
+            MngrLoadSalesDB();
+
             MngrSalesLbl.Text = "Weekly Sales";
             //DisplaySalesAmountForThisWeek();
             MngrSalesWtoDBtn.Visible = true;
             MngrSalesWtoMBtn.Visible = true;
-            MngrSalesWeekNumComboPanelBox.Visible = true;
-            MngrSalesMonthListComboPanelBox.Visible = true;
+            //MngrSalesWeekNumComboPanelBox.Visible = true;
+            //MngrSalesMonthListComboPanelBox.Visible = true;
 
             MngrSalesDtoWBtn.Visible = false;
             MngrSalesMtoWBtn.Visible = false;
@@ -5369,12 +5453,14 @@ namespace EatNRunProject
 
         private void MngrSalesDtoWBtn_Click(object sender, EventArgs e)
         {
+            MngrLoadSalesDB();
+
             MngrSalesLbl.Text = "Weekly Sales";
             //DisplaySalesAmountForThisWeek();
             MngrSalesWtoDBtn.Visible = true;
             MngrSalesWtoMBtn.Visible = true;
-            MngrSalesWeekNumComboPanelBox.Visible = true;
-            MngrSalesMonthListComboPanelBox.Visible = true;
+            //MngrSalesWeekNumComboPanelBox.Visible = true;
+            //MngrSalesMonthListComboPanelBox.Visible = true;
 
             MngrSalesDtoWBtn.Visible = false;
             MngrSalesMtoWBtn.Visible = false;
@@ -5382,10 +5468,12 @@ namespace EatNRunProject
 
         private void MngrSalesWtoMBtn_Click(object sender, EventArgs e)
         {
+            MngrLoadSalesDB();
+
             MngrSalesLbl.Text = "Monthly Sales";
             //DisplaySalesAmountForThisMonth();
             MngrSalesMtoWBtn.Visible = true;
-            MngrSalesMonthListComboPanelBox.Visible = true;
+            //MngrSalesMonthListComboPanelBox.Visible = true;
 
             MngrSalesWeekNumComboPanelBox.Visible = false;
             MngrSalesWtoDBtn.Visible = false;
@@ -5395,7 +5483,9 @@ namespace EatNRunProject
 
         private void MngrSalesGenReportBtn_Click(object sender, EventArgs e)
         {
-            sales();
+            //sales();
+            MngrLoadSalesDB();
+
         }
 
         private void sales()
@@ -5487,12 +5577,3 @@ namespace EatNRunProject
         }
     }
 }
-//public static class DateTimeExtensions
-//{
-//    //Do not remove
-//    public static DateTime StartOfWeek(this DateTime dt, DayOfWeek startOfWeek)
-//    {
-//        int diff = (7 + (dt.DayOfWeek - startOfWeek)) % 7;
-//        return dt.AddDays(-1 * diff).Date;
-//    }
-//}

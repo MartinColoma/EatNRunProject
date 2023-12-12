@@ -60,8 +60,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MainFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.AdminPanel = new System.Windows.Forms.Panel();
             this.AdminFoodItemSearchPanelBox = new System.Windows.Forms.Panel();
@@ -89,13 +87,14 @@
             this.AddEmplShowPass = new System.Windows.Forms.CheckBox();
             this.AddEmplPassBox = new System.Windows.Forms.TextBox();
             this.AddEmplPassLbl = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.CreateAcc2Lbl = new System.Windows.Forms.Label();
             this.CreateAccountPanelBtn = new FontAwesome.Sharp.IconButton();
             this.UpdateEmplAccPanel = new System.Windows.Forms.Panel();
             this.UpdateEmplAccBtn = new FontAwesome.Sharp.IconButton();
             this.UpdateEmplPositionPanelBox = new System.Windows.Forms.Panel();
             this.UpdateEmplPositionComboBox = new System.Windows.Forms.ComboBox();
             this.UpdateEmplPositionLbl = new System.Windows.Forms.Label();
+            this.UpdateEmplIDNoteLbl = new System.Windows.Forms.Label();
             this.UpdateEmplEmailPanelBox = new System.Windows.Forms.Panel();
             this.UpdateEmplEmailBox = new System.Windows.Forms.TextBox();
             this.UpdateEmplEmailLbl = new System.Windows.Forms.Label();
@@ -434,57 +433,6 @@
             this.CashierFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.CashierItemFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
             this.CashierViewFormPicker = new Syncfusion.Windows.Forms.Tools.CardLayout(this.components);
-            this.UpdateEmplIDNoteLbl = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.iconButton7 = new FontAwesome.Sharp.IconButton();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.iconButton8 = new FontAwesome.Sharp.IconButton();
-            this.label14 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.MainFormPicker)).BeginInit();
             this.AdminPanel.SuspendLayout();
             this.AdminFoodItemSearchPanelBox.SuspendLayout();
@@ -625,32 +573,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.CashierFormPicker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashierItemFormPicker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashierViewFormPicker)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panel13.SuspendLayout();
-            this.panel14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel15.SuspendLayout();
-            this.panel16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // MainFormPicker
             // 
             this.MainFormPicker.ContainerControl = this;
             this.MainFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.MainFormPicker.SelectedCard = "Card4";
+            this.MainFormPicker.SelectedCard = "Card2";
             // 
             // AdminPanel
             // 
@@ -807,7 +736,6 @@
             this.AdminFormPanel.Controls.Add(this.AdminLoginHistoryPanel);
             this.AdminFormPanel.Controls.Add(this.AdminEmplAccPanel);
             this.AdminFormPanel.Controls.Add(this.AdminFoodItemPanel);
-            this.AdminFormPanel.Controls.Add(this.panel1);
             this.AdminFormPanel.Location = new System.Drawing.Point(68, 210);
             this.AdminFormPanel.Name = "AdminFormPanel";
             this.AdminFormPanel.Size = new System.Drawing.Size(1132, 425);
@@ -900,7 +828,7 @@
             this.CreateAccountPanel.Controls.Add(this.AddEmplIDLbl);
             this.CreateAccountPanel.Controls.Add(this.AddEmplPassPanelBox);
             this.CreateAccountPanel.Controls.Add(this.AddEmplPassLbl);
-            this.CreateAccountPanel.Controls.Add(this.label11);
+            this.CreateAccountPanel.Controls.Add(this.CreateAcc2Lbl);
             this.CreateAccountPanel.Controls.Add(this.CreateAccountPanelBtn);
             this.CreateAccountPanel.Location = new System.Drawing.Point(0, 0);
             this.AccountsFormPicker.SetMinimumSize(this.CreateAccountPanel, new System.Drawing.Size(200, 100));
@@ -1011,16 +939,16 @@
             this.AddEmplPassLbl.TabIndex = 22;
             this.AddEmplPassLbl.Text = "Employee Password:";
             // 
-            // label11
+            // CreateAcc2Lbl
             // 
-            this.label11.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label11.Location = new System.Drawing.Point(87, 67);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(364, 47);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "| Create Account";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CreateAcc2Lbl.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateAcc2Lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.CreateAcc2Lbl.Location = new System.Drawing.Point(87, 67);
+            this.CreateAcc2Lbl.Name = "CreateAcc2Lbl";
+            this.CreateAcc2Lbl.Size = new System.Drawing.Size(364, 47);
+            this.CreateAcc2Lbl.TabIndex = 7;
+            this.CreateAcc2Lbl.Text = "| Create Account";
+            this.CreateAcc2Lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CreateAccountPanelBtn
             // 
@@ -1125,6 +1053,18 @@
             this.UpdateEmplPositionLbl.Size = new System.Drawing.Size(101, 18);
             this.UpdateEmplPositionLbl.TabIndex = 14;
             this.UpdateEmplPositionLbl.Text = "Job Position:";
+            // 
+            // UpdateEmplIDNoteLbl
+            // 
+            this.UpdateEmplIDNoteLbl.AutoSize = true;
+            this.UpdateEmplIDNoteLbl.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmplIDNoteLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
+            this.UpdateEmplIDNoteLbl.Location = new System.Drawing.Point(129, 264);
+            this.UpdateEmplIDNoteLbl.Name = "UpdateEmplIDNoteLbl";
+            this.UpdateEmplIDNoteLbl.Size = new System.Drawing.Size(143, 15);
+            this.UpdateEmplIDNoteLbl.TabIndex = 20;
+            this.UpdateEmplIDNoteLbl.Text = "(input another 5 digits)";
+            this.UpdateEmplIDNoteLbl.Visible = false;
             // 
             // UpdateEmplEmailPanelBox
             // 
@@ -2993,6 +2933,7 @@
             this.MngrSalesWeekNumComboPanelBox.Name = "MngrSalesWeekNumComboPanelBox";
             this.MngrSalesWeekNumComboPanelBox.Size = new System.Drawing.Size(284, 22);
             this.MngrSalesWeekNumComboPanelBox.TabIndex = 41;
+            this.MngrSalesWeekNumComboPanelBox.Visible = false;
             // 
             // MngrSalesWeekNumComboBox
             // 
@@ -3155,6 +3096,7 @@
             this.MngrSalesEndDatePicker.Name = "MngrSalesEndDatePicker";
             this.MngrSalesEndDatePicker.Size = new System.Drawing.Size(175, 23);
             this.MngrSalesEndDatePicker.TabIndex = 20;
+            this.MngrSalesEndDatePicker.Visible = false;
             this.MngrSalesEndDatePicker.ValueChanged += new System.EventHandler(this.MngrSalesEndDatePicker_ValueChanged);
             // 
             // MngrMenu3Panel
@@ -3251,6 +3193,7 @@
             this.MngrSalesEndLbl.Size = new System.Drawing.Size(77, 18);
             this.MngrSalesEndLbl.TabIndex = 21;
             this.MngrSalesEndLbl.Text = "End Date:";
+            this.MngrSalesEndLbl.Visible = false;
             // 
             // MngrTotalSalesBox
             // 
@@ -3258,7 +3201,7 @@
             this.MngrTotalSalesBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.MngrTotalSalesBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MngrTotalSalesBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrTotalSalesBox.Location = new System.Drawing.Point(297, 70);
+            this.MngrTotalSalesBox.Location = new System.Drawing.Point(280, 67);
             this.MngrTotalSalesBox.Name = "MngrTotalSalesBox";
             this.MngrTotalSalesBox.ReadOnly = true;
             this.MngrTotalSalesBox.Size = new System.Drawing.Size(212, 23);
@@ -3269,7 +3212,7 @@
             this.MngrTotalSalesLbl.AutoSize = true;
             this.MngrTotalSalesLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MngrTotalSalesLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrTotalSalesLbl.Location = new System.Drawing.Point(168, 68);
+            this.MngrTotalSalesLbl.Location = new System.Drawing.Point(151, 65);
             this.MngrTotalSalesLbl.Name = "MngrTotalSalesLbl";
             this.MngrTotalSalesLbl.Size = new System.Drawing.Size(123, 23);
             this.MngrTotalSalesLbl.TabIndex = 36;
@@ -3281,10 +3224,10 @@
             this.MngrBestSellerBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.MngrBestSellerBox.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MngrBestSellerBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrBestSellerBox.Location = new System.Drawing.Point(740, 70);
+            this.MngrBestSellerBox.Location = new System.Drawing.Point(827, 65);
             this.MngrBestSellerBox.Name = "MngrBestSellerBox";
             this.MngrBestSellerBox.ReadOnly = true;
-            this.MngrBestSellerBox.Size = new System.Drawing.Size(357, 23);
+            this.MngrBestSellerBox.Size = new System.Drawing.Size(283, 23);
             this.MngrBestSellerBox.TabIndex = 35;
             // 
             // MngrBestSellerLbl
@@ -3292,7 +3235,7 @@
             this.MngrBestSellerLbl.AutoSize = true;
             this.MngrBestSellerLbl.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MngrBestSellerLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.MngrBestSellerLbl.Location = new System.Drawing.Point(519, 68);
+            this.MngrBestSellerLbl.Location = new System.Drawing.Point(606, 65);
             this.MngrBestSellerLbl.Name = "MngrBestSellerLbl";
             this.MngrBestSellerLbl.Size = new System.Drawing.Size(215, 23);
             this.MngrBestSellerLbl.TabIndex = 28;
@@ -3336,6 +3279,7 @@
             this.MngrSalesStartLbl.Size = new System.Drawing.Size(87, 18);
             this.MngrSalesStartLbl.TabIndex = 18;
             this.MngrSalesStartLbl.Text = "Start Date:";
+            this.MngrSalesStartLbl.Visible = false;
             // 
             // MngrSalesTable
             // 
@@ -3396,6 +3340,7 @@
             this.MngrSalesMonthListComboPanelBox.Name = "MngrSalesMonthListComboPanelBox";
             this.MngrSalesMonthListComboPanelBox.Size = new System.Drawing.Size(284, 22);
             this.MngrSalesMonthListComboPanelBox.TabIndex = 42;
+            this.MngrSalesMonthListComboPanelBox.Visible = false;
             // 
             // MngrSalesMonthListComboBox
             // 
@@ -5987,7 +5932,7 @@
             // 
             this.FoodItemFormPicker.ContainerControl = this.ItemFormPanel;
             this.FoodItemFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
-            this.FoodItemFormPicker.SelectedCard = "Card7";
+            this.FoodItemFormPicker.SelectedCard = "Card3";
             // 
             // AccountsFormPicker
             // 
@@ -6033,682 +5978,6 @@
             this.CashierViewFormPicker.ContainerControl = this.CashierViewPanel;
             this.CashierViewFormPicker.LayoutMode = Syncfusion.Windows.Forms.Tools.CardLayoutMode.Fill;
             this.CashierViewFormPicker.SelectedCard = "Order";
-            // 
-            // UpdateEmplIDNoteLbl
-            // 
-            this.UpdateEmplIDNoteLbl.AutoSize = true;
-            this.UpdateEmplIDNoteLbl.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateEmplIDNoteLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.UpdateEmplIDNoteLbl.Location = new System.Drawing.Point(129, 264);
-            this.UpdateEmplIDNoteLbl.Name = "UpdateEmplIDNoteLbl";
-            this.UpdateEmplIDNoteLbl.Size = new System.Drawing.Size(143, 15);
-            this.UpdateEmplIDNoteLbl.TabIndex = 20;
-            this.UpdateEmplIDNoteLbl.Text = "(input another 5 digits)";
-            this.UpdateEmplIDNoteLbl.Visible = false;
-            // 
-            // panel1
-            // 
-            this.AdminFormPicker.SetCardName(this.panel1, "Card4");
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.panel16);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1130, 423);
-            this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.panel9);
-            this.panel2.Controls.Add(this.panel15);
-            this.panel2.Location = new System.Drawing.Point(577, 15);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(537, 389);
-            this.panel2.TabIndex = 2;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.iconButton1);
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.panel6);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.panel7);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.panel8);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Controls.Add(this.iconButton2);
-            this.panel3.Controls.Add(this.iconButton3);
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(535, 387);
-            this.panel3.TabIndex = 21;
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.FlatAppearance.BorderSize = 2;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 24;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(194, 285);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(146, 40);
-            this.iconButton1.TabIndex = 24;
-            this.iconButton1.Text = "UPDATE ITEM";
-            this.iconButton1.UseVisualStyleBackColor = true;
-            this.iconButton1.Click += new System.EventHandler(this.UpdateFoodItemBtn_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.textBox1);
-            this.panel4.Location = new System.Drawing.Point(245, 207);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(127, 22);
-            this.panel4.TabIndex = 14;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(125, 16);
-            this.textBox1.TabIndex = 11;
-            // 
-            // panel5
-            // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.comboBox1);
-            this.panel5.Location = new System.Drawing.Point(22, 206);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(217, 22);
-            this.panel5.TabIndex = 15;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.Enabled = false;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(0, 0);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(215, 23);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.UpdateItemTypeComboBox_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label1.Location = new System.Drawing.Point(19, 185);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 18);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Item Type:";
-            // 
-            // panel6
-            // 
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.textBox2);
-            this.panel6.Location = new System.Drawing.Point(22, 254);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(349, 22);
-            this.panel6.TabIndex = 19;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.textBox2.Location = new System.Drawing.Point(0, 0);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(347, 16);
-            this.textBox2.TabIndex = 11;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label2.Location = new System.Drawing.Point(19, 233);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 18);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Item Price:";
-            // 
-            // panel7
-            // 
-            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Controls.Add(this.dateTimePicker1);
-            this.panel7.Location = new System.Drawing.Point(22, 160);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(349, 22);
-            this.panel7.TabIndex = 15;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(90)))), ((int)(((byte)(105)))));
-            this.dateTimePicker1.CustomFormat = "MM-dd-yyyy dddd";
-            this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(0, 0);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(347, 23);
-            this.dateTimePicker1.TabIndex = 16;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.UpdateItemCreatedDatePicker_ValueChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label3.Location = new System.Drawing.Point(19, 139);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(145, 18);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Item Date Created:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label4.Location = new System.Drawing.Point(242, 185);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 18);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Item Code:";
-            // 
-            // panel8
-            // 
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.textBox3);
-            this.panel8.Location = new System.Drawing.Point(22, 114);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(349, 22);
-            this.panel8.TabIndex = 10;
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.textBox3.Location = new System.Drawing.Point(0, 0);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(347, 16);
-            this.textBox3.TabIndex = 11;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label5.Location = new System.Drawing.Point(19, 93);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 18);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Item Name:";
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label6.Location = new System.Drawing.Point(22, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(490, 47);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Update Food Item";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(384, 115);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(128, 128);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.UpdateItemPicBox_Click);
-            // 
-            // iconButton2
-            // 
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton2.IconColor = System.Drawing.Color.Black;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.Location = new System.Drawing.Point(384, 249);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(131, 23);
-            this.iconButton2.TabIndex = 11;
-            this.iconButton2.Text = "Add a new picture..";
-            this.iconButton2.UseVisualStyleBackColor = true;
-            this.iconButton2.Click += new System.EventHandler(this.UpdateItemPicBtn_Click);
-            // 
-            // iconButton3
-            // 
-            this.iconButton3.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton3.FlatAppearance.BorderSize = 0;
-            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.iconButton3.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton3.IconSize = 24;
-            this.iconButton3.Location = new System.Drawing.Point(509, 3);
-            this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Size = new System.Drawing.Size(24, 24);
-            this.iconButton3.TabIndex = 7;
-            this.iconButton3.UseVisualStyleBackColor = false;
-            this.iconButton3.Click += new System.EventHandler(this.UpdateItemExitBtn_Click_1);
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.iconButton4);
-            this.panel9.Controls.Add(this.panel10);
-            this.panel9.Controls.Add(this.panel11);
-            this.panel9.Controls.Add(this.label7);
-            this.panel9.Controls.Add(this.panel12);
-            this.panel9.Controls.Add(this.label8);
-            this.panel9.Controls.Add(this.panel13);
-            this.panel9.Controls.Add(this.label9);
-            this.panel9.Controls.Add(this.label10);
-            this.panel9.Controls.Add(this.panel14);
-            this.panel9.Controls.Add(this.label12);
-            this.panel9.Controls.Add(this.label13);
-            this.panel9.Controls.Add(this.pictureBox2);
-            this.panel9.Controls.Add(this.iconButton5);
-            this.panel9.Controls.Add(this.iconButton6);
-            this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(535, 387);
-            this.panel9.TabIndex = 20;
-            // 
-            // iconButton4
-            // 
-            this.iconButton4.FlatAppearance.BorderSize = 2;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton4.IconSize = 24;
-            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(187, 296);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Size = new System.Drawing.Size(160, 40);
-            this.iconButton4.TabIndex = 24;
-            this.iconButton4.Text = "CREATE ITEM";
-            this.iconButton4.UseVisualStyleBackColor = true;
-            this.iconButton4.Click += new System.EventHandler(this.AddFoodItemBtn_Click);
-            // 
-            // panel10
-            // 
-            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel10.Controls.Add(this.textBox4);
-            this.panel10.Location = new System.Drawing.Point(252, 191);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(126, 30);
-            this.panel10.TabIndex = 14;
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.textBox4.Location = new System.Drawing.Point(0, 0);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(124, 23);
-            this.textBox4.TabIndex = 11;
-            // 
-            // panel11
-            // 
-            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel11.Controls.Add(this.comboBox2);
-            this.panel11.Location = new System.Drawing.Point(26, 191);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(217, 30);
-            this.panel11.TabIndex = 15;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.comboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(0, 0);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(215, 31);
-            this.comboBox2.TabIndex = 0;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.AddItemTypeComboBox_SelectedIndexChanged);
-            this.comboBox2.SelectedValueChanged += new System.EventHandler(this.AddItemTypeComboBox_SelectedValueChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label7.Location = new System.Drawing.Point(22, 165);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(104, 23);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Item Type:";
-            // 
-            // panel12
-            // 
-            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel12.Controls.Add(this.textBox5);
-            this.panel12.Location = new System.Drawing.Point(27, 250);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(351, 30);
-            this.panel12.TabIndex = 19;
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox5.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.textBox5.Location = new System.Drawing.Point(0, 0);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(349, 23);
-            this.textBox5.TabIndex = 11;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label8.Location = new System.Drawing.Point(23, 224);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(106, 23);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Item Price:";
-            // 
-            // panel13
-            // 
-            this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel13.Controls.Add(this.dateTimePicker2);
-            this.panel13.Location = new System.Drawing.Point(5, 339);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(347, 30);
-            this.panel13.TabIndex = 15;
-            this.panel13.Visible = false;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.dateTimePicker2.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.dateTimePicker2.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.dateTimePicker2.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.dateTimePicker2.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(90)))), ((int)(((byte)(105)))));
-            this.dateTimePicker2.CustomFormat = "MM-dd-yyyy dddd";
-            this.dateTimePicker2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker2.Enabled = false;
-            this.dateTimePicker2.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(0, 0);
-            this.dateTimePicker2.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker2.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(345, 30);
-            this.dateTimePicker2.TabIndex = 16;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.AddItemCreatedDatePicker_ValueChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label9.Location = new System.Drawing.Point(5, 313);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(176, 23);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "Item Date Created:";
-            this.label9.Visible = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label10.Location = new System.Drawing.Point(248, 165);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(105, 23);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Item Code:";
-            // 
-            // panel14
-            // 
-            this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel14.Controls.Add(this.textBox6);
-            this.panel14.Location = new System.Drawing.Point(22, 132);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(347, 30);
-            this.panel14.TabIndex = 10;
-            // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox6.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.textBox6.Location = new System.Drawing.Point(0, 0);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(345, 23);
-            this.textBox6.TabIndex = 11;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label12.Location = new System.Drawing.Point(22, 106);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(111, 23);
-            this.label12.TabIndex = 9;
-            this.label12.Text = "Item Name:";
-            // 
-            // label13
-            // 
-            this.label13.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label13.Location = new System.Drawing.Point(22, 50);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(490, 47);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "| Create New Food Item";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(387, 106);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(128, 128);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 8;
-            this.pictureBox2.TabStop = false;
-            // 
-            // iconButton5
-            // 
-            this.iconButton5.FlatAppearance.BorderSize = 0;
-            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton5.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton5.IconColor = System.Drawing.Color.Black;
-            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton5.Location = new System.Drawing.Point(384, 240);
-            this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Size = new System.Drawing.Size(135, 23);
-            this.iconButton5.TabIndex = 11;
-            this.iconButton5.Text = "Add a new picture...";
-            this.iconButton5.UseVisualStyleBackColor = true;
-            this.iconButton5.Click += new System.EventHandler(this.AddItemPicBtn_Click);
-            // 
-            // iconButton6
-            // 
-            this.iconButton6.BackColor = System.Drawing.Color.Transparent;
-            this.iconButton6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton6.FlatAppearance.BorderSize = 0;
-            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.iconButton6.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton6.IconSize = 24;
-            this.iconButton6.Location = new System.Drawing.Point(509, 3);
-            this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Size = new System.Drawing.Size(24, 24);
-            this.iconButton6.TabIndex = 7;
-            this.iconButton6.UseVisualStyleBackColor = false;
-            this.iconButton6.Click += new System.EventHandler(this.AddItemExitBtn_Click);
-            // 
-            // panel15
-            // 
-            this.panel15.Controls.Add(this.iconButton7);
-            this.panel15.Location = new System.Drawing.Point(0, 0);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(535, 387);
-            this.panel15.TabIndex = 2;
-            // 
-            // iconButton7
-            // 
-            this.iconButton7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton7.Font = new System.Drawing.Font("Arial Black", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton7.IconColor = System.Drawing.Color.Black;
-            this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton7.Location = new System.Drawing.Point(0, 0);
-            this.iconButton7.Name = "iconButton7";
-            this.iconButton7.Size = new System.Drawing.Size(535, 387);
-            this.iconButton7.TabIndex = 0;
-            this.iconButton7.Text = "Add New Food Item";
-            this.iconButton7.UseVisualStyleBackColor = true;
-            this.iconButton7.Click += new System.EventHandler(this.CreateNewFoodBtn_Click);
-            // 
-            // panel16
-            // 
-            this.panel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel16.Controls.Add(this.iconButton8);
-            this.panel16.Controls.Add(this.label14);
-            this.panel16.Controls.Add(this.dataGridView1);
-            this.panel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.panel16.Location = new System.Drawing.Point(19, 16);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(547, 388);
-            this.panel16.TabIndex = 1;
-            // 
-            // iconButton8
-            // 
-            this.iconButton8.FlatAppearance.BorderSize = 2;
-            this.iconButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton8.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton8.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton8.IconSize = 24;
-            this.iconButton8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton8.Location = new System.Drawing.Point(445, 330);
-            this.iconButton8.Name = "iconButton8";
-            this.iconButton8.Size = new System.Drawing.Size(82, 40);
-            this.iconButton8.TabIndex = 23;
-            this.iconButton8.Text = "EDIT";
-            this.iconButton8.UseVisualStyleBackColor = true;
-            this.iconButton8.Click += new System.EventHandler(this.EditFoodItemBtn_Click);
-            // 
-            // label14
-            // 
-            this.label14.Font = new System.Drawing.Font("Arial Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.label14.Location = new System.Drawing.Point(27, 16);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(490, 47);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "Food Item List";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(141)))));
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle32;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(51)))), ((int)(((byte)(68)))));
-            this.dataGridView1.Location = new System.Drawing.Point(18, 71);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(509, 253);
-            this.dataGridView1.TabIndex = 11;
             // 
             // ENRMainForm
             // 
@@ -6931,33 +6200,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.CashierFormPicker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashierItemFormPicker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashierViewFormPicker)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.panel11.ResumeLayout(false);
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
-            this.panel13.ResumeLayout(false);
-            this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel15.ResumeLayout(false);
-            this.panel16.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -7325,7 +6567,7 @@
         private System.Windows.Forms.Label AdminNameLbl;
         private System.Windows.Forms.TextBox AdminDateTimePickerBox;
         private System.Windows.Forms.Panel CreateAccountPanel;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label CreateAcc2Lbl;
         private FontAwesome.Sharp.IconButton CreateAccountPanelBtn;
         private FontAwesome.Sharp.IconButton AddEmplAccBtn;
         private System.Windows.Forms.Panel AddEmplIDPanelBox;
@@ -7337,55 +6579,5 @@
         private System.Windows.Forms.Label AddEmplPassLbl;
         private FontAwesome.Sharp.IconButton AddEmplContinueBtn;
         private System.Windows.Forms.Label UpdateEmplIDNoteLbl;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private FontAwesome.Sharp.IconButton iconButton1;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton iconButton3;
-        private System.Windows.Forms.Panel panel9;
-        private FontAwesome.Sharp.IconButton iconButton4;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private FontAwesome.Sharp.IconButton iconButton5;
-        private FontAwesome.Sharp.IconButton iconButton6;
-        private System.Windows.Forms.Panel panel15;
-        private FontAwesome.Sharp.IconButton iconButton7;
-        private System.Windows.Forms.Panel panel16;
-        private FontAwesome.Sharp.IconButton iconButton8;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
