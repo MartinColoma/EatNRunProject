@@ -197,8 +197,8 @@ namespace EatNRunProject
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "Database Error");
                 MessageBox.Show("Unable to connect to the database. Please check your internet connection and try again.", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "Database Error");
             }
 
         }
@@ -5423,6 +5423,8 @@ namespace EatNRunProject
 
         private void MngrSalesWtoDBtn_Click(object sender, EventArgs e)
         {
+            MngrLoadSalesDB();
+
             MngrSalesLbl.Text = "Daily Sales";
             //DisplaySalesAmountForThisDay();
             MngrSalesDtoWBtn.Visible = true;
@@ -5436,12 +5438,14 @@ namespace EatNRunProject
 
         private void MngrSalesMtoWBtn_Click(object sender, EventArgs e)
         {
+            MngrLoadSalesDB();
+
             MngrSalesLbl.Text = "Weekly Sales";
             //DisplaySalesAmountForThisWeek();
             MngrSalesWtoDBtn.Visible = true;
             MngrSalesWtoMBtn.Visible = true;
-            MngrSalesWeekNumComboPanelBox.Visible = true;
-            MngrSalesMonthListComboPanelBox.Visible = true;
+            //MngrSalesWeekNumComboPanelBox.Visible = true;
+            //MngrSalesMonthListComboPanelBox.Visible = true;
 
             MngrSalesDtoWBtn.Visible = false;
             MngrSalesMtoWBtn.Visible = false;
@@ -5449,12 +5453,14 @@ namespace EatNRunProject
 
         private void MngrSalesDtoWBtn_Click(object sender, EventArgs e)
         {
+            MngrLoadSalesDB();
+
             MngrSalesLbl.Text = "Weekly Sales";
             //DisplaySalesAmountForThisWeek();
             MngrSalesWtoDBtn.Visible = true;
             MngrSalesWtoMBtn.Visible = true;
-            MngrSalesWeekNumComboPanelBox.Visible = true;
-            MngrSalesMonthListComboPanelBox.Visible = true;
+            //MngrSalesWeekNumComboPanelBox.Visible = true;
+            //MngrSalesMonthListComboPanelBox.Visible = true;
 
             MngrSalesDtoWBtn.Visible = false;
             MngrSalesMtoWBtn.Visible = false;
@@ -5462,10 +5468,12 @@ namespace EatNRunProject
 
         private void MngrSalesWtoMBtn_Click(object sender, EventArgs e)
         {
+            MngrLoadSalesDB();
+
             MngrSalesLbl.Text = "Monthly Sales";
             //DisplaySalesAmountForThisMonth();
             MngrSalesMtoWBtn.Visible = true;
-            MngrSalesMonthListComboPanelBox.Visible = true;
+            //MngrSalesMonthListComboPanelBox.Visible = true;
 
             MngrSalesWeekNumComboPanelBox.Visible = false;
             MngrSalesWtoDBtn.Visible = false;
@@ -5475,7 +5483,9 @@ namespace EatNRunProject
 
         private void MngrSalesGenReportBtn_Click(object sender, EventArgs e)
         {
-            sales();
+            //sales();
+            MngrLoadSalesDB();
+
         }
 
         private void sales()
