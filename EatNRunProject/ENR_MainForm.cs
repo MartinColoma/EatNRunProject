@@ -45,14 +45,14 @@ namespace EatNRunProject
         private CashierOrderPanelCard CashierOrderPanelManager;
 
         //online db connection
-        public static string mysqlconn = "Server=154.41.240.153;" +
-                                        "Port=3306;" +
-                                        "Database=u322177170_ColomaBiezmo;" +
-                                        "User=u322177170_eatnrun;" +
-                                        "Password=Sb!k=Jr/akt6;";
+        public static string mysqlconn = "server=154.41.240.153;" +
+                                        "port=3306;" +
+                                        "database=u322177170_colomabiezmo;" +
+                                        "user=u322177170_eatnrun;" +
+                                        "password=sb!k=jr/akt6;";
 
         //local db connection [for offline testing]
-        //public static string mysqlconn = "server=localhost;user=root;database=freedb_eatnrun;password=";
+        //public static string mysqlconn = "server=localhost;user=root;database=u322177170_colomabiezmo;password=";
         public MySqlConnection connection = new MySqlConnection(mysqlconn);
 
 
